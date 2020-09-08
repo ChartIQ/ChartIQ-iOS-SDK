@@ -1,0 +1,3210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ChartIQView Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ChartIQView" class="dashAnchor"></a>
+    <a title="ChartIQView Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">ChartIQ Docs</a> (98% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">ChartIQ Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ChartIQView Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQCrosshairHUD.html">ChartIQCrosshairHUD</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQData.html">ChartIQData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQDrawingManager.html">ChartIQDrawingManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQQuoteFeedParams.html">ChartIQQuoteFeedParams</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQStudy.html">ChartIQStudy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQView.html">ChartIQView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQChartAggregationType.html">ChartIQChartAggregationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQChartType.html">ChartIQChartType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQDataMethod.html">ChartIQDataMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQDrawingToolType.html">ChartIQDrawingToolType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQFontFamily.html">ChartIQFontFamily</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQFontSize.html">ChartIQFontSize</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQFontStyle.html">ChartIQFontStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQLayer.html">ChartIQLayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQLineType.html">ChartIQLineType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQQuoteField.html">ChartIQQuoteField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQScale.html">ChartIQScale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQStudyError.html">ChartIQStudyError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQStudyParametersType.html">ChartIQStudyParametersType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQTheme.html">ChartIQTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQTimeUnit.html">ChartIQTimeUnit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIColor.html">UIColor</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ChartIQDataSource.html">ChartIQDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ChartIQDelegate.html">ChartIQDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ChartIQView</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ChartIQView</span> <span class="p">:</span> <span class="kt">UIView</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ChartIQView</span><span class="p">:</span> <span class="kt">WKScriptMessageHandler</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ChartIQView</span><span class="p">:</span> <span class="kt">WKNavigationDelegate</span></code></pre>
+
+                </div>
+              </div>
+            <p>The ChartIQ view.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Public Properties" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public%20Properties"></a>
+                  <h3 class="section-name"><p>Public Properties</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC8delegateAA0A10IQDelegate_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC8delegateAA0A10IQDelegate_pSgvp">delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ delegate.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ChartIQDelegate.html">ChartIQDelegate</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC10dataSourceAA0a6IQDataE0_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/dataSource" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC10dataSourceAA0a6IQDataE0_pSgvp">dataSource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ dataSource.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">dataSource</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ChartIQDataSource.html">ChartIQDataSource</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC10chartIQUrlSSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/chartIQUrl" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC10chartIQUrlSSvpZ">chartIQUrl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ URL.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">chartIQUrl</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC22chartIQRefreshIntervalSivpZ"></a>
+                    <a name="//apple_ref/swift/Variable/chartIQRefreshInterval" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC22chartIQRefreshIntervalSivpZ">chartIQRefreshInterval</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ refresh interval.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">chartIQRefreshInterval</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC22chartIQVoiceoverFieldsSDySSSbGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/chartIQVoiceoverFields" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC22chartIQVoiceoverFieldsSDySSSbGvpZ">chartIQVoiceoverFields</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ voiceover fields.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">chartIQVoiceoverFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Bool</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC10dataMethodAA0a6IQDataE0Ovp"></a>
+                    <a name="//apple_ref/swift/Property/dataMethod" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC10dataMethodAA0a6IQDataE0Ovp">dataMethod</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ data method.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">dataMethod</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQDataMethod.html">ChartIQDataMethod</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC6symbolSSvp"></a>
+                    <a name="//apple_ref/swift/Property/symbol" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC6symbolSSvp">symbol</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ symbol.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">symbol</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC8intervalSSvp"></a>
+                    <a name="//apple_ref/swift/Property/interval" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC8intervalSSvp">interval</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ interval.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">interval</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC8timeUnitAA0a6IQTimeE0Ovp"></a>
+                    <a name="//apple_ref/swift/Property/timeUnit" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC8timeUnitAA0a6IQTimeE0Ovp">timeUnit</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ timeUnit.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">timeUnit</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQTimeUnit.html">ChartIQTimeUnit</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC11periodicitySivp"></a>
+                    <a name="//apple_ref/swift/Property/periodicity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC11periodicitySivp">periodicity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ periodicity.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">periodicity</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC9chartTypeAA0a7IQChartE0Ovp"></a>
+                    <a name="//apple_ref/swift/Property/chartType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC9chartTypeAA0a7IQChartE0Ovp">chartType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ chart type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">chartType</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQChartType.html">ChartIQChartType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC15aggregationTypeAA0a18IQChartAggregationE0OSgvp"></a>
+                    <a name="//apple_ref/swift/Property/aggregationType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC15aggregationTypeAA0a18IQChartAggregationE0OSgvp">aggregationType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ chart aggregation type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">aggregationType</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQChartAggregationType.html">ChartIQChartAggregationType</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC5scaleAA0A7IQScaleOvp"></a>
+                    <a name="//apple_ref/swift/Property/scale" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC5scaleAA0A7IQScaleOvp">scale</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">scale</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQScale.html">ChartIQScale</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC15isExtendedHoursSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isExtendedHours" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC15isExtendedHoursSbvp">isExtendedHours</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ isExtendedHours property.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isExtendedHours</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC13isInvertYAxisSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isInvertYAxis" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC13isInvertYAxisSbvp">isInvertYAxis</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQ isInvertYAxis property.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isInvertYAxis</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Initializers"></a>
+                <a name="//apple_ref/swift/Section/Public Initializers" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public%20Initializers"></a>
+                  <h3 class="section-name"><p>Public Initializers</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@ChartIQ@objc(cs)ChartIQView(im)initWithFrame:"></a>
+                    <a name="//apple_ref/swift/Method/init(frame:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@ChartIQ@objc(cs)ChartIQView(im)initWithFrame:">init(frame:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Init ChartIQ view with frame.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>frame</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQ view frame.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@ChartIQ@objc(cs)ChartIQView(im)initWithCoder:"></a>
+                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@ChartIQ@objc(cs)ChartIQView(im)initWithCoder:">init(coder:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Init ChartIQ view with coder.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">aDecoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQ view coder.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Helpers"></a>
+                <a name="//apple_ref/swift/Section/Public Helpers" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public%20Helpers"></a>
+                  <h3 class="section-name"><p>Public Helpers</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC10getWebViewSo05WKWebF0CyF"></a>
+                    <a name="//apple_ref/swift/Method/getWebView()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC10getWebViewSo05WKWebF0CyF">getWebView()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Helper to get the current WebView.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getWebView</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">WKWebView</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The current WebView.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC7cleanupyyF"></a>
+                    <a name="//apple_ref/swift/Method/cleanup()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC7cleanupyyF">cleanup()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Cleans up the message handlers in order to avoid a memory leak.
+Should be called when the view is about to get deallocated (e.g. the deinit of its superview).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">cleanup</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC5start3urlySS_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/start(url:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC5start3urlySS_tFZ">start(url:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets your WebView URL here.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">start</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The starting URL.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC03setA5IQUrlyySSF"></a>
+                    <a name="//apple_ref/swift/Method/setChartIQUrl(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC03setA5IQUrlyySSF">setChartIQUrl(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets ChartIQ URL.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setChartIQUrl</span><span class="p">(</span><span class="n">_</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQ URL.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC18setRefreshIntervalyySiF"></a>
+                    <a name="//apple_ref/swift/Method/setRefreshInterval(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC18setRefreshIntervalyySiF">setRefreshInterval(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets ChartIQ refresh Interval.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setRefreshInterval</span><span class="p">(</span><span class="n">_</span> <span class="nv">refreshInterval</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>refreshInterval</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQ refresh Interval.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC18setVoiceoverFieldsyySDySSSbGF"></a>
+                    <a name="//apple_ref/swift/Method/setVoiceoverFields(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC18setVoiceoverFieldsyySDySSSbGF">setVoiceoverFields(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets ChartIQ voiceover fields.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setVoiceoverFields</span><span class="p">(</span><span class="n">_</span> <span class="nv">voiceoverFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Bool</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>voiceoverFields</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQ voiceover fields.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Chart%20Controls"></a>
+                <a name="//apple_ref/swift/Section/Public Chart Controls" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public%20Chart%20Controls"></a>
+                  <h3 class="section-name"><p>Public Chart Controls</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC13setDataMethodyyAA0a6IQDataF0OF"></a>
+                    <a name="//apple_ref/swift/Method/setDataMethod(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC13setDataMethodyyAA0a6IQDataF0OF">setDataMethod(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the data method to &ldquo;push&rdquo; or &ldquo;pull&rdquo;.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setDataMethod</span><span class="p">(</span><span class="n">_</span> <span class="nv">method</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQDataMethod.html">ChartIQDataMethod</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>method</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQ data method.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC03setA4TypeyyAA0a7IQChartE0OF"></a>
+                    <a name="//apple_ref/swift/Method/setChartType(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC03setA4TypeyyAA0a7IQChartE0OF">setChartType(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the base chart type.
+Will remove any aggregation type and switch your chart to display the new chartType.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setChartType</span><span class="p">(</span><span class="n">_</span> <span class="nv">chartType</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQChartType.html">ChartIQChartType</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>chartType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQ chart type.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC18setAggregationTypeyyAA0a7IQCharteF0OF"></a>
+                    <a name="//apple_ref/swift/Method/setAggregationType(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC18setAggregationTypeyyAA0a7IQCharteF0OF">setAggregationType(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the base aggregation type.
+This function should not be used to set chartTypes. Instead use setChartType.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setAggregationType</span><span class="p">(</span><span class="n">_</span> <span class="nv">aggregationType</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQChartAggregationType.html">ChartIQChartAggregationType</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>aggregationType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQ aggregation type.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC14setPeriodicity_8interval8timeUnitySi_SSAA0a6IQTimeH0OtF"></a>
+                    <a name="//apple_ref/swift/Method/setPeriodicity(_:interval:timeUnit:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC14setPeriodicity_8interval8timeUnitySi_SSAA0a6IQTimeH0OtF">setPeriodicity(_:<wbr>interval:<wbr>timeUnit:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the periodicity and interval for the chart. Interval describes the raw data interval (1, 5, 30, &ldquo;day&rdquo;) while period describes the multiple
+of that interval (7 minutes, 3 days, 7 X 5 minutes). This method sets the new periodicity and creates a new dataSet.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setPeriodicity</span><span class="p">(</span><span class="n">_</span> <span class="nv">period</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">interval</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">timeUnit</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQTimeUnit.html">ChartIQTimeUnit</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">minute</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>period</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The number of elements from masterData to roll-up together into one data point on the chart (candle,bar, etc).
+If set to 30 in a candle chart, for example, each candle will represent 30 raw elements of interval/timeUnit type.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>interval</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Further qualifies pre-rolled details of intra-day timeUnits (&ldquo;millisecond&rdquo;,&ldquo;second&rdquo;,&ldquo;minute&rdquo;) and will be converted to “1” if used
+with &ldquo;day&rdquo;,&ldquo;week&rdquo; or &ldquo;month&rdquo; &lsquo;timeUnit&rsquo;. Some feeds provide data that is already rolled up.
+For example, there may be a feed that provides 5 minute bars.
+To let the chart know you want that 5-minute bar from your feed instead of having the chart get individual 1 minute bars and roll them up,
+you would set the interval to &lsquo;5&rsquo; and timeUnit to &lsquo;minute&rsquo;.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>timeUnit</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQ time unit.
+If not set, will default to &ldquo;minute&rdquo;. &ldquo;hour&rdquo; is NOT a valid timeUnit. Use timeUnit:&ldquo;minute&rdquo;, interval:60 instead.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC04loadA0yySSF"></a>
+                    <a name="//apple_ref/swift/Method/loadChart(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC04loadA0yySSF">loadChart(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Renders a chart for a particular instrument from the data passed in or fetches new data from the attached CIQ.QuoteFeed.
+This is the method that should be called every time a new chart needs to be drawn for a different instrument.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">loadChart</span><span class="p">(</span><span class="n">_</span> <span class="nv">symbol</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>symbol</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The symbol for the new chart.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC9addSeries_5colorySS_So7UIColorCtF"></a>
+                    <a name="//apple_ref/swift/Method/addSeries(_:color:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC9addSeries_5colorySS_So7UIColorCtF">addSeries(_:<wbr>color:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds a series of data to the chart. A series can be displayed (for instance like a comparison chart) or it can be hidden (for instance to drive a study).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addSeries</span><span class="p">(</span><span class="n">_</span> <span class="nv">symbol</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">color</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>symbol</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The symbol to set.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>color</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The color for your symbol to be displayed as.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC12removeSeriesyySSF"></a>
+                    <a name="//apple_ref/swift/Method/removeSeries(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC12removeSeriesyySSF">removeSeries(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Detaches a series from all associated renderers in the chart, removing the actual series data from masterData.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeSeries</span><span class="p">(</span><span class="n">_</span> <span class="nv">symbol</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>symbol</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The symbol to remove or the series ojbect itself.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC03getA5ScaleSSSgyF"></a>
+                    <a name="//apple_ref/swift/Method/getChartScale()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC03getA5ScaleSSSgyF">getChartScale()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getChartScale</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC8setScaleyyAA0A7IQScaleOF"></a>
+                    <a name="//apple_ref/swift/Method/setScale(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC8setScaleyyAA0A7IQScaleOF">setScale(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets ChartIQ chart scale.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setScale</span><span class="p">(</span><span class="n">_</span> <span class="nv">scale</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQScale.html">ChartIQScale</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>scale</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQ chart scale.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC03setA5Style_9attribute5valueySS_S2StF"></a>
+                    <a name="//apple_ref/swift/Method/setChartStyle(_:attribute:value:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC03setA5Style_9attribute5valueySS_S2StF">setChartStyle(_:<wbr>attribute:<wbr>value:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Change a css style on the chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setChartStyle</span><span class="p">(</span><span class="n">_</span> <span class="nv">object</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">attribute</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>object</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The object whose style you wish to change (stx_grid, stx_xaxis, etc).</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>attribute</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The style name of the object you wish to change.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value to assign to the attribute.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC03setA8Property_5valueySS_yptF"></a>
+                    <a name="//apple_ref/swift/Method/setChartProperty(_:value:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC03setA8Property_5valueySS_yptF">setChartProperty(_:<wbr>value:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set a property value on the chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setChartProperty</span><span class="p">(</span><span class="n">_</span> <span class="nv">property</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>property</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The property name of the object you wish to change.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value to assign to the property.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC03getA8PropertyySSSgSSF"></a>
+                    <a name="//apple_ref/swift/Method/getChartProperty(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC03getA8PropertyySSSgSSF">getChartProperty(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get a property value on the chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getChartProperty</span><span class="p">(</span><span class="n">_</span> <span class="nv">property</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>property</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The property name of the object you wish to receive.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC17setEngineProperty_5valueySS_yptF"></a>
+                    <a name="//apple_ref/swift/Method/setEngineProperty(_:value:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC17setEngineProperty_5valueySS_yptF">setEngineProperty(_:<wbr>value:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Change a property value on the chart engine.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setEngineProperty</span><span class="p">(</span><span class="n">_</span> <span class="nv">property</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>property</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The property name of the object you wish to change.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value to assign to the property.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC17getEnginePropertyySSSgSSF"></a>
+                    <a name="//apple_ref/swift/Method/getEngineProperty(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC17getEnginePropertyySSSgSSF">getEngineProperty(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get a property value on the chart engine.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getEngineProperty</span><span class="p">(</span><span class="n">_</span> <span class="nv">property</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>property</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The property name of the object you wish to receive.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC16enableCrosshairsyySbF"></a>
+                    <a name="//apple_ref/swift/Method/enableCrosshairs(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC16enableCrosshairsyySbF">enableCrosshairs(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Will toggle the crosshairs on or off.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">enableCrosshairs</span><span class="p">(</span><span class="n">_</span> <span class="nv">enable</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>enable</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The boolean value, true if need to enable crosshairs, false if need to disable crosshairs.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC19isCrosshairsEnabledSbyF"></a>
+                    <a name="//apple_ref/swift/Method/isCrosshairsEnabled()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC19isCrosshairsEnabledSbyF">isCrosshairsEnabled()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks if crosshairs is on.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isCrosshairsEnabled</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if crosshair is on.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC13getHudDetailsAA0A14IQCrosshairHUDCSgyF"></a>
+                    <a name="//apple_ref/swift/Method/getHudDetails()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC13getHudDetailsAA0A14IQCrosshairHUDCSgyF">getHudDetails()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gathers the necessary information for any HUD based on cursor position and returns that data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getHudDetails</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ChartIQCrosshairHUD.html">ChartIQCrosshairHUD</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The ChartIQCrosshairHUD model.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC02isA9AvailableSbyF"></a>
+                    <a name="//apple_ref/swift/Method/isChartAvailable()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC02isA9AvailableSbyF">isChartAvailable()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Checks if chart has finished loading.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isChartAvailable</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True if the chart has finished loading.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC8setThemeyyAA0A7IQThemeOF"></a>
+                    <a name="//apple_ref/swift/Method/setTheme(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC8setThemeyyAA0A7IQThemeOF">setTheme(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets ChartIQ theme for the chart.
+Sets theme between &lsquo;day&rsquo; or &lsquo;night&rsquo; or none by adding in CSS classes to the chart&rsquo;s context.
+Also clears the chart containers backgroundColor and resets the engines styles.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setTheme</span><span class="p">(</span><span class="n">_</span> <span class="nv">theme</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQTheme.html">ChartIQTheme</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>theme</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQ theme.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC06resizeA0yyF"></a>
+                    <a name="//apple_ref/swift/Method/resizeChart()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC06resizeA0yyF">resizeChart()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Resize chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">resizeChart</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC05clearA0yyF"></a>
+                    <a name="//apple_ref/swift/Method/clearChart()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC05clearA0yyF">clearChart()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Clears out a chart, eliminating all references including the resizeTimer, quoteDriver, styles and eventListeners.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">clearChart</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC14setExtendHoursyySbF"></a>
+                    <a name="//apple_ref/swift/Method/setExtendHours(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC14setExtendHoursyySbF">setExtendHours(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Will toggle the extended hours on or off.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setExtendHours</span><span class="p">(</span><span class="n">_</span> <span class="nv">isExtended</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isExtended</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The boolean value, true if need to extend hours, false if need to disable extending.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC14setInvertYAxisyySbF"></a>
+                    <a name="//apple_ref/swift/Method/setInvertYAxis(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC14setInvertYAxisyySbF">setInvertYAxis(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Will toggle the invert y-axis on or off.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setInvertYAxis</span><span class="p">(</span><span class="n">_</span> <span class="nv">isInverted</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isInverted</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The boolean value, true if need to invert y-axis, false if need to disable inverting.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC15getTranslationsySDySSypGSSF"></a>
+                    <a name="//apple_ref/swift/Method/getTranslations(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC15getTranslationsySDySSypGSSF">getTranslations(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get the language translations for the App</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getTranslations</span><span class="p">(</span><span class="n">_</span> <span class="nv">languageCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>languageCode</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The language locale code value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC11setLanguageyySSF"></a>
+                    <a name="//apple_ref/swift/Method/setLanguage(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC11setLanguageyySSF">setLanguage(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set the language of the chart</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setLanguage</span><span class="p">(</span><span class="n">_</span> <span class="nv">languageCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>languageCode</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The language locale code value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Chart%20Data"></a>
+                <a name="//apple_ref/swift/Section/Public Chart Data" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public%20Chart%20Data"></a>
+                  <h3 class="section-name"><p>Public Chart Data</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC4pushyySayAA0A6IQDataCGF"></a>
+                    <a name="//apple_ref/swift/Method/push(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC4pushyySayAA0A6IQDataCGF">push(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the chart data by push.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">push</span><span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ChartIQData.html">ChartIQData</a></span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An array of properly formatted OHLC quote objects to create a chart.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC10pushUpdateyySayAA0A6IQDataCGF"></a>
+                    <a name="//apple_ref/swift/Method/pushUpdate(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC10pushUpdateyySayAA0A6IQDataCGF">pushUpdate(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Uses this method to stream OHLC data into a chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">pushUpdate</span><span class="p">(</span><span class="n">_</span> <span class="nv">data</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ChartIQData.html">ChartIQData</a></span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An array of properly formatted OHLC quote objects to append.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Studies"></a>
+                <a name="//apple_ref/swift/Section/Public Studies" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public%20Studies"></a>
+                  <h3 class="section-name"><p>Public Studies</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC12getStudyListSayAA0A7IQStudyCGyF"></a>
+                    <a name="//apple_ref/swift/Method/getStudyList()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC12getStudyListSayAA0A7IQStudyCGyF">getStudyList()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns an array of all the studies with a shortName derived from the key.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getStudyList</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/ChartIQStudy.html">ChartIQStudy</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Array of ChartIQStudy models.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC18getStudyParameters_4typeypSgSS_AA0a7IQStudyF4TypeOtF"></a>
+                    <a name="//apple_ref/swift/Method/getStudyParameters(_:type:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC18getStudyParameters_4typeypSgSS_AA0a7IQStudyF4TypeOtF">getStudyParameters(_:<wbr>type:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Will return the default parameters of a study if it is not active, or actual parameters for an active study.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getStudyParameters</span><span class="p">(</span><span class="n">_</span> <span class="nv">studyName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQStudyParametersType.html">ChartIQStudyParametersType</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Any</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>studyName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The study name to get parameters for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>What to return for the study. ChartIQStudyParametersType incapsulate values: &ldquo;inputs&rdquo;, &ldquo;outputs&rdquo;, &ldquo;parameters&rdquo;.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The JSON Object or nil if an error occur.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC8setStudy_3key5valueySS_S2StF"></a>
+                    <a name="//apple_ref/swift/Method/setStudy(_:key:value:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC8setStudy_3key5valueySS_S2StF">setStudy(_:<wbr>key:<wbr>value:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets study parameters.
+Given an active study name this will update the study based on key value pair you pass in to a DialogHelper.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setStudy</span><span class="p">(</span><span class="n">_</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the study from the chart engine&rsquo;s layout.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The parameter name that must be defined in DialogHelper.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value to set in the studies corresponding DialogHelper.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC8setStudy_10parametersySS_SDyS2SGtF"></a>
+                    <a name="//apple_ref/swift/Method/setStudy(_:parameters:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC8setStudy_10parametersySS_SDyS2SGtF">setStudy(_:<wbr>parameters:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets study parameters.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setStudy</span><span class="p">(</span><span class="n">_</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The study name.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC8addStudy_6inputs7outputsySS_SDySSypGSgAHtKF"></a>
+                    <a name="//apple_ref/swift/Method/addStudy(_:inputs:outputs:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC8addStudy_6inputs7outputsySS_SDySSypGSgAHtKF">addStudy(_:<wbr>inputs:<wbr>outputs:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Adds a specific study to the chart.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    ChartIQStudyError.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addStudy</span><span class="p">(</span><span class="n">_</span> <span class="nv">studyName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">inputs</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">outputs</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>studyName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The study name.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inputs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Inputs for the study instance. If nil, it will use the paramters defined in CIQ.Studies.DialogHelper.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>outputs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Outputs for the study instance. If nil, it will use the paramters defined in CIQ.Studies.DialogHelper.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC11removeStudyyySSF"></a>
+                    <a name="//apple_ref/swift/Method/removeStudy(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC11removeStudyyySSF">removeStudy(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removes an active study in the chart engine&rsquo;s layout from the chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeStudy</span><span class="p">(</span><span class="n">_</span> <span class="nv">studyName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>studyName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the study as it appears in the chart engines layout.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC16removeAllStudiesyyF"></a>
+                    <a name="//apple_ref/swift/Method/removeAllStudies()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC16removeAllStudiesyyF">removeAllStudies()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience function to remove all studies on the chart at once.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeAllStudies</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC16getActiveStudiesSayAA0A7IQStudyCGyF"></a>
+                    <a name="//apple_ref/swift/Method/getActiveStudies()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC16getActiveStudiesSayAA0A7IQStudyCGyF">getActiveStudies()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Lists studies added on the Chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getActiveStudies</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Classes/ChartIQStudy.html">ChartIQStudy</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The array of ChartIQStudy models.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Drawings"></a>
+                <a name="//apple_ref/swift/Section/Public Drawings" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public%20Drawings"></a>
+                  <h3 class="section-name"><p>Public Drawings</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC18getCurrentDrawToolAA0a9IQDrawingG0OSgyF"></a>
+                    <a name="//apple_ref/swift/Method/getCurrentDrawTool()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC18getCurrentDrawToolAA0a9IQDrawingG0OSgyF">getCurrentDrawTool()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets current draw tool.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getCurrentDrawTool</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The ChartIQDrawingTool.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC13enableDrawingyyAA0A13IQDrawingToolOF"></a>
+                    <a name="//apple_ref/swift/Method/enableDrawing(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC13enableDrawingyyAA0A13IQDrawingToolOF">enableDrawing(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enables drawing on the chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">enableDrawing</span><span class="p">(</span><span class="n">_</span> <span class="nv">tool</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tool</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQDrawingTool.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC27restoreDefaultDrawingConfig_3allyAA0A13IQDrawingToolO_SbtF"></a>
+                    <a name="//apple_ref/swift/Method/restoreDefaultDrawingConfig(_:all:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC27restoreDefaultDrawingConfig_3allyAA0A13IQDrawingToolO_SbtF">restoreDefaultDrawingConfig(_:<wbr>all:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Will restore the drawing tool or tools to default configuration.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">restoreDefaultDrawingConfig</span><span class="p">(</span><span class="n">_</span> <span class="nv">tool</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a></span><span class="p">,</span> <span class="nv">all</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tool</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQDrawingTool. May be nil if need to reset all drawing tools and the &ldquo;all&rdquo; parameter need to be equal &ldquo;true&rdquo;.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>all</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The boolean value, true if need to reset all drawing tools, false if need to disable concrete drawing tool.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC20getDrawingParametersySDySSypGSgAA0A13IQDrawingToolOF"></a>
+                    <a name="//apple_ref/swift/Method/getDrawingParameters(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC20getDrawingParametersySDySSypGSgAA0A13IQDrawingToolOF">getDrawingParameters(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets drawing parameters for a drawing tool.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getDrawingParameters</span><span class="p">(</span><span class="n">_</span> <span class="nv">tool</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tool</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQDrawingTool.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The dictionary value of drawing parameters.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC19setDrawingParameter_5valueySS_yptF"></a>
+                    <a name="//apple_ref/swift/Method/setDrawingParameter(_:value:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC19setDrawingParameter_5valueySS_yptF">setDrawingParameter(_:<wbr>value:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets drawing parameters on the chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setDrawingParameter</span><span class="p">(</span><span class="n">_</span> <span class="nv">parameterName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>parameterName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The parameter name.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The parameter value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC13deleteDrawingyyF"></a>
+                    <a name="//apple_ref/swift/Method/deleteDrawing()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC13deleteDrawingyyF">deleteDrawing()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delete the selected drawing on the chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">deleteDrawing</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC12cloneDrawingyyF"></a>
+                    <a name="//apple_ref/swift/Method/cloneDrawing()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC12cloneDrawingyyF">cloneDrawing()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Clone the selected drawing on the chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">cloneDrawing</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC18manageLayerDrawingyyAA0A7IQLayerOF"></a>
+                    <a name="//apple_ref/swift/Method/manageLayerDrawing(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC18manageLayerDrawingyyAA0A7IQLayerOF">manageLayerDrawing(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Manage drawing layer on the chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">manageLayerDrawing</span><span class="p">(</span><span class="n">_</span> <span class="nv">layer</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQLayer.html">ChartIQLayer</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>layer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQLayer parameter.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC4undoSbyF"></a>
+                    <a name="//apple_ref/swift/Method/undo()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC4undoSbyF">undo()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undo the last drawing on the chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">undo</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The bool value indicates if the drawing was the latest.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC4redoSbyF"></a>
+                    <a name="//apple_ref/swift/Method/redo()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC4redoSbyF">redo()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Redo the last drawing on the chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">redo</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The bool value indicates if the drawing was the latest.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC14disableDrawingyyF"></a>
+                    <a name="//apple_ref/swift/Method/disableDrawing()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC14disableDrawingyyF">disableDrawing()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Disables drawing on the chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">disableDrawing</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC12clearDrawingyyF"></a>
+                    <a name="//apple_ref/swift/Method/clearDrawing()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC12clearDrawingyyF">clearDrawing()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Clears drawing on the chart.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">clearDrawing</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC6invoke_4argsypSS_ypdtF"></a>
+                    <a name="//apple_ref/swift/Method/invoke(_:args:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC6invoke_4argsypSS_ypdtF">invoke(_:<wbr>args:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Description Call any javascript function on the Chart Engine namespace</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">_</span> <span class="nv">functionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">args</span><span class="p">:</span> <span class="kt">Any</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Any</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>functionName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The function name.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>args</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Arguments.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/WebKit%20Script%20Message%20Handler"></a>
+                <a name="//apple_ref/swift/Section/WebKit Script Message Handler" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/WebKit%20Script%20Message%20Handler"></a>
+                  <h3 class="section-name"><p>WebKit Script Message Handler</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@ChartIQ@objc(cs)ChartIQView(im)userContentController:didReceiveScriptMessage:"></a>
+                    <a name="//apple_ref/swift/Method/userContentController(_:didReceive:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@ChartIQ@objc(cs)ChartIQView(im)userContentController:didReceiveScriptMessage:">userContentController(_:<wbr>didReceive:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">userContentController</span><span class="p">(</span><span class="n">_</span> <span class="nv">userContentController</span><span class="p">:</span> <span class="kt">WKUserContentController</span><span class="p">,</span>
+                                  <span class="n">didReceive</span> <span class="nv">message</span><span class="p">:</span> <span class="kt">WKScriptMessage</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/WebKit%20Navigation%20Delegate"></a>
+                <a name="//apple_ref/swift/Section/WebKit Navigation Delegate" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/WebKit%20Navigation%20Delegate"></a>
+                  <h3 class="section-name"><p>WebKit Navigation Delegate</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@ChartIQ@objc(cs)ChartIQView(im)webView:didFinishNavigation:"></a>
+                    <a name="//apple_ref/swift/Method/webView(_:didFinish:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@ChartIQ@objc(cs)ChartIQView(im)webView:didFinishNavigation:">webView(_:<wbr>didFinish:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span><span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">WKWebView</span><span class="p">,</span> <span class="n">didFinish</span> <span class="nv">navigation</span><span class="p">:</span> <span class="kt">WKNavigation</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="https://github.com/ChartIQ/Charting-Library---iOS-SDK" target="_blank" rel="external">jacob</a>. All rights reserved. (Last updated: 2020-09-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

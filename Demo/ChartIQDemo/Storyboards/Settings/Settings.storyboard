@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="g9V-dc-OCk">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4No-iy-Ocb" customClass="SettingsViewController" customModule="ChartIQDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bj4-av-3FL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="bdi-89-VER">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wMJ-rv-DFA" firstAttribute="trailing" secondItem="bdi-89-VER" secondAttribute="trailing" id="7Qh-H1-wCK"/>
+                            <constraint firstItem="bdi-89-VER" firstAttribute="leading" secondItem="wMJ-rv-DFA" secondAttribute="leading" id="Fjq-Lt-3On"/>
+                            <constraint firstItem="bdi-89-VER" firstAttribute="top" secondItem="wMJ-rv-DFA" secondAttribute="top" id="KAI-kf-YOJ"/>
+                            <constraint firstItem="wMJ-rv-DFA" firstAttribute="bottom" secondItem="bdi-89-VER" secondAttribute="bottom" id="m2D-dn-H1o"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wMJ-rv-DFA"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="bdi-89-VER" id="foS-xX-uQv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="noa-aX-hNt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-229" y="3"/>
+        </scene>
+        <!--Chart Style View Controller-->
+        <scene sceneID="ey8-Wm-dI1">
+            <objects>
+                <viewController storyboardIdentifier="ChartStyleViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aTU-BI-51s" customClass="ChartStyleViewController" customModule="ChartIQDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s7H-ro-n9G">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yu1-Ho-uav">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="3e0-Sz-ygT">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gxy-lM-NSd" firstAttribute="bottom" secondItem="yu1-Ho-uav" secondAttribute="bottom" id="8Y9-Gh-QwS"/>
+                            <constraint firstItem="yu1-Ho-uav" firstAttribute="leading" secondItem="gxy-lM-NSd" secondAttribute="leading" id="SGJ-KT-j7b"/>
+                            <constraint firstItem="gxy-lM-NSd" firstAttribute="trailing" secondItem="yu1-Ho-uav" secondAttribute="trailing" id="dXa-AC-k2h"/>
+                            <constraint firstItem="yu1-Ho-uav" firstAttribute="top" secondItem="gxy-lM-NSd" secondAttribute="top" id="mMH-Kg-1b9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gxy-lM-NSd"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="yu1-Ho-uav" id="efZ-cC-h9w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HDS-VA-HWr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="506" y="3"/>
+        </scene>
+        <!--Languages View Controller-->
+        <scene sceneID="qUN-Bk-Pqs">
+            <objects>
+                <viewController storyboardIdentifier="LanguagesViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aRP-lM-pUG" customClass="LanguagesViewController" customModule="ChartIQDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bxz-TS-OXe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AJC-CX-r8Z">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="pC1-Yz-ar2">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="AJC-CX-r8Z" firstAttribute="top" secondItem="XUZ-gH-wzf" secondAttribute="top" id="GQa-LB-8Cd"/>
+                            <constraint firstItem="XUZ-gH-wzf" firstAttribute="bottom" secondItem="AJC-CX-r8Z" secondAttribute="bottom" id="dMv-gW-eqy"/>
+                            <constraint firstItem="AJC-CX-r8Z" firstAttribute="leading" secondItem="XUZ-gH-wzf" secondAttribute="leading" id="sTb-tm-gxT"/>
+                            <constraint firstItem="XUZ-gH-wzf" firstAttribute="trailing" secondItem="AJC-CX-r8Z" secondAttribute="trailing" id="sW8-9j-bWG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XUZ-gH-wzf"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="AJC-CX-r8Z" id="UO4-SV-j9r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AP2-5V-cvg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1229" y="3"/>
+        </scene>
+    </scenes>
+</document>

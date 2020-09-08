@@ -1,0 +1,47 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/ks/Documents/chartiq/Source/ChartIQDataSource.swift",
+      "line": 12,
+      "symbol": "ChartIQDataSource",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ks/Documents/chartiq/Source/ChartIQDelegate.swift",
+      "line": 12,
+      "symbol": "ChartIQDelegate",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ks/Documents/chartiq/Source/ChartIQDrawingManager.swift",
+      "line": 18,
+      "symbol": "ChartIQDrawingManager.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ks/Documents/chartiq/Source/ChartIQView.swift",
+      "line": 300,
+      "symbol": "ChartIQView.getChartScale()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ks/Documents/chartiq/Source/ChartIQView.swift",
+      "line": 866,
+      "symbol": "ChartIQView.userContentController(_:didReceive:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/ks/Documents/chartiq/Source/ChartIQView.swift",
+      "line": 993,
+      "symbol": "ChartIQView.webView(_:didFinish:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/ks/Documents/chartiq"
+}
