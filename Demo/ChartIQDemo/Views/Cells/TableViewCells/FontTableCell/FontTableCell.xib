@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FontTableCellReuseIdentifier" id="KGk-i7-Jjw" customClass="FontTableCell" customModule="ChartIQDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4j-ol-hTR">
+                        <rect key="frame" x="272" y="6" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="lol-vZ-ykm"/>
+                            <constraint firstAttribute="width" constant="32" id="sNP-fQ-5BX"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="drawToolFontItalic"/>
+                        <connections>
+                            <action selector="italicButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zG0-8W-t2G"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Usq-Z2-ygo">
+                        <rect key="frame" x="228" y="6" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="c2U-qg-oN7"/>
+                            <constraint firstAttribute="width" constant="32" id="nhs-bw-2xE"/>
+                        </constraints>
+                        <state key="normal" image="drawToolFontBold"/>
+                        <connections>
+                            <action selector="boldButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="X0O-85-NlB"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fe-xG-6aj">
+                        <rect key="frame" x="16" y="0.0" width="196" height="44"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="n4j-ol-hTR" firstAttribute="leading" secondItem="Usq-Z2-ygo" secondAttribute="trailing" constant="12" id="97V-iR-OZx"/>
+                    <constraint firstItem="Usq-Z2-ygo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9Ju-p4-31a"/>
+                    <constraint firstItem="Usq-Z2-ygo" firstAttribute="leading" secondItem="5Fe-xG-6aj" secondAttribute="trailing" constant="16" id="HBu-rQ-oXD"/>
+                    <constraint firstAttribute="trailing" secondItem="n4j-ol-hTR" secondAttribute="trailing" constant="16" id="HF5-2v-NKx"/>
+                    <constraint firstItem="5Fe-xG-6aj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ag5-HK-dPw"/>
+                    <constraint firstItem="5Fe-xG-6aj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ebu-zw-B54"/>
+                    <constraint firstItem="n4j-ol-hTR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rb7-pp-G9e"/>
+                    <constraint firstAttribute="bottom" secondItem="5Fe-xG-6aj" secondAttribute="bottom" id="uOs-gY-rmq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="boldButton" destination="Usq-Z2-ygo" id="EeX-ek-BiR"/>
+                <outlet property="italicButton" destination="n4j-ol-hTR" id="mXV-OB-cqg"/>
+                <outlet property="titleLabel" destination="5Fe-xG-6aj" id="VkU-4g-tFE"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="105.80357142857143"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="drawToolFontBold" width="32" height="32"/>
+        <image name="drawToolFontItalic" width="32" height="32"/>
+    </resources>
+</document>

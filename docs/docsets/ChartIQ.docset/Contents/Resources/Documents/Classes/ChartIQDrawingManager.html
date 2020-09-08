@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ChartIQDrawingManager Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ChartIQDrawingManager" class="dashAnchor"></a>
+    <a title="ChartIQDrawingManager Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">ChartIQ Docs</a> (98% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">ChartIQ Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ChartIQDrawingManager Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQCrosshairHUD.html">ChartIQCrosshairHUD</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQData.html">ChartIQData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQDrawingManager.html">ChartIQDrawingManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQQuoteFeedParams.html">ChartIQQuoteFeedParams</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQStudy.html">ChartIQStudy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQView.html">ChartIQView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQChartAggregationType.html">ChartIQChartAggregationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQChartType.html">ChartIQChartType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQDataMethod.html">ChartIQDataMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQDrawingToolType.html">ChartIQDrawingToolType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQFontFamily.html">ChartIQFontFamily</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQFontSize.html">ChartIQFontSize</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQFontStyle.html">ChartIQFontStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQLayer.html">ChartIQLayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQLineType.html">ChartIQLineType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQQuoteField.html">ChartIQQuoteField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQScale.html">ChartIQScale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQStudyError.html">ChartIQStudyError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQStudyParametersType.html">ChartIQStudyParametersType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQTheme.html">ChartIQTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQTimeUnit.html">ChartIQTimeUnit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIColor.html">UIColor</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ChartIQDataSource.html">ChartIQDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ChartIQDelegate.html">ChartIQDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ChartIQDrawingManager</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ChartIQDrawingManager</span> <span class="p">:</span> <span class="kt">ChartIQDrawingManagerProtocol</span></code></pre>
+
+                </div>
+              </div>
+            <p>Encapsulates helper methods for working with the ChartIQ drawing tools and does not directly depend on ChartIQView.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initializers"></a>
+                <a name="//apple_ref/swift/Section/Initializers" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Initializers"></a>
+                  <h3 class="section-name"><p>Initializers</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A16IQDrawingManagerCACycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A16IQDrawingManagerCACycfc">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Methods"></a>
+                <a name="//apple_ref/swift/Section/Public Methods" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public%20Methods"></a>
+                  <h3 class="section-name"><p>Public Methods</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A16IQDrawingManagerC21isSupportingFillColorySbAA0aC4ToolOF"></a>
+                    <a name="//apple_ref/swift/Method/isSupportingFillColor(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A16IQDrawingManagerC21isSupportingFillColorySbAA0aC4ToolOF">isSupportingFillColor(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if the drawing supports fill color.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isSupportingFillColor</span><span class="p">(</span><span class="n">_</span> <span class="nv">tool</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tool</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQDrawingTool.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The Bool Value. True if supports fill color, false if not.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A16IQDrawingManagerC21isSupportingLineColorySbAA0aC4ToolOF"></a>
+                    <a name="//apple_ref/swift/Method/isSupportingLineColor(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A16IQDrawingManagerC21isSupportingLineColorySbAA0aC4ToolOF">isSupportingLineColor(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if the drawing supports line color.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isSupportingLineColor</span><span class="p">(</span><span class="n">_</span> <span class="nv">tool</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tool</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQDrawingTool.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The Bool Value. True if supports line color, false if not.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A16IQDrawingManagerC20isSupportingLineTypeySbAA0aC4ToolOF"></a>
+                    <a name="//apple_ref/swift/Method/isSupportingLineType(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A16IQDrawingManagerC20isSupportingLineTypeySbAA0aC4ToolOF">isSupportingLineType(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if the drawing supports line type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isSupportingLineType</span><span class="p">(</span><span class="n">_</span> <span class="nv">tool</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tool</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQDrawingTool.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The Bool Value. True if supports line type, false if not.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A16IQDrawingManagerC20isSupportingSettingsySbAA0aC4ToolOF"></a>
+                    <a name="//apple_ref/swift/Method/isSupportingSettings(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A16IQDrawingManagerC20isSupportingSettingsySbAA0aC4ToolOF">isSupportingSettings(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if the drawing supports settings.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isSupportingSettings</span><span class="p">(</span><span class="n">_</span> <span class="nv">tool</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tool</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQDrawingTool.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The Bool Value. True if supports pattern, false if not.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A16IQDrawingManagerC16isSupportingFontySbAA0aC4ToolOF"></a>
+                    <a name="//apple_ref/swift/Method/isSupportingFont(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A16IQDrawingManagerC16isSupportingFontySbAA0aC4ToolOF">isSupportingFont(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if the drawing supports font.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isSupportingFont</span><span class="p">(</span><span class="n">_</span> <span class="nv">tool</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tool</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQDrawingTool.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The Bool Value. True if supports font, false if not.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A16IQDrawingManagerC21isSupportingAxisLabelySbAA0aC4ToolOF"></a>
+                    <a name="//apple_ref/swift/Method/isSupportingAxisLabel(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A16IQDrawingManagerC21isSupportingAxisLabelySbAA0aC4ToolOF">isSupportingAxisLabel(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if the drawing supports axis label.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isSupportingAxisLabel</span><span class="p">(</span><span class="n">_</span> <span class="nv">tool</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tool</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQDrawingTool.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The Bool Value. True if supports axis label, false if not.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A16IQDrawingManagerC25isSupportingStdDeviationsySbAA0aC4ToolOF"></a>
+                    <a name="//apple_ref/swift/Method/isSupportingStdDeviations(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A16IQDrawingManagerC25isSupportingStdDeviationsySbAA0aC4ToolOF">isSupportingStdDeviations(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if the drawing supports std deviations.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isSupportingStdDeviations</span><span class="p">(</span><span class="n">_</span> <span class="nv">tool</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tool</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQDrawingTool.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The Bool Value. True if supports std deviations, false if not.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A16IQDrawingManagerC21isSupportingFibonacciySbAA0aC4ToolOF"></a>
+                    <a name="//apple_ref/swift/Method/isSupportingFibonacci(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A16IQDrawingManagerC21isSupportingFibonacciySbAA0aC4ToolOF">isSupportingFibonacci(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if the drawing supports Fibonacci settings.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isSupportingFibonacci</span><span class="p">(</span><span class="n">_</span> <span class="nv">tool</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tool</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQDrawingTool.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The Bool Value. True if supports Fibonacci tool, false if not.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A16IQDrawingManagerC23isSupportingElliottWaveySbAA0aC4ToolOF"></a>
+                    <a name="//apple_ref/swift/Method/isSupportingElliottWave(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A16IQDrawingManagerC23isSupportingElliottWaveySbAA0aC4ToolOF">isSupportingElliottWave(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Check if the drawing supports ElliotWave settings.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">isSupportingElliottWave</span><span class="p">(</span><span class="n">_</span> <span class="nv">tool</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>tool</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQDrawingTool.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The Bool Value. True if supports ElliotWave tool, false if not.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="https://github.com/ChartIQ/Charting-Library---iOS-SDK" target="_blank" rel="external">jacob</a>. All rights reserved. (Last updated: 2020-09-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
