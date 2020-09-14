@@ -148,10 +148,10 @@ class DrawToolSettingsViewController: BaseViewController {
   private func updateSelectedOptionParameters(selectedOption: String, selectViewModel: SelectTableCellViewModel) {
     if selectViewModel.title == Const.DrawToolsService.fontFamilyTitle {
       selectViewModel.detailTitle = selectedOption
-      chartIQView?.setDrawingParameter("fontFamily", value: selectedOption)
+      chartIQView?.setDrawingParameter("family", value: selectedOption)
     } else if selectViewModel.title == Const.DrawToolsService.fontSizeTitle {
       selectViewModel.detailTitle = selectedOption
-      chartIQView?.setDrawingParameter("fontSize", value: selectedOption)
+      chartIQView?.setDrawingParameter("size", value: selectedOption)
     }
     tableView.reloadData()
   }

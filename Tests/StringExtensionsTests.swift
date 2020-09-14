@@ -29,11 +29,11 @@ class StringExtensionsTests: XCTestCase {
 
     // When
     let stringWithReplacedSymbols = originalString
-      .replace(SpecialCharacter.ampersand.originalValue, with: SpecialCharacter.ampersand.escapingValue)
-      .replace(SpecialCharacter.doubleQuote.originalValue, with: SpecialCharacter.doubleQuote.escapingValue)
-      .replace(SpecialCharacter.singleQuote.originalValue, with: SpecialCharacter.singleQuote.escapingValue)
-      .replace(SpecialCharacter.lessThan.originalValue, with: SpecialCharacter.lessThan.escapingValue)
-      .replace(SpecialCharacter.greaterThan.originalValue, with: SpecialCharacter.greaterThan.escapingValue)
+      .replace(ChartIQSpecialCharacter.ampersand.originalValue, with: ChartIQSpecialCharacter.ampersand.escapingValue)
+      .replace(ChartIQSpecialCharacter.doubleQuote.originalValue, with: ChartIQSpecialCharacter.doubleQuote.escapingValue)
+      .replace(ChartIQSpecialCharacter.singleQuote.originalValue, with: ChartIQSpecialCharacter.singleQuote.escapingValue)
+      .replace(ChartIQSpecialCharacter.lessThan.originalValue, with: ChartIQSpecialCharacter.lessThan.escapingValue)
+      .replace(ChartIQSpecialCharacter.greaterThan.originalValue, with: ChartIQSpecialCharacter.greaterThan.escapingValue)
 
     // Then
     XCTAssertEqual(correctString, stringWithReplacedSymbols)

@@ -17,6 +17,7 @@
 		487358B724ED2599003AAE1E /* ChartIQChartType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487358B624ED2599003AAE1E /* ChartIQChartType.swift */; };
 		48774D0B24405BC300CA2929 /* ChartIQConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48774D0A24405BC300CA2929 /* ChartIQConstants.swift */; };
 		48BEFDD2244081570047D0B7 /* WKWebViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BEFDD1244081570047D0B7 /* WKWebViewExtensionsTests.swift */; };
+		48C8230C25063C5200047C39 /* ChartIQScriptManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C8230B25063C5200047C39 /* ChartIQScriptManagerTests.swift */; };
 		48E827BB24E6777A00A7A291 /* ChartIQDrawingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E827BA24E6777A00A7A291 /* ChartIQDrawingManager.swift */; };
 		CE1CE7B8240E81110076EC5D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CE7B4240E81110076EC5D /* UIColor+Extensions.swift */; };
 		CE1CE7BA240E81110076EC5D /* WKWebView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CE7B6240E81110076EC5D /* WKWebView+Extensions.swift */; };
@@ -63,6 +64,7 @@
 		487358B624ED2599003AAE1E /* ChartIQChartType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQChartType.swift; sourceTree = "<group>"; };
 		48774D0A24405BC300CA2929 /* ChartIQConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQConstants.swift; sourceTree = "<group>"; };
 		48BEFDD1244081570047D0B7 /* WKWebViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKWebViewExtensionsTests.swift; sourceTree = "<group>"; };
+		48C8230B25063C5200047C39 /* ChartIQScriptManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQScriptManagerTests.swift; sourceTree = "<group>"; };
 		48E827BA24E6777A00A7A291 /* ChartIQDrawingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingManager.swift; sourceTree = "<group>"; };
 		7AA3C65A1E24975500DD69AE /* ChartIQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChartIQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1CE7B4240E81110076EC5D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		483F8A632502417000526054 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				48C8230B25063C5200047C39 /* ChartIQScriptManagerTests.swift */,
 				483F8A6825026DA800526054 /* ChartIQDrawingManagerTests.swift */,
 			);
 			name = Managers;
@@ -482,6 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48C8230C25063C5200047C39 /* ChartIQScriptManagerTests.swift in Sources */,
 				CE5699402418F057001798FE /* StringExtensionsTests.swift in Sources */,
 				CE5699302417B09D001798FE /* UIColorExtensionsTests.swift in Sources */,
 				483F8A6925026DA800526054 /* ChartIQDrawingManagerTests.swift in Sources */,

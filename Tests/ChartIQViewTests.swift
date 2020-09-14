@@ -254,4 +254,167 @@ class ChartIQViewTests: XCTestCase {
     XCTAssertTrue(chartIQDrawingManager.isSupportingLineType(ChartIQDrawingTool.segment))
     XCTAssertTrue(chartIQDrawingManager.isSupportingLineType(ChartIQDrawingTool.vertical))
   }
+
+  func testGetBaseSymbolValue() {
+    // Given
+    let symbol = ""
+
+    // When
+    let chartIQViewSymbol = chartIQView.symbol
+
+    // Then
+    XCTAssertEqual(symbol, chartIQViewSymbol)
+  }
+
+  func testGetBaseIntervalValue() {
+    // Given
+    let interval = "day"
+
+    // When
+    let chartIQViewInterval = chartIQView.interval
+
+    // Then
+    XCTAssertEqual(interval, chartIQViewInterval)
+  }
+
+  func testGetBaseTimeUnitValue() {
+    // Given
+    let timeUnit: ChartIQTimeUnit = .minute
+
+    // When
+    let chartIQTimeUnit = chartIQView.timeUnit
+
+    // Then
+    XCTAssertEqual(timeUnit, chartIQTimeUnit)
+  }
+
+  func testGetBasePeriodicityValue() {
+    // Given
+    let periodicity = 1
+
+    // When
+    let chartIQPeriodicity = chartIQView.periodicity
+
+    // Then
+    XCTAssertEqual(periodicity, chartIQPeriodicity)
+  }
+
+  func testGetBaseChartTypeValue() {
+    // Given
+    let chartType: ChartIQChartType = .bar
+
+    // When
+    let chartIQChartType = chartIQView.chartType
+
+    // Then
+    XCTAssertEqual(chartType, chartIQChartType)
+  }
+
+  func testGetBaseAggregationTypeValue() {
+    // Given
+    let aggregationType: ChartIQChartAggregationType? = nil
+
+    // When
+    let chartIQAggregationType = chartIQView.aggregationType
+
+    // Then
+    XCTAssertEqual(aggregationType, chartIQAggregationType)
+  }
+
+  func testGetBaseScaleValue() {
+    // Given
+    let scale: ChartIQScale = .linear
+
+    // When
+    let chartIQScale = chartIQView.scale
+
+    // Then
+    XCTAssertEqual(scale, chartIQScale)
+  }
+
+  func testGetBaseIsExtendedHoursValue() {
+    // Given
+    let isExtendedHours = false
+
+    // When
+    let chartIQIsExtendedHours = chartIQView.isExtendedHours
+
+    // Then
+    XCTAssertEqual(isExtendedHours, chartIQIsExtendedHours)
+  }
+
+  func testGetBaseIsInvertYAxisValue() {
+    // Given
+    let isInvertYAxis = false
+
+    // When
+    let chartIQIsInvertYAxis = chartIQView.isInvertYAxis
+
+    // Then
+    XCTAssertEqual(isInvertYAxis, chartIQIsInvertYAxis)
+  }
+
+  func testGetBaseIsCrosshairsEnabledValue() {
+    // Given
+    let isCrosshairsEnabled = false
+
+    // When
+    let chartIQIsCrosshairsEnabled = chartIQView.isCrosshairsEnabled()
+
+    // Then
+    XCTAssertEqual(isCrosshairsEnabled, chartIQIsCrosshairsEnabled)
+  }
+
+  func testGetBaseIsChartAvailableValue() {
+    // Given
+    let isChartAvailable = false
+
+    // When
+    let chartIQIsChartAvailable = chartIQView.isChartAvailable()
+
+    // Then
+    XCTAssertEqual(isChartAvailable, chartIQIsChartAvailable)
+  }
+
+  func testGetBaseStudyListValue() {
+    // Given
+    let studyList: [ChartIQStudy] = []
+
+    // When
+    let chartIQStudyList = chartIQView.getStudyList()
+
+    // Then
+    XCTAssertEqual(studyList, chartIQStudyList)
+  }
+
+  func testGetBaseActiveStudyListValue() {
+    // Given
+    let activeStudyList: [ChartIQStudy] = []
+
+    // When
+    let chartIQActiveStudyList = chartIQView.getActiveStudies()
+
+    // Then
+    XCTAssertEqual(activeStudyList, chartIQActiveStudyList)
+  }
+
+  func testGetDrawingParametersMethod() {
+    // Given // When
+    let chartIQDrawingParameters = chartIQView.getDrawingParameters(.annotation)
+
+    // Then
+    XCTAssertNil(chartIQDrawingParameters)
+  }
+
+  func testGetDrawingParametersMethodNoTool() {
+    // Given
+    let drawingParametersIsEmpty = true
+
+    // Given // When
+    let chartIQDrawingParameters = chartIQView.getDrawingParameters(.noTool)
+
+    // Then
+    XCTAssertNotNil(chartIQDrawingParameters)
+    XCTAssertEqual(drawingParametersIsEmpty, chartIQDrawingParameters?.isEmpty)
+  }
 }

@@ -75,48 +75,6 @@ public enum ChartIQStudyError: Error {
   case studyNotFound
 }
 
-// MARK: - ChartIQDrawingToolType
-
-/// Chart drawing tool type.
-@objc public enum ChartIQDrawingToolType: Int {
-
-  /// The text option.
-  case text
-
-  /// The statistics option.
-  case statistics
-
-  /// The technicals option.
-  case technicals
-
-  /// The fibonacci option.
-  case fibonacci
-
-  /// The markings option.
-  case markings
-
-  /// The lines option.
-  case lines
-
-  /// Chart drawing tool type display name.
-  public var displayName: String {
-    switch self {
-    case .text:
-      return "Text"
-    case .statistics:
-      return "Statistics"
-    case .technicals:
-      return "Technicals"
-    case .fibonacci:
-      return "Fibonacci"
-    case .markings:
-      return "Markings"
-    case .lines:
-      return "Lines"
-    }
-  }
-}
-
 // MARK: - ChartIQFontFamily
 
 /// Chart font family type.
@@ -356,7 +314,7 @@ public enum ChartIQStudyError: Error {
   }
 }
 
-// MARK: - ChartIQQuoteFields
+// MARK: - ChartIQQuoteField
 
 /// Chart quote field.
 @objc public enum ChartIQQuoteField: Int {
@@ -584,10 +542,10 @@ internal enum ChartIQCallbackMessage: Int {
   }
 }
 
-// MARK: - SpecialCharacters
+// MARK: - ChartIQSpecialCharacter
 
 /// Special character for safe script method.
-@objc internal enum SpecialCharacter: Int {
+@objc internal enum ChartIQSpecialCharacter: Int {
 
   /// The ampersand (&) option.
   case ampersand
