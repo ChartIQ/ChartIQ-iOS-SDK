@@ -268,8 +268,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(measure, ChartIQDrawingTool.measure.type)
   }
 
-  // MARK: - Tests ChartIQLineType Enum
-
   func testsChartIQDrawingToolEnumInitWithStringValue() {
     // Given
     let annotation = "annotation"
@@ -354,5 +352,25 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(ChartIQDrawingTool.measure, ChartIQDrawingTool(stringValue: measure))
 
     XCTAssertNil(ChartIQDrawingTool(stringValue: invalidString))
+  }
+
+  // MARK: - Tests ChartIQDrawingToolType Enum
+
+  func testsChartIQDrawingToolTypeEnumGetDisplayNameValue() {
+    // Given
+    let text = "Text"
+    let statistics = "Statistics"
+    let technicals = "Technicals"
+    let fibonacci = "Fibonacci"
+    let markings = "Markings"
+    let lines = "Lines"
+
+    // When // Then
+    XCTAssertEqual(text, ChartIQDrawingToolType.text.displayName)
+    XCTAssertEqual(statistics, ChartIQDrawingToolType.statistics.displayName)
+    XCTAssertEqual(technicals, ChartIQDrawingToolType.technicals.displayName)
+    XCTAssertEqual(fibonacci, ChartIQDrawingToolType.fibonacci.displayName)
+    XCTAssertEqual(markings, ChartIQDrawingToolType.markings.displayName)
+    XCTAssertEqual(lines, ChartIQDrawingToolType.lines.displayName)
   }
 }

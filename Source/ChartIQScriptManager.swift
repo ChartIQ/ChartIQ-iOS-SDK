@@ -678,7 +678,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///   - parameter: The javascript string parameter.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func safeScriptParameter(_ parameter: String) -> String {
-    let specialCharacters: [SpecialCharacter] = [
+    let specialCharacters: [ChartIQSpecialCharacter] = [
       .ampersand, .doubleQuote, .singleQuote, .lessThan, .greaterThan
     ]
     var reverseParameter = parameter

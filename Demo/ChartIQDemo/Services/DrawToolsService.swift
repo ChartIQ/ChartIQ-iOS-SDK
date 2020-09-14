@@ -71,8 +71,6 @@ class DrawToolsService {
                                                     image: UIImage.DrawToolControlView.deleteImage)
     drawToolViewModels.append(deleteToolViewModel)
 
-//   Under development - awaiting for the second release.
-//
 //    let magnetToolViewModel = DrawToolBaseViewModel(type: .magnet,
 //                                                    image: UIImage.DrawToolControlView.magnetImage)
 //    drawToolViewModels.append(magnetToolViewModel)
@@ -81,9 +79,7 @@ class DrawToolsService {
                                                           image: UIImage.DrawToolControlView.manageLayersImage)
     drawToolViewModels.append(manageLayersToolViewModel)
 
-//   Under development - awaiting for the second release.
-//
-//    if ChartIQDrawingHelper.isSupportingSettings(tool) {
+//    if chartIQDrawingManager.isSupportingSettings(tool) {
 //      let settingsToolViewModel = DrawToolBaseViewModel(type: .settings,
 //                                                        image: UIImage.DrawToolControlView.settingsImage)
 //      drawToolViewModels.append(settingsToolViewModel)

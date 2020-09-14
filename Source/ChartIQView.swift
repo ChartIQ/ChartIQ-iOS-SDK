@@ -377,6 +377,14 @@ public class ChartIQView: UIView {
     return webView.evaluateJavaScriptWithReturn(script) == "true"
   }
 
+  /// Checks if chart has finished loading.
+  ///
+  /// - Returns: True if the chart has finished loading.
+  public func isChartAvailable() -> Bool {
+    let script = scriptManager.getScriptForChartAvailable()
+    return webView.evaluateJavaScriptWithReturn(script) == "true"
+  }
+
   /// Gathers the necessary information for any HUD based on cursor position and returns that data.
   ///
   /// - Returns: The ChartIQCrosshairHUD model.
@@ -388,14 +396,6 @@ public class ChartIQView: UIView {
       return ChartIQCrosshairHUD(dictionary: dictionary)
     }
     return nil
-  }
-
-  /// Checks if chart has finished loading.
-  ///
-  /// - Returns: True if the chart has finished loading.
-  public func isChartAvailable() -> Bool {
-    let script = scriptManager.getScriptForChartAvailable()
-    return webView.evaluateJavaScriptWithReturn(script) == "true"
   }
 
   /// Sets ChartIQ theme for the chart.
@@ -596,7 +596,7 @@ public class ChartIQView: UIView {
   ///
   /// - Returns: The array of ChartIQStudy models.
   public func getActiveStudies() -> [ChartIQStudy] {
-    var addedStudy = [ChartIQStudy]()
+    var addedStudy: [ChartIQStudy] = []
     let script = scriptManager.getScriptForActiveStudies()
     if let listString = webView.evaluateJavaScriptWithReturn(script), !listString.isEmpty {
       let list = listString.components(separatedBy: ChartIQConstants.General.doubleVerticalLinesSymbol)
