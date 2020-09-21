@@ -1,5 +1,5 @@
 included:
-  - ChartIQDemo
+  - ChartIQApp
 analyzer_rules:
   - unused_declaration
   - unused_import

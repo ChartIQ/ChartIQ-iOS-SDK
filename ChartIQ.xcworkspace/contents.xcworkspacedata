@@ -5,6 +5,6 @@
       location = "group:ChartIQ.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Demo/ChartIQDemo.xcodeproj">
+      location = "group:/Users/ks/Documents/chartiq/Demo/ChartIQApp.xcodeproj">
    </FileRef>
 </Workspace>
