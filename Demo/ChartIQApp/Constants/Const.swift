@@ -39,7 +39,7 @@ public struct Const {
   // MARK: - General
 
   struct General {
-    static let chartIQURL = "https://ios.demo.chartiq.com/sample-template-native-sdk.html"
+    static let chartIQURL = "https://i.codeit.pro/autobuild-bot/i/iOS/ChartIQJS/sample-template-native-sdk.html"
 
     static let cancelTitle = "Cancel"
     static let clearTitle = "Clear"
@@ -125,7 +125,7 @@ public struct Const {
   // MARK: - Services
 
   struct DataSimulatorService {
-    static let simulatorUrlFormatString = "https://mobile-simulator.chartiq.com/datafeed" +
+    static let simulatorUrlFormatString = "https://simulator.chartiq.com/datafeed" +
       "?identifier=%@" + "&startdate=%@" + "%@" + "&interval=%@" + "&period=%i" + "&extended=1" + "&session=%@"
     static let simulatorEndDateFormatString = "&enddate=%@"
 
