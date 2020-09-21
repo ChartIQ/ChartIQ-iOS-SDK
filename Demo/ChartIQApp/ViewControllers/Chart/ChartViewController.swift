@@ -76,7 +76,6 @@ class ChartViewController: BaseViewController {
     setupHorizontalPickerView()
     setupDrawToolControlView()
     performDeviceOrientation()
-    showSimulatedDataInformationAlert()
   }
 
   override func viewWillAppear(_ animated: Bool) {
