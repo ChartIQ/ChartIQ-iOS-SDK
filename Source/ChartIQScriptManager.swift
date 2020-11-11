@@ -631,7 +631,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///   - json: The String Object.
   ///   - cb: The String Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  internal func getScriptForFormatJSQuoteData(_ json: String, cb: String) -> String {
+  internal func getScriptForFormatJSQuoteData(_ json: String, moreAvailable: Bool, cb: String) -> String {
     let script = mobileNameSpace + "parseData('\(json)', \"\(cb)\");"
     return script
   }

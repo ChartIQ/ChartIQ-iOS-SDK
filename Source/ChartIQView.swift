@@ -816,13 +816,13 @@ public class ChartIQView: UIView {
   /// - Parameters:
   ///   - data: An array of properly formatted OHLC quote objects to append.
   ///   - cb: The callback key used in Javascript.
-  internal func formatJSQuoteData(_ data: [ChartIQData], cb: String) {
+    internal func formatJSQuoteData(_ data: [ChartIQData], moreAvailable: Bool, cb: String) {
     let obj = data.map { $0.toDictionary() }
     guard let data = try? JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted),
-      let json = String(data: data,
+    let json = String(data: data,
                         encoding: .utf8)?.replacingOccurrences(of: ChartIQConstants.General.newlineSymbol,
                                                                with: "") else { return }
-    let script = scriptManager.getScriptForFormatJSQuoteData(json, cb: cb)
+    let script = scriptManager.getScriptForFormatJSQuoteData(json, moreAvailable: moreAvailable, cb: cb)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
@@ -892,7 +892,8 @@ extension ChartIQView: WKScriptMessageHandler {
     dataSource?.pullInitialData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
       DispatchQueue.main.async {
-        self.formatJSQuoteData(data, cb: cb)
+        // set moreAvailable to true as you want to see if there is more historical data after the initial pull
+        self.formatJSQuoteData(data, moreAvailable: true, cb: cb)
       }
     })
   }
@@ -904,7 +905,8 @@ extension ChartIQView: WKScriptMessageHandler {
     dataSource?.pullUpdateData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
       DispatchQueue.main.async {
-        self.formatJSQuoteData(data, cb: cb)
+        // just an update, no need to see if there is more historical data available
+        self.formatJSQuoteData(data, moreAvailable: false, cb: cb)
       }
     })
   }
@@ -916,7 +918,15 @@ extension ChartIQView: WKScriptMessageHandler {
     dataSource?.pullPaginationData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
       DispatchQueue.main.async {
-        self.formatJSQuoteData(data, cb: cb)
+        // Check to see if you need to try and retrieve more historical data.
+        // This is where you can put your own logic on when to stop retrieving historical data.
+        // By default if the last pagination request return 0 data then it has probably reached the end.
+        // If you have spotty data then another idea might be to check the last historical date, this would require you knowing what date to stop at though.
+        var moreAvailable = true
+        if(data.count < 1000) {
+            moreAvailable = false
+        }
+        self.formatJSQuoteData(data, moreAvailable: moreAvailable, cb: cb)
       }
     })
   }
