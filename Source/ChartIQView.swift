@@ -923,7 +923,7 @@ extension ChartIQView: WKScriptMessageHandler {
         // By default if the last pagination request return 0 data then it has probably reached the end.
         // If you have spotty data then another idea might be to check the last historical date, this would require you knowing what date to stop at though.
         var moreAvailable = true
-        if(data.count < 1000) {
+        if(data.count < 1) {
             moreAvailable = false
         }
         self.formatJSQuoteData(data, moreAvailable: moreAvailable, cb: cb)

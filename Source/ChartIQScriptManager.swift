@@ -632,7 +632,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///   - cb: The String Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForFormatJSQuoteData(_ json: String, moreAvailable: Bool, cb: String) -> String {
-    let script = mobileNameSpace + "parseData('\(json)', \"\(cb)\");"
+    let script = mobileNameSpace + "parseData('\(json)', \"\(cb)\", \(moreAvailable));"
     return script
   }
 
