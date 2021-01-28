@@ -15,7 +15,6 @@ extension UICollectionView {
   // MARK: - Internal Methods
 
   internal func register(nibName: String, cellId: String) {
-    register(UINib(nibName: nibName, bundle: nil),
-             forCellWithReuseIdentifier: cellId)
+    register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: cellId)
   }
 }

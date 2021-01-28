@@ -51,41 +51,44 @@ public class ChartIQView: UIView {
   /// The ChartIQ interval.
   public var interval: String {
     let script = scriptManager.getScriptForInterval()
-    return webView.evaluateJavaScriptWithReturn(script) ?? "day"
+    if let intervalRawString = webView.evaluateJavaScriptWithReturn(script) {
+      return intervalRawString
+    }
+    return Const.Core.baseInterval
   }
 
   /// The ChartIQ timeUnit.
   public var timeUnit: ChartIQTimeUnit {
     let script = scriptManager.getScriptForTimeUnit()
     if let timeUnitRawString = webView.evaluateJavaScriptWithReturn(script),
-      let timeUnit = ChartIQTimeUnit(stringValue: timeUnitRawString) {
+       let timeUnit = ChartIQTimeUnit(stringValue: timeUnitRawString) {
       return timeUnit
     }
-    return .minute
+    return Const.Core.baseTimeUnit
   }
 
   /// The ChartIQ periodicity.
   public var periodicity: Int {
     let script = scriptManager.getScriptForPeriodicity()
     if let periodicityStr = webView.evaluateJavaScriptWithReturn(script),
-      let periodicity = Int(periodicityStr) {
+       let periodicity = Int(periodicityStr) {
       return periodicity
     }
-    return 1
+    return Const.Core.basePeriodicity
   }
 
   /// The ChartIQ chart type.
   public var chartType: ChartIQChartType {
     let script = scriptManager.getScriptForChartType()
     if let chartTypeStringValue = webView.evaluateJavaScriptWithReturn(script),
-      let chartType = ChartIQChartType(stringValue: chartTypeStringValue) {
+       let chartType = ChartIQChartType(stringValue: chartTypeStringValue) {
       return chartType
     }
-    return .bar
+    return Const.Core.baseChartType
   }
 
   /// The ChartIQ chart aggregation type.
-  public var aggregationType: ChartIQChartAggregationType? {
+  public var chartAggregationType: ChartIQChartAggregationType? {
     let script = scriptManager.getScriptForAggregationType()
     if let aggregationTypeStringValue = webView.evaluateJavaScriptWithReturn(script) {
       let aggregationType = ChartIQChartAggregationType(stringValue: aggregationTypeStringValue)
@@ -94,21 +97,21 @@ public class ChartIQView: UIView {
     return nil
   }
 
-  /// The ChartIQ scale.
-  public var scale: ChartIQScale {
+  /// The ChartIQ chart scale.
+  public var chartScale: ChartIQScale {
     let script = scriptManager.getScriptForScale()
     if let scaleStringValue = webView.evaluateJavaScriptWithReturn(script),
-      let scaleValue = ChartIQScale(stringValue: scaleStringValue) {
+       let scaleValue = ChartIQScale(stringValue: scaleStringValue) {
       return scaleValue
     }
-    return .linear
+    return Const.Core.baseChartScale
   }
 
   /// The ChartIQ isExtendedHours property.
   public var isExtendedHours: Bool {
     let script = scriptManager.getScriptForExtendedHours()
     if let isExtendedHoursStringValue = webView.evaluateJavaScriptWithReturn(script),
-      let isExtendedHours = Bool(isExtendedHoursStringValue) {
+       let isExtendedHours = Bool(isExtendedHoursStringValue) {
       return isExtendedHours
     }
     return false
@@ -118,7 +121,7 @@ public class ChartIQView: UIView {
   public var isInvertYAxis: Bool {
     let script = scriptManager.getScriptForInvertYAxis()
     if let isInvertYAxisStringValue = webView.evaluateJavaScriptWithReturn(script),
-      let isInvertYAxis = Bool(isInvertYAxisStringValue) {
+       let isInvertYAxis = Bool(isInvertYAxisStringValue) {
       return isInvertYAxis
     }
     return false
@@ -128,7 +131,7 @@ public class ChartIQView: UIView {
 
   internal var webView: WKWebView!
   internal var chartIQDataMethod: ChartIQDataMethod = .push
-  internal var studyObjects = [ChartIQStudy]()
+  internal var allStudies: [ChartIQStudy] = []
   internal var scriptManager = ChartIQScriptManager()
   internal static var url = ""
   internal static var refreshInterval = 0
@@ -278,25 +281,64 @@ public class ChartIQView: UIView {
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
+  // MARK: - Series
+
+  /// Returns an array of all the series.
+  ///
+  /// - Returns: Array of ChartIQSeries models.
+  public func getActiveSeries() -> [ChartIQSeries] {
+    let script = scriptManager.getScriptForSeries()
+    var activeSeries: [ChartIQSeries] = []
+    let result = webView.evaluateJavaScriptWithReturn(script)
+    if let result = result, let data = result.data(using: .utf8),
+       let dictionary = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+      for key in dictionary.keys {
+        if let series = ChartIQSeries(dictionary: dictionary, key: key) {
+          activeSeries.append(series)
+        }
+      }
+      activeSeries.sort {
+        $0.symbolName.localizedCaseInsensitiveCompare($1.symbolName) == ComparisonResult.orderedAscending
+      }
+    }
+    return activeSeries
+  }
+
   /// Adds a series of data to the chart. A series can be displayed (for instance like a comparison chart) or it can be hidden (for instance to drive a study).
   ///
   /// - Parameters:
-  ///   - symbol: The symbol to set.
-  ///   - color: The color for your symbol to be displayed as.
-  public func addSeries(_ symbol: String, color: UIColor) {
-    let script = scriptManager.getScriptForAddSeries(symbol, color: color)
+  ///   - series: The ChartIQSeries model to add.
+  ///   - isComparison: The bool value used for ???.
+  public func addSeries(_ series: ChartIQSeries, isComparison: Bool) {
+    let script = scriptManager.getScriptForAddSeries(series.symbolName, color: series.color, isComparison: isComparison)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
   /// Detaches a series from all associated renderers in the chart, removing the actual series data from masterData.
   ///
   /// - Parameters:
-  ///   - symbol: The symbol to remove or the series ojbect itself.
+  ///   - symbol: The series symbol to remove.
   public func removeSeries(_ symbol: String) {
     let script = scriptManager.getScriptForRemoveSeries(symbol)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
+  /// Sets series parameters on the chart.
+  ///
+  /// - Parameters:
+  ///   - symbol: The String Object. The name of symbol for series.
+  ///   - parameterName: The String Object. The name of parameter to modify.
+  ///   - value: The String Object. The value for parameter.
+  public func setSeriesParameter(_ symbol: String, parameterName: String, value: String) {
+    let script = scriptManager.getScriptForSetSeriesParameter(symbol: symbol,
+                                                              parameterName: parameterName,
+                                                              value: value)
+    webView.evaluateJavaScript(script, completionHandler: nil)
+  }
+
+  // MARK: - Scale
+
+  /// Get ChartIQ chart scale.
   public func getChartScale() -> String? {
     let script = scriptManager.getScriptForChartScale()
     return webView.evaluateJavaScriptWithReturn(script)
@@ -374,7 +416,7 @@ public class ChartIQView: UIView {
   /// - Returns: True if crosshair is on.
   public func isCrosshairsEnabled() -> Bool {
     let script = scriptManager.getScriptForCrosshairsEnabled()
-    return webView.evaluateJavaScriptWithReturn(script) == "true"
+    return webView.evaluateJavaScriptWithReturn(script) == Const.General.trueStringValue
   }
 
   /// Checks if chart has finished loading.
@@ -382,7 +424,7 @@ public class ChartIQView: UIView {
   /// - Returns: True if the chart has finished loading.
   public func isChartAvailable() -> Bool {
     let script = scriptManager.getScriptForChartAvailable()
-    return webView.evaluateJavaScriptWithReturn(script) == "true"
+    return webView.evaluateJavaScriptWithReturn(script) == Const.General.trueStringValue
   }
 
   /// Gathers the necessary information for any HUD based on cursor position and returns that data.
@@ -392,7 +434,7 @@ public class ChartIQView: UIView {
     let script = scriptManager.getScriptForHudDetails()
     let result = webView.evaluateJavaScriptWithReturn(script)
     if let result = result, let data = result.data(using: .utf8),
-      let dictionary = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
+       let dictionary = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
       return ChartIQCrosshairHUD(dictionary: dictionary)
     }
     return nil
@@ -436,7 +478,7 @@ public class ChartIQView: UIView {
   ///   - isInverted: The boolean value, true if need to invert y-axis, false if need to disable inverting.
   public func setInvertYAxis(_ isInverted: Bool) {
     let script = scriptManager.getScriptForSetInvertYAxis(isInverted)
-    _ = invoke(script, args: isInverted)
+    webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
   /// Get the language translations for the App
@@ -447,8 +489,8 @@ public class ChartIQView: UIView {
     let script = scriptManager.getScriptForTranslations(languageCode)
     var translationsJson: [String: Any] = [:]
     if let translationsString = webView.evaluateJavaScriptWithReturn(script),
-      let data = translationsString.data(using: .utf8),
-      let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+       let data = translationsString.data(using: .utf8),
+       let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
       translationsJson = json
     }
     return translationsJson
@@ -472,9 +514,9 @@ public class ChartIQView: UIView {
   public func push(_ data: [ChartIQData]) {
     let obj = data.map { $0.toDictionary() }
     guard let jsonData = try? JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted),
-      let jsonString = String(data: jsonData,
-                              encoding: .utf8)?.replacingOccurrences(of: ChartIQConstants.General.newlineSymbol,
-                                                                     with: "") else { return }
+          let jsonString = String(data: jsonData,
+                                  encoding: .utf8)?.replacingOccurrences(of: Const.General.newlineSymbol,
+                                                                         with: "") else { return }
     let script = scriptManager.getScriptForPush(jsonString)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
@@ -486,9 +528,9 @@ public class ChartIQView: UIView {
   public func pushUpdate(_ data: [ChartIQData]) {
     let obj = data.map { $0.toDictionary() }
     guard let jsonData = try? JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted),
-      let jsonString = String(data: jsonData,
-                              encoding: .utf8)?.replacingOccurrences(of: ChartIQConstants.General.newlineSymbol,
-                                                                     with: "") else { return }
+          let jsonString = String(data: jsonData,
+                                  encoding: .utf8)?.replacingOccurrences(of: Const.General.newlineSymbol,
+                                                                         with: "") else { return }
     let script = scriptManager.getScriptForPushUpdate(jsonString)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
@@ -498,26 +540,43 @@ public class ChartIQView: UIView {
   /// Returns an array of all the studies with a shortName derived from the key.
   ///
   /// - Returns: Array of ChartIQStudy models.
-  public func getStudyList() -> [ChartIQStudy] {
-    return studyObjects
+  public func getAllStudies() -> [ChartIQStudy] {
+    return allStudies
+  }
+
+  /// Lists studies added on the Chart.
+  ///
+  /// - Returns: The array of ChartIQStudy models.
+  public func getActiveStudies() -> [ChartIQStudy] {
+    var addedStudy: [ChartIQStudy] = []
+    let script = scriptManager.getScriptForActiveStudies()
+    if let listString = webView.evaluateJavaScriptWithReturn(script), !listString.isEmpty {
+      let list = listString.components(separatedBy: Const.General.doubleVerticalLinesSymbol)
+      list.forEach({ study in
+        if let studyObject = ChartIQStudy(jsStudyString: study) {
+          addedStudy.append(studyObject)
+        }
+      })
+    }
+    return addedStudy
   }
 
   /// Will return the default parameters of a study if it is not active, or actual parameters for an active study.
   ///
   /// - Parameters:
-  ///   - studyName: The study name to get parameters for.
+  ///   - study: The ChartIQStudy model.
   ///   - type: What to return for the study. ChartIQStudyParametersType incapsulate values: "inputs", "outputs", "parameters".
   /// - Returns: The JSON Object or nil if an error occur.
-  public func getStudyParameters(_ studyName: String, type: ChartIQStudyParametersType) -> Any? {
-    let script = scriptManager.getScriptForStudyParameters(studyName, type: type)
+  public func getStudyParameters(_ study: ChartIQStudy, type: ChartIQStudyParametersType) -> Any? {
+    let script = scriptManager.getScriptForStudyParameters(study, type: type)
     if let jsonString = webView.evaluateJavaScriptWithReturn(script), let data = jsonString.data(using: .utf8),
-      let json = try? JSONSerialization.jsonObject(with: data, options: []) {
+       let json = try? JSONSerialization.jsonObject(with: data, options: []) {
       switch type {
       case .inputs:
         if let inputs = json as? [[String: Any]] {
           return inputs.filter({ input -> Bool in
-            let name = input[ChartIQConstants.Study.nameParam] as? String
-            return name != nil && name != ChartIQConstants.Study.idParam && name != ChartIQConstants.Study.displayParam
+            let name = input[Const.Study.nameParam] as? String
+            return name != nil && name != Const.Study.idParam && name != Const.Study.displayParam
           })
         }
       case .outputs, .parameters:
@@ -532,45 +591,50 @@ public class ChartIQView: UIView {
   /// Given an active study name this will update the study based on key value pair you pass in to a DialogHelper.
   ///
   /// - Parameters:
-  ///   - name: The name of the study from the chart engine's layout.
+  ///   - studyName: The name of the study from the chart engine's layout.
   ///   - key: The parameter name that must be defined in DialogHelper.
   ///   - value: The value to set in the studies corresponding DialogHelper.
-  public func setStudy(_ name: String, key: String, value: String) {
-    let script = scriptManager.getScriptForSetStudy(name, key: key, value: value)
+  public func setStudyParameter(_ studyName: String, key: String, value: String) {
+    let script = scriptManager.getScriptForSetStudyParameter(studyName, key: key, value: value)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
   /// Sets study parameters.
   ///
   /// - Parameters:
-  ///   - name: The study name.
+  ///   - study: The ChartIQStudy model.
   ///   - parameter: The parameter name that must be defined in CIQ.Studies.DialogHelper.
-  public func setStudy(_ name: String, parameters: [String: String]) {
-    let script = scriptManager.getScriptForSetStudy(name, parameters: parameters)
+  public func setStudyParameters(_ study: ChartIQStudy, parameters: [String: String]) {
+    let script = scriptManager.getScriptForSetStudyParameters(study, parameters: parameters)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
   /// Adds a specific study to the chart.
   ///
   /// - Parameters:
-  ///   - studyName: The study name.
+  ///   - study: The ChartIQStudy model.
+  ///   - forClone: The Bool value indicating whether a study will be added for cloning or for adding.
   ///   - inputs: Inputs for the study instance. If nil, it will use the paramters defined in CIQ.Studies.DialogHelper.
   ///   - outputs: Outputs for the study instance. If nil, it will use the paramters defined in CIQ.Studies.DialogHelper.
   /// - Throws: ChartIQStudyError.
-  public func addStudy(_ studyName: String, inputs: [String: Any]? = nil, outputs: [String: Any]? = nil) throws {
-    var studyInputs = ChartIQConstants.Study.nullParam
-    var studyOutputs = ChartIQConstants.Study.nullParam
+  public func addStudy(_ study: ChartIQStudy,
+                       forClone: Bool = false,
+                       inputs: [String: Any]? = nil,
+                       outputs: [String: Any]? = nil) throws {
+    let studyName = forClone ? study.originalName : study.shortName
+    var studyInputs = Const.Study.nullParam
+    var studyOutputs = Const.Study.nullParam
     if let inputs = inputs,
-      let jsonData = try? JSONSerialization.data(withJSONObject: inputs, options: .prettyPrinted),
-      let jsonString = String(data: jsonData, encoding: .utf8) {
+       let jsonData = try? JSONSerialization.data(withJSONObject: inputs, options: .prettyPrinted),
+       let jsonString = String(data: jsonData, encoding: .utf8) {
       studyInputs = jsonString
     }
     if let outputs = outputs,
-      let jsonData = try? JSONSerialization.data(withJSONObject: outputs, options: .prettyPrinted),
-      let jsonString = String(data: jsonData, encoding: .utf8) {
+       let jsonData = try? JSONSerialization.data(withJSONObject: outputs, options: .prettyPrinted),
+       let jsonString = String(data: jsonData, encoding: .utf8) {
       studyOutputs = jsonString
     }
-    if !studyObjects.contains(where: { $0.shortName == studyName }) {
+    if !allStudies.contains(where: { $0.shortName == studyName }) {
       throw ChartIQStudyError.studyNotFound
     }
     let script = scriptManager.getScriptForAddStudy(studyName, studyInputs: studyInputs, studyOutputs: studyOutputs)
@@ -580,9 +644,9 @@ public class ChartIQView: UIView {
   /// Removes an active study in the chart engine's layout from the chart.
   ///
   /// - Parameters:
-  ///   - studyName: The name of the study as it appears in the chart engines layout.
-  public func removeStudy(_ studyName: String) {
-    let script = scriptManager.getScriptForRemoveStudy(studyName)
+  ///   - study: The ChartIQStudy model.
+  public func removeStudy(_ study: ChartIQStudy) {
+    let script = scriptManager.getScriptForRemoveStudy(study)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
@@ -590,23 +654,6 @@ public class ChartIQView: UIView {
   public func removeAllStudies() {
     let script = scriptManager.getScriptForRemoveAllStudies()
     webView.evaluateJavaScript(script, completionHandler: nil)
-  }
-
-  /// Lists studies added on the Chart.
-  ///
-  /// - Returns: The array of ChartIQStudy models.
-  public func getActiveStudies() -> [ChartIQStudy] {
-    var addedStudy: [ChartIQStudy] = []
-    let script = scriptManager.getScriptForActiveStudies()
-    if let listString = webView.evaluateJavaScriptWithReturn(script), !listString.isEmpty {
-      let list = listString.components(separatedBy: ChartIQConstants.General.doubleVerticalLinesSymbol)
-      list.forEach({ study in
-        if let studyObject = ChartIQStudy(jsStudyString: study) {
-          addedStudy.append(studyObject)
-        }
-      })
-    }
-    return addedStudy
   }
 
   // MARK: - Public Drawings
@@ -668,6 +715,18 @@ public class ChartIQView: UIView {
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
+  /// The alternative version of the setDrawingParameter method.
+  /// This method make the work with the most common type of parameters for drawing tools easier, offering a typed parameter ChartIQDrawingParameterType.
+  /// As well as not a typed version of the method sets drawing parameters on the chart.
+  ///
+  /// - Parameters:
+  ///   - parameter: The ChartIQDrawingParameterType.
+  ///   - value: The parameter value.
+  public func setDrawingParameter(_ parameter: ChartIQDrawingParameterType, value: Any) {
+    let script = scriptManager.getScriptForSetDrawingParameter(parameter.stringValue, value: value)
+    webView.evaluateJavaScript(script, completionHandler: nil)
+  }
+
   /// Delete the selected drawing on the chart.
   public func deleteDrawing() {
     let script = scriptManager.getScriptForDeleteDrawing()
@@ -692,7 +751,7 @@ public class ChartIQView: UIView {
   /// Undo the last drawing on the chart.
   ///
   /// - Returns: The bool value indicates if the drawing was the latest.
-  public func undo() -> Bool {
+  public func undoDrawing() -> Bool {
     let script = scriptManager.getScriptForUndo()
     if let stringValue = webView.evaluateJavaScriptWithReturn(script), let boolValue = Bool(stringValue) {
       return boolValue
@@ -703,7 +762,7 @@ public class ChartIQView: UIView {
   /// Redo the last drawing on the chart.
   ///
   /// - Returns: The bool value indicates if the drawing was the latest.
-  public func redo() -> Bool {
+  public func redoDrawing() -> Bool {
     let script = scriptManager.getScriptForRedo()
     if let stringValue = webView.evaluateJavaScriptWithReturn(script), let boolValue = Bool(stringValue) {
       return boolValue
@@ -731,10 +790,10 @@ public class ChartIQView: UIView {
   public func invoke(_ functionName: String, args: Any...) -> Any {
     var jsonString = ""
     if let jsonData = try? JSONSerialization.data(withJSONObject: args, options: .prettyPrinted),
-      let jsonDataStringValue = String(data: jsonData,
-                                       encoding: .utf8)?.replacingOccurrences(of: ChartIQConstants.General.newlineSymbol,
-                                                                              with: "") {
-      jsonString = jsonDataStringValue
+       let jsonDataString = String(data: jsonData,
+                                   encoding: .utf8)?.replacingOccurrences(of: Const.General.newlineSymbol,
+                                                                          with: "") {
+      jsonString = jsonDataString
     }
     let script = scriptManager.getScriptForInvoke(functionName, jsonString: jsonString)
     guard let value = webView.evaluateJavaScriptWithReturn(script) else { return "" }
@@ -783,20 +842,20 @@ public class ChartIQView: UIView {
   // MARK: - Internal Studies
 
   /// Gets all of the available studies.
-  internal func getStudyObjects() {
+  internal func retrieveAllStudies() {
     let script = scriptManager.getScriptForStudyObjects()
     webView.evaluateJavaScript(script) { [weak self] result, _ in
       guard let self = self else { return }
-      self.studyObjects = [ChartIQStudy]()
       if let result = result as? String, let data = result.data(using: .utf8),
-        let json = try? JSONSerialization.jsonObject(with: data, options: []), let dict = json as? [String: Any] {
-        for key in dict.keys {
-          if let studyDict = dict[key] as? [String: Any] {
-            let study = ChartIQStudy(dictionary: studyDict, key: key)
-            self.studyObjects.append(study)
+         let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
+         let generalStudyDict = jsonObject as? [String: Any] {
+        for studyDictKey in generalStudyDict.keys {
+          if let studyDict = generalStudyDict[studyDictKey] as? [String: Any] {
+            let study = ChartIQStudy(dictionary: studyDict, key: studyDictKey)
+            self.allStudies.append(study)
           }
         }
-        self.studyObjects.sort {
+        self.allStudies.sort {
           $0.fullName.localizedCaseInsensitiveCompare($1.fullName) == ComparisonResult.orderedAscending
         }
       }
@@ -816,13 +875,13 @@ public class ChartIQView: UIView {
   /// - Parameters:
   ///   - data: An array of properly formatted OHLC quote objects to append.
   ///   - cb: The callback key used in Javascript.
-    internal func formatJSQuoteData(_ data: [ChartIQData], moreAvailable: Bool, cb: String) {
-    let obj = data.map { $0.toDictionary() }
-    guard let data = try? JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted),
-    let json = String(data: data,
-                        encoding: .utf8)?.replacingOccurrences(of: ChartIQConstants.General.newlineSymbol,
-                                                               with: "") else { return }
-    let script = scriptManager.getScriptForFormatJSQuoteData(json, moreAvailable: moreAvailable, cb: cb)
+  internal func formatJSQuoteData(_ data: [ChartIQData], cb: String) {
+    let jsonObject = data.map { $0.toDictionary() }
+    guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted),
+          let jsonString = String(data: jsonData,
+                                  encoding: .utf8)?.replacingOccurrences(of: Const.General.newlineSymbol,
+                                                                         with: "") else { return }
+    let script = scriptManager.getScriptForFormatJSQuoteData(jsonString, cb: cb)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
@@ -833,7 +892,7 @@ public class ChartIQView: UIView {
   /// - Returns: The JSON object.
   internal func formatObjectToPrintedJSONFormat(_ object: Any) -> String {
     guard let jsonData = try? JSONSerialization.data(withJSONObject: object, options: .prettyPrinted),
-      let jsonString = String(data: jsonData, encoding: .utf8) else { return "" }
+          let jsonString = String(data: jsonData, encoding: .utf8) else { return "" }
     return jsonString
   }
 
@@ -887,93 +946,83 @@ extension ChartIQView: WKScriptMessageHandler {
 
   internal func pullInitialDataCallbackMessageHandler(message: WKScriptMessage) {
     guard let message = message.body as? [String: Any] else { return }
-    let cb = message[ChartIQConstants.CallbackMessage.callbackKeyParam] as? String ?? ""
+    let cb = message[Const.CallbackMessage.callbackKeyParam] as? String ?? ""
     let params = ChartIQQuoteFeedParams(dictionary: message)
     dataSource?.pullInitialData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
       DispatchQueue.main.async {
-        // set moreAvailable to true as you want to see if there is more historical data after the initial pull
-        self.formatJSQuoteData(data, moreAvailable: true, cb: cb)
+        self.formatJSQuoteData(data, cb: cb)
       }
     })
   }
 
   internal func pullUpdateDataCallbackMessageHandler(message: WKScriptMessage) {
     guard let message = message.body as? [String: Any] else { return }
-    let cb = message[ChartIQConstants.CallbackMessage.callbackKeyParam] as? String ?? ""
+    let cb = message[Const.CallbackMessage.callbackKeyParam] as? String ?? ""
     let params = ChartIQQuoteFeedParams(dictionary: message)
     dataSource?.pullUpdateData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
       DispatchQueue.main.async {
-        // just an update, no need to see if there is more historical data available
-        self.formatJSQuoteData(data, moreAvailable: false, cb: cb)
+        self.formatJSQuoteData(data, cb: cb)
       }
     })
   }
 
   internal func pullPaginationDataCallbackMessageHandler(message: WKScriptMessage) {
     guard let message = message.body as? [String: Any] else { return }
-    let cb = message[ChartIQConstants.CallbackMessage.callbackKeyParam] as? String ?? ""
+    let cb = message[Const.CallbackMessage.callbackKeyParam] as? String ?? ""
     let params = ChartIQQuoteFeedParams(dictionary: message)
     dataSource?.pullPaginationData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
       DispatchQueue.main.async {
-        // Check to see if you need to try and retrieve more historical data.
-        // This is where you can put your own logic on when to stop retrieving historical data.
-        // By default if the last pagination request return 0 data then it has probably reached the end.
-        // If you have spotty data then another idea might be to check the last historical date, this would require you knowing what date to stop at though.
-        var moreAvailable = true
-        if(data.count < 1) {
-            moreAvailable = false
-        }
-        self.formatJSQuoteData(data, moreAvailable: moreAvailable, cb: cb)
+        self.formatJSQuoteData(data, cb: cb)
       }
     })
   }
 
   internal func layoutCallbackMessageHandler(message: WKScriptMessage) {
     guard let message = message.body as? String, let data = message.data(using: .utf8),
-      let layout = try? JSONSerialization.jsonObject(with: data, options: []) else { return }
+          let layout = try? JSONSerialization.jsonObject(with: data, options: []) else { return }
     delegate?.chartIQView?(self, didUpdateLayout: layout)
   }
 
   internal func drawingCallbackMessageHandler(message: WKScriptMessage) {
     guard let message = message.body as? String, let data = message.data(using: .utf8),
-      let drawings = try? JSONSerialization.jsonObject(with: data, options: []) else { return }
+          let drawings = try? JSONSerialization.jsonObject(with: data, options: []) else { return }
     delegate?.chartIQView?(self, didUpdateDrawing: drawings)
   }
 
   internal func measureCallbackMessageHandler(message: WKScriptMessage) {
     guard let message = message.body as? String, let data = message.data(using: .utf8) else { return }
     if let measureRawString = String(data: data, encoding: .utf8),
-      let measure = measureRawString.slice(from: ChartIQConstants.General.quoteSymbol,
-                                           to: ChartIQConstants.General.quoteSymbol) {
+       let measure = measureRawString.slice(from: Const.General.quoteSymbol,
+                                            to: Const.General.quoteSymbol) {
       delegate?.chartIQView?(self, didUpdateMeasure: measure)
     }
   }
 
   internal func accessibilityCallbackMessageHandler(message: WKScriptMessage) {
     guard let quote = message.body as? String else { return }
-    let fieldsArray = quote.components(separatedBy: ChartIQConstants.General.doubleVerticalLinesSymbol)
+    let fieldsArray = quote.components(separatedBy: Const.General.doubleVerticalLinesSymbol)
     if fieldsArray.count == 6 {
       var selectedFields = ""
       if let dateField = ChartIQView.voiceoverFields[ChartIQQuoteField.date.stringValue], dateField {
-        selectedFields += ChartIQConstants.General.commaSpaceSymbol + fieldsArray[0]
+        selectedFields += Const.General.commaSpaceSymbol + fieldsArray[0]
       }
       if let closeField = ChartIQView.voiceoverFields[ChartIQQuoteField.close.stringValue], closeField {
-        selectedFields += ChartIQConstants.General.commaSpaceSymbol + fieldsArray[1]
+        selectedFields += Const.General.commaSpaceSymbol + fieldsArray[1]
       }
       if let openField = ChartIQView.voiceoverFields[ChartIQQuoteField.open.stringValue], openField {
-        selectedFields += ChartIQConstants.General.commaSpaceSymbol + fieldsArray[2]
+        selectedFields += Const.General.commaSpaceSymbol + fieldsArray[2]
       }
       if let highField = ChartIQView.voiceoverFields[ChartIQQuoteField.high.stringValue], highField {
-        selectedFields += ChartIQConstants.General.commaSpaceSymbol + fieldsArray[3]
+        selectedFields += Const.General.commaSpaceSymbol + fieldsArray[3]
       }
       if let lowField = ChartIQView.voiceoverFields[ChartIQQuoteField.low.stringValue], lowField {
-        selectedFields += ChartIQConstants.General.commaSpaceSymbol + fieldsArray[4]
+        selectedFields += Const.General.commaSpaceSymbol + fieldsArray[4]
       }
       if let volumeField = ChartIQView.voiceoverFields[ChartIQQuoteField.volume.stringValue], volumeField {
-        selectedFields += ChartIQConstants.General.commaSpaceSymbol + fieldsArray[5]
+        selectedFields += Const.General.commaSpaceSymbol + fieldsArray[5]
       }
       UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: selectedFields)
     } else {
@@ -983,12 +1032,12 @@ extension ChartIQView: WKScriptMessageHandler {
 
   internal func logCallbackMessageHandler(message: WKScriptMessage) {
     guard let message = message.body as? [String: Any],
-      let arguments = message[ChartIQConstants.LogMessage.argumentsParam] as? [String: String] else { return }
-    let method = message[ChartIQConstants.LogMessage.methodParam] as? String ?? ChartIQConstants.LogMessage.logParam
+          let arguments = message[Const.LogMessage.argumentsParam] as? [String: String] else { return }
+    let method = message[Const.LogMessage.methodParam] as? String ?? Const.LogMessage.logParam
     var msg: String = ""
     for (_, value) in arguments {
       if !msg.isEmpty {
-        msg += ChartIQConstants.General.newlineSymbol
+        msg += Const.General.newlineSymbol
       }
       msg += value
     }
@@ -1004,7 +1053,7 @@ extension ChartIQView: WKNavigationDelegate {
     loadDefaultSetting()
     delegate?.chartIQViewDidFinishLoading(self)
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-      self.getStudyObjects()
+      self.retrieveAllStudies()
     }
   }
 }

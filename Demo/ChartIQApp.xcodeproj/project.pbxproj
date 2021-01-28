@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4803D41E251B274400D3E089 /* Common.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4803D41D251B274400D3E089 /* Common.storyboard */; };
 		4805CB74245860DF005FB4FE /* PickerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4805CB71245860DF005FB4FE /* PickerViewItem.swift */; };
 		4814B7C024607812008E0BD8 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4814B7BF24607812008E0BD8 /* FloatingButton.swift */; };
 		4814B7C22461BA37008E0BD8 /* UITabBarController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4814B7C12461BA36008E0BD8 /* UITabBarController+Extensions.swift */; };
@@ -39,6 +40,7 @@
 		484091D124AB556600F0B709 /* UISearchController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484091D024AB556600F0B709 /* UISearchController+Extensions.swift */; };
 		484091D724AB5AD900F0B709 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484091D624AB5AD900F0B709 /* UITableView+Extensions.swift */; };
 		484091D924AB5CB200F0B709 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484091D824AB5CB200F0B709 /* UICollectionView+Extensions.swift */; };
+		484157BF2521FB79009447FE /* DeviationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484157BE2521FB79009447FE /* DeviationModel.swift */; };
 		48421A8824850E5A00005B91 /* TextColorTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48421A8624850E5A00005B91 /* TextColorTableCell.swift */; };
 		48421A8924850E5A00005B91 /* TextColorTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48421A8724850E5A00005B91 /* TextColorTableCell.xib */; };
 		48421A8B24850ECE00005B91 /* ColorTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48421A8A24850ECE00005B91 /* ColorTableCellViewModel.swift */; };
@@ -94,10 +96,19 @@
 		4899B3C2245AF4F40094B204 /* BaseTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4899B3C0245AF4F40094B204 /* BaseTableCell.xib */; };
 		48A81B0C24653101000FC6E2 /* DrawToolsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A81B0B24653101000FC6E2 /* DrawToolsService.swift */; };
 		48AA96A524A2257C0091AE0E /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AA96A424A2257C0091AE0E /* LocalizationManager.swift */; };
+		48B6AC71250F7A2700B97815 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6AC70250F7A2700B97815 /* CustomSearchController.swift */; };
+		48B6AC73250FB3C400B97815 /* FibSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6AC72250FB3C400B97815 /* FibSettingsViewController.swift */; };
+		48B6AC75250FB6F800B97815 /* FibSettingsTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6AC74250FB6F800B97815 /* FibSettingsTableCellViewModel.swift */; };
+		48B6AC792510C24A00B97815 /* FibInputTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6AC772510C24900B97815 /* FibInputTableCell.swift */; };
+		48B6AC7A2510C24A00B97815 /* FibInputTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48B6AC782510C24900B97815 /* FibInputTableCell.xib */; };
+		48B6AC7C2510C39200B97815 /* FibInputTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6AC7B2510C39200B97815 /* FibInputTableCellViewModel.swift */; };
+		48B6AC7E2510C6C700B97815 /* BaseTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B6AC7D2510C6C700B97815 /* BaseTableCellViewModel.swift */; };
+		48B75B4B2542BD0400D495B3 /* SeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B75B4A2542BD0400D495B3 /* SeriesViewController.swift */; };
 		48B97BA12518DB090015BD0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7765F2240E8CB7001DE51E /* Assets.xcassets */; };
 		48C69E48246D4230000BD594 /* ChartIQChartType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C69E47246D4230000BD594 /* ChartIQChartType+Extensions.swift */; };
 		48C69E4C246D4292000BD594 /* ChartIQChartAggregationType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C69E4B246D4292000BD594 /* ChartIQChartAggregationType+Extensions.swift */; };
 		48D8E587246AA027009B0C61 /* IntervalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D8E586246AA027009B0C61 /* IntervalModel.swift */; };
+		48DB80FE251CAE59005B1E37 /* DeviationsTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB80FD251CAE59005B1E37 /* DeviationsTableCellViewModel.swift */; };
 		48DB9F6E2477BCC0006D4666 /* SymbolModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DB9F6D2477BCC0006D4666 /* SymbolModel.swift */; };
 		48E3F62024E6A5A700AE6C03 /* LineTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3F61F24E6A5A700AE6C03 /* LineTableCellViewModel.swift */; };
 		48E3F62624E6A5FF00AE6C03 /* LineTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3F62424E6A5FF00AE6C03 /* LineTableCell.swift */; };
@@ -112,6 +123,7 @@
 		48E7AA062457012B00D09796 /* LinePickerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E7A9FE2457012B00D09796 /* LinePickerCollectionCell.swift */; };
 		48E7AA0E245705B900D09796 /* LineModel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E7AA0D245705B900D09796 /* LineModel+Extensions.swift */; };
 		48E7AA10245705E700D09796 /* LineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E7AA0F245705E700D09796 /* LineModel.swift */; };
+		48F38BF4251D3CC2005460DE /* DeviationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F38BF3251D3CC2005460DE /* DeviationsViewController.swift */; };
 		48F9995024641BC4006B07CB /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F9994F24641BC4006B07CB /* Array+Extensions.swift */; };
 		48FE69552486A3F700DB5C7F /* StudiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE69542486A3F700DB5C7F /* StudiesService.swift */; };
 		48FE695924878BBD00DB5C7F /* SelectOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE695824878BBD00DB5C7F /* SelectOptionViewController.swift */; };
@@ -156,6 +168,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4803D41D251B274400D3E089 /* Common.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Common.storyboard; sourceTree = "<group>"; };
 		4805CB71245860DF005FB4FE /* PickerViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewItem.swift; sourceTree = "<group>"; };
 		4814B7BF24607812008E0BD8 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		4814B7C12461BA36008E0BD8 /* UITabBarController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extensions.swift"; sourceTree = "<group>"; };
@@ -190,6 +203,7 @@
 		484091D024AB556600F0B709 /* UISearchController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchController+Extensions.swift"; sourceTree = "<group>"; };
 		484091D624AB5AD900F0B709 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		484091D824AB5CB200F0B709 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		484157BE2521FB79009447FE /* DeviationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviationModel.swift; sourceTree = "<group>"; };
 		48421A8624850E5A00005B91 /* TextColorTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextColorTableCell.swift; sourceTree = "<group>"; };
 		48421A8724850E5A00005B91 /* TextColorTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextColorTableCell.xib; sourceTree = "<group>"; };
 		48421A8A24850ECE00005B91 /* ColorTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableCellViewModel.swift; sourceTree = "<group>"; };
@@ -221,7 +235,7 @@
 		48751B1C24BF1CA10099E7D0 /* FontTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableCell.swift; sourceTree = "<group>"; };
 		48751B1D24BF1CA10099E7D0 /* FontTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FontTableCell.xib; sourceTree = "<group>"; };
 		48751B2024BF20CA0099E7D0 /* FontTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableCellViewModel.swift; sourceTree = "<group>"; };
-		48801E07247D6BE4000BE986 /* ChartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartButton.swift; sourceTree = "<group>"; };
+		48801E07247D6BE4000BE986 /* ChartButton.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartButton.swift; sourceTree = "<group>"; tabWidth = 2; };
 		488688BF247E889B008055D3 /* FullScreenPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenPickerViewController.swift; sourceTree = "<group>"; };
 		488CF3E7246EC05E00A52F8F /* AllStudiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStudiesViewController.swift; sourceTree = "<group>"; };
 		48908CEB2452DE9100E50153 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -230,11 +244,11 @@
 		48908CF12452DF2200E50153 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		48908CF22452DF2200E50153 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		48908CF32452DF2200E50153 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		48908CF42452DF2200E50153 /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extensions.swift"; sourceTree = "<group>"; };
-		48908CFF2452E05300E50153 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
-		48908D012452E0A300E50153 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		48908CF42452DF2200E50153 /* UIStoryboard+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extensions.swift"; sourceTree = "<group>"; tabWidth = 2; };
+		48908CFF2452E05300E50153 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; tabWidth = 2; };
+		48908D012452E0A300E50153 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48908D032452E0D300E50153 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		48908D052452E0DA00E50153 /* StudiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudiesViewController.swift; sourceTree = "<group>"; };
+		48908D052452E0DA00E50153 /* StudiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = StudiesViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48908D072452E13800E50153 /* Chart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chart.storyboard; sourceTree = "<group>"; };
 		48908D092452E15300E50153 /* Studies.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Studies.storyboard; sourceTree = "<group>"; };
 		48908D0B2452E16C00E50153 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -245,9 +259,18 @@
 		4899B3C0245AF4F40094B204 /* BaseTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTableCell.xib; sourceTree = "<group>"; };
 		48A81B0B24653101000FC6E2 /* DrawToolsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawToolsService.swift; sourceTree = "<group>"; };
 		48AA96A424A2257C0091AE0E /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		48B6AC70250F7A2700B97815 /* CustomSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
+		48B6AC72250FB3C400B97815 /* FibSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FibSettingsViewController.swift; sourceTree = "<group>"; };
+		48B6AC74250FB6F800B97815 /* FibSettingsTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FibSettingsTableCellViewModel.swift; sourceTree = "<group>"; };
+		48B6AC772510C24900B97815 /* FibInputTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FibInputTableCell.swift; sourceTree = "<group>"; };
+		48B6AC782510C24900B97815 /* FibInputTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FibInputTableCell.xib; sourceTree = "<group>"; };
+		48B6AC7B2510C39200B97815 /* FibInputTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FibInputTableCellViewModel.swift; sourceTree = "<group>"; };
+		48B6AC7D2510C6C700B97815 /* BaseTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableCellViewModel.swift; sourceTree = "<group>"; };
+		48B75B4A2542BD0400D495B3 /* SeriesViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SeriesViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48C69E47246D4230000BD594 /* ChartIQChartType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartIQChartType+Extensions.swift"; sourceTree = "<group>"; };
 		48C69E4B246D4292000BD594 /* ChartIQChartAggregationType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartIQChartAggregationType+Extensions.swift"; sourceTree = "<group>"; };
 		48D8E586246AA027009B0C61 /* IntervalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalModel.swift; sourceTree = "<group>"; };
+		48DB80FD251CAE59005B1E37 /* DeviationsTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviationsTableCellViewModel.swift; sourceTree = "<group>"; };
 		48DB9F6D2477BCC0006D4666 /* SymbolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolModel.swift; sourceTree = "<group>"; };
 		48E3F61F24E6A5A700AE6C03 /* LineTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTableCellViewModel.swift; sourceTree = "<group>"; };
 		48E3F62424E6A5FF00AE6C03 /* LineTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTableCell.swift; sourceTree = "<group>"; };
@@ -262,10 +285,11 @@
 		48E7A9FE2457012B00D09796 /* LinePickerCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinePickerCollectionCell.swift; sourceTree = "<group>"; };
 		48E7AA0D245705B900D09796 /* LineModel+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LineModel+Extensions.swift"; sourceTree = "<group>"; };
 		48E7AA0F245705E700D09796 /* LineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineModel.swift; sourceTree = "<group>"; };
+		48F38BF3251D3CC2005460DE /* DeviationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviationsViewController.swift; sourceTree = "<group>"; };
 		48F9994F24641BC4006B07CB /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		48FE69542486A3F700DB5C7F /* StudiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudiesService.swift; sourceTree = "<group>"; };
 		48FE695824878BBD00DB5C7F /* SelectOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOptionViewController.swift; sourceTree = "<group>"; };
-		CE386946240E8C1F00CC63C2 /* ChartIQ Technical Analysis Chart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChartIQ Technical Analysis Chart.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE386946240E8C1F00CC63C2 /* ChartIQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChartIQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6FB299240E8F5E0078F33E /* ChartIQ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChartIQ.xcodeproj; path = ../ChartIQ.xcodeproj; sourceTree = "<group>"; };
 		CE7765DC240E8CB7001DE51E /* StudyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyDetailViewController.swift; sourceTree = "<group>"; };
 		CE7765E2240E8CB7001DE51E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -286,6 +310,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4803D419251B270900D3E089 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				488688BF247E889B008055D3 /* FullScreenPickerViewController.swift */,
+				48FE695824878BBD00DB5C7F /* SelectOptionViewController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4803D41C251B272200D3E089 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4803D41D251B274400D3E089 /* Common.storyboard */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		4803D41F251B28E000D3E089 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				48908CEE2452DEC100E50153 /* TabBarController.swift */,
+				48908CED2452DEC100E50153 /* NavigationController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		4814B7BC246077A9008E0BD8 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +357,7 @@
 		4814B7D12462EC27008E0BD8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				48B6AC7D2510C6C700B97815 /* BaseTableCellViewModel.swift */,
 				4814B7E22462EDF8008E0BD8 /* DrawToolBaseViewModel.swift */,
 				4814B7E62462EE22008E0BD8 /* DrawToolColorViewModel.swift */,
 				4872C8AD246C40F200FA0051 /* ButtonTableCellViewModel.swift */,
@@ -321,6 +372,9 @@
 				48751B2024BF20CA0099E7D0 /* FontTableCellViewModel.swift */,
 				48E3F61F24E6A5A700AE6C03 /* LineTableCellViewModel.swift */,
 				48169CEF24C1F333004ABC3D /* DrawToolViewModel.swift */,
+				48B6AC74250FB6F800B97815 /* FibSettingsTableCellViewModel.swift */,
+				48DB80FD251CAE59005B1E37 /* DeviationsTableCellViewModel.swift */,
+				48B6AC7B2510C39200B97815 /* FibInputTableCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -334,6 +388,7 @@
 				4805CB71245860DF005FB4FE /* PickerViewItem.swift */,
 				48DB9F6D2477BCC0006D4666 /* SymbolModel.swift */,
 				483B649124A4CA730037310C /* LanguageModel.swift */,
+				484157BE2521FB79009447FE /* DeviationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -431,13 +486,13 @@
 			path = SymbolTableCell;
 			sourceTree = "<group>";
 		};
-		484D4AE924C97E42008F1058 /* DrawToolCell */ = {
+		484D4AE924C97E42008F1058 /* DrawToolTableCell */ = {
 			isa = PBXGroup;
 			children = (
 				484D4AEC24C97E6B008F1058 /* DrawToolTableCell.swift */,
 				484D4AED24C97E6B008F1058 /* DrawToolTableCell.xib */,
 			);
-			path = DrawToolCell;
+			path = DrawToolTableCell;
 			sourceTree = "<group>";
 		};
 		485E0D692498C98E00191C1E /* TextFields */ = {
@@ -540,8 +595,7 @@
 		48908CE12452DC7800E50153 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				48908CEE2452DEC100E50153 /* TabBarController.swift */,
-				48908CED2452DEC100E50153 /* NavigationController.swift */,
+				4803D41F251B28E000D3E089 /* Base */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -553,6 +607,7 @@
 				48908CE92452DE6F00E50153 /* Chart */,
 				48908CE82452DE6600E50153 /* Studies */,
 				48908CE72452DE5E00E50153 /* Settings */,
+				4803D419251B270900D3E089 /* Common */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -616,8 +671,11 @@
 				48908D012452E0A300E50153 /* ChartViewController.swift */,
 				4819831C2452F172007D2AC1 /* SearchSymbolsViewController.swift */,
 				4819831D2452F172007D2AC1 /* IntervalsViewController.swift */,
+				48B75B4A2542BD0400D495B3 /* SeriesViewController.swift */,
 				4819831B2452F172007D2AC1 /* DrawToolsViewController.swift */,
 				4891BB4224BC45CE00E56C01 /* DrawToolSettingsViewController.swift */,
+				48B6AC72250FB3C400B97815 /* FibSettingsViewController.swift */,
+				48F38BF3251D3CC2005460DE /* DeviationsViewController.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -626,8 +684,6 @@
 			isa = PBXGroup;
 			children = (
 				48908CEB2452DE9100E50153 /* BaseViewController.swift */,
-				48FE695824878BBD00DB5C7F /* SelectOptionViewController.swift */,
-				488688BF247E889B008055D3 /* FullScreenPickerViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -646,7 +702,8 @@
 				48421AA224852DC300005B91 /* SelectTableCell */,
 				48751B1924BF1C7C0099E7D0 /* FontTableCell */,
 				48E3F62324E6A5E100AE6C03 /* LineTableCell */,
-				484D4AE924C97E42008F1058 /* DrawToolCell */,
+				484D4AE924C97E42008F1058 /* DrawToolTableCell */,
+				48B6AC762510C20000B97815 /* FibInputTableCell */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -668,6 +725,23 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		48B6AC6D250F7A0F00B97815 /* CustomSearchController */ = {
+			isa = PBXGroup;
+			children = (
+				48B6AC70250F7A2700B97815 /* CustomSearchController.swift */,
+			);
+			path = CustomSearchController;
+			sourceTree = "<group>";
+		};
+		48B6AC762510C20000B97815 /* FibInputTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				48B6AC772510C24900B97815 /* FibInputTableCell.swift */,
+				48B6AC782510C24900B97815 /* FibInputTableCell.xib */,
+			);
+			path = FibInputTableCell;
+			sourceTree = "<group>";
+		};
 		48E3F62324E6A5E100AE6C03 /* LineTableCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -680,6 +754,7 @@
 		48E7A9F02457012B00D09796 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				48B6AC6D250F7A0F00B97815 /* CustomSearchController */,
 				48E7A9F12457012B00D09796 /* CrosshairInfoView */,
 				4814B7CA2462CEBF008E0BD8 /* DrawToolControlView */,
 				48E7A9F42457012B00D09796 /* HorizontalPickerView */,
@@ -775,7 +850,7 @@
 		CE386947240E8C1F00CC63C2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CE386946240E8C1F00CC63C2 /* ChartIQ Technical Analysis Chart.app */,
+				CE386946240E8C1F00CC63C2 /* ChartIQ.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -814,6 +889,7 @@
 				48908CE42452DE2E00E50153 /* Chart */,
 				48908CE52452DE3600E50153 /* Studies */,
 				48908CE62452DE3C00E50153 /* Settings */,
+				4803D41C251B272200D3E089 /* Common */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -837,7 +913,7 @@
 			);
 			name = ChartIQApp;
 			productName = ChartIQApp;
-			productReference = CE386946240E8C1F00CC63C2 /* ChartIQ Technical Analysis Chart.app */;
+			productReference = CE386946240E8C1F00CC63C2 /* ChartIQ.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -847,7 +923,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = ChartIQ;
 				TargetAttributes = {
 					CE386945240E8C1F00CC63C2 = {
@@ -918,6 +994,7 @@
 				48169CEC24C1BB8A004ABC3D /* FilterCollectionCell.xib in Resources */,
 				48751B1F24BF1CA10099E7D0 /* FontTableCell.xib in Resources */,
 				48E7AA052457012B00D09796 /* LinePickerCollectionCell.xib in Resources */,
+				4803D41E251B274400D3E089 /* Common.storyboard in Resources */,
 				CE7765FD240E8CB7001DE51E /* Main.storyboard in Resources */,
 				48421A9324851A9200005B91 /* TextTableCell.xib in Resources */,
 				48908D082452E13800E50153 /* Chart.storyboard in Resources */,
@@ -939,6 +1016,7 @@
 				48169CEE24C1F105004ABC3D /* HorizontalFilterView.xib in Resources */,
 				48B97BA12518DB090015BD0D /* Assets.xcassets in Resources */,
 				48908D0C2452E16C00E50153 /* Settings.storyboard in Resources */,
+				48B6AC7A2510C24A00B97815 /* FibInputTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -988,6 +1066,7 @@
 				4819831F2452F172007D2AC1 /* SearchSymbolsViewController.swift in Sources */,
 				48AA96A524A2257C0091AE0E /* LocalizationManager.swift in Sources */,
 				48421A9B24851B7900005B91 /* NumberTableCellViewModel.swift in Sources */,
+				48B6AC71250F7A2700B97815 /* CustomSearchController.swift in Sources */,
 				48522CC4249A5238001E356B /* CGFloat+Extensions.swift in Sources */,
 				48169CE724C1B93B004ABC3D /* HorizontalFilterView.swift in Sources */,
 				48E7AA042457012B00D09796 /* ColorPickerCollectionCell.swift in Sources */,
@@ -995,7 +1074,10 @@
 				48908CFB2452DF2200E50153 /* UIStoryboard+Extensions.swift in Sources */,
 				4814B7C024607812008E0BD8 /* FloatingButton.swift in Sources */,
 				48C69E48246D4230000BD594 /* ChartIQChartType+Extensions.swift in Sources */,
+				48B6AC75250FB6F800B97815 /* FibSettingsTableCellViewModel.swift in Sources */,
+				48DB80FE251CAE59005B1E37 /* DeviationsTableCellViewModel.swift in Sources */,
 				4814B7E02462EDC6008E0BD8 /* DrawToolBaseCell.swift in Sources */,
+				484157BF2521FB79009447FE /* DeviationModel.swift in Sources */,
 				48751B1E24BF1CA10099E7D0 /* FontTableCell.swift in Sources */,
 				48908CEC2452DE9100E50153 /* BaseViewController.swift in Sources */,
 				488CF3E8246EC05E00A52F8F /* AllStudiesViewController.swift in Sources */,
@@ -1006,6 +1088,7 @@
 				48FE69552486A3F700DB5C7F /* StudiesService.swift in Sources */,
 				48908CF02452DEC100E50153 /* TabBarController.swift in Sources */,
 				4871FD642473F82400776AE7 /* UISearchBar+Extensions.swift in Sources */,
+				48B6AC7E2510C6C700B97815 /* BaseTableCellViewModel.swift in Sources */,
 				4872C8AE246C40F200FA0051 /* ButtonTableCellViewModel.swift in Sources */,
 				484091D724AB5AD900F0B709 /* UITableView+Extensions.swift in Sources */,
 				48E7AA002457012B00D09796 /* CrosshairInfoView.swift in Sources */,
@@ -1020,12 +1103,15 @@
 				4899B3BA245AF4170094B204 /* ChartIQDrawingTool+Extensions.swift in Sources */,
 				48908CEF2452DEC100E50153 /* NavigationController.swift in Sources */,
 				482BEF1424B60FC60099B78F /* StudyTableCellViewModel.swift in Sources */,
+				48B6AC73250FB3C400B97815 /* FibSettingsViewController.swift in Sources */,
 				48169CEB24C1BB89004ABC3D /* FilterCollectionCell.swift in Sources */,
+				48B6AC7C2510C39200B97815 /* FibInputTableCellViewModel.swift in Sources */,
 				48421A8D24850EE600005B91 /* TextColorTableCellViewModel.swift in Sources */,
 				48421A8824850E5A00005B91 /* TextColorTableCell.swift in Sources */,
 				4899B3BB245AF4170094B204 /* ChartIQLineType+Extensions.swift in Sources */,
 				482ADEAB246C5189006C8DA4 /* ChartStyleModel.swift in Sources */,
 				48801E08247D6BE4000BE986 /* ChartButton.swift in Sources */,
+				48B75B4B2542BD0400D495B3 /* SeriesViewController.swift in Sources */,
 				4872563D246C32CC00F8E457 /* ToggleTableCell.swift in Sources */,
 				481983202452F172007D2AC1 /* IntervalsViewController.swift in Sources */,
 				483B649224A4CA730037310C /* LanguageModel.swift in Sources */,
@@ -1036,6 +1122,7 @@
 				CE7765FB240E8CB7001DE51E /* StudyDetailViewController.swift in Sources */,
 				48E7AA012457012B00D09796 /* HorizontalPickerView.swift in Sources */,
 				482ADEA5246C4B98006C8DA4 /* ChartStyleViewController.swift in Sources */,
+				48F38BF4251D3CC2005460DE /* DeviationsViewController.swift in Sources */,
 				48E7AA062457012B00D09796 /* LinePickerCollectionCell.swift in Sources */,
 				CE7765FE240E8CB7001DE51E /* SceneDelegate.swift in Sources */,
 				485E0D6D2498C9B700191C1E /* CustomTextField.swift in Sources */,
@@ -1052,6 +1139,7 @@
 				48421A9224851A9200005B91 /* TextTableCell.swift in Sources */,
 				4899B3C1245AF4F40094B204 /* BaseTableCell.swift in Sources */,
 				48477DEE247BF7FA00F6977B /* SymbolTableCell.swift in Sources */,
+				48B6AC792510C24A00B97815 /* FibInputTableCell.swift in Sources */,
 				48E3F62624E6A5FF00AE6C03 /* LineTableCell.swift in Sources */,
 				484D4AEE24C97E6B008F1058 /* DrawToolTableCell.swift in Sources */,
 				4814B7E72462EE22008E0BD8 /* DrawToolColorViewModel.swift in Sources */,
@@ -1108,6 +1196,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1170,6 +1259,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1206,17 +1296,17 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.4;
-				DEVELOPMENT_TEAM = 8TPE6S3AGR;
+				DEVELOPMENT_TEAM = XPJG98X97P;
 				INFOPLIST_FILE = "$(SRCROOT)/ChartIQApp/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chartiq.TechnicalAnalysisChart;
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chartiq-demo";
 				PRODUCT_MODULE_NAME = ChartIQApp;
-				PRODUCT_NAME = "ChartIQ Technical Analysis Chart";
+				PRODUCT_NAME = ChartIQ;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1230,17 +1320,17 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.4;
-				DEVELOPMENT_TEAM = 8TPE6S3AGR;
+				DEVELOPMENT_TEAM = XPJG98X97P;
 				INFOPLIST_FILE = "$(SRCROOT)/ChartIQApp/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chartiq.TechnicalAnalysisChart;
+				MARKETING_VERSION = 1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chartiq-demo";
 				PRODUCT_MODULE_NAME = ChartIQApp;
-				PRODUCT_NAME = "ChartIQ Technical Analysis Chart";
+				PRODUCT_NAME = ChartIQ;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

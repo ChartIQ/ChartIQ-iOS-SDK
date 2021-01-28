@@ -43,9 +43,16 @@ class SelectTableCell: UITableViewCell {
   // MARK: - Internal Methods
 
   internal func setupCell(withViewModel viewModel: TableCellViewModelProtocol) {
-    guard let selectCellViewModel = viewModel as? SelectTableCellViewModel else { return }
-    textLabel?.text = selectCellViewModel.title.capitalizeFirst()
-    detailTextLabel?.text = (selectCellViewModel.detailTitle ?? "").capitalizeFirst()
     accessoryType = .disclosureIndicator
+    if let selectCellViewModel = viewModel as? SelectTableCellViewModel {
+      textLabel?.text = selectCellViewModel.title
+      detailTextLabel?.text = (selectCellViewModel.detailTitle ?? "")
+    } else if let fibSettingsCellViewModel = viewModel as? FibSettingsTableCellViewModel {
+      textLabel?.text = fibSettingsCellViewModel.title
+      detailTextLabel?.text = nil
+    } else if let deviationsCellViewModel = viewModel as? DeviationsTableCellViewModel {
+      textLabel?.text = deviationsCellViewModel.title
+      detailTextLabel?.text = nil
+    }
   }
 }

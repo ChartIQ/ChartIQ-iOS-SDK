@@ -25,6 +25,8 @@ extension UIImage {
   // MARK: - ChartViewController Images
 
   struct Chart {
+    internal static let seriesImage = UIImage(named: "iconSeries")
+
     internal static let crosshairActiveImage = UIImage(named: "iconTargetFocused")
     internal static let crosshairInactiveImage = UIImage(named: "iconTargetInactive")
 

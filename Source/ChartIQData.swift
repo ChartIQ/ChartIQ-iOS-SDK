@@ -82,13 +82,13 @@ public class ChartIQData: NSObject {
   public func toDictionary() -> [String: Any] {
     let dateString = ChartIQUtils.chartDateFormatter.string(from: date)
     return [
-      ChartIQConstants.Data.dateParam: dateString,
-      ChartIQConstants.Data.openParam: open,
-      ChartIQConstants.Data.highParam: high,
-      ChartIQConstants.Data.lowParam: low,
-      ChartIQConstants.Data.closeParam: close,
-      ChartIQConstants.Data.volumeParam: volume,
-      ChartIQConstants.Data.adjCloseParam: adjClose
+      Const.Data.dateParam: dateString,
+      Const.Data.openParam: open,
+      Const.Data.highParam: high,
+      Const.Data.lowParam: low,
+      Const.Data.closeParam: close,
+      Const.Data.volumeParam: volume,
+      Const.Data.adjCloseParam: adjClose
     ]
   }
 

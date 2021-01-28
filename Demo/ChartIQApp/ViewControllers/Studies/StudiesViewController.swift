@@ -52,6 +52,16 @@ class StudiesViewController: BaseViewController {
     updateStudies()
   }
 
+  override func languageDidChange() {
+    navigationItem.title = locManager.localize(Const.Studies.screenTitle)
+    emptyStateViewLabel.text = locManager.localize(Const.Studies.emptyStateViewTitle)
+    emptyStateViewButton.setTitle(locManager.localize(Const.Studies.emptyStateViewButtonTitle), for: .normal)
+    editBarButtonItem?.title = locManager.localize(Const.General.editTitle)
+    addBarButtonItem?.title = locManager.localize(Const.General.addTitle)
+    updateEditState(isEditing: isTableViewEditing)
+    tableView.reloadData()
+  }
+
   // MARK: - Setup Methods
 
   override func setupUI() {
@@ -93,16 +103,6 @@ class StudiesViewController: BaseViewController {
 
     searchController.searchResultsUpdater = self
     definesPresentationContext = true
-  }
-
-  override func languageDidChange() {
-    navigationItem.title = locManager.localize(Const.Studies.screenTitle)
-    emptyStateViewLabel.text = locManager.localize(Const.Studies.emptyStateViewTitle)
-    emptyStateViewButton.setTitle(locManager.localize(Const.Studies.emptyStateViewButtonTitle), for: .normal)
-    editBarButtonItem?.title = locManager.localize(Const.General.editTitle)
-    addBarButtonItem?.title = locManager.localize(Const.General.addTitle)
-    updateEditState(isEditing: isTableViewEditing)
-    tableView.reloadData()
   }
 
   // MARK: - Actions Methods
@@ -191,20 +191,20 @@ class StudiesViewController: BaseViewController {
     study.parameters?.forEach({ param in
       parameters[param.key] = String(describing: param.value)
     })
-    chartIQView.setStudy(study.fullName, parameters: parameters)
+    chartIQView.setStudyParameters(study, parameters: parameters)
     updateStudies()
   }
 
   private func removeActiveStudy(study: ChartIQStudy) {
     view.startActivityIndicator()
-    chartIQView.removeStudy(study.fullName)
+    chartIQView.removeStudy(study)
     updateStudies()
   }
 
   private func removeActiveStudy(at indexPath: IndexPath) {
     view.startActivityIndicator()
     let deletedStudy = activeStudies[indexPath.row]
-    chartIQView.removeStudy(deletedStudy.fullName)
+    chartIQView.removeStudy(deletedStudy)
     activeStudies.remove(at: indexPath.row)
     tableView.deleteRows(at: [indexPath], with: .fade)
     updateStudies()
@@ -213,7 +213,7 @@ class StudiesViewController: BaseViewController {
   private func cloneActiveStudy(at indexPath: IndexPath) {
     view.startActivityIndicator()
     let clonedStudy = activeStudies[indexPath.row]
-    try? chartIQView.addStudy(clonedStudy.originalName)
+    try? chartIQView.addStudy(clonedStudy, forClone: true)
     updateStudies()
   }
 
@@ -221,11 +221,11 @@ class StudiesViewController: BaseViewController {
 
   private func presentAllStudiesViewController() {
     guard let controller = UIStoryboard.allStudiesViewController() else { return }
-    controller.allStudies = chartIQView.getStudyList()
+    controller.allStudies = chartIQView.getAllStudies()
     controller.didAddStudies = { [weak self] studies in
       guard let self = self else { return }
       studies.forEach({ study in
-        try? self.chartIQView.addStudy(study.shortName)
+        try? self.chartIQView.addStudy(study, forClone: false)
       })
       self.updateStudies()
     }
@@ -238,19 +238,17 @@ class StudiesViewController: BaseViewController {
   private func showStudyDetailViewController(with study: ChartIQStudy) {
     guard let controller = UIStoryboard.studyDetailViewController() else { return }
     controller.study = study
-    let input = chartIQView.getStudyParameters(study.fullName, type: .inputs)
-    let output = chartIQView.getStudyParameters(study.fullName, type: .outputs)
-    let parameters = chartIQView.getStudyParameters(study.fullName, type: .parameters)
-    controller.inputParameters = input as? [[String: Any]] ?? [[String: Any]]()
-    controller.outputParameters = output as? [[String: Any]] ?? [[String: Any]]()
-    controller.paramParameters = parameters as? [[String: Any]] ?? [[String: Any]]()
+    let input = chartIQView.getStudyParameters(study, type: .inputs)
+    let output = chartIQView.getStudyParameters(study, type: .outputs)
+    let parameters = chartIQView.getStudyParameters(study, type: .parameters)
+    controller.inputParameters = input as? [[String: Any]] ?? [[:]]
+    controller.outputParameters = output as? [[String: Any]] ?? [[:]]
+    controller.paramParameters = parameters as? [[String: Any]] ?? [[:]]
     controller.didRemoveStudy = { [weak self] study in
-      guard let self = self else { return }
-      self.removeActiveStudy(study: study)
+      self?.removeActiveStudy(study: study)
     }
     controller.didSaveStudy = { [weak self] study in
-      guard let self = self else { return }
-      self.updateStudy(study: study)
+      self?.updateStudy(study: study)
     }
     navigationController?.show(controller, sender: nil)
   }
@@ -261,8 +259,7 @@ class StudiesViewController: BaseViewController {
     let cloneActionTitle = locManager.localize(Const.General.cloneTitle)
     let cloneAction = UITableViewRowAction(style: .normal,
                                            title: cloneActionTitle) { [weak self] _, indexPath in
-      guard let self = self else { return }
-      self.cloneActiveStudy(at: indexPath)
+      self?.cloneActiveStudy(at: indexPath)
     }
     cloneAction.backgroundColor = .brillianteAzureColor
     return cloneAction
@@ -272,8 +269,7 @@ class StudiesViewController: BaseViewController {
     let deleteActionTitle = locManager.localize(Const.General.deleteTitle)
     let deleteAction = UITableViewRowAction(style: .destructive,
                                             title: deleteActionTitle) { [weak self] _, indexPath in
-      guard let self = self else { return }
-      self.removeActiveStudy(at: indexPath)
+      self?.removeActiveStudy(at: indexPath)
     }
     deleteAction.backgroundColor = .coralRedColor
     return deleteAction

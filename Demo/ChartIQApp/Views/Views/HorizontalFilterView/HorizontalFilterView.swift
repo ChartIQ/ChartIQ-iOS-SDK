@@ -95,7 +95,8 @@ extension HorizontalFilterView: UICollectionViewDataSource {
                                                                 return UICollectionViewCell()
     }
     let filterItem = dataSource[indexPath.row]
-    let filterItemName = LocalizationManager.shared().localize(filterItem)
+    let localizedItem = LocalizationManager.shared().localize(filterItem)
+    let filterItemName = localizedItem.capitalized
     filterCell.setupCell(withFilterItem: filterItemName)
     return filterCell
   }

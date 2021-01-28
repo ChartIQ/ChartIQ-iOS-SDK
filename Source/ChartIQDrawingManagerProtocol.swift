@@ -60,7 +60,7 @@ internal protocol ChartIQDrawingManagerProtocol {
   /// - Parameters:
   ///   - tool: The ChartIQDrawingTool.
   /// - Returns: The Bool Value. True if supports std deviations, false if not.
-  func isSupportingStdDeviations(_ tool: ChartIQDrawingTool) -> Bool
+  func isSupportingDeviations(_ tool: ChartIQDrawingTool) -> Bool
 
   /// Check if the drawing supports Fibonacci settings.
   ///
