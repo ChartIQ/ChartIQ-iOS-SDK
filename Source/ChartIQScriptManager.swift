@@ -160,16 +160,26 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
     return script
   }
 
+  // MARK: - Series
+
+  /// Returns a script that returns series.
+  ///
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+    internal func getScriptForSeries() -> String {
+    let script = mobileNameSpace + "getAllSeries();"
+    return script
+  }
+
   /// Returns a script that adds series.
   ///
   /// - Parameters:
   ///   - symbol: The String Object.
   ///   - color: The UIColor Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  internal func getScriptForAddSeries(_ symbol: String, color: UIColor) -> String {
+    internal func getScriptForAddSeries(_ symbol: String, color: UIColor, isComparison: Bool) -> String {
     let safeSymbol = safeScriptParameter(symbol)
     let script = "stxx.addSeries(\"\(safeSymbol)\", {display:\"\(symbol)\", " +
-    "color: \"\(color.toHexString())\"  isComparison:true});"
+    "color: \"\(color.toHexString())\",  isComparison:\"\(isComparison)\"});"
     return script
   }
 
@@ -181,6 +191,21 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   internal func getScriptForRemoveSeries(_ symbol: String) -> String {
     let safeSymbol = safeScriptParameter(symbol)
     let script = "stxx.removeSeries(\"\(safeSymbol)\");"
+    return script
+  }
+
+  /// Returns a script that sets a series parameter.
+  ///
+  /// - Parameters:
+  ///   - symbol: The String Object. The name of symbol for series.
+  ///   - parameterName: The String Object. The name of parameter to modify.
+  ///   - value: The String Object. The value for parameter.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  internal func getScriptForSetSeriesParameter(symbol: String, parameterName: String, value: String) -> String {
+    let safeSymbol = safeScriptParameter(symbol)
+    let safeParameterName = safeScriptParameter(parameterName)
+    let safeValue = safeScriptParameter(value)
+    let script = mobileNameSpace + "modifySeries(\"\(safeSymbol)\", \"\(safeParameterName)\", \"\(safeValue)\");"
     return script
   }
 
@@ -351,7 +376,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///   - isInverted: The Bool Value.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForSetInvertYAxis(_ isInverted: Bool) -> String {
-    let script = "flipChart"
+    let script = "stxx.flipChart(\(isInverted));"
     return script
   }
 
@@ -400,12 +425,11 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   /// Returns a script that gets study parameters.
   ///
   /// - Parameters:
-  ///   - studyName: The String Object.
+  ///   - study: The ChartIQStudy model.
   ///   - type: The ChartIQStudyParametersType Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  internal func getScriptForStudyParameters(_ studyName: String, type: ChartIQStudyParametersType) -> String {
-    let safeStudyName = safeScriptParameter(studyName)
-    let script = mobileNameSpace + "getStudyParameters(\"" + safeStudyName + "\" , \"" + type.stringValue + "\");"
+  internal func getScriptForStudyParameters(_ study: ChartIQStudy, type: ChartIQStudyParametersType) -> String {
+    let script = mobileNameSpace + "getStudyParameters(\"" + study.fullName + "\" , \"" + type.stringValue + "\");"
     return script
   }
 
@@ -416,7 +440,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///   - key: The String Object.
   ///   - value: The String Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  internal func getScriptForSetStudy(_ name: String, key: String, value: String) -> String {
+  internal func getScriptForSetStudyParameter(_ name: String, key: String, value: String) -> String {
     let safeStudyName = safeScriptParameter(name)
     let safeStudyKey = safeScriptParameter(key)
     let safeStudyValue = safeScriptParameter(value)
@@ -427,12 +451,11 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   /// Returns a script that sets a study.
   ///
   /// - Parameters:
-  ///   - name: The String Object.
+  ///   - study: The ChartIQStudy model.
   ///   - parameters: The Dictionary Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  internal func getScriptForSetStudy(_ name: String, parameters: [String: String]) -> String {
-    let safeStudyName = safeScriptParameter(name)
-    var script = getStudyDescriptorScript(safeStudyName) +
+  internal func getScriptForSetStudyParameters(_ study: ChartIQStudy, parameters: [String: String]) -> String {
+    var script = getStudyDescriptorScript(study.fullName) +
       "var helper = new CIQ.Studies.DialogHelper({sd:selectedSd,stx:stxx}); " + "var isFound = false; " +
       "var newInputParameters = {}; " + "var newOutputParameters = {}; " + "var newParameters = {}; "
     parameters.forEach { parameter in
@@ -458,11 +481,10 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   /// Returns a script that removes a study.
   ///
   /// - Parameters:
-  ///   - studyName: The String Object.
+  ///   - study: The ChartIQStudy model.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  internal func getScriptForRemoveStudy(_ studyName: String) -> String {
-    let safeStudyName = safeScriptParameter(studyName)
-    let script = mobileNameSpace + "removeStudy('\(safeStudyName)');"
+  internal func getScriptForRemoveStudy(_ study: ChartIQStudy) -> String {
+    let script = mobileNameSpace + "removeStudy('\(study.fullName)');"
     return script
   }
 
@@ -496,7 +518,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///   - tool: The ChartIQDrawingTool Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForEnableDrawing(_ tool: ChartIQDrawingTool) -> String {
-    let script = "currentDrawing = \"\(tool.stringValue)\"; " + "stxx.changeVectorType(currentDrawing); "
+    let script = "currentDrawing = \"\(tool.stringValue)\"; stxx.changeVectorType(currentDrawing); "
     return script
   }
 
@@ -585,7 +607,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForDisableDrawing() -> String {
-    let script = "stxx.changeVectorType(null); " + "currentDrawing = \"\" ; "
+    let script = "stxx.changeVectorType(null); currentDrawing = \"\" ; "
     return script
   }
 
@@ -631,8 +653,8 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///   - json: The String Object.
   ///   - cb: The String Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  internal func getScriptForFormatJSQuoteData(_ json: String, moreAvailable: Bool, cb: String) -> String {
-    let script = mobileNameSpace + "parseData('\(json)', \"\(cb)\", \(moreAvailable));"
+  internal func getScriptForFormatJSQuoteData(_ json: String, cb: String) -> String {
+    let script = mobileNameSpace + "parseData('\(json)', \"\(cb)\");"
     return script
   }
 
@@ -667,7 +689,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getStudyDescriptorScript(_ name: String) -> String {
     let safeStudyName = safeScriptParameter(name)
-    let script = "var s=stxx.layout.studies; " + "var selectedSd = {}; " + "for(var n in s){ " + "   var sd=s[n]; " +
+    let script = "var s=stxx.layout.studies; var selectedSd = {}; for(var n in s){ var sd=s[n]; " +
     "if (sd.name === \"\(safeStudyName)\") { selectedSd = sd; }} "
     return script
   }

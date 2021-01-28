@@ -11,17 +11,20 @@ import UIKit
 // MARK: - Storyboard Enum
 
 enum Storyboard: String {
-  case main = "Main"
+  case base = "Main"
   case chart = "Chart"
   case studies = "Studies"
   case settings = "Settings"
+  case common = "Common"
 }
 
 // MARK: - UIStoryboard Controllers Extension
 
 extension UIStoryboard {
 
-  // MARK: - Internal Methods
+  // MARK: - Internal Base Methods
+
+  // MARK: - Internal Chart Methods
 
   internal static func chartViewController() -> ChartViewController? {
     guard let controller = UIStoryboard.viewController(ChartViewController.self,
@@ -41,6 +44,18 @@ extension UIStoryboard {
     return controller
   }
 
+  internal static func fibSettingsViewController() -> FibSettingsViewController? {
+    guard let controller = UIStoryboard.viewController(FibSettingsViewController.self,
+                                                       from: .chart) as? FibSettingsViewController else { return nil }
+    return controller
+  }
+
+  internal static func deviationsViewController() -> DeviationsViewController? {
+    guard let controller = UIStoryboard.viewController(DeviationsViewController.self,
+                                                       from: .chart) as? DeviationsViewController else { return nil }
+    return controller
+  }
+
   internal static func intervalsViewController() -> IntervalsViewController? {
     guard let controller = UIStoryboard.viewController(IntervalsViewController.self,
                                                        from: .chart) as? IntervalsViewController else { return nil }
@@ -52,6 +67,14 @@ extension UIStoryboard {
                                                        from: .chart) as? SearchSymbolsViewController else { return nil }
     return controller
   }
+
+  internal static func seriesViewController() -> SeriesViewController? {
+    guard let controller = UIStoryboard.viewController(SeriesViewController.self,
+                                                       from: .chart) as? SeriesViewController else { return nil }
+    return controller
+  }
+
+  // MARK: - Internal Studies Methods
 
   internal static func studiesViewController() -> StudiesViewController? {
     guard let controller = UIStoryboard.viewController(StudiesViewController.self,
@@ -71,17 +94,7 @@ extension UIStoryboard {
     return controller
   }
 
-  internal static func fullScreenPickerViewController() -> FullScreenPickerViewController? {
-    guard let controller = UIStoryboard.viewController(FullScreenPickerViewController.self,
-                                                       from: .studies) as? FullScreenPickerViewController else { return nil }
-    return controller
-  }
-
-  internal static func selectOptionViewController() -> SelectOptionViewController? {
-    guard let controller = UIStoryboard.viewController(SelectOptionViewController.self,
-                                                       from: .studies) as? SelectOptionViewController else { return nil }
-    return controller
-  }
+  // MARK: - Internal Settings Methods
 
   internal static func settingsViewController() -> SettingsViewController? {
     guard let controller = UIStoryboard.viewController(SettingsViewController.self,
@@ -100,6 +113,20 @@ extension UIStoryboard {
                                                        from: .settings) as? LanguagesViewController else { return nil }
     return controller
   }
+
+  // MARK: - Settings Common Methods
+
+  internal static func fullScreenPickerViewController() -> FullScreenPickerViewController? {
+    guard let controller = UIStoryboard.viewController(FullScreenPickerViewController.self,
+                                                       from: .common) as? FullScreenPickerViewController else { return nil }
+    return controller
+  }
+
+  internal static func selectOptionViewController() -> SelectOptionViewController? {
+    guard let controller = UIStoryboard.viewController(SelectOptionViewController.self,
+                                                       from: .common) as? SelectOptionViewController else { return nil }
+    return controller
+  }
 }
 
 // MARK: - UIStoryboard Instantiate Extension
@@ -108,7 +135,7 @@ extension UIStoryboard {
 
   // MARK: - Private Methods
 
-  private static func viewController(_ vcClass: AnyClass, from name: Storyboard = .main) -> UIViewController {
+  private static func viewController(_ vcClass: AnyClass, from name: Storyboard = .base) -> UIViewController {
     let className = String(describing: vcClass)
     let storyboard = UIStoryboard(name: name.rawValue, bundle: nil)
     return storyboard.instantiateViewController(withIdentifier: className)

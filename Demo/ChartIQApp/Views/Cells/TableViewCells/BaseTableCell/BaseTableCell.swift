@@ -31,4 +31,11 @@ class BaseTableCell: UITableViewCell {
 
     accessoryType = selected ? .checkmark : .none
   }
+
+  // MARK: - Internal Methods
+
+  internal func setupCell(withViewModel viewModel: BaseTableCellViewModel) {
+    textLabel?.text = viewModel.title
+    imageView?.image = viewModel.image
+  }
 }

@@ -17,7 +17,6 @@ extension UISearchController {
   internal func defaultConfiguration() {
     obscuresBackgroundDuringPresentation = false
     hidesNavigationBarDuringPresentation = false
-
     searchBar.defaultConfiguration()
   }
 }

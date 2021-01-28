@@ -14,6 +14,8 @@ class SearchSymbolsViewController: BaseViewController {
 
   // MARK: - IBOutlets
 
+  @IBOutlet private var horizontalFilterViewContainer: UIView!
+  @IBOutlet private var horizontalFilterSeparatorView: UIView!
   @IBOutlet private var emptyStateView: UIView!
   @IBOutlet private var emptyStateViewTitleLabel: UILabel!
   @IBOutlet private var emptyStateViewDescriptionLabel: UILabel!
@@ -26,6 +28,8 @@ class SearchSymbolsViewController: BaseViewController {
 
   // MARK: - Private Properties
 
+  private var horizontalFilterView: HorizontalFilterView?
+  private var selectedFilterType: SearchSymbolsFilterType = .all
   private var cancelBarButtonItem: UIBarButtonItem?
   private var symbols: [SymbolModel] = []
   private let searchController = CustomSearchController(searchResultsController: nil)
@@ -42,6 +46,8 @@ class SearchSymbolsViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    setupHorizontalFilterView()
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -50,9 +56,16 @@ class SearchSymbolsViewController: BaseViewController {
     searchController.isActive = true
   }
 
+  override func languageDidChange() {
+    cancelBarButtonItem?.title = locManager.localize(Const.General.cancelTitle)
+    emptyStateViewButton.setTitle(locManager.localize(Const.SearchSymbols.emptyStateViewButtonTitle), for: .normal)
+    updateSymbols()
+  }
+
   // MARK: - Setup Methods
 
   override func setupUI() {
+    horizontalFilterSeparatorView.backgroundColor = .gainsboroDarkYankeesBlueColor
     tableView.alpha = .invisible
     tableView.backgroundColor = .ghostWhiteСhineseBlackColor
     cancelBarButtonItem = UIBarButtonItem(title: locManager.localize(Const.General.cancelTitle),
@@ -85,10 +98,12 @@ class SearchSymbolsViewController: BaseViewController {
     updateSymbols()
   }
 
-  override func languageDidChange() {
-    cancelBarButtonItem?.title = locManager.localize(Const.General.cancelTitle)
-    emptyStateViewButton.setTitle(locManager.localize(Const.SearchSymbols.emptyStateViewButtonTitle), for: .normal)
-    updateSymbols()
+  private func setupHorizontalFilterView() {
+    horizontalFilterView = HorizontalFilterView.instantiate(with: self)
+    horizontalFilterView?.adjustFrame(inView: horizontalFilterViewContainer)
+    let filterItems = retrieveFilterItems()
+    horizontalFilterView?.updateView(withDataSource: filterItems)
+    horizontalFilterView?.setSelectedItem(item: selectedFilterType.displayName)
   }
 
   // MARK: - Actions Methods
@@ -114,6 +129,14 @@ class SearchSymbolsViewController: BaseViewController {
   }
 
   // MARK: - Private Methods
+
+  private func retrieveFilterItems() -> [String] {
+    var filterItems: [String] = []
+    for filterType in SearchSymbolsFilterType.allCases {
+      filterItems.append(filterType.displayName)
+    }
+    return filterItems
+  }
 
   private func updateSymbols() {
     tableView.reloadData()
@@ -146,13 +169,19 @@ class SearchSymbolsViewController: BaseViewController {
 
   private func searchContentForSearchText(_ searchText: String) {
     let formattedSearchText = searchText.trimmingCharacters(in: .whitespaces)
-    searchSymbolsService.search(with: formattedSearchText) { [weak self] symbols in
+    searchSymbolsService.search(with: formattedSearchText,
+                                filterType: selectedFilterType) { [weak self] symbols in
       guard let self = self else { return }
       DispatchQueue.main.async {
         self.symbols = symbols
         self.updateSymbols()
       }
     }
+  }
+
+  private func updateSearchRequest() {
+    guard let searchedText = searchController.searchBar.text else { return }
+    searchContentForSearchText(searchedText)
   }
 }
 
@@ -167,7 +196,7 @@ extension SearchSymbolsViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let symbolCell = tableView.dequeueReusableCell(withIdentifier: Const.SymbolTableCell.cellId,
                                                          for: indexPath) as? SymbolTableCell else {
-                                                          return UITableViewCell()
+      return UITableViewCell()
     }
     let symbol = symbols[indexPath.row]
     symbolCell.setupCell(with: symbol)
@@ -214,24 +243,13 @@ extension SearchSymbolsViewController: UISearchControllerDelegate {
   }
 }
 
-// MARK: - CustomSearchController with CustomSearchBar
-/// Needs to resolve native issue with not hiding cancel button on different iOS versions.
+// MARK: - HorizontalFilterViewDelegate
 
-class CustomSearchBar: UISearchBar {
+extension SearchSymbolsViewController: HorizontalFilterViewDelegate {
 
-  override func setShowsCancelButton(_ showsCancelButton: Bool, animated: Bool) {
-    super.setShowsCancelButton(false, animated: false)
-  }
-}
-
-class CustomSearchController: UISearchController, UISearchBarDelegate {
-
-  lazy var customSearchBar: CustomSearchBar = { [weak self] in
-    let customSearchBar = CustomSearchBar(frame: CGRect.zero)
-    return customSearchBar
-    }()
-
-  override var searchBar: UISearchBar {
-    return customSearchBar
+  func horizontalFilterView(_ horizontalFilterView: HorizontalFilterView, didSelect item: String) {
+    guard let drawToolFilterType = SearchSymbolsFilterType(stringValue: item) else { return }
+    selectedFilterType = drawToolFilterType
+    updateSearchRequest()
   }
 }

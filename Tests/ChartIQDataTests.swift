@@ -128,13 +128,13 @@ class ChartIQDataTests: XCTestCase {
 
     // Then
     let dateString = ChartIQUtils.chartDateFormatter.string(from: date)
-    XCTAssertEqual(dateString, chartIQDataDict[ChartIQConstants.Data.dateParam] as? String)
-    XCTAssertEqual(open, chartIQDataDict[ChartIQConstants.Data.openParam] as? Double)
-    XCTAssertEqual(high, chartIQDataDict[ChartIQConstants.Data.highParam] as? Double)
-    XCTAssertEqual(low, chartIQDataDict[ChartIQConstants.Data.lowParam] as? Double)
-    XCTAssertEqual(close, chartIQDataDict[ChartIQConstants.Data.closeParam] as? Double)
-    XCTAssertEqual(volume, chartIQDataDict[ChartIQConstants.Data.volumeParam] as? Double)
-    XCTAssertEqual(adjClose, chartIQDataDict[ChartIQConstants.Data.adjCloseParam] as? Double)
+    XCTAssertEqual(dateString, chartIQDataDict[Const.Data.dateParam] as? String)
+    XCTAssertEqual(open, chartIQDataDict[Const.Data.openParam] as? Double)
+    XCTAssertEqual(high, chartIQDataDict[Const.Data.highParam] as? Double)
+    XCTAssertEqual(low, chartIQDataDict[Const.Data.lowParam] as? Double)
+    XCTAssertEqual(close, chartIQDataDict[Const.Data.closeParam] as? Double)
+    XCTAssertEqual(volume, chartIQDataDict[Const.Data.volumeParam] as? Double)
+    XCTAssertEqual(adjClose, chartIQDataDict[Const.Data.adjCloseParam] as? Double)
   }
 
   // MARK: - Tests Convert to JSON
@@ -160,13 +160,13 @@ class ChartIQDataTests: XCTestCase {
 
     // Then
     // Keys Exists
-    XCTAssertTrue(chartIQJSONString.contains(ChartIQConstants.Data.dateParam))
-    XCTAssertTrue(chartIQJSONString.contains(ChartIQConstants.Data.openParam))
-    XCTAssertTrue(chartIQJSONString.contains(ChartIQConstants.Data.highParam))
-    XCTAssertTrue(chartIQJSONString.contains(ChartIQConstants.Data.lowParam))
-    XCTAssertTrue(chartIQJSONString.contains(ChartIQConstants.Data.closeParam))
-    XCTAssertTrue(chartIQJSONString.contains(ChartIQConstants.Data.volumeParam))
-    XCTAssertTrue(chartIQJSONString.contains(ChartIQConstants.Data.adjCloseParam))
+    XCTAssertTrue(chartIQJSONString.contains(Const.Data.dateParam))
+    XCTAssertTrue(chartIQJSONString.contains(Const.Data.openParam))
+    XCTAssertTrue(chartIQJSONString.contains(Const.Data.highParam))
+    XCTAssertTrue(chartIQJSONString.contains(Const.Data.lowParam))
+    XCTAssertTrue(chartIQJSONString.contains(Const.Data.closeParam))
+    XCTAssertTrue(chartIQJSONString.contains(Const.Data.volumeParam))
+    XCTAssertTrue(chartIQJSONString.contains(Const.Data.adjCloseParam))
 
     // Values Exists
     let dateString = ChartIQUtils.chartDateFormatter.string(from: date)

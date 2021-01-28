@@ -98,7 +98,7 @@ class FloatingButton: UIButton {
   override var isHidden: Bool {
     didSet {
       if isHidden {
-        animateArrows(show: false, transition: false, duration: 0.0)
+        hideArrows()
       } else {
         showAndHideArrows()
       }
@@ -241,9 +241,9 @@ class FloatingButton: UIButton {
   private func showAndHideArrows() {
     guard floatingButtonPosition == .rightTop else { return }
     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
-      self.animateArrows(show: true, transition: false, duration: 0.3)
+      !self.isHidden ? self.animateArrows(show: true, transition: false, duration: 0.3) : ()
       DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
-        self.animateArrows(show: false, transition: true, duration: 0.5)
+        !self.isHidden ? self.animateArrows(show: false, transition: true, duration: 0.5) : ()
       }
     }
   }
@@ -271,5 +271,13 @@ class FloatingButton: UIButton {
         leftArrowImageView.isHidden = true
       }
     })
+  }
+
+  private func hideArrows() {
+    guard let downArrowImageView = downArrowImageView, let leftArrowImageView = leftArrowImageView else { return }
+    downArrowImageView.isHidden = true
+    leftArrowImageView.isHidden = true
+    downArrowImageView.alpha = .invisible
+    leftArrowImageView.alpha = .invisible
   }
 }

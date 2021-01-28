@@ -31,9 +31,9 @@ public extension String {
   ///   - symbol: The String Object.
   /// - Returns: The String Object that contains a string with zwnj symbol replaced with another symbol.
   mutating func replaceSymbolWithZwnj(symbol: String) -> String {
-    if self.contains("\(symbol)\(ChartIQConstants.General.zwnjSymbol)") {
+    if self.contains("\(symbol)\(Const.General.zwnjSymbol)") {
       self.remove(at: self.startIndex)
-      self.insert(contentsOf: ChartIQConstants.General.zwnjSymbol, at: self.startIndex)
+      self.insert(contentsOf: Const.General.zwnjSymbol, at: self.startIndex)
     }
     return self
   }

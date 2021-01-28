@@ -45,6 +45,12 @@ class AllStudiesViewController: BaseViewController {
     updateStudies()
   }
 
+  override func languageDidChange() {
+    navigationItem.title = locManager.localize(Const.AllStudies.screenTitle)
+    cancelBarButtonItem?.title = locManager.localize(Const.General.cancelTitle)
+    doneBarButtonItem?.title = locManager.localize(Const.General.doneTitle)
+  }
+
   // MARK: - Setup Methods
 
   override func setupUI() {
@@ -75,12 +81,6 @@ class AllStudiesViewController: BaseViewController {
     definesPresentationContext = true
 
     updateSearchBar(isHidden: true)
-  }
-
-  override func languageDidChange() {
-    navigationItem.title = locManager.localize(Const.AllStudies.screenTitle)
-    cancelBarButtonItem?.title = locManager.localize(Const.General.cancelTitle)
-    doneBarButtonItem?.title = locManager.localize(Const.General.doneTitle)
   }
 
   // MARK: - Actions Methods

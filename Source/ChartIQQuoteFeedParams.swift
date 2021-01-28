@@ -51,10 +51,10 @@ public class ChartIQQuoteFeedParams: NSObject {
   /// - Parameters:
   ///   - dictionary: The dictionary with data for init QuoteFeedParams model.
   public init(dictionary: [String: Any]) {
-    self.symbol = dictionary[ChartIQConstants.QuoteFeed.symbolParam] as? String ?? ""
-    self.startDate = dictionary[ChartIQConstants.QuoteFeed.startDateParam] as? String ?? ""
-    self.endDate = dictionary[ChartIQConstants.QuoteFeed.endDateParam] as? String ?? ""
-    self.interval = dictionary[ChartIQConstants.QuoteFeed.intervalParam] as? String ?? ""
-    self.period = dictionary[ChartIQConstants.QuoteFeed.periodParam] as? Int ?? 0
+    self.symbol = dictionary[Const.QuoteFeed.symbolParam] as? String ?? ""
+    self.startDate = dictionary[Const.QuoteFeed.startDateParam] as? String ?? ""
+    self.endDate = dictionary[Const.QuoteFeed.endDateParam] as? String ?? ""
+    self.interval = dictionary[Const.QuoteFeed.intervalParam] as? String ?? ""
+    self.period = dictionary[Const.QuoteFeed.periodParam] as? Int ?? 0
   }
 }

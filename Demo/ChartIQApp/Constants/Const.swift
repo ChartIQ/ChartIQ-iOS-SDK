@@ -32,7 +32,7 @@ enum AlphaState: CGFloat {
   case invisible = 0.0
 }
 
-// MARK: - Constants
+// MARK: - Const
 
 public struct Const {
 
@@ -58,6 +58,7 @@ public struct Const {
     static let commaSymbol = ","
     static let dotSymbol = "."
     static let colonSymbol = ":"
+    static let perCentSymbol = "%"
 
     static let filledStar = "★"
     static let unfilledStar = "☆"
@@ -125,68 +126,59 @@ public struct Const {
   // MARK: - Services
 
   struct DataSimulatorService {
-    static let simulatorUrlFormatString = "https://mobile-simulator.chartiq.com/datafeed" + "?identifier=%@" + "&startdate=%@" + "%@" + "&interval=%@" + "&period=%i" + "&extended=1" + "&session=%@"
+    static let simulatorUrlFormatString = "https://simulator.chartiq.com/datafeed" +
+      "?identifier=%@" + "&startdate=%@" + "%@" + "&interval=%@" + "&period=%i" + "&extended=1" + "&session=%@"
     static let simulatorEndDateFormatString = "&enddate=%@"
 
     static let errorAlertTitle = "Something went wrong!"
   }
 
   struct SearchSymbolsService {
+    static let searchAllSymbolsURLFormatString = "https://symbols.chartiq.com/chiq.symbolserver.SymbolLookup.service" +
+      "?t=%@" + "&m=100" +
+      "&x=[XNYS,XASE,XNAS,XASX,INDCBSX,INDXASE,INDXNAS,IND_DJI,ARCX,INDARCX,forex,mutualfund,futures]"
+
     static let searchSymbolsURLFormatString = "https://symbols.chartiq.com/chiq.symbolserver.SymbolLookup.service" +
       "?t=%@" + "&m=100" +
-    "&x=[XNYS,XASE,XNAS,XASX,INDCBSX,INDXASE,INDXNAS,IND_DJI,ARCX,INDARCX,forex,mutualfund,futures]"
+      "&x=[XNYS,XASE,XNAS,XASX,INDCBSX,INDXASE,INDXNAS,IND_DJI,ARCX,INDARCX,forex,mutualfund,futures]" +
+      "&e=%@"
 
     static let payloadKey = "payload"
     static let symbolsKey = "symbols"
   }
 
   struct DrawToolsService {
-    static let fillColorKey = "fillColor"
-    static let lineColorKey = "color"
-    static let patternKey = "pattern"
-    static let lineWidthKey = "lineWidth"
-    static let fontKey = "font"
-    static let familyKey = "family"
-    static let sizeKey = "size"
-    static let styleKey = "style"
-    static let axisLabelKey = "axisLabel"
-    static let parametersKey = "parameters"
-    static let fibsKey = "fibs"
-    static let showLinesKey = "showLines"
-    static let waveParametersKey = "waveParameters"
-
     static let fillColorTitle = "Fill Color"
     static let lineColorTitle = "Line Color"
     static let lineTypeTitle = "Line Type"
+
     static let fontFamilyTitle = "Font Family"
     static let fontSizeTitle = "Font Size"
     static let fontStyleTitle = "Font Style"
+
     static let axisLabelTitle = "Axis Label"
+
     static let fibonacciSettingsTitle = "Fibonacci Settings"
+
     static let waveTemplateTitle = "Wave Template"
+    static let decorationTitle = "Decoration"
     static let impulseTitle = "Impulse"
     static let correctiveTitle = "Corrective"
     static let showLinesTitle = "Show Lines"
-  }
 
-  struct StudiesService {
-    static let typeKey = "type"
-    static let colorKey = "color"
-    static let textKey = "text"
-    static let colorTextKey = "colorText"
-    static let nameKey = "name"
-    static let valueKey = "value"
-    static let checkboxKey = "checkbox"
-    static let optionsKey = "options"
+    static let deviationsSettingsTitle = "STD Deviations"
 
-    static let defaultValueKey = "defaultValue"
-    static let defaultOutputKey = "defaultOutput"
-    static let defaultInputKey = "defaultInput"
-    static let defaultColorKey = "defaultColor"
+    static let showLine1Title = "Show Line 1"
+    static let showLine2Title = "Show Line 2"
+    static let showLine3Title = "Show Line 3"
 
-    static let enabledAdditionalKey = "Enabled"
-    static let valueAdditionalKey = "Value"
-    static let colorAdditionalKey = "Color"
+    static let line1ColorTitle = "Line 1 Color"
+    static let line2ColorTitle = "Line 2 Color"
+    static let line3ColorTitle = "Line 3 Color"
+
+    static let line1TypeTitle = "Line 1 Type"
+    static let line2TypeTitle = "Line 2 Type"
+    static let line3TypeTitle = "Line 3 Type"
   }
 
   // MARK: - Models
@@ -228,8 +220,9 @@ public struct Const {
   }
 
   struct ChartButton {
-    static let crosshairEdgeInsets = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
-    static let drawToolEdgeInsets = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: -4)
+    static let seriesEdgeInsets = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
+    static let drawToolEdgeInsets = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
+    static let crosshairEdgeInsets = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: -4)
     static let fullViewEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -4)
   }
 
@@ -374,21 +367,29 @@ public struct Const {
     static let cellNibName = "DrawToolTableCell"
   }
 
+  struct FibInputTableCell {
+    static let cellId = "FibInputTableCellReuseIdentifier"
+    static let cellNibName = "FibInputTableCell"
+  }
+
   // MARK: - View Controllers
 
   struct Chart {
     static let defaultSymbol = "AAPL"
     static let defaultInterval = "1D"
 
+    static let symbolsButtonSize = CGSize(width: 76, height: 32)
+    static let intervalsButtonSize = CGSize(width: 52, height: 32)
+
+    static let addSeriesButtonSize = CGSize(width: 32, height: 32)
     static let crosshairButtonSize = CGSize(width: 32, height: 32)
     static let drawingToolButtonSize = CGSize(width: 32, height: 32)
-    static let intervalsButtonSize = CGSize(width: 52, height: 32)
-    static let symbolsButtonSize = CGSize(width: 76, height: 32)
     static let fullViewButtonSize = CGSize(width: 32, height: 32)
+
     static let fullViewFloatingButtonSize = CGSize(width: 32, height: 32)
 
     static let maxLeftBarButtonItems = 2
-    static let maxRightBarButtonItems = 3
+    static let maxRightBarButtonItems = 4
 
     static let manageLayersTitle = "Manage Layers"
 
@@ -396,11 +397,6 @@ public struct Const {
     static let bringForwardTitle = "Bring Forward"
     static let sendBackwardTitle = "Send Backward"
     static let sendToBottomTitle = "Send to Bottom"
-
-    static let simulatedDataInformationAlertTitle = """
-      This is a sample app intended to be used for evaluation purposes only.
-      It provides simulated data and is not intended to be used as a source of real information.
-    """
   }
 
   struct SearchSymbols {
@@ -408,6 +404,13 @@ public struct Const {
     static let emptyStateNotFoundTitle = "Symbols not found"
     static let emptyStateNotFoundDescription = "Try another symbol to type in or apply current request"
     static let emptyStateViewButtonTitle = "Apply"
+
+    static let allFilterItemTitle = "ALL"
+    static let stocksFilterItemTitle = "STOCKS"
+    static let forexFilterItemTitle = "FOREX"
+    static let indexesFilterItemTitle = "INDEXES"
+    static let fundsFilterItemTitle = "FUNDS"
+    static let futuresFilterItemTitle = "FUTURES"
   }
 
   struct Intervals {
@@ -417,6 +420,15 @@ public struct Const {
     static let customConfigHeaderTitle = "Custom Interval"
 
     static let pickerViewHeight: CGFloat = 250
+  }
+
+  struct Series {
+    static let screenTitle = "Compare Symbols"
+
+    static let emptyStateViewTitle = "No Symbols to compare yet"
+    static let emptyStateViewButtonTitle = "Add Symbol"
+
+    static let colorKey = "color"
   }
 
   struct DrawTools {
@@ -465,6 +477,17 @@ public struct Const {
     static let restoreConfigAlertMessage = "This Template config will be restored to default parameters."
   }
 
+  struct FibSettingsViewController {
+    static let screenTitle = "Fibonacci Settings"
+
+    static let fibInputPlaceholderTitle = "Custom %"
+    static let fibInputAddButtonTitle = "Add"
+  }
+
+  struct DeviationsViewController {
+    static let screenTitle = "Std Deviations Settings"
+  }
+
   struct Studies {
     static let screenTitle = "Active Studies"
 
@@ -486,8 +509,9 @@ public struct Const {
     static let removeStudyAlertTitle = "Do You Want To Remove This Study?"
     static let removeStudyAlertMessage = "This study will be removed from the current chart."
 
-    static let intAcceptableCharacters = "0123456789-"
-    static let doubleAcceptableCharacters = "0123456789,."
+    static let negativeIntDigits = "0123456789-"
+    static let doubleDigits = "0123456789,."
+    static let negativeDoubleDigits = "-0123456789,."
   }
 
   struct FullScreenPicker {

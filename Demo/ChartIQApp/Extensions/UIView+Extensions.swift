@@ -140,3 +140,20 @@ extension UIView {
     layer.shadowRadius = radius
   }
 }
+
+// MARK: - UIView Animation Extension
+
+extension UIView {
+
+  func fadeInAnimation() {
+    UIView.animate(withDuration: 0.5, animations: {
+      self.alpha = 1
+    }, completion: nil)
+  }
+
+  func fadeOutAnimation() {
+    UIView.animate(withDuration: 0.5, animations: {
+      self.alpha = 0
+    }, completion: nil)
+  }
+}
