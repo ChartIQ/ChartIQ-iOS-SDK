@@ -105,7 +105,7 @@ class FibSettingsViewController: BaseViewController {
 
   private func updateParameter(display: Bool, at indexPath: IndexPath) {
     var fibSetting = fibSettings[indexPath.row]
-    fibSetting[ChartIQConst.DrawingParameter.displayKey] = true
+    fibSetting[ChartIQConst.DrawingParameter.displayKey] = display
     fibSettings.replace(object: fibSetting, atIndex: indexPath.row)
   }
 
