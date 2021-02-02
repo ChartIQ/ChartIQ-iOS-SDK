@@ -556,7 +556,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForSetDrawingParameter(_ parameterName: String, value: Any) -> String {
     let safeParameterName = safeScriptParameter(parameterName)
-    let valueString = "\(value is String ? "\"\(value)\"" : value)"
+    let valueString = "\(value is String ? "`\(value)`" : value)"
     let script = mobileNameSpace + "setDrawingParameters(\"\(safeParameterName)\", \(valueString));"
     return script
   }
