@@ -48,6 +48,11 @@ class StudyDetailViewController: BaseViewController {
     updateStudyViewModels()
   }
 
+  override func languageDidChange() {
+    saveBarButtonItem?.title = locManager.localize(Const.General.saveTitle)
+    updateStudyViewModels()
+  }
+
   // MARK: - Setup Methods
 
   override func setupUI() {
@@ -69,26 +74,13 @@ class StudyDetailViewController: BaseViewController {
     tableView.delegate = self
     tableView.dataSource = self
 
-    addKeyboardObservers(selector: #selector(adjustForKeyboard))
-  }
-
-  override func languageDidChange() {
-    saveBarButtonItem?.title = locManager.localize(Const.General.saveTitle)
-    updateStudyViewModels()
+    addKeyboardObservers()
   }
 
   // MARK: - Actions Methods
 
   @objc private func saveButtonTapped() {
     saveStudy()
-  }
-
-  private func removeStudyButtonTapped() {
-    presentRemoveStudyConfirmationAlert()
-  }
-
-  private func resetButtonTapped() {
-    presentResetDefaultsConfirmationAlert()
   }
 
   // MARK: - Private Methods
@@ -118,34 +110,34 @@ class StudyDetailViewController: BaseViewController {
     var outputs: [String: Any] = [:]
     var parameters: [String: Any] = [:]
     for inputParameter in inputParameters {
-      if let name = inputParameter[Const.StudiesService.nameKey] as? String,
-        let value = inputParameter[Const.StudiesService.valueKey] {
+      if let name = inputParameter[ChartIQConst.StudyParameter.nameKey] as? String,
+        let value = inputParameter[ChartIQConst.StudyParameter.valueKey] {
         inputs[name] = value
       }
     }
     for outputParameter in outputParameters {
-      if let name = outputParameter[Const.StudiesService.nameKey] as? String,
-        let color = outputParameter[Const.StudiesService.colorKey] {
+      if let name = outputParameter[ChartIQConst.StudyParameter.nameKey] as? String,
+        let color = outputParameter[ChartIQConst.StudyParameter.colorKey] {
         outputs[name] = color
       }
     }
     for paramParameter in paramParameters {
-      if let type = paramParameter[Const.StudiesService.typeKey] as? String,
-        type == Const.StudiesService.checkboxKey {
-        if var name = paramParameter[Const.StudiesService.nameKey] as? String,
-          let value = paramParameter[Const.StudiesService.valueKey] {
-          name += Const.StudiesService.enabledAdditionalKey
+      if let type = paramParameter[ChartIQConst.StudyParameter.typeKey] as? String,
+        type == ChartIQConst.StudyParameter.checkboxKey {
+        if var name = paramParameter[ChartIQConst.StudyParameter.nameKey] as? String,
+          let value = paramParameter[ChartIQConst.StudyParameter.valueKey] {
+          name += ChartIQConst.StudyParameter.enabledAdditionalKey
           parameters[name] = value
         }
       } else {
-        if var name = paramParameter[Const.StudiesService.nameKey] as? String,
-          let textValue = paramParameter[Const.StudiesService.valueKey] {
-          name += Const.StudiesService.valueAdditionalKey
+        if var name = paramParameter[ChartIQConst.StudyParameter.nameKey] as? String,
+          let textValue = paramParameter[ChartIQConst.StudyParameter.valueKey] {
+          name += ChartIQConst.StudyParameter.valueAdditionalKey
           parameters[name] = textValue
         }
-        if var name = paramParameter[Const.StudiesService.nameKey] as? String,
-          let colorValue = paramParameter[Const.StudiesService.colorKey] {
-          name += Const.StudiesService.colorAdditionalKey
+        if var name = paramParameter[ChartIQConst.StudyParameter.nameKey] as? String,
+          let colorValue = paramParameter[ChartIQConst.StudyParameter.colorKey] {
+          name += ChartIQConst.StudyParameter.colorAdditionalKey
           parameters[name] = colorValue
         }
       }
@@ -157,29 +149,29 @@ class StudyDetailViewController: BaseViewController {
 
   private func resetStudyParameters() {
     for (index, var inputParameter) in inputParameters.enumerated() {
-      if let defaultValue = inputParameter[Const.StudiesService.defaultInputKey] {
-        inputParameter[Const.StudiesService.valueKey] = defaultValue
+      if let defaultValue = inputParameter[ChartIQConst.StudyParameter.defaultInputKey] {
+        inputParameter[ChartIQConst.StudyParameter.valueKey] = defaultValue
       }
       inputParameters[index] = inputParameter
     }
     for (index, var outputParameter) in outputParameters.enumerated() {
-      if let defaultColor = outputParameter[Const.StudiesService.defaultOutputKey] {
-        outputParameter[Const.StudiesService.colorKey] = defaultColor
+      if let defaultColor = outputParameter[ChartIQConst.StudyParameter.defaultOutputKey] {
+        outputParameter[ChartIQConst.StudyParameter.colorKey] = defaultColor
       }
       outputParameters[index] = outputParameter
     }
     for (index, var paramParameter) in paramParameters.enumerated() {
-      if let type = paramParameter[Const.StudiesService.typeKey] as? String,
-        type == Const.StudiesService.checkboxKey {
-        if let defaultValue = paramParameter[Const.StudiesService.defaultValueKey] {
-          paramParameter[Const.StudiesService.valueKey] = defaultValue
+      if let type = paramParameter[ChartIQConst.StudyParameter.typeKey] as? String,
+        type == ChartIQConst.StudyParameter.checkboxKey {
+        if let defaultValue = paramParameter[ChartIQConst.StudyParameter.defaultValueKey] {
+          paramParameter[ChartIQConst.StudyParameter.valueKey] = defaultValue
         }
       } else {
-        if let defaultValue = paramParameter[Const.StudiesService.defaultValueKey] {
-          paramParameter[Const.StudiesService.valueKey] = defaultValue
+        if let defaultValue = paramParameter[ChartIQConst.StudyParameter.defaultValueKey] {
+          paramParameter[ChartIQConst.StudyParameter.valueKey] = defaultValue
         }
-        if let defaultColor = paramParameter[Const.StudiesService.defaultColorKey] {
-          paramParameter[Const.StudiesService.colorKey] = defaultColor
+        if let defaultColor = paramParameter[ChartIQConst.StudyParameter.defaultColorKey] {
+          paramParameter[ChartIQConst.StudyParameter.colorKey] = defaultColor
         }
       }
       paramParameters[index] = paramParameter
@@ -188,8 +180,8 @@ class StudyDetailViewController: BaseViewController {
 
   private func updateInputParameters(name: String, value: Any) {
     for (index, var inputParameter) in inputParameters.enumerated()
-      where inputParameter[Const.StudiesService.nameKey] as? String == name {
-        inputParameter[Const.StudiesService.valueKey] = value
+      where inputParameter[ChartIQConst.StudyParameter.nameKey] as? String == name {
+        inputParameter[ChartIQConst.StudyParameter.valueKey] = value
         inputParameters[index] = inputParameter
         break
     }
@@ -197,8 +189,8 @@ class StudyDetailViewController: BaseViewController {
 
   private func updateOutputParameters(name: String, value: Any) {
     for (index, var outputParameter) in outputParameters.enumerated()
-      where outputParameter[Const.StudiesService.nameKey] as? String == name {
-        outputParameter[Const.StudiesService.colorKey] = value
+      where outputParameter[ChartIQConst.StudyParameter.nameKey] as? String == name {
+        outputParameter[ChartIQConst.StudyParameter.colorKey] = value
         outputParameters[index] = outputParameter
         break
     }
@@ -206,7 +198,7 @@ class StudyDetailViewController: BaseViewController {
 
   private func updateParamParameters(name: String, valueKey: String, value: Any) {
     for (index, var paramParameter) in paramParameters.enumerated()
-      where paramParameter[Const.StudiesService.nameKey] as? String == name {
+      where paramParameter[ChartIQConst.StudyParameter.nameKey] as? String == name {
         paramParameter[valueKey] = value
         paramParameters[index] = paramParameter
         break
@@ -238,69 +230,14 @@ class StudyDetailViewController: BaseViewController {
     } else if let textColorViewModel = viewModel as? TextColorTableCellViewModel {
       let value = Int(textField.text ?? "0") ?? 0
       textColorViewModel.number = value
-      updateParamParameters(name: textColorViewModel.title, valueKey: Const.StudiesService.valueKey, value: value)
+      updateParamParameters(name: textColorViewModel.title, valueKey: ChartIQConst.StudyParameter.valueKey, value: value)
     }
   }
 
   private func updateSelectedToggle(with toggleViewModel: ToggleTableCellViewModel, isToggleOn: Bool) {
     toggleViewModel.isToggleOn = isToggleOn
-    updateParamParameters(name: toggleViewModel.title, valueKey: Const.StudiesService.valueKey, value: isToggleOn)
+    updateParamParameters(name: toggleViewModel.title, valueKey: ChartIQConst.StudyParameter.valueKey, value: isToggleOn)
     updateInputParameters(name: toggleViewModel.title, value: isToggleOn)
-  }
-
-  private func getTableCell(from viewModel: TableCellViewModelProtocol,
-                            at indexPath: IndexPath) -> UITableViewCell {
-    if let buttonViewModel = viewModel as? ButtonTableCellViewModel,
-      let buttonCell = tableView.dequeueReusableCell(withIdentifier: Const.ButtonTableCell.cellId,
-                                                     for: indexPath) as? ButtonTableCell {
-      buttonCell.setupCell(withViewModel: buttonViewModel)
-      return buttonCell
-    }
-    if (viewModel is TextTableCellViewModel) || (viewModel is NumberTableCellViewModel),
-      let textCell = tableView.dequeueReusableCell(withIdentifier: Const.TextTableCell.cellId,
-                                                   for: indexPath) as? TextTableCell {
-      textCell.setupCell(withViewModel: viewModel)
-      textCell.didTextFieldEndEditing = { [weak self] textField in
-        guard let self = self else { return }
-        self.updateSelectedText(with: viewModel, from: textField)
-      }
-      return textCell
-    }
-    if (viewModel is TextColorTableCellViewModel) || (viewModel is ColorTableCellViewModel),
-      let textColorCell = tableView.dequeueReusableCell(withIdentifier: Const.TextColorTableCell.cellId,
-                                                        for: indexPath) as? TextColorTableCell {
-      textColorCell.setupCell(withViewModel: viewModel)
-      textColorCell.didTextFieldEndEditing = { [weak self] textField in
-        guard let self = self else { return }
-        self.updateSelectedText(with: viewModel, from: textField)
-      }
-      textColorCell.didSelectColorButtonTapped = { [weak self] in
-        guard let self = self else { return }
-        self.updateSelectedColor(with: viewModel, at: indexPath)
-      }
-      return textColorCell
-    }
-    if let toggleViewModel = viewModel as? ToggleTableCellViewModel,
-      let toggleCell = tableView.dequeueReusableCell(withIdentifier: Const.ToggleTableCell.cellId,
-                                                     for: indexPath) as? ToggleTableCell {
-      toggleCell.setupCell(withViewModel: toggleViewModel)
-      toggleCell.toggleDidChange = { [weak self] isToggleOn in
-        guard let self = self else { return }
-        self.updateSelectedToggle(with: toggleViewModel, isToggleOn: isToggleOn)
-      }
-      return toggleCell
-    }
-    if let selectViewModel = viewModel as? SelectTableCellViewModel,
-      let selectCell = tableView.dequeueReusableCell(withIdentifier: Const.SelectTableCell.cellId,
-                                                     for: indexPath) as? SelectTableCell {
-      selectCell.setupCell(withViewModel: selectViewModel)
-      selectCell.didSelectButtonTapped = { [weak self] in
-        guard let self = self else { return }
-        self.showSelectOptionsController(parameterName: selectViewModel.title)
-      }
-      return selectCell
-    }
-    return UITableViewCell()
   }
 
   private func resetToDefaults() {
@@ -350,33 +287,15 @@ class StudyDetailViewController: BaseViewController {
     showAlert(title: removeTitle, message: removeMessage, actions: [removeAction])
   }
 
-  // MARK: - Private Helper Methods
-
-  @objc private func adjustForKeyboard(notification: Notification) {
-    guard let keyboard = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-    let keyboardScreenEndFrame = keyboard.cgRectValue
-    let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-    if notification.name == UIResponder.keyboardWillHideNotification {
-      tableView.contentInset = .zero
-    } else {
-      var bottomHeight = keyboardViewEndFrame.height
-      if #available(iOS 11.0, *) {
-        bottomHeight -= view.safeAreaInsets.bottom
-      }
-      tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomHeight, right: 0)
-    }
-    tableView.scrollIndicatorInsets = tableView.contentInset
-  }
-
   // MARK: - Show Controllers Private Methods
 
   private func showSelectOptionsController(parameterName: String) {
     guard let controller = UIStoryboard.selectOptionViewController() else { return }
     for parameter in inputParameters {
-      if parameter[Const.StudiesService.nameKey] as? String == parameterName,
-        let options = parameter[Const.StudiesService.optionsKey] as? [String: Any] {
+      if parameter[ChartIQConst.StudyParameter.nameKey] as? String == parameterName,
+        let options = parameter[ChartIQConst.StudyParameter.optionsKey] as? [String: Any] {
         var selectedOption = ""
-        if let value = parameter[Const.StudiesService.valueKey] {
+        if let value = parameter[ChartIQConst.StudyParameter.valueKey] {
           selectedOption = String(describing: value)
         }
         controller.options = options.map { $0.key.capitalizeFirst() }
@@ -402,7 +321,7 @@ class StudyDetailViewController: BaseViewController {
       guard let self = self, let selectedColor = item.selectedColor else { return }
       if self.selectedCellIndex > (self.inputParameters.count + self.outputParameters.count) {
         self.updateParamParameters(name: parameterName,
-                                   valueKey: Const.StudiesService.colorKey,
+                                   valueKey: ChartIQConst.StudyParameter.colorKey,
                                    value: selectedColor.toHexString())
       } else {
         self.updateOutputParameters(name: parameterName, value: selectedColor.toHexString())
@@ -412,6 +331,58 @@ class StudyDetailViewController: BaseViewController {
     let navigationController = NavigationController(rootViewController: controller)
     view.endEditing(true)
     present(navigationController, animated: true, completion: nil)
+  }
+
+  // MARK: - Private UITableView Helper Methods
+
+  private func getTableCell(from viewModel: TableCellViewModelProtocol,
+                            at indexPath: IndexPath) -> UITableViewCell {
+    if let buttonViewModel = viewModel as? ButtonTableCellViewModel,
+      let buttonCell = tableView.dequeueReusableCell(withIdentifier: Const.ButtonTableCell.cellId,
+                                                     for: indexPath) as? ButtonTableCell {
+      buttonCell.setupCell(withViewModel: buttonViewModel)
+      return buttonCell
+    }
+    if (viewModel is TextTableCellViewModel) || (viewModel is NumberTableCellViewModel),
+      let textCell = tableView.dequeueReusableCell(withIdentifier: Const.TextTableCell.cellId,
+                                                   for: indexPath) as? TextTableCell {
+      textCell.setupCell(withViewModel: viewModel)
+      textCell.didTextFieldEndEditing = { [weak self] textField in
+        self?.updateSelectedText(with: viewModel, from: textField)
+      }
+      return textCell
+    }
+    if (viewModel is TextColorTableCellViewModel) || (viewModel is ColorTableCellViewModel),
+      let textColorCell = tableView.dequeueReusableCell(withIdentifier: Const.TextColorTableCell.cellId,
+                                                        for: indexPath) as? TextColorTableCell {
+      textColorCell.setupCell(withViewModel: viewModel)
+      textColorCell.didTextFieldEndEditing = { [weak self] textField in
+        self?.updateSelectedText(with: viewModel, from: textField)
+      }
+      textColorCell.didSelectColorButtonTapped = { [weak self] in
+        self?.updateSelectedColor(with: viewModel, at: indexPath)
+      }
+      return textColorCell
+    }
+    if let toggleViewModel = viewModel as? ToggleTableCellViewModel,
+      let toggleCell = tableView.dequeueReusableCell(withIdentifier: Const.ToggleTableCell.cellId,
+                                                     for: indexPath) as? ToggleTableCell {
+      toggleCell.setupCell(withViewModel: toggleViewModel)
+      toggleCell.toggleDidChange = { [weak self] isToggleOn in
+        self?.updateSelectedToggle(with: toggleViewModel, isToggleOn: isToggleOn)
+      }
+      return toggleCell
+    }
+    if let selectViewModel = viewModel as? SelectTableCellViewModel,
+      let selectCell = tableView.dequeueReusableCell(withIdentifier: Const.SelectTableCell.cellId,
+                                                     for: indexPath) as? SelectTableCell {
+      selectCell.setupCell(withViewModel: selectViewModel)
+      selectCell.didSelectButtonTapped = { [weak self] in
+        self?.showSelectOptionsController(parameterName: selectViewModel.title)
+      }
+      return selectCell
+    }
+    return UITableViewCell()
   }
 }
 
@@ -442,10 +413,19 @@ extension StudyDetailViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     view.endEditing(true)
     guard let tableSection = TableSection(rawValue: indexPath.section), tableSection == .second else { return }
-    indexPath.row == 0 ? resetButtonTapped() : removeStudyButtonTapped()
+    indexPath.row == 0 ? presentResetDefaultsConfirmationAlert() : presentRemoveStudyConfirmationAlert()
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return Const.BaseTableCell.cellHeight
+  }
+}
+
+// MARK: - UIViewControllerKeyboardProtocol
+
+extension StudyDetailViewController: UIViewControllerKeyboardProtocol {
+
+  var scrollView: UIScrollView! {
+    return tableView
   }
 }

@@ -98,13 +98,18 @@ internal protocol ChartIQScriptManagerProtocol {
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   func getScriptForLoadChart(_ symbol: String) -> String
 
+  /// Returns a script that returns series.
+  ///
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  func getScriptForSeries() -> String
+
   /// Returns a script that adds series.
   ///
   /// - Parameters:
   ///   - symbol: The String Object.
   ///   - color: The UIColor Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  func getScriptForAddSeries(_ symbol: String, color: UIColor) -> String
+  func getScriptForAddSeries(_ symbol: String, color: UIColor, isComparison: Bool) -> String
 
   /// Returns a script that removes series.
   ///
@@ -112,6 +117,15 @@ internal protocol ChartIQScriptManagerProtocol {
   ///   - symbol: The String Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   func getScriptForRemoveSeries(_ symbol: String) -> String
+
+  /// Returns a script that sets a series parameter.
+  ///
+  /// - Parameters:
+  ///   - symbol: The String Object. The name of symbol for series.
+  ///   - parameterName: The String Object. The name of parameter to modify.
+  ///   - value: The String Object. The value for parameter.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  func getScriptForSetSeriesParameter(symbol: String, parameterName: String, value: String) -> String
 
   /// Returns a script that gets a chart scale.
   ///
@@ -248,10 +262,10 @@ internal protocol ChartIQScriptManagerProtocol {
   /// Returns a script that gets study parameters.
   ///
   /// - Parameters:
-  ///   - studyName: The String Object.
+  ///   - study: The ChartIQStudy model.
   ///   - type: The ChartIQStudyParametersType Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  func getScriptForStudyParameters(_ studyName: String, type: ChartIQStudyParametersType) -> String
+  func getScriptForStudyParameters(_ study: ChartIQStudy, type: ChartIQStudyParametersType) -> String
 
   /// Returns a script that sets a study.
   ///
@@ -260,15 +274,15 @@ internal protocol ChartIQScriptManagerProtocol {
   ///   - key: The String Object.
   ///   - value: The String Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  func getScriptForSetStudy(_ name: String, key: String, value: String) -> String
+  func getScriptForSetStudyParameter(_ name: String, key: String, value: String) -> String
 
   /// Returns a script that sets a study.
   ///
   /// - Parameters:
-  ///   - name: The String Object.
+  ///   - study: The ChartIQStudy model.
   ///   - parameters: The Dictionary Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  func getScriptForSetStudy(_ name: String, parameters: [String: String]) -> String
+  func getScriptForSetStudyParameters(_ study: ChartIQStudy, parameters: [String: String]) -> String
 
   /// Returns a script that adds a study.
   ///
@@ -282,9 +296,9 @@ internal protocol ChartIQScriptManagerProtocol {
   /// Returns a script that removes a study.
   ///
   /// - Parameters:
-  ///   - studyName: The String Object.
+  ///   - study: The ChartIQStudy model.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  func getScriptForRemoveStudy(_ studyName: String) -> String
+  func getScriptForRemoveStudy(_ study: ChartIQStudy) -> String
 
   /// Returns a script that removes all studies.
   ///
@@ -392,7 +406,7 @@ internal protocol ChartIQScriptManagerProtocol {
   ///   - json: The String Object.
   ///   - cb: The String Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  func getScriptForFormatJSQuoteData(_ json: String, moreAvailable: Bool, cb: String) -> String
+  func getScriptForFormatJSQuoteData(_ json: String, cb: String) -> String
 
   /// Returns a script that gets a drawing listener.
   ///

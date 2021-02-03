@@ -445,6 +445,95 @@ public enum ChartIQStudyError: Error {
   }
 }
 
+// MARK: - ChartIQDrawingParameterType
+
+@objc public enum ChartIQDrawingParameterType: Int {
+  case fillColor
+  case lineColor
+  case pattern
+  case lineWidth
+  case family
+  case size
+  case style
+  case weight
+  case fibs
+  case showLines
+  case waveTemplate
+  case impulse
+  case corrective
+  case decoration
+  case active1
+  case active2
+  case active3
+  case color1
+  case color2
+  case color3
+  case lineWidth1
+  case lineWidth2
+  case lineWidth3
+  case pattern1
+  case pattern2
+  case pattern3
+
+  /// Chart time unit string value.
+  public var stringValue: String {
+    switch self {
+    case .fillColor:
+      return "fillColor"
+    case .lineColor:
+      return "color"
+    case .pattern:
+      return "pattern"
+    case .lineWidth:
+      return "lineWidth"
+    case .family:
+      return "family"
+    case .size:
+      return "size"
+    case .style:
+      return "style"
+    case .weight:
+      return "weight"
+    case .fibs:
+      return "fibs"
+    case .showLines:
+      return "showLines"
+    case .waveTemplate:
+      return "waveTemplate"
+    case .impulse:
+      return "impulse"
+    case .corrective:
+      return "corrective"
+    case .decoration:
+      return "decoration"
+    case .active1:
+      return "active1"
+    case .active2:
+      return "active2"
+    case .active3:
+      return "active3"
+    case .color1:
+      return "color1"
+    case .color2:
+      return "color2"
+    case .color3:
+      return "color3"
+    case .lineWidth1:
+      return "lineWidth1"
+    case .lineWidth2:
+      return "lineWidth2"
+    case .lineWidth3:
+      return "lineWidth3"
+    case .pattern1:
+      return "pattern1"
+    case .pattern2:
+      return "pattern2"
+    case .pattern3:
+      return "pattern3"
+    }
+  }
+}
+
 // MARK: - Internal Enums
 // MARK: - ChartIQCallbackMessage
 

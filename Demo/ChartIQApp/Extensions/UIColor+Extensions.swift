@@ -28,6 +28,7 @@ extension UIColor {
   internal static let coralRedColor = UIColor(hexString: "ff3b30")
   internal static let brillianteAzureColor = UIColor(hexString: "3a8eff")
   internal static let outerSpace = UIColor(hexString: "273843")
+  internal static let charlestonGreen = UIColor(hexString: "1F2A34")
 }
 
 // MARK: - UIColor Dynamic Colors Extension
@@ -38,6 +39,14 @@ extension UIColor {
 
   internal class var whiteDarkGunmetalColor: UIColor {
     return colorAsset(name: "whiteDarkGunmetal", baseColor: UIColor.whiteColor)
+  }
+
+  internal class var whiteCharlestonGreenColor: UIColor {
+    return colorAsset(name: "whiteCharlestonGreen", baseColor: UIColor.whiteColor)
+  }
+
+  internal class var whiteYankeesBlueColor: UIColor {
+    return colorAsset(name: "whiteYankeesBlue", baseColor: UIColor.whiteColor)
   }
 
   internal class var ghostWhiteСhineseBlackColor: UIColor {
@@ -117,6 +126,25 @@ extension UIColor {
       UIColor(hexString: "ee6fa9"),
       UIColor(hexString: "f29bc1"),
       UIColor(hexString: "000000")
+    ]
+  }
+
+  internal static func allSeriesColors() -> [UIColor] {
+    return [
+      UIColor(hexString: "#8ec648"),
+      UIColor(hexString: "#00afed"),
+      UIColor(hexString: "#ee652e"),
+      UIColor(hexString: "#912a8e"),
+      UIColor(hexString: "#fff126"),
+      UIColor(hexString: "#e9088c"),
+      UIColor(hexString: "#ea1d2c"),
+      UIColor(hexString: "#00a553"),
+      UIColor(hexString: "#00a99c"),
+      UIColor(hexString: "#0056a4"),
+      UIColor(hexString: "#f4932f"),
+      UIColor(hexString: "#0073ba"),
+      UIColor(hexString: "#66308f"),
+      UIColor(hexString: "#323390")
     ]
   }
 }

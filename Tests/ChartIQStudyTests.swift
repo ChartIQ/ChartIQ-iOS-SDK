@@ -114,10 +114,10 @@ class ChartIQStudyTests: XCTestCase {
 
     // Then
     XCTAssertEqual(key, study.shortName)
-    XCTAssertEqual(dictionary[ChartIQConstants.Study.nameParam] as? String, study.fullName)
-    XCTAssertEqual((dictionary[ChartIQConstants.Study.inputsParam] as? [String: Any])?.count, study.inputs?.count)
-    XCTAssertEqual((dictionary[ChartIQConstants.Study.outputsParam] as? [String: Any])?.count, study.outputs?.count)
-    XCTAssertEqual((dictionary[ChartIQConstants.Study.parametersParam] as? [String: Any])?.count, study.parameters?.count)
+    XCTAssertEqual(dictionary[Const.Study.nameParam] as? String, study.fullName)
+    XCTAssertEqual((dictionary[Const.Study.inputsParam] as? [String: Any])?.count, study.inputs?.count)
+    XCTAssertEqual((dictionary[Const.Study.outputsParam] as? [String: Any])?.count, study.outputs?.count)
+    XCTAssertEqual((dictionary[Const.Study.parametersParam] as? [String: Any])?.count, study.parameters?.count)
   }
 
   func testInitWithJSStudyStringNil() {

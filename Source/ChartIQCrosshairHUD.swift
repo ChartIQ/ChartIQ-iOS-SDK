@@ -58,11 +58,11 @@ public class ChartIQCrosshairHUD: NSObject {
   /// - Parameters:
   ///   - dictionary: The dictionary with data for init CrosshairHUD model.
   public init(dictionary: [String: String]) {
-    self.price = dictionary[ChartIQConstants.CrosshairHUD.priceParam] ?? ""
-    self.volume = dictionary[ChartIQConstants.CrosshairHUD.volumeParam] ?? ""
-    self.open = dictionary[ChartIQConstants.CrosshairHUD.openParam] ?? ""
-    self.high = dictionary[ChartIQConstants.CrosshairHUD.highParam] ?? ""
-    self.close = dictionary[ChartIQConstants.CrosshairHUD.closeParam] ?? ""
-    self.low = dictionary[ChartIQConstants.CrosshairHUD.lowParam] ?? ""
+    self.price = dictionary[Const.CrosshairHUD.priceParam] ?? ""
+    self.volume = dictionary[Const.CrosshairHUD.volumeParam] ?? ""
+    self.open = dictionary[Const.CrosshairHUD.openParam] ?? ""
+    self.high = dictionary[Const.CrosshairHUD.highParam] ?? ""
+    self.close = dictionary[Const.CrosshairHUD.closeParam] ?? ""
+    self.low = dictionary[Const.CrosshairHUD.lowParam] ?? ""
   }
 }

@@ -41,7 +41,6 @@ class TextColorTableCell: UITableViewCell {
     textField.textColor = .cadetBlueColor
     textField.tintColor = .mountainMeadowColor
     textField.font = .systemFont(ofSize: 17, weight: .regular)
-
     textField.delegate = self
   }
 
@@ -97,7 +96,7 @@ extension TextColorTableCell: UITextFieldDelegate {
   func textField(_ textField: UITextField,
                  shouldChangeCharactersIn range: NSRange,
                  replacementString string: String) -> Bool {
-    let cs = NSCharacterSet(charactersIn: Const.StudyDetail.intAcceptableCharacters).inverted
+    let cs = NSCharacterSet(charactersIn: Const.StudyDetail.negativeIntDigits).inverted
     let filtered = string.components(separatedBy: cs).joined()
     return (string == filtered)
   }

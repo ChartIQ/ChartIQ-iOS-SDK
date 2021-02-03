@@ -48,6 +48,11 @@ class SettingsViewController: BaseViewController {
     updateSettingViewModels()
   }
 
+  override func languageDidChange() {
+    navigationItem.title = locManager.localize(Const.Settings.screenTitle)
+    updateSettingViewModels()
+  }
+
   // MARK: - Setup Methods
 
   override func setupUI() {
@@ -62,19 +67,14 @@ class SettingsViewController: BaseViewController {
     tableView.dataSource = self
   }
 
-  override func languageDidChange() {
-    navigationItem.title = locManager.localize(Const.Settings.screenTitle)
-    updateSettingViewModels()
-  }
-
   // MARK: - Private Methods
 
   private func updateSettingViewModels() {
     selectedChartStyle = ChartStyleModel(chartType: chartIQView.chartType,
-                                         chartAggregationType: chartIQView.aggregationType)
+                                         chartAggregationType: chartIQView.chartAggregationType)
     selectedLanguage = locManager.currentLanguage
     let chartStyleTitle = selectedChartStyle?.displayName ?? ""
-    let isLogScale = chartIQView.scale == .log ? true : false
+    let isLogScale = chartIQView.chartScale == .log ? true : false
     let isInvertYAxis = chartIQView.isInvertYAxis
     let isExtendHours = chartIQView.isExtendedHours
     let language = locManager.currentLanguage
@@ -159,6 +159,32 @@ class SettingsViewController: BaseViewController {
     }
     navigationController?.pushViewController(controller, animated: true)
   }
+
+  // MARK: - Private UITableView Helper Methods
+
+  private func getTableCell(from settingViewModel: TableCellViewModelProtocol,
+                            at indexPath: IndexPath) -> UITableViewCell {
+    if let disclosureCellViewModel = settingViewModel as? DisclosureTableCellViewModel {
+      guard let disclosureCell = tableView.dequeueReusableCell(withIdentifier: Const.DisclosureTableCell.cellId,
+                                                               for: indexPath) as? DisclosureTableCell else {
+                                                                return UITableViewCell()
+      }
+      disclosureCell.setupCell(withViewModel: disclosureCellViewModel)
+      return disclosureCell
+    }
+    if let toggleCellViewModel = settingViewModel as? ToggleTableCellViewModel {
+      guard let toggleCell = tableView.dequeueReusableCell(withIdentifier: Const.ToggleTableCell.cellId,
+                                                           for: indexPath) as? ToggleTableCell else {
+                                                            return UITableViewCell()
+      }
+      toggleCell.setupCell(withViewModel: toggleCellViewModel)
+      toggleCell.toggleDidChange = { [weak self] isToogleOn in
+        self?.updateToggleCell(isToggleOn: isToogleOn, atIndexPath: indexPath)
+      }
+      return toggleCell
+    }
+    return UITableViewCell()
+  }
 }
 
 // MARK: - UITableViewDataSource
@@ -177,27 +203,7 @@ extension SettingsViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let tableSection = TableSection(rawValue: indexPath.section),
       let settingViewModel = settings[tableSection]?[indexPath.row] else { return UITableViewCell() }
-    if let disclosureCellViewModel = settingViewModel as? DisclosureTableCellViewModel {
-      guard let disclosureCell = tableView.dequeueReusableCell(withIdentifier: Const.DisclosureTableCell.cellId,
-                                                               for: indexPath) as? DisclosureTableCell else {
-                                                                return UITableViewCell()
-      }
-      disclosureCell.setupCell(withViewModel: disclosureCellViewModel)
-      return disclosureCell
-    }
-    if let toggleCellViewModel = settingViewModel as? ToggleTableCellViewModel {
-      guard let toggleCell = tableView.dequeueReusableCell(withIdentifier: Const.ToggleTableCell.cellId,
-                                                           for: indexPath) as? ToggleTableCell else {
-                                                            return UITableViewCell()
-      }
-      toggleCell.setupCell(withViewModel: toggleCellViewModel)
-      toggleCell.toggleDidChange = { [weak self] isToogleOn in
-        guard let self = self else { return }
-        self.updateToggleCell(isToggleOn: isToogleOn, atIndexPath: indexPath)
-      }
-      return toggleCell
-    }
-    return UITableViewCell()
+    return getTableCell(from: settingViewModel, at: indexPath)
   }
 
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

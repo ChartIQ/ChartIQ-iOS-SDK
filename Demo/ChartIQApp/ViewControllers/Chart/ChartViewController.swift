@@ -35,6 +35,7 @@ class ChartViewController: BaseViewController {
 
   private let symbolsButton = ChartButton(type: .system)
   private let intervalsButton = ChartButton(type: .system)
+  private let seriesButton = ChartButton(type: .custom)
   private let crosshairButton = ChartButton(type: .custom)
   private let drawToolButton = ChartButton(type: .custom)
   private let fullViewButton = ChartButton(type: .custom)
@@ -54,6 +55,7 @@ class ChartViewController: BaseViewController {
   private var crosshairInfoView: CrosshairInfoView?
   private var horizontalPickerView: HorizontalPickerView?
   private var drawToolControlView: DrawToolControlView?
+  private var blurredEffectView: UIVisualEffectView?
 
   private var selectedViewModelIndexPath: IndexPath?
   private var selectedDrawTool: DrawToolViewModel?
@@ -76,6 +78,7 @@ class ChartViewController: BaseViewController {
     setupHorizontalPickerView()
     setupDrawToolControlView()
     performDeviceOrientation()
+    setupBlurEffectView()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -105,17 +108,29 @@ class ChartViewController: BaseViewController {
     updateChartIQTheme()
   }
 
+  override func languageDidChange() {
+    intervalsButton.setTitle(selectedInterval.getShortDisplayName(), for: .normal)
+    if chartIQView.isCrosshairsEnabled(), let crosshairHUD = chartIQView.getHudDetails() {
+      crosshairInfoView?.updateView(withCrosshairHUD: crosshairHUD)
+    }
+  }
+
   // MARK: - Setup Methods
 
   override func setupUI() {
+    chartIQViewContainer.backgroundColor = .whiteCharlestonGreenColor
+    chartIQView.backgroundColor = .whiteCharlestonGreenColor
+
     symbolsButton.frame = CGRect(origin: .zero, size: Const.Chart.symbolsButtonSize)
     symbolsButton.applyStyle(for: .symbols, target: self, action: #selector(symbolsButtonTapped))
     intervalsButton.frame = CGRect(origin: .zero, size: Const.Chart.intervalsButtonSize)
     intervalsButton.applyStyle(for: .intervals, target: self, action: #selector(intervalsButtonTapped))
-    crosshairButton.frame = CGRect(origin: .zero, size: Const.Chart.crosshairButtonSize)
-    crosshairButton.applyStyle(for: .crosshair, target: self, action: #selector(crosshairButtonTapped))
+    seriesButton.frame = CGRect(origin: .zero, size: Const.Chart.addSeriesButtonSize)
+    seriesButton.applyStyle(for: .series, target: self, action: #selector(addSeriesButtonTapped))
     drawToolButton.frame = CGRect(origin: .zero, size: Const.Chart.drawingToolButtonSize)
     drawToolButton.applyStyle(for: .drawTool, target: self, action: #selector(drawToolButtonTapped))
+    crosshairButton.frame = CGRect(origin: .zero, size: Const.Chart.crosshairButtonSize)
+    crosshairButton.applyStyle(for: .crosshair, target: self, action: #selector(crosshairButtonTapped))
     fullViewButton.frame = CGRect(origin: .zero, size: Const.Chart.fullViewButtonSize)
     fullViewButton.applyStyle(for: .fullView, target: self, action: #selector(fullViewButtonTapped))
 
@@ -123,11 +138,14 @@ class ChartViewController: BaseViewController {
       UIBarButtonItem(customView: symbolsButton),
       UIBarButtonItem(customView: intervalsButton)
     ]
+
     navigationItem.rightBarButtonItems = [
+      UIBarButtonItem(customView: crosshairButton),
       UIBarButtonItem(customView: drawToolButton),
-      UIBarButtonItem(customView: crosshairButton)
+      UIBarButtonItem(customView: seriesButton)
     ]
-    [symbolsButton, intervalsButton, crosshairButton, drawToolButton].forEach { button in
+
+    [symbolsButton, intervalsButton, seriesButton, drawToolButton, crosshairButton].forEach { button in
       button.isEnabled = false
     }
 
@@ -137,7 +155,8 @@ class ChartViewController: BaseViewController {
   }
 
   override func setupSettings() {
-    chartIQView.startActivityIndicator()
+    chartIQView.alpha = 0
+    chartIQViewContainer.startActivityIndicator()
   }
 
   private func setupChartIQView() {
@@ -186,21 +205,24 @@ class ChartViewController: BaseViewController {
     drawToolControlViewBottomConstraint.constant = -Const.DrawToolControlView.height
   }
 
-  override func languageDidChange() {
-    intervalsButton.setTitle(selectedInterval.getShortDisplayName(), for: .normal)
-    if chartIQView.isCrosshairsEnabled(), let crosshairHUD = chartIQView.getHudDetails() {
-      crosshairInfoView?.updateView(withCrosshairHUD: crosshairHUD)
-    }
+  private func setupBlurEffectView() {
+    let blurEffect = UIBlurEffect(style: .regular)
+    blurredEffectView = UIVisualEffectView(effect: blurEffect)
+    blurredEffectView?.backgroundColor = .whiteYankeesBlueColor
+    guard let blurredEffectView = blurredEffectView else { return }
+    chartIQViewContainer.addSubview(blurredEffectView)
+    blurredEffectView.pinEdges(toView: chartIQViewContainer)
+    blurredEffectView.alpha = 1
   }
 
   // MARK: - Actions Methods
 
   @IBAction private func undoButtonTapped(_ sender: Any) {
-    _ = chartIQView.undo()
+    _ = chartIQView.undoDrawing()
   }
 
   @IBAction private func redoButtonTapped(_ sender: Any) {
-    _ = chartIQView.redo()
+    _ = chartIQView.redoDrawing()
   }
 
   @objc private func symbolsButtonTapped() {
@@ -209,6 +231,10 @@ class ChartViewController: BaseViewController {
 
   @objc private func intervalsButtonTapped() {
     presentIntervalsViewController()
+  }
+
+  @objc private func addSeriesButtonTapped() {
+    presentSeriesViewController()
   }
 
   @objc private func crosshairButtonTapped() {
@@ -237,14 +263,16 @@ class ChartViewController: BaseViewController {
   // MARK: - ChartIQView Private Methods
 
   private func chartIQLoadedInitialData() {
-    [symbolsButton, intervalsButton, crosshairButton, drawToolButton].forEach { button in
+    [symbolsButton, intervalsButton, seriesButton, drawToolButton, crosshairButton].forEach { button in
       button.isEnabled = true
     }
 
     updateCrosshairInfoView()
     updateChartIQTheme()
-    chartIQView.stopActivityIndicator()
     locManager.performTranslations()
+    chartIQView.alpha = 1
+    chartIQViewContainer.stopActivityIndicator()
+    blurredEffectView?.fadeOutAnimation()
   }
 
   // MARK: - CrosshairInfoView Private Methods
@@ -445,13 +473,6 @@ class ChartViewController: BaseViewController {
     view.layoutIfNeeded()
   }
 
-  private func showSimulatedDataInformationAlert() {
-    let alertTitle = locManager.localize(Const.Chart.simulatedDataInformationAlertTitle)
-    let doneActionTitle = locManager.localize(Const.General.doneTitle)
-    let doneAction = UIAlertAction(title: doneActionTitle, style: .cancel) { _ in }
-    showAlert(title: alertTitle, withCancelAction: false, actions: [doneAction])
-  }
-
   // MARK: - Present Controllers Private Methods
 
   private func presentSearchSymbolsViewController() {
@@ -462,6 +483,13 @@ class ChartViewController: BaseViewController {
       self.chartIQView.loadChart(symbol.name)
       self.symbolsButton.setTitle(symbol.name, for: .normal)
     }
+    let navigationController = NavigationController(rootViewController: controller)
+    present(navigationController, animated: true, completion: nil)
+  }
+
+  private func presentSeriesViewController() {
+    guard let controller = UIStoryboard.seriesViewController() else { return }
+    controller.chartIQView = chartIQView
     let navigationController = NavigationController(rootViewController: controller)
     present(navigationController, animated: true, completion: nil)
   }
@@ -519,9 +547,12 @@ extension ChartViewController: ChartIQDataSource {
 
   public func pullInitialData(by params: ChartIQQuoteFeedParams,
                               completionHandler: @escaping ([ChartIQData]) -> Void) {
+    updateChartIQTheme()
     dataSimulatorService.loadChartData(withParameters: params, controller: self) { chartIQDataArray in
       completionHandler(chartIQDataArray)
-      DispatchQueue.main.async { self.chartIQLoadedInitialData() }
+      DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: {
+        self.chartIQLoadedInitialData()
+      })
     }
   }
 
@@ -588,31 +619,31 @@ extension ChartViewController: HorizontalPickerViewDelegate {
 
   private func didSelectFillColor(item: PickerViewItem) {
     guard let indexPath = selectedViewModelIndexPath,
-      let color = item.selectedColor,
-      let viewModel = drawToolViewModels[indexPath.row] as? DrawToolColorViewModel else { return }
+          let color = item.selectedColor,
+          let viewModel = drawToolViewModels[indexPath.row] as? DrawToolColorViewModel else { return }
     viewModel.color = color
     drawToolViewModels.replace(object: viewModel, atIndex: indexPath.row)
-    chartIQView.setDrawingParameter(Const.DrawToolsService.fillColorKey, value: color.toHexString())
+    chartIQView.setDrawingParameter(.fillColor, value: color.toHexString())
   }
 
   private func didSelectLineColor(item: PickerViewItem) {
     guard let indexPath = selectedViewModelIndexPath,
-      let color = item.selectedColor,
-      let viewModel = drawToolViewModels[indexPath.row] as? DrawToolColorViewModel else { return }
+          let color = item.selectedColor,
+          let viewModel = drawToolViewModels[indexPath.row] as? DrawToolColorViewModel else { return }
     viewModel.color = color
     drawToolViewModels.replace(object: viewModel, atIndex: indexPath.row)
-    chartIQView.setDrawingParameter(Const.DrawToolsService.lineColorKey, value: color.toHexString())
+    chartIQView.setDrawingParameter(.lineColor, value: color.toHexString())
   }
 
   private func didSelectLine(item: PickerViewItem) {
     guard let indexPath = selectedViewModelIndexPath,
-      let line = item.selectedLine,
-      let viewModel = drawToolViewModels[indexPath.row] as? DrawToolBaseViewModel else { return }
+          let line = item.selectedLine,
+          let viewModel = drawToolViewModels[indexPath.row] as? DrawToolBaseViewModel else { return }
     viewModel.line = line
     viewModel.image = line.lineImage
     drawToolViewModels.replace(object: viewModel, atIndex: indexPath.row)
-    chartIQView.setDrawingParameter(Const.DrawToolsService.patternKey, value: line.lineType.stringValue)
-    chartIQView.setDrawingParameter(Const.DrawToolsService.lineWidthKey, value: line.lineWidth)
+    chartIQView.setDrawingParameter(.pattern, value: line.lineType.stringValue)
+    chartIQView.setDrawingParameter(.lineWidth, value: line.lineWidth)
   }
 }
 
