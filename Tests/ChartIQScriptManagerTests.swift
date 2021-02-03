@@ -193,10 +193,10 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetScriptForAddSeries() {
     // Given
-    let correctScript = "stxx.addSeries(\"ibm\", {display:\"ibm\", color: \"#ff0000\"  isComparison:true});"
+    let correctScript = "stxx.addSeries(\"ibm\", {display:\"ibm\", color: \"#ff0000\",  isComparison:\"true\"});"
 
     // When
-    let script = chartIQScriptManager.getScriptForAddSeries("ibm", color: .red)
+    let script = chartIQScriptManager.getScriptForAddSeries("ibm", color: .red, isComparison: true)
 
     // Then
     XCTAssertEqual(correctScript, script)
@@ -404,7 +404,7 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetScriptForSetInvertYAxis() {
     // Given
-    let correctScript = "flipChart"
+    let correctScript = "stxx.flipChart(true);"
 
     // When
     let script = chartIQScriptManager.getScriptForSetInvertYAxis(true)
@@ -473,8 +473,16 @@ class ChartIQScriptManagerTests: XCTestCase {
     // Given
     let correctScript = mobileNameSpace + "getStudyParameters(\"‌Alligator‌ (y,13,8,8,5,5,3,n)\" , \"inputs\");"
 
+    let studyFullName = "‌Alligator‌ (y,13,8,8,5,5,3,n)"
+    let study = ChartIQStudy(shortName: studyFullName,
+                             fullName: studyFullName,
+                             originalName: studyFullName,
+                             inputs: nil,
+                             outputs: nil,
+                             parameters: nil)
+
     // When
-    let script = chartIQScriptManager.getScriptForStudyParameters("‌Alligator‌ (y,13,8,8,5,5,3,n)", type: .inputs)
+    let script = chartIQScriptManager.getScriptForStudyParameters(study, type: .inputs)
 
     // Then
     XCTAssertEqual(correctScript, script)
@@ -485,9 +493,9 @@ class ChartIQScriptManagerTests: XCTestCase {
     let correctScript = mobileNameSpace + "setStudy(\"‌Alligator‌ (y,13,8,8,5,5,3,n)-2\", \"Lips\", \"#00DD00\")"
 
     // When
-    let script = chartIQScriptManager.getScriptForSetStudy("‌Alligator‌ (y,13,8,8,5,5,3,n)-2",
-                                                           key: "Lips",
-                                                           value: "#00DD00")
+    let script = chartIQScriptManager.getScriptForSetStudyParameter("‌Alligator‌ (y,13,8,8,5,5,3,n)-2",
+                                                                    key: "Lips",
+                                                                    value: "#00DD00")
 
     // Then
     XCTAssertEqual(correctScript, script)
@@ -495,7 +503,7 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetScriptForSetStudyWithParameters() {
     // Given
-    let correctScript = "var s=stxx.layout.studies; var selectedSd = {}; for(var n in s){    " +
+    let correctScript = "var s=stxx.layout.studies; var selectedSd = {}; for(var n in s){ " +
       "var sd=s[n]; if (sd.name === \"‌Alligator‌ (y,13,8,8,5,5,3,n)-2\") { selectedSd = sd; }} var helper = " +
       "new CIQ.Studies.DialogHelper({sd:selectedSd,stx:stxx}); var isFound = false; var newInputParameters = {}; " +
       "var newOutputParameters = {}; var newParameters = {}; for (x in helper.inputs) {   var input = " +
@@ -515,8 +523,16 @@ class ChartIQScriptManagerTests: XCTestCase {
       "Lips": "#00DD00"
     ]
 
+    let studyFullName = "‌Alligator‌ (y,13,8,8,5,5,3,n)-2"
+    let study = ChartIQStudy(shortName: studyFullName,
+                             fullName: studyFullName,
+                             originalName: studyFullName,
+                             inputs: nil,
+                             outputs: nil,
+                             parameters: nil)
+
     // When
-    let script = chartIQScriptManager.getScriptForSetStudy("‌Alligator‌ (y,13,8,8,5,5,3,n)-2", parameters: parameters)
+    let script = chartIQScriptManager.getScriptForSetStudyParameters(study, parameters: parameters)
 
     // Then
     XCTAssertEqual(correctScript, script)
@@ -536,9 +552,15 @@ class ChartIQScriptManagerTests: XCTestCase {
   func testsGetScriptForRemoveStudy() {
     // Given
     let correctScript = mobileNameSpace + "removeStudy(\'‌Alligator‌ (y,13,8,8,5,5,3,n)\');"
-
+    let studyFullName = "‌Alligator‌ (y,13,8,8,5,5,3,n)"
+    let study = ChartIQStudy(shortName: studyFullName,
+                             fullName: studyFullName,
+                             originalName: studyFullName,
+                             inputs: nil,
+                             outputs: nil,
+                             parameters: nil)
     // When
-    let script = chartIQScriptManager.getScriptForRemoveStudy("‌Alligator‌ (y,13,8,8,5,5,3,n)")
+    let script = chartIQScriptManager.getScriptForRemoveStudy(study)
 
     // Then
     XCTAssertEqual(correctScript, script)
@@ -783,7 +805,7 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetStudyDescriptorScript() {
     // Given
-    let correctScript = "var s=stxx.layout.studies; var selectedSd = {}; for(var n in s){    " +
+    let correctScript = "var s=stxx.layout.studies; var selectedSd = {}; for(var n in s){ " +
     "var sd=s[n]; if (sd.name === \"‌Aroon‌ (14)\") { selectedSd = sd; }} "
 
     // When

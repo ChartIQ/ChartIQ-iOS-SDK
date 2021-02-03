@@ -19,8 +19,10 @@ class SearchSymbolsService {
 
   // MARK: - Internal Methods
 
-  internal func search(with searchedString: String, completionHandler: @escaping ([SymbolModel]) -> Void) {
-    guard let url = getSearchURL(withSearchedString: searchedString) else { return }
+  internal func search(with searchedString: String,
+                       filterType: SearchSymbolsFilterType,
+                       completionHandler: @escaping ([SymbolModel]) -> Void) {
+    guard let url = getSearchURL(withSearchedString: searchedString, filterType: filterType) else { return }
     task?.cancel()
     task = URLSession.shared.dataTask(with: url) { data, _, error in
       var symbols: [SymbolModel] = []
@@ -53,10 +55,19 @@ class SearchSymbolsService {
 
   // MARK: - Private Methods
 
-  private func getSearchURL(withSearchedString searchedString: String) -> URL? {
+  private func getSearchURL(withSearchedString searchedString: String,
+                            filterType: SearchSymbolsFilterType) -> URL? {
     if let encodedSearchedString = searchedString.stringByAddingPercentEncodingForRFC3986() {
-      let stringForURL = String(format: Const.SearchSymbolsService.searchSymbolsURLFormatString, encodedSearchedString)
-      if let searchURL = URL(string: stringForURL) {
+      var searchStringForURL = ""
+      if filterType == .all {
+        searchStringForURL = String(format: Const.SearchSymbolsService.searchAllSymbolsURLFormatString,
+                                    encodedSearchedString)
+      } else {
+        searchStringForURL = String(format: Const.SearchSymbolsService.searchSymbolsURLFormatString,
+                                    encodedSearchedString,
+                                    filterType.stringValue)
+      }
+      if let searchURL = URL(string: searchStringForURL) {
         return searchURL
       }
     }

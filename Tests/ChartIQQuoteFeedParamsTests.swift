@@ -62,11 +62,11 @@ class ChartIQQuoteFeedParamsTests: XCTestCase {
     let chartIQQuoteFeedParams = ChartIQQuoteFeedParams(dictionary: dictionary)
 
     // Then
-    XCTAssertEqual(dictionary[ChartIQConstants.QuoteFeed.symbolParam] as? String, chartIQQuoteFeedParams.symbol)
-    XCTAssertEqual(dictionary[ChartIQConstants.QuoteFeed.startDateParam] as? String, chartIQQuoteFeedParams.startDate)
-    XCTAssertEqual(dictionary[ChartIQConstants.QuoteFeed.endDateParam] as? String, chartIQQuoteFeedParams.endDate)
-    XCTAssertEqual(dictionary[ChartIQConstants.QuoteFeed.intervalParam] as? String, chartIQQuoteFeedParams.interval)
-    XCTAssertEqual(dictionary[ChartIQConstants.QuoteFeed.periodParam] as? Int, chartIQQuoteFeedParams.period)
+    XCTAssertEqual(dictionary[Const.QuoteFeed.symbolParam] as? String, chartIQQuoteFeedParams.symbol)
+    XCTAssertEqual(dictionary[Const.QuoteFeed.startDateParam] as? String, chartIQQuoteFeedParams.startDate)
+    XCTAssertEqual(dictionary[Const.QuoteFeed.endDateParam] as? String, chartIQQuoteFeedParams.endDate)
+    XCTAssertEqual(dictionary[Const.QuoteFeed.intervalParam] as? String, chartIQQuoteFeedParams.interval)
+    XCTAssertEqual(dictionary[Const.QuoteFeed.periodParam] as? Int, chartIQQuoteFeedParams.period)
   }
 
   func testInitWithEmptyDictionary() {
@@ -77,10 +77,10 @@ class ChartIQQuoteFeedParamsTests: XCTestCase {
     let chartIQQuoteFeedParams = ChartIQQuoteFeedParams(dictionary: dictionary)
 
     // Then
-    XCTAssertEqual(dictionary[ChartIQConstants.QuoteFeed.symbolParam] as? String ?? "", chartIQQuoteFeedParams.symbol)
-    XCTAssertEqual(dictionary[ChartIQConstants.QuoteFeed.startDateParam] as? String ?? "", chartIQQuoteFeedParams.startDate)
-    XCTAssertEqual(dictionary[ChartIQConstants.QuoteFeed.endDateParam] as? String ?? "", chartIQQuoteFeedParams.endDate)
-    XCTAssertEqual(dictionary[ChartIQConstants.QuoteFeed.intervalParam] as? String ?? "", chartIQQuoteFeedParams.interval)
-    XCTAssertEqual(dictionary[ChartIQConstants.QuoteFeed.periodParam] as? Int ?? 0, chartIQQuoteFeedParams.period)
+    XCTAssertEqual(dictionary[Const.QuoteFeed.symbolParam] as? String ?? "", chartIQQuoteFeedParams.symbol)
+    XCTAssertEqual(dictionary[Const.QuoteFeed.startDateParam] as? String ?? "", chartIQQuoteFeedParams.startDate)
+    XCTAssertEqual(dictionary[Const.QuoteFeed.endDateParam] as? String ?? "", chartIQQuoteFeedParams.endDate)
+    XCTAssertEqual(dictionary[Const.QuoteFeed.intervalParam] as? String ?? "", chartIQQuoteFeedParams.interval)
+    XCTAssertEqual(dictionary[Const.QuoteFeed.periodParam] as? Int ?? 0, chartIQQuoteFeedParams.period)
   }
 }

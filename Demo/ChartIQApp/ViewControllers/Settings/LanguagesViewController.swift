@@ -41,6 +41,10 @@ class LanguagesViewController: BaseViewController {
     updateSelectedLanguage()
   }
 
+  override func languageDidChange() {
+    navigationItem.title = locManager.localize(Const.Language.screenTitle)
+  }
+
   // MARK: - Setup Methods
 
   override func setupUI() {
@@ -58,10 +62,6 @@ class LanguagesViewController: BaseViewController {
     languages = locManager.languages
     tableView.reloadData()
     updateSelectedLanguage()
-  }
-
-  override func languageDidChange() {
-    navigationItem.title = locManager.localize(Const.Language.screenTitle)
   }
 
   // MARK: - Private Methods

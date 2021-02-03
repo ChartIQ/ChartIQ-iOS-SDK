@@ -76,7 +76,7 @@ public class ChartIQStudy: NSObject {
     let parametersString = studyComponents[4]
     self.fullName = fullName.replaceSymbolWithZwnj(symbol: "|")
     self.originalName = originalName.replaceSymbolWithZwnj(symbol: "|")
-    let fullNameComponents = self.fullName.components(separatedBy: ChartIQConstants.General.zwnjSymbol)
+    let fullNameComponents = self.fullName.components(separatedBy: Const.General.zwnjSymbol)
     if fullNameComponents.count > 2 {
       self.name = fullNameComponents[1]
       self.nameParams = fullNameComponents[2]
@@ -100,16 +100,16 @@ public class ChartIQStudy: NSObject {
   public init(dictionary: [String: Any], key: String) {
     self.shortName = key
     self.fullName = key
-    if let studyFullName = dictionary[ChartIQConstants.Study.nameParam] as? String, !fullName.isEmpty {
+    if let studyFullName = dictionary[Const.Study.nameParam] as? String, !fullName.isEmpty {
       self.fullName = studyFullName
     }
-    if let inputs = dictionary[ChartIQConstants.Study.inputsParam] as? [String: Any]? {
+    if let inputs = dictionary[Const.Study.inputsParam] as? [String: Any]? {
       self.inputs = inputs
     }
-    if let outputs = dictionary[ChartIQConstants.Study.outputsParam] as? [String: Any]? {
+    if let outputs = dictionary[Const.Study.outputsParam] as? [String: Any]? {
       self.outputs = outputs
     }
-    if let parameters = dictionary[ChartIQConstants.Study.parametersParam] as? [String: Any]? {
+    if let parameters = dictionary[Const.Study.parametersParam] as? [String: Any]? {
       self.parameters = parameters
     }
   }

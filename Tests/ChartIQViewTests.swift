@@ -134,7 +134,7 @@ class ChartIQViewTests: XCTestCase {
     let chartIQScriptManager = ChartIQScriptManager()
 
     let studyDescriptorName = "‌Acc Swing‌ (0.5)"
-    let correctStudyDescriptorScript = "var s=stxx.layout.studies; var selectedSd = {}; for(var n in s){    var " +
+    let correctStudyDescriptorScript = "var s=stxx.layout.studies; var selectedSd = {}; for(var n in s){ var " +
     "sd=s[n]; if (sd.name === \"‌Acc Swing‌ (0.5)\") { selectedSd = sd; }} "
 
     // When
@@ -146,10 +146,10 @@ class ChartIQViewTests: XCTestCase {
 
   func testGetStudyList() {
     // Given
-    let chartIQViewStudyList = chartIQView.studyObjects
+    let chartIQViewStudyList = chartIQView.allStudies
 
     // When
-    let studyList = chartIQView.getStudyList()
+    let studyList = chartIQView.getAllStudies()
 
     // Then
     XCTAssertEqual(chartIQViewStudyList, studyList)
@@ -315,7 +315,7 @@ class ChartIQViewTests: XCTestCase {
     let aggregationType: ChartIQChartAggregationType? = nil
 
     // When
-    let chartIQAggregationType = chartIQView.aggregationType
+    let chartIQAggregationType = chartIQView.chartAggregationType
 
     // Then
     XCTAssertEqual(aggregationType, chartIQAggregationType)
@@ -326,7 +326,7 @@ class ChartIQViewTests: XCTestCase {
     let scale: ChartIQScale = .linear
 
     // When
-    let chartIQScale = chartIQView.scale
+    let chartIQScale = chartIQView.chartScale
 
     // Then
     XCTAssertEqual(scale, chartIQScale)
@@ -381,7 +381,7 @@ class ChartIQViewTests: XCTestCase {
     let studyList: [ChartIQStudy] = []
 
     // When
-    let chartIQStudyList = chartIQView.getStudyList()
+    let chartIQStudyList = chartIQView.getAllStudies()
 
     // Then
     XCTAssertEqual(studyList, chartIQStudyList)

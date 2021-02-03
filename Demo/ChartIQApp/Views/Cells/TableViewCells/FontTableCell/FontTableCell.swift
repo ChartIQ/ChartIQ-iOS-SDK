@@ -20,8 +20,8 @@ class FontTableCell: UITableViewCell {
 
   // MARK: - Internal Properties
 
-  internal var didSelectBoldButtonTapped: (() -> Void)?
-  internal var didSelectItalicButtonTapped: (() -> Void)?
+  internal var didSelectBoldButtonTapped: ((Bool) -> Void)?
+  internal var didSelectItalicButtonTapped: ((Bool) -> Void)?
 
   // MARK: - Private Properties
 
@@ -52,13 +52,13 @@ class FontTableCell: UITableViewCell {
   @IBAction private func boldButtonTapped(_ sender: Any) {
     isBoldSelected.toggle()
     updateButtons()
-    didSelectBoldButtonTapped?()
+    didSelectBoldButtonTapped?(isBoldSelected)
   }
 
   @IBAction private func italicButtonTapped(_ sender: Any) {
     isItalicSelected.toggle()
     updateButtons()
-    didSelectItalicButtonTapped?()
+    didSelectItalicButtonTapped?(isItalicSelected)
   }
 
   // MARK: - Private Methods

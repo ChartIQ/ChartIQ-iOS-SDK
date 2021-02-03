@@ -41,6 +41,10 @@ class ChartStyleViewController: BaseViewController {
     updateSelectedChartStyle()
   }
 
+  override func languageDidChange() {
+    navigationItem.title = locManager.localize(Const.ChartStyle.screenTitle)
+  }
+
   // MARK: - Setup Methods
 
   override func setupUI() {
@@ -69,10 +73,6 @@ class ChartStyleViewController: BaseViewController {
     }
     tableView.reloadData()
     updateSelectedChartStyle()
-  }
-
-  override func languageDidChange() {
-    navigationItem.title = locManager.localize(Const.ChartStyle.screenTitle)
   }
 
   // MARK: - Private Methods

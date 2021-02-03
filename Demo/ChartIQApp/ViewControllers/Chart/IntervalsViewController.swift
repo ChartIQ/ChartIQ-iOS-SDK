@@ -49,6 +49,13 @@ class IntervalsViewController: BaseViewController {
     setupTimeUnits()
   }
 
+  override func languageDidChange() {
+    navigationItem.title = locManager.localize(Const.Intervals.screenTitle)
+    customIntervalString = locManager.localize(Const.Intervals.selectCustomCellTitle)
+    cancelBarButtonItem?.title = locManager.localize(Const.General.cancelTitle)
+    tableView.reloadData()
+  }
+
   // MARK: - Setup Methods
 
   override func setupUI() {
@@ -116,13 +123,6 @@ class IntervalsViewController: BaseViewController {
 
   private func setupTimeUnits() {
     timeUnits = TimeUnit.allCases
-  }
-
-  override func languageDidChange() {
-    navigationItem.title = locManager.localize(Const.Intervals.screenTitle)
-    customIntervalString = locManager.localize(Const.Intervals.selectCustomCellTitle)
-    cancelBarButtonItem?.title = locManager.localize(Const.General.cancelTitle)
-    tableView.reloadData()
   }
 
   // MARK: - Actions Methods

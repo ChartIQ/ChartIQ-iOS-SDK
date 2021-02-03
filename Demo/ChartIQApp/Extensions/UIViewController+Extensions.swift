@@ -42,16 +42,44 @@ extension UIViewController {
     actions.forEach { action in alertController.addAction(action) }
     present(alertController, animated: true, completion: nil)
   }
+}
 
-  internal func addKeyboardObservers(selector aSelector: Selector) {
+protocol UIViewControllerKeyboardProtocol: class {
+
+  var scrollView: UIScrollView! { get }
+
+  func addKeyboardObservers()
+}
+
+extension UIViewControllerKeyboardProtocol where Self: UIViewController {
+
+  func addKeyboardObservers() {
+    let adjustForKeyboardHandler: (Notification) -> Void = { [weak self] notification in
+      guard let self = self else { return }
+      guard let keyboard = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+      let keyboardScreenEndFrame = keyboard.cgRectValue
+      let keyboardViewEndFrame = self.view.convert(keyboardScreenEndFrame, from: self.view.window)
+      if notification.name == UIResponder.keyboardWillHideNotification {
+        self.scrollView.contentInset = .zero
+      } else {
+        var bottomHeight = keyboardViewEndFrame.height
+        if #available(iOS 11.0, *) {
+          bottomHeight -= self.view.safeAreaInsets.bottom
+        }
+        self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomHeight, right: 0)
+      }
+      self.scrollView.scrollIndicatorInsets = self.scrollView.contentInset
+    }
+
     let notificationCenter = NotificationCenter.default
-    notificationCenter.addObserver(self,
-                                   selector: aSelector,
-                                   name: UIResponder.keyboardWillHideNotification,
-                                   object: nil)
-    notificationCenter.addObserver(self,
-                                   selector: aSelector,
-                                   name: UIResponder.keyboardWillChangeFrameNotification,
-                                   object: nil)
+    _ = notificationCenter.addObserver(forName: UIResponder.keyboardWillHideNotification,
+                                       object: nil,
+                                       queue: .main,
+                                       using: adjustForKeyboardHandler)
+
+    _ = notificationCenter.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification,
+                                       object: nil,
+                                       queue: .main,
+                                       using: adjustForKeyboardHandler)
   }
 }

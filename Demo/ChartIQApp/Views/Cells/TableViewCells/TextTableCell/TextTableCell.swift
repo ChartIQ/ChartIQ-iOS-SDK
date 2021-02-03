@@ -35,7 +35,6 @@ class TextTableCell: UITableViewCell {
     textField.textColor = .cadetBlueColor
     textField.tintColor = .mountainMeadowColor
     textField.font = .systemFont(ofSize: 17, weight: .regular)
-
     textField.delegate = self
   }
 
@@ -86,7 +85,7 @@ extension TextTableCell: UITextFieldDelegate {
                  shouldChangeCharactersIn range: NSRange,
                  replacementString string: String) -> Bool {
     guard textField.keyboardType == .decimalPad else { return true }
-    let cs = NSCharacterSet(charactersIn: Const.StudyDetail.doubleAcceptableCharacters).inverted
+    let cs = NSCharacterSet(charactersIn: Const.StudyDetail.doubleDigits).inverted
     let filtered = string.components(separatedBy: cs).joined()
     return (string == filtered)
   }

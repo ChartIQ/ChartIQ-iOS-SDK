@@ -13,8 +13,9 @@ import UIKit
 enum ChartButtonType {
   case symbols
   case intervals
-  case crosshair
+  case series
   case drawTool
+  case crosshair
   case fullView
 }
 
@@ -42,6 +43,9 @@ class ChartButton: UIButton {
     case .intervals:
       applyBaseStyle()
       setTitle(locManager.localize(Const.Chart.defaultInterval), for: .normal)
+    case .series:
+      setImage(UIImage.Chart.seriesImage, for: .normal)
+      contentEdgeInsets = Const.ChartButton.seriesEdgeInsets
     case .crosshair:
       setImage(UIImage.Chart.crosshairInactiveImage, for: .normal)
       contentEdgeInsets = Const.ChartButton.crosshairEdgeInsets

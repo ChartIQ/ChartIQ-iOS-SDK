@@ -110,7 +110,7 @@ public class ChartIQDrawingManager: ChartIQDrawingManagerProtocol {
   /// - Parameters:
   ///   - tool: The ChartIQDrawingTool.
   /// - Returns: The Bool Value. True if supports std deviations, false if not.
-  public func isSupportingStdDeviations(_ tool: ChartIQDrawingTool) -> Bool {
+  public func isSupportingDeviations(_ tool: ChartIQDrawingTool) -> Bool {
     switch tool {
     case .average, .regression:
       return true

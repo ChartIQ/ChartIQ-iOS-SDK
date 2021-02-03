@@ -40,9 +40,9 @@ class DrawToolsViewController: BaseViewController {
   private var cancelBarButtonItem: UIBarButtonItem?
   private let optionsButton = UIButton(type: .custom)
   private var horizontalFilterView: HorizontalFilterView?
+  private var selectedFilterType: DrawToolFilterType = .all
   private var drawTools: [TableSection: [DrawToolViewModel]] = [:]
   private var favoritesDrawingTools: [ChartIQDrawingTool] = []
-  private var selectedFilterType: DrawToolFilterType = .all
   private let locManager = LocalizationManager.shared()
 
   // MARK: - ViewController Lifecycle Methods
@@ -59,6 +59,14 @@ class DrawToolsViewController: BaseViewController {
     super.viewDidAppear(animated)
 
     updateSelectedDrawTool(scrollPosition: .top)
+  }
+
+  override func languageDidChange() {
+    navigationItem.title = locManager.localize(Const.DrawTools.screenTitle)
+    cancelBarButtonItem?.title = locManager.localize(Const.General.cancelTitle)
+    emptyStateViewTitleLabel.text = locManager.localize(Const.DrawTools.emptyStateTitle)
+    emptyStateViewDescriptionLabel.text = locManager.localize(Const.DrawTools.emptyStateDescription)
+    updateDrawToolsViewModels()
   }
 
   // MARK: - Setup Methods
@@ -91,14 +99,6 @@ class DrawToolsViewController: BaseViewController {
     tableView.register(nibName: Const.DrawToolTableCell.cellNibName, cellId: Const.DrawToolTableCell.cellId)
     tableView.delegate = self
     tableView.dataSource = self
-  }
-
-  override func languageDidChange() {
-    navigationItem.title = locManager.localize(Const.DrawTools.screenTitle)
-    cancelBarButtonItem?.title = locManager.localize(Const.General.cancelTitle)
-    emptyStateViewTitleLabel.text = locManager.localize(Const.DrawTools.emptyStateTitle)
-    emptyStateViewDescriptionLabel.text = locManager.localize(Const.DrawTools.emptyStateDescription)
-    updateDrawToolsViewModels()
   }
 
   private func setupFavoriteDrawingTools() {
@@ -136,7 +136,6 @@ class DrawToolsViewController: BaseViewController {
   private func updateDrawToolsViewModels() {
     var customDrawToolViewModels: [DrawToolViewModel] = []
     var drawToolViewModels: [DrawToolViewModel] = []
-
     if selectedFilterType == .all {
       updateEmptyStateView(hidden: true)
       customDrawToolViewModels = getCustomDrawToolViewModels()
@@ -318,8 +317,7 @@ class DrawToolsViewController: BaseViewController {
     let localizedAddActionTitle = locManager.localize(Const.General.addTitle)
     let addActionTitle = "\(Const.General.filledStar) \(localizedAddActionTitle)"
     let addAction = UITableViewRowAction(style: .normal, title: addActionTitle) { [weak self] _, _ in
-      guard let self = self else { return }
-      self.addToFavorites(drawingTool)
+      self?.addToFavorites(drawingTool)
     }
     addAction.backgroundColor = .brillianteAzureColor
     return addAction
@@ -329,8 +327,7 @@ class DrawToolsViewController: BaseViewController {
     let localizedRemoveActionTitle = locManager.localize(Const.General.removeTitle)
     let removeActionTitle = "\(Const.General.unfilledStar) \(localizedRemoveActionTitle)"
     let removeAction = UITableViewRowAction(style: .destructive, title: removeActionTitle) { [weak self] _, _ in
-      guard let self = self else { return }
-      self.removeFromFavorites(drawingTool)
+      self?.removeFromFavorites(drawingTool)
     }
     removeAction.backgroundColor = .brillianteAzureColor
     return removeAction

@@ -58,11 +58,11 @@ class ChartIQCrosshairHUDTests: XCTestCase {
     let crosshairHUD = ChartIQCrosshairHUD(dictionary: dictionary)
 
     // Then
-    XCTAssertEqual(dictionary[ChartIQConstants.CrosshairHUD.openParam], crosshairHUD.open)
-    XCTAssertEqual(dictionary[ChartIQConstants.CrosshairHUD.highParam], crosshairHUD.high)
-    XCTAssertEqual(dictionary[ChartIQConstants.CrosshairHUD.lowParam], crosshairHUD.low)
-    XCTAssertEqual(dictionary[ChartIQConstants.CrosshairHUD.closeParam], crosshairHUD.close)
-    XCTAssertEqual(dictionary[ChartIQConstants.CrosshairHUD.volumeParam], crosshairHUD.volume)
+    XCTAssertEqual(dictionary[Const.CrosshairHUD.openParam], crosshairHUD.open)
+    XCTAssertEqual(dictionary[Const.CrosshairHUD.highParam], crosshairHUD.high)
+    XCTAssertEqual(dictionary[Const.CrosshairHUD.lowParam], crosshairHUD.low)
+    XCTAssertEqual(dictionary[Const.CrosshairHUD.closeParam], crosshairHUD.close)
+    XCTAssertEqual(dictionary[Const.CrosshairHUD.volumeParam], crosshairHUD.volume)
   }
 
   func testInitWithEmptyDictionary() {
@@ -73,10 +73,10 @@ class ChartIQCrosshairHUDTests: XCTestCase {
     let crosshairHUD = ChartIQCrosshairHUD(dictionary: dictionary)
 
     // Then
-    XCTAssertEqual(dictionary[ChartIQConstants.CrosshairHUD.openParam] ?? "", crosshairHUD.open)
-    XCTAssertEqual(dictionary[ChartIQConstants.CrosshairHUD.highParam] ?? "", crosshairHUD.high)
-    XCTAssertEqual(dictionary[ChartIQConstants.CrosshairHUD.lowParam] ?? "", crosshairHUD.low)
-    XCTAssertEqual(dictionary[ChartIQConstants.CrosshairHUD.closeParam] ?? "", crosshairHUD.close)
-    XCTAssertEqual(dictionary[ChartIQConstants.CrosshairHUD.volumeParam] ?? "", crosshairHUD.volume)
+    XCTAssertEqual(dictionary[Const.CrosshairHUD.openParam] ?? "", crosshairHUD.open)
+    XCTAssertEqual(dictionary[Const.CrosshairHUD.highParam] ?? "", crosshairHUD.high)
+    XCTAssertEqual(dictionary[Const.CrosshairHUD.lowParam] ?? "", crosshairHUD.low)
+    XCTAssertEqual(dictionary[Const.CrosshairHUD.closeParam] ?? "", crosshairHUD.close)
+    XCTAssertEqual(dictionary[Const.CrosshairHUD.volumeParam] ?? "", crosshairHUD.volume)
   }
 }
