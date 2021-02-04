@@ -8,13 +8,22 @@
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
     <a name="//apple_ref/swift/Class/ChartIQView" class="dashAnchor"></a>
     <a title="ChartIQView Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">ChartIQ Docs</a> (98% documented)</p>
+      	<p><a class="header-image" href="https://www.chartiq.com/"><img src="../img/CIQ_logo_full_negative.png" height="45px"></a><p>
+        <p><a href="../index.html">Mobile SDK Version 3.1.0</a> (98% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search" data-typeahead>
+          </form>
+        </p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -133,6 +142,7 @@
             <h1>ChartIQView</h1>
               <div class="declaration">
                 <div class="language">
+                  
                   <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ChartIQView</span> <span class="p">:</span> <span class="kt">UIView</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ChartIQView</span><span class="p">:</span> <span class="kt">WKScriptMessageHandler</span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">ChartIQView</span><span class="p">:</span> <span class="kt">WKNavigationDelegate</span></code></pre>
@@ -1732,37 +1742,6 @@ This is the method that should be called every time a new chart needs to be draw
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7ChartIQ0A6IQViewC13getHudDetailsAA0A14IQCrosshairHUDCSgyF"></a>
-                    <a name="//apple_ref/swift/Method/getHudDetails()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7ChartIQ0A6IQViewC13getHudDetailsAA0A14IQCrosshairHUDCSgyF">getHudDetails()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Gathers the necessary information for any HUD based on cursor position and returns that data.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getHudDetails</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ChartIQCrosshairHUD.html">ChartIQCrosshairHUD</a></span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The ChartIQCrosshairHUD model.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:7ChartIQ0A6IQViewC02isA9AvailableSbyF"></a>
                     <a name="//apple_ref/swift/Method/isChartAvailable()" class="dashAnchor"></a>
                     <a class="token" href="#/s:7ChartIQ0A6IQViewC02isA9AvailableSbyF">isChartAvailable()</a>
@@ -1787,6 +1766,37 @@ This is the method that should be called every time a new chart needs to be draw
                       <div>
                         <h4>Return Value</h4>
                         <p>True if the chart has finished loading.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A6IQViewC13getHudDetailsAA0A14IQCrosshairHUDCSgyF"></a>
+                    <a name="//apple_ref/swift/Method/getHudDetails()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A6IQViewC13getHudDetailsAA0A14IQCrosshairHUDCSgyF">getHudDetails()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gathers the necessary information for any HUD based on cursor position and returns that data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getHudDetails</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ChartIQCrosshairHUD.html">ChartIQCrosshairHUD</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The ChartIQCrosshairHUD model.</p>
                       </div>
                     </section>
                   </div>
@@ -3200,8 +3210,8 @@ Given an active study name this will update the study based on key value pair yo
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://github.com/ChartIQ/Charting-Library---iOS-SDK" target="_blank" rel="external">jacob</a>. All rights reserved. (Last updated: 2020-09-03)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="https://cosaic.io/chartiq" target="_blank" rel="external">Cosaic</a>. All rights reserved. (Last updated: 2020-11-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
