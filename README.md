@@ -6,7 +6,7 @@ The ChartIQ iOS SDK supports a basic charting application. The SDK can be extend
 
 Contact us at <support@chartiq.com> to request sample code and guidance on how to extend the SDK.
 
-**Note:**
+**End of legacy app support**
 
 The iOS app has been totally reengineered for improved usability and functionality. As a result, there is no upgrade path from the legacy app (which is compatible with ChartIQ versions 7.0.5&ndash;7.5.0) to the new app/SDK. To take advantage of the major improvements offered by the new mobile app, upgrade to Version 8.2.0 or later of the library and reimplement any custom functionality from your legacy app in the new app.
 
