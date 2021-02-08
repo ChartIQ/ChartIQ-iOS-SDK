@@ -1,6 +1,363 @@
 {
   "warnings": [
     {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 20,
+      "symbol": "ChartIQConst.DrawingParameter.fillColorKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 21,
+      "symbol": "ChartIQConst.DrawingParameter.lineColorKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 22,
+      "symbol": "ChartIQConst.DrawingParameter.patternKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 23,
+      "symbol": "ChartIQConst.DrawingParameter.lineWidthKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 25,
+      "symbol": "ChartIQConst.DrawingParameter.fontKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 26,
+      "symbol": "ChartIQConst.DrawingParameter.familyKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 27,
+      "symbol": "ChartIQConst.DrawingParameter.sizeKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 28,
+      "symbol": "ChartIQConst.DrawingParameter.styleKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 29,
+      "symbol": "ChartIQConst.DrawingParameter.weightKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 31,
+      "symbol": "ChartIQConst.DrawingParameter.normalKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 32,
+      "symbol": "ChartIQConst.DrawingParameter.italicKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 33,
+      "symbol": "ChartIQConst.DrawingParameter.boldKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 34,
+      "symbol": "ChartIQConst.DrawingParameter.boldOffKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 36,
+      "symbol": "ChartIQConst.DrawingParameter.axisLabelKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 37,
+      "symbol": "ChartIQConst.DrawingParameter.parametersKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 38,
+      "symbol": "ChartIQConst.DrawingParameter.fibsKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 39,
+      "symbol": "ChartIQConst.DrawingParameter.showLinesKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 41,
+      "symbol": "ChartIQConst.DrawingParameter.waveParametersKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 42,
+      "symbol": "ChartIQConst.DrawingParameter.waveTemplateKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 43,
+      "symbol": "ChartIQConst.DrawingParameter.impulseKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 44,
+      "symbol": "ChartIQConst.DrawingParameter.correctiveKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 45,
+      "symbol": "ChartIQConst.DrawingParameter.decorationKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 47,
+      "symbol": "ChartIQConst.DrawingParameter.levelKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 48,
+      "symbol": "ChartIQConst.DrawingParameter.displayKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 50,
+      "symbol": "ChartIQConst.DrawingParameter.active1Key",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 51,
+      "symbol": "ChartIQConst.DrawingParameter.active2Key",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 52,
+      "symbol": "ChartIQConst.DrawingParameter.active3Key",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 54,
+      "symbol": "ChartIQConst.DrawingParameter.color1Key",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 55,
+      "symbol": "ChartIQConst.DrawingParameter.color2Key",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 56,
+      "symbol": "ChartIQConst.DrawingParameter.color3Key",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 58,
+      "symbol": "ChartIQConst.DrawingParameter.lineWidth1Key",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 59,
+      "symbol": "ChartIQConst.DrawingParameter.lineWidth2Key",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 60,
+      "symbol": "ChartIQConst.DrawingParameter.lineWidth3Key",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 62,
+      "symbol": "ChartIQConst.DrawingParameter.pattern1Key",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 63,
+      "symbol": "ChartIQConst.DrawingParameter.pattern2Key",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 64,
+      "symbol": "ChartIQConst.DrawingParameter.pattern3Key",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 71,
+      "symbol": "ChartIQConst.StudyParameter.typeKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 72,
+      "symbol": "ChartIQConst.StudyParameter.colorKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 73,
+      "symbol": "ChartIQConst.StudyParameter.textKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 74,
+      "symbol": "ChartIQConst.StudyParameter.colorTextKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 75,
+      "symbol": "ChartIQConst.StudyParameter.nameKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 76,
+      "symbol": "ChartIQConst.StudyParameter.valueKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 77,
+      "symbol": "ChartIQConst.StudyParameter.checkboxKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 78,
+      "symbol": "ChartIQConst.StudyParameter.optionsKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 80,
+      "symbol": "ChartIQConst.StudyParameter.defaultValueKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 81,
+      "symbol": "ChartIQConst.StudyParameter.defaultOutputKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 82,
+      "symbol": "ChartIQConst.StudyParameter.defaultInputKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 83,
+      "symbol": "ChartIQConst.StudyParameter.defaultColorKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 85,
+      "symbol": "ChartIQConst.StudyParameter.enabledAdditionalKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 86,
+      "symbol": "ChartIQConst.StudyParameter.valueAdditionalKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQConst.swift",
+      "line": 87,
+      "symbol": "ChartIQConst.StudyParameter.colorAdditionalKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQDataSource.swift",
       "line": 12,
       "symbol": "ChartIQDataSource",
@@ -22,22 +379,204 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQView.swift",
-      "line": 300,
-      "symbol": "ChartIQView.getChartScale()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 450,
+      "symbol": "ChartIQDrawingParameterType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 451,
+      "symbol": "ChartIQDrawingParameterType.fillColor",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 452,
+      "symbol": "ChartIQDrawingParameterType.lineColor",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 453,
+      "symbol": "ChartIQDrawingParameterType.pattern",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 454,
+      "symbol": "ChartIQDrawingParameterType.lineWidth",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 455,
+      "symbol": "ChartIQDrawingParameterType.family",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 456,
+      "symbol": "ChartIQDrawingParameterType.size",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 457,
+      "symbol": "ChartIQDrawingParameterType.style",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 458,
+      "symbol": "ChartIQDrawingParameterType.weight",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 459,
+      "symbol": "ChartIQDrawingParameterType.fibs",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 460,
+      "symbol": "ChartIQDrawingParameterType.showLines",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 461,
+      "symbol": "ChartIQDrawingParameterType.waveTemplate",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 462,
+      "symbol": "ChartIQDrawingParameterType.impulse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 463,
+      "symbol": "ChartIQDrawingParameterType.corrective",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 464,
+      "symbol": "ChartIQDrawingParameterType.decoration",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 465,
+      "symbol": "ChartIQDrawingParameterType.active1",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 466,
+      "symbol": "ChartIQDrawingParameterType.active2",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 467,
+      "symbol": "ChartIQDrawingParameterType.active3",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 468,
+      "symbol": "ChartIQDrawingParameterType.color1",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 469,
+      "symbol": "ChartIQDrawingParameterType.color2",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 470,
+      "symbol": "ChartIQDrawingParameterType.color3",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 471,
+      "symbol": "ChartIQDrawingParameterType.lineWidth1",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 472,
+      "symbol": "ChartIQDrawingParameterType.lineWidth2",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 473,
+      "symbol": "ChartIQDrawingParameterType.lineWidth3",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 474,
+      "symbol": "ChartIQDrawingParameterType.pattern1",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 475,
+      "symbol": "ChartIQDrawingParameterType.pattern2",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQEnums.swift",
+      "line": 476,
+      "symbol": "ChartIQDrawingParameterType.pattern3",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQView.swift",
-      "line": 866,
+      "line": 925,
       "symbol": "ChartIQView.userContentController(_:didReceive:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQView.swift",
-      "line": 993,
+      "line": 1052,
       "symbol": "ChartIQView.webView(_:didFinish:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
