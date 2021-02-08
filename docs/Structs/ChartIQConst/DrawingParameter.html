@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DrawingParameter Structure Reference</title>
+    <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../../js/jquery.min.js" defer></script>
+    <script src="../../js/jazzy.js" defer></script>
+    
+    <script src="../../js/lunr.min.js" defer></script>
+    <script src="../../js/typeahead.jquery.js" defer></script>
+    <script src="../../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/DrawingParameter" class="dashAnchor"></a>
+    <a title="DrawingParameter Structure Reference"></a>
+    <header>
+      <div class="content-wrapper">
+      	<p><a class="header-image" href="https://www.chartiq.com/"><img src="../../img/CIQ_logo_full_negative.png" height="45px"></a><p>
+        <p><a href="../../index.html">Mobile SDK Version 4.1.0</a> (80% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../../search.json">
+            <input type="text" placeholder="Search" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../../index.html">ChartIQ Reference</a>
+        <img id="carat" src="../../img/carat.png" />
+        DrawingParameter Structure Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Classes/ChartIQCrosshairHUD.html">ChartIQCrosshairHUD</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ChartIQData.html">ChartIQData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ChartIQDrawingManager.html">ChartIQDrawingManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ChartIQQuoteFeedParams.html">ChartIQQuoteFeedParams</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ChartIQSeries.html">ChartIQSeries</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ChartIQStudy.html">ChartIQStudy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ChartIQView.html">ChartIQView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQChartAggregationType.html">ChartIQChartAggregationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQChartType.html">ChartIQChartType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQDataMethod.html">ChartIQDataMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQDrawingParameterType.html">ChartIQDrawingParameterType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQDrawingToolType.html">ChartIQDrawingToolType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQElliottWaveCorrective.html">ChartIQElliottWaveCorrective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQElliottWaveDecoration.html">ChartIQElliottWaveDecoration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQElliottWaveImpulse.html">ChartIQElliottWaveImpulse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQElliottWaveTemplate.html">ChartIQElliottWaveTemplate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQFontFamily.html">ChartIQFontFamily</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQFontSize.html">ChartIQFontSize</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQFontStyle.html">ChartIQFontStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQLayer.html">ChartIQLayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQLineType.html">ChartIQLineType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQQuoteField.html">ChartIQQuoteField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQScale.html">ChartIQScale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQStudyError.html">ChartIQStudyError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQStudyParametersType.html">ChartIQStudyParametersType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQTheme.html">ChartIQTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Enums/ChartIQTimeUnit.html">ChartIQTimeUnit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Extensions/UIColor.html">UIColor</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Protocols/ChartIQDataSource.html">ChartIQDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Protocols/ChartIQDelegate.html">ChartIQDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Structs/ChartIQConst.html">ChartIQConst</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/ChartIQConst/DrawingParameter.html">– DrawingParameter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/ChartIQConst/StudyParameter.html">– StudyParameter</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>DrawingParameter</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DrawingParameter</span></code></pre>
+
+                </div>
+              </div>
+            <p>Provides constants for ChartIQDrawingTool.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV12fillColorKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/fillColorKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV12fillColorKeySSvpZ">fillColorKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">fillColorKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV12lineColorKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/lineColorKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV12lineColorKeySSvpZ">lineColorKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">lineColorKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV10patternKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/patternKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV10patternKeySSvpZ">patternKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">patternKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV12lineWidthKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/lineWidthKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV12lineWidthKeySSvpZ">lineWidthKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">lineWidthKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV7fontKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/fontKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV7fontKeySSvpZ">fontKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">fontKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV9familyKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/familyKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV9familyKeySSvpZ">familyKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">familyKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV7sizeKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/sizeKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV7sizeKeySSvpZ">sizeKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">sizeKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV8styleKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/styleKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV8styleKeySSvpZ">styleKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">styleKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV9weightKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/weightKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV9weightKeySSvpZ">weightKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">weightKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV9normalKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/normalKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV9normalKeySSvpZ">normalKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">normalKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV9italicKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/italicKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV9italicKeySSvpZ">italicKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">italicKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV7boldKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/boldKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV7boldKeySSvpZ">boldKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">boldKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV10boldOffKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/boldOffKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV10boldOffKeySSvpZ">boldOffKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">boldOffKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV12axisLabelKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/axisLabelKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV12axisLabelKeySSvpZ">axisLabelKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">axisLabelKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV13parametersKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/parametersKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV13parametersKeySSvpZ">parametersKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">parametersKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV7fibsKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/fibsKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV7fibsKeySSvpZ">fibsKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">fibsKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV12showLinesKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/showLinesKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV12showLinesKeySSvpZ">showLinesKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">showLinesKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV17waveParametersKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/waveParametersKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV17waveParametersKeySSvpZ">waveParametersKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">waveParametersKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV15waveTemplateKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/waveTemplateKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV15waveTemplateKeySSvpZ">waveTemplateKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">waveTemplateKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV10impulseKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/impulseKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV10impulseKeySSvpZ">impulseKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">impulseKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV13correctiveKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/correctiveKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV13correctiveKeySSvpZ">correctiveKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">correctiveKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV13decorationKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/decorationKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV13decorationKeySSvpZ">decorationKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">decorationKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV8levelKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/levelKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV8levelKeySSvpZ">levelKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">levelKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV10displayKeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/displayKey" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV10displayKeySSvpZ">displayKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">displayKey</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV10active1KeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/active1Key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV10active1KeySSvpZ">active1Key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">active1Key</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV10active2KeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/active2Key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV10active2KeySSvpZ">active2Key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">active2Key</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV10active3KeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/active3Key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV10active3KeySSvpZ">active3Key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">active3Key</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV9color1KeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/color1Key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV9color1KeySSvpZ">color1Key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">color1Key</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV9color2KeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/color2Key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV9color2KeySSvpZ">color2Key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">color2Key</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV9color3KeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/color3Key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV9color3KeySSvpZ">color3Key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">color3Key</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV13lineWidth1KeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/lineWidth1Key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV13lineWidth1KeySSvpZ">lineWidth1Key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">lineWidth1Key</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV13lineWidth2KeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/lineWidth2Key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV13lineWidth2KeySSvpZ">lineWidth2Key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">lineWidth2Key</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV13lineWidth3KeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/lineWidth3Key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV13lineWidth3KeySSvpZ">lineWidth3Key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">lineWidth3Key</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV11pattern1KeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/pattern1Key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV11pattern1KeySSvpZ">pattern1Key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">pattern1Key</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV11pattern2KeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/pattern2Key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV11pattern2KeySSvpZ">pattern2Key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">pattern2Key</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A7IQConstV16DrawingParameterV11pattern3KeySSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/pattern3Key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A7IQConstV16DrawingParameterV11pattern3KeySSvpZ">pattern3Key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">pattern3Key</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="https://cosaic.io/chartiq" target="_blank" rel="external">Cosaic</a>. All rights reserved. (Last updated: 2021-02-08)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

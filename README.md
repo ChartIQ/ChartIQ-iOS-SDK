@@ -13,7 +13,8 @@ The iOS app has been totally reengineered for improved usability and functionali
 ## Requirements
 
 Version 8.2.0 or later of the ChartIQ library.
-iOS 10.3 or later
+
+iOS 10.3 or later.
 
 Go to our <a href="https://cosaic.io/chartiq-sdk-library-download/" target="_blank">download site</a> to obtain a free 30-day trial version of the library, or send us an email at <info@cosaic.io>, and we'll send you an evaluation version.
 
