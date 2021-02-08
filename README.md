@@ -25,7 +25,7 @@ The [Demo](https://github.com/ChartIQ/ChartIQ-iOS-SDK/tree/master/Demo) folder o
 
 Contact our development support team at <support@chartiq.com>.
 
-See the SDK documentation at https://documentation.chartiq.com/android-sdk/chartiq.
+See the SDK documentation at https://documentation.chartiq.com/ios-sdk.
 
 See our JavaScript documentation at https://documentation.chartiq.com.
 
