@@ -18,6 +18,22 @@ Contact us at <support@chartiq.com> to request sample code and guidance on how t
 
 The [Demo](https://github.com/ChartIQ/ChartIQ-iOS-SDK/tree/master/Demo) folder of this repository contains a sample app that was built using the SDK. Customize the app to quickly create your own iOS charting application.
 
+The app is also available on the Apple Store.
+
+App screen shots:
+
+<table style="margin-bottom: 20px;">
+  <tr>
+    <td><img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/8.2_README_Update/screenshots/Candle_Chart.png?raw=true" width="200" height="433" style="margin-top: 10px;"/></td>
+    <td><img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/8.2_README_Update/screenshots/Mountain_Chart_with_Drawings.png?raw=true" width="200" height="433" style="margin-top: 10px;"/></td>
+    <td><img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/8.2_README_Update/screenshots/Symbol_Lookup.png?raw=true" width="200" height="433" style="margin-top: 10px;"/></td>
+  </tr>
+  <tr>
+    <td style="font-size: 0.75rem; font-style: italic;">Candle chart</td>
+    <td style="font-size: 0.75rem; font-style: italic;">Mountain chart with drawings</td>
+    <td style="font-size: 0.75rem; font-style: italic;">Symbol lookup</td>
+</table>
+
 **End of legacy app support**
 
 The iOS app has been totally reengineered for improved usability and functionality. As a result, there is no upgrade path from the [legacy app](https://github.com/ChartIQ/Charting-Library---iOS-Sample-App-Legacy) (which is compatible with ChartIQ versions 7.0.5&ndash;7.5.0) to the new app/SDK. To take advantage of the major improvements offered by the new mobile app, upgrade to Version 8.2.0 or later of the library and reimplement any custom functionality from your legacy app in the new app.
