@@ -24,9 +24,9 @@ The app is also available on the Apple Store.
 
 <table>
   <tr>
-    <td><img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/master/screenshots/Candle_Chart.png?raw=true" width="200" height="433"/></td>
-    <td><img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/master/screenshots/Mountain_Chart_with_Drawings.png?raw=true" width="200" height="433"/></td>
-    <td><img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/master/screenshots/Symbol_Lookup.png?raw=true" width="200" height="433"/></td>
+    <td><img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/master/screenshots/Candle_Chart.png?raw=true" alt="Candle chart" width="200" height="433"/></td>
+    <td><img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/master/screenshots/Mountain_Chart_with_Drawings.png?raw=true" alt="Mountain chart with drawings" width="200" height="433"/></td>
+    <td><img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/master/screenshots/Symbol_Lookup.png?raw=true" alt="Symbol lookup" width="200" height="433"/></td>
   </tr>
 </table>
 
