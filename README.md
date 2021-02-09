@@ -20,30 +20,9 @@ The [Demo](https://github.com/ChartIQ/ChartIQ-iOS-SDK/tree/master/Demo) folder o
 
 The app is also available on the Apple Store.
 
-App screen shots:
-
-<style>
-    table {
-      margin: 20px 0px;
-    }
-    td {
-      border: none;
-      font-style: italic;
-      font-size: 0.75rem;
-    }
-</style>
-
-<table>
-  <tr>
-    <td><img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/8.2_README_Update/screenshots/Candle_Chart.png?raw=true" width="200" height="433"/></td>
-    <td><img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/8.2_README_Update/screenshots/Mountain_Chart_with_Drawings.png?raw=true" width="200" height="433"/></td>
-    <td><img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/8.2_README_Update/screenshots/Symbol_Lookup.png?raw=true" width="200" height="433"/></td>
-  </tr>
-  <tr>
-    <td>Candle chart</td>
-    <td>Mountain chart with drawings</td>
-    <td>Symbol lookup</td>
-</table>
+|App screen shots|  |  |
+|---|---|---|
+|<img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/8.2_README_Update/screenshots/Candle_Chart.png?raw=true" width="200" height="433"/>|<img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/8.2_README_Update/screenshots/Mountain_Chart_with_Drawings.png?raw=true" width="200" height="433"/>|<img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/8.2_README_Update/screenshots/Symbol_Lookup.png?raw=true" width="200" height="433"/>|
 
 **End of legacy app support**
 
