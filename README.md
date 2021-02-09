@@ -20,7 +20,8 @@ The [Demo](https://github.com/ChartIQ/ChartIQ-iOS-SDK/tree/master/Demo) folder o
 
 The app is also available on the Apple Store.
 
-|App screen shots|  |  |
+**App screen shots**
+|   |   |   |
 |---|---|---|
 |<img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/8.2_README_Update/screenshots/Candle_Chart.png?raw=true" width="200" height="433"/>|<img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/8.2_README_Update/screenshots/Mountain_Chart_with_Drawings.png?raw=true" width="200" height="433"/>|<img src="https://github.com/ChartIQ/ChartIQ-iOS-SDK/blob/8.2_README_Update/screenshots/Symbol_Lookup.png?raw=true" width="200" height="433"/>|
 
