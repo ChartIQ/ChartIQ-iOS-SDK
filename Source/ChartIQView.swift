@@ -874,6 +874,7 @@ public class ChartIQView: UIView {
   ///
   /// - Parameters:
   ///   - data: An array of properly formatted OHLC quote objects to append.
+  ///   - moreAvailable: A bool to determine whether to retrieve more data
   ///   - cb: The callback key used in Javascript.
   internal func formatJSQuoteData(_ data: [ChartIQData], moreAvailable: Bool, cb: String) {
     let jsonObject = data.map { $0.toDictionary() }
