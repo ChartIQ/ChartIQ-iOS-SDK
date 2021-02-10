@@ -404,6 +404,7 @@ internal protocol ChartIQScriptManagerProtocol {
   ///
   /// - Parameters:
   ///   - json: The String Object.
+  ///   - moreAvailable:The Bool Value.
   ///   - cb: The String Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   func getScriptForFormatJSQuoteData(_ json: String, moreAvailable: Bool, cb: String) -> String
