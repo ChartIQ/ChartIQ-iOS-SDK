@@ -32,7 +32,7 @@ The app is also available on the Apple Store.
 
 **End of legacy app support**
 
-The iOS app has been totally reengineered for improved usability and functionality. As a result, there is no upgrade path from the [legacy app](https://github.com/ChartIQ/Charting-Library---iOS-Sample-App-Legacy) (which is compatible with ChartIQ versions 7.0.5&ndash;7.5.0) to the new app/SDK. To take advantage of the major improvements offered by the new mobile app, upgrade to Version 8.2.0 or later of the library and reimplement any custom functionality from your legacy app in the new app.
+The iOS app has been totally reengineered for improved usability and functionality. As a result, there is no upgrade path from the [legacy app](https://github.com/ChartIQ/Charting-Library---iOS-Sample-App-Legacy) (which is compatible with ChartIQ versions 7.0.5&ndash;7.5.0) to this new app/SDK. To take advantage of the major improvements offered by this new mobile app, upgrade to Version 8.2.0 or later of the library and reimplement any custom functionality from your legacy app in the new app.
 
 ## API documentation
 
