@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CE386945240E8C1F00CC63C2"
-               BuildableName = "ChartIQ.app"
+               BuildableName = "ChartIQ Technical Analysis Chart.app"
                BlueprintName = "ChartIQApp"
                ReferencedContainer = "container:ChartIQApp.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CE386945240E8C1F00CC63C2"
-            BuildableName = "ChartIQ.app"
+            BuildableName = "ChartIQ Technical Analysis Chart.app"
             BlueprintName = "ChartIQApp"
             ReferencedContainer = "container:ChartIQApp.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CE386945240E8C1F00CC63C2"
-            BuildableName = "ChartIQ.app"
+            BuildableName = "ChartIQ Technical Analysis Chart.app"
             BlueprintName = "ChartIQApp"
             ReferencedContainer = "container:ChartIQApp.xcodeproj">
          </BuildableReference>
