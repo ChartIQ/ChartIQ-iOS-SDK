@@ -569,14 +569,14 @@
     },
     {
       "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQView.swift",
-      "line": 925,
+      "line": 926,
       "symbol": "ChartIQView.userContentController(_:didReceive:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jacobrichards/git/ChartIQ-iOS-SDK/Source/ChartIQView.swift",
-      "line": 1052,
+      "line": 1063,
       "symbol": "ChartIQView.webView(_:didFinish:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
