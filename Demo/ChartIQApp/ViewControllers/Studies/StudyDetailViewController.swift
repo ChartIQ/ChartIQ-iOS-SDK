@@ -298,11 +298,13 @@ class StudyDetailViewController: BaseViewController {
         if let value = parameter[ChartIQConst.StudyParameter.valueKey] {
           selectedOption = String(describing: value)
         }
-        controller.options = options.map { $0.key.capitalizeFirst() }
-        controller.selectedOption = selectedOption.capitalizeFirst()
+        controller.options = options.map { $0.value as! String }
+        controller.options = controller.options.sorted(by: <)
+        controller.selectedOption = selectedOption
         controller.didSelectOption = { [weak self] option in
           guard let self = self else { return }
-          self.updateInputParameters(name: parameterName, value: option)
+            let found = options.first(where: { $0.value as! String == option})
+            self.updateInputParameters(name: parameterName, value: found?.key ?? option)
           self.updateStudyViewModels()
         }
         break
