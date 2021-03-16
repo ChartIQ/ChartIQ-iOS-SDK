@@ -39,10 +39,8 @@ class ChartButton: UIButton {
     switch buttonType {
     case .symbols:
       applyBaseStyle()
-      setTitle(Const.Chart.defaultSymbol, for: .normal)
     case .intervals:
       applyBaseStyle()
-      setTitle(locManager.localize(Const.Chart.defaultInterval), for: .normal)
     case .series:
       setImage(UIImage.Chart.seriesImage, for: .normal)
       contentEdgeInsets = Const.ChartButton.seriesEdgeInsets

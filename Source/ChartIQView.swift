@@ -43,38 +43,41 @@ public class ChartIQView: UIView {
   }
 
   /// The ChartIQ symbol.
-  public var symbol: String {
+  public var symbol: String? {
     let script = scriptManager.getScriptForSymbol()
-    return webView.evaluateJavaScriptWithReturn(script) ?? ""
+    if let symbolRawString = webView.evaluateJavaScriptWithReturn(script) {
+      return symbolRawString
+    }
+    return nil
   }
 
   /// The ChartIQ interval.
-  public var interval: String {
+  public var interval: String? {
     let script = scriptManager.getScriptForInterval()
     if let intervalRawString = webView.evaluateJavaScriptWithReturn(script) {
       return intervalRawString
     }
-    return Const.Core.baseInterval
+    return nil
   }
 
   /// The ChartIQ timeUnit.
-  public var timeUnit: ChartIQTimeUnit {
+  public var timeUnit: ChartIQTimeUnit? {
     let script = scriptManager.getScriptForTimeUnit()
     if let timeUnitRawString = webView.evaluateJavaScriptWithReturn(script),
        let timeUnit = ChartIQTimeUnit(stringValue: timeUnitRawString) {
       return timeUnit
     }
-    return Const.Core.baseTimeUnit
+    return nil
   }
 
   /// The ChartIQ periodicity.
-  public var periodicity: Int {
+  public var periodicity: Int? {
     let script = scriptManager.getScriptForPeriodicity()
     if let periodicityStr = webView.evaluateJavaScriptWithReturn(script),
        let periodicity = Int(periodicityStr) {
       return periodicity
     }
-    return Const.Core.basePeriodicity
+    return nil
   }
 
   /// The ChartIQ chart type.
@@ -874,15 +877,14 @@ public class ChartIQView: UIView {
   ///
   /// - Parameters:
   ///   - data: An array of properly formatted OHLC quote objects to append.
-  ///   - moreAvailable: A bool to determine whether to retrieve more data
   ///   - cb: The callback key used in Javascript.
-  internal func formatJSQuoteData(_ data: [ChartIQData], moreAvailable: Bool, cb: String) {
+  internal func formatJSQuoteData(_ data: [ChartIQData], cb: String) {
     let jsonObject = data.map { $0.toDictionary() }
     guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted),
           let jsonString = String(data: jsonData,
                                   encoding: .utf8)?.replacingOccurrences(of: Const.General.newlineSymbol,
                                                                          with: "") else { return }
-    let script = scriptManager.getScriptForFormatJSQuoteData(jsonString, moreAvailable: moreAvailable, cb: cb)
+    let script = scriptManager.getScriptForFormatJSQuoteData(jsonString, cb: cb)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
@@ -952,8 +954,7 @@ extension ChartIQView: WKScriptMessageHandler {
     dataSource?.pullInitialData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
       DispatchQueue.main.async {
-        // set moreAvailable to true as you want to see if there is more historical data after the initial pull
-        self.formatJSQuoteData(data, moreAvailable: true, cb: cb)
+        self.formatJSQuoteData(data, cb: cb)
       }
     })
   }
@@ -965,8 +966,7 @@ extension ChartIQView: WKScriptMessageHandler {
     dataSource?.pullUpdateData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
       DispatchQueue.main.async {
-        // just an update, no need to see if there is more historical data available
-        self.formatJSQuoteData(data, moreAvailable: false, cb: cb)
+        self.formatJSQuoteData(data, cb: cb)
       }
     })
   }
@@ -978,15 +978,7 @@ extension ChartIQView: WKScriptMessageHandler {
     dataSource?.pullPaginationData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
       DispatchQueue.main.async {
-        // Check to see if you need to try and retrieve more historical data.
-        // This is where you can put your own logic on when to stop retrieving historical data.
-        // By default if the last pagination request return 0 data then it has probably reached the end.
-        // If you have spotty data then another idea might be to check the last historical date, this would require you knowing what date to stop at though.
-        var moreAvailable = true
-        if(data.count < 1) {
-          moreAvailable = false
-        }
-        self.formatJSQuoteData(data, moreAvailable: moreAvailable, cb: cb)
+        self.formatJSQuoteData(data, cb: cb)
       }
     })
   }

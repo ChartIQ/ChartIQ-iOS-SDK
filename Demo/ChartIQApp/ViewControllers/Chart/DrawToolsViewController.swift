@@ -178,7 +178,6 @@ class DrawToolsViewController: BaseViewController {
 
   private func getCustomDrawToolViewModels() -> [DrawToolViewModel] {
     let customDrawToolViewModels = [
-      DrawToolViewModel(drawingTool: ChartIQDrawingTool.noTool, isInFavorites: false),
       DrawToolViewModel(drawingTool: ChartIQDrawingTool.measure, isInFavorites: false)
     ]
     return customDrawToolViewModels

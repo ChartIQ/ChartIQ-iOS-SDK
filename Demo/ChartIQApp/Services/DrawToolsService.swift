@@ -63,18 +63,6 @@ class DrawToolsService {
       drawToolViewModels.append(lineViewModel)
     }
 
-    let cloneToolViewModel = DrawToolBaseViewModel(type: .clone,
-                                                   image: UIImage.DrawToolControlView.cloneImage)
-    drawToolViewModels.append(cloneToolViewModel)
-
-    let deleteToolViewModel = DrawToolBaseViewModel(type: .delete,
-                                                    image: UIImage.DrawToolControlView.deleteImage)
-    drawToolViewModels.append(deleteToolViewModel)
-
-    let manageLayersToolViewModel = DrawToolBaseViewModel(type: .manageLayers,
-                                                          image: UIImage.DrawToolControlView.manageLayersImage)
-    drawToolViewModels.append(manageLayersToolViewModel)
-
     if chartIQDrawingManager.isSupportingSettings(tool) {
       let settingsToolViewModel = DrawToolBaseViewModel(type: .settings,
                                                         image: UIImage.DrawToolControlView.settingsImage)

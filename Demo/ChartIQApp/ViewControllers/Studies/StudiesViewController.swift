@@ -80,10 +80,6 @@ class StudiesViewController: BaseViewController {
     emptyStateViewButton.backgroundColor = .mountainMeadowColor
     emptyStateViewButton.layer.cornerRadius = 6
 
-    editBarButtonItem = UIBarButtonItem(title: locManager.localize(Const.General.editTitle),
-                                        style: .plain,
-                                        target: self,
-                                        action: #selector(editButtonTapped))
     addBarButtonItem = UIBarButtonItem(title: locManager.localize(Const.General.addTitle),
                                        style: .done,
                                        target: self,
