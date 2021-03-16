@@ -11,7 +11,8 @@ import UIKit
 
 // MARK: - TimeUnit Enum
 
-enum TimeUnit: CaseIterable {
+enum TimeUnit: String, CaseIterable, Codable {
+
   case millisecond
   case second
   case minute
@@ -57,11 +58,28 @@ enum TimeUnit: CaseIterable {
       return LocalizationManager.shared().localize(Const.IntervalModel.monthShortTitle)
     }
   }
+
+  internal init(chartIQTimeUnit: ChartIQTimeUnit) {
+    switch chartIQTimeUnit {
+    case .millisecond:
+      self = .millisecond
+    case .second:
+      self = .second
+    case .minute:
+      self = .minute
+    case .day:
+      self = .day
+    case .week:
+      self = .week
+    case .month:
+      self = .month
+    }
+  }
 }
 
 // MARK: - Interval Model
 
-struct IntervalModel: Equatable {
+struct IntervalModel: Equatable, Codable {
 
   // MARK: - Internal Properties
 
@@ -73,6 +91,26 @@ struct IntervalModel: Equatable {
   init(time: Int, timeUnit: TimeUnit) {
     self.time = time
     self.timeUnit = timeUnit
+  }
+
+  init(periodicity: Int, interval: String, chartIQTimeUnit: ChartIQTimeUnit?) {
+    if let chartIQTimeUnit = chartIQTimeUnit {
+      guard let intInterval = Int(interval) else {
+        fatalError("If we receive timeUnit, we must receive interval as int!")
+      }
+      if periodicity > 1 && chartIQTimeUnit == .minute {
+        // Calculating Hours
+        self.time = periodicity * intInterval / 60
+        self.timeUnit = .hour
+      } else {
+        // Use ChartIQTimeUnit and Interval
+        self.time = intInterval
+        self.timeUnit = TimeUnit(chartIQTimeUnit: chartIQTimeUnit)
+      }
+    } else {
+      self.time = periodicity
+      self.timeUnit = TimeUnit(rawValue: interval)!
+    }
   }
 
   // MARK: - Internal Methods

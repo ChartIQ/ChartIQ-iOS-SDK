@@ -375,9 +375,6 @@ public struct Const {
   // MARK: - View Controllers
 
   struct Chart {
-    static let defaultSymbol = "AAPL"
-    static let defaultInterval = "1D"
-
     static let symbolsButtonSize = CGSize(width: 76, height: 32)
     static let intervalsButtonSize = CGSize(width: 52, height: 32)
 
