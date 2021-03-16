@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAF-eV-25Y">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                        <rect key="frame" x="0.0" y="48" width="414" height="726"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKO-HN-JK8">
@@ -118,7 +118,6 @@
                                     <constraint firstItem="RAF-eV-25Y" firstAttribute="leading" secondItem="jif-Dq-rkg" secondAttribute="leading" id="BuD-Hj-Phf"/>
                                     <constraint firstItem="X1Z-uz-ahQ" firstAttribute="leading" secondItem="jif-Dq-rkg" secondAttribute="leading" id="EL7-e8-c6n"/>
                                     <constraint firstItem="xwa-oM-6cv" firstAttribute="top" secondItem="dXo-l8-rCn" secondAttribute="bottom" constant="8" id="FHm-fS-Ls1"/>
-                                    <constraint firstItem="RAF-eV-25Y" firstAttribute="top" secondItem="jif-Dq-rkg" secondAttribute="top" id="P9Z-37-Xvs"/>
                                     <constraint firstItem="Cdq-fm-g8Z" firstAttribute="leading" secondItem="jif-Dq-rkg" secondAttribute="leading" id="Q8Q-Xh-D18"/>
                                     <constraint firstItem="dXo-l8-rCn" firstAttribute="centerX" secondItem="jif-Dq-rkg" secondAttribute="centerX" id="R3s-Za-wFV"/>
                                     <constraint firstItem="X1Z-uz-ahQ" firstAttribute="top" secondItem="Cdq-fm-g8Z" secondAttribute="bottom" id="XlA-0r-F3h"/>
@@ -127,6 +126,7 @@
                                     <constraint firstAttribute="trailing" secondItem="gKO-HN-JK8" secondAttribute="trailing" id="kmQ-Um-tHF"/>
                                     <constraint firstItem="X1Z-uz-ahQ" firstAttribute="top" secondItem="RAF-eV-25Y" secondAttribute="bottom" id="mOH-Mv-6T8"/>
                                     <constraint firstAttribute="trailing" secondItem="X1Z-uz-ahQ" secondAttribute="trailing" id="pB2-gF-225"/>
+                                    <constraint firstItem="RAF-eV-25Y" firstAttribute="top" secondItem="gKO-HN-JK8" secondAttribute="bottom" id="qll-EM-5eX"/>
                                     <constraint firstAttribute="trailing" secondItem="RAF-eV-25Y" secondAttribute="trailing" id="smT-sI-VmL"/>
                                     <constraint firstItem="gKO-HN-JK8" firstAttribute="top" secondItem="jif-Dq-rkg" secondAttribute="top" id="zgi-kd-08p"/>
                                 </constraints>
