@@ -44,4 +44,11 @@ public protocol ChartIQDelegate {
   ///   - chartIQView: The ChartIQView Object.
   ///   - measure: The String Object. The measure information in String format.
   @objc optional func chartIQView(_ chartIQView: ChartIQView, didUpdateMeasure measure: String)
+    
+  /// Called when a measure is updated
+  ///
+  /// - Parameters:
+  ///   - chartIQView: The ChartIQView Object.
+  ///   - measure: The String Object. The measure information in String format.
+  @objc optional func chartIQView(_ chartIQView: ChartIQView, isChartAvailable chartAvailable: Bool)
 }

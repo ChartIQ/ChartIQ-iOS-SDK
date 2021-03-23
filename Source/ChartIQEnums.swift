@@ -560,6 +560,9 @@ internal enum ChartIQCallbackMessage: Int {
 
   /// The measure option.
   case measure
+  
+  /// The chartAvailable option
+  case chartAvailable
 
   /// The accessibility option.
   case accessibility
@@ -578,6 +581,7 @@ internal enum ChartIQCallbackMessage: Int {
       .layout,
       .drawing,
       .measure,
+      .chartAvailable,
       .log
     ]
     return messageHandlers
@@ -600,6 +604,8 @@ internal enum ChartIQCallbackMessage: Int {
       return "drawingHandler"
     case .measure:
       return "measureHandler"
+    case .chartAvailable:
+      return "chartAvailableHandler"
     case .accessibility:
       return "accessibilityHandler"
     case .log:
@@ -620,6 +626,7 @@ internal enum ChartIQCallbackMessage: Int {
       "layoutHandler": .layout,
       "drawingHandler": .drawing,
       "measureHandler": .measure,
+      "chartAvailableHandler": .chartAvailable,
       "accessibilityHandler": .accessibility,
       "logHandler": .log
     ]

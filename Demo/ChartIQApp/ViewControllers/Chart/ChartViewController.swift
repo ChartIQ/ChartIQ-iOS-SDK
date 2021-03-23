@@ -573,18 +573,6 @@ extension ChartViewController: ChartIQDelegate {
   func chartIQViewDidFinishLoading(_ chartIQView: ChartIQView) {
     chartIQView.setDataMethod(.pull)
 
-    if let symbol = chartIQView.symbol {
-      symbolsButton.setTitle(symbol, for: .normal)
-    }
-
-    if let periodicity = chartIQView.periodicity, let interval = chartIQView.interval {
-      let intervalModel = IntervalModel(periodicity: periodicity,
-                                        interval: interval,
-                                        chartIQTimeUnit: chartIQView.timeUnit)
-      selectedInterval = intervalModel
-      intervalsButton.setTitle(intervalModel.getShortDisplayName(), for: .normal)
-    }
-
     let voiceoverFields = [
       ChartIQQuoteField.date.stringValue: true,
       ChartIQQuoteField.close.stringValue: true,
@@ -604,6 +592,22 @@ extension ChartViewController: ChartIQDelegate {
     guard !measure.isEmpty else { return }
     measureInfoView.isHidden = false
     measureInfoLabel.text = measure
+  }
+  
+  func chartIQView(_ chartIQView: ChartIQView, isChartAvailable chartAvailable: Bool) {
+    if(chartAvailable) {
+      if let symbol = chartIQView.symbol {
+        self.symbolsButton.setTitle(symbol, for: .normal)
+      }
+      
+      if let periodicity = chartIQView.periodicity, let interval = chartIQView.interval {
+        let intervalModel = IntervalModel(periodicity: periodicity,
+                                          interval: interval,
+                                          chartIQTimeUnit: chartIQView.timeUnit)
+        selectedInterval = intervalModel
+        intervalsButton.setTitle(intervalModel.getShortDisplayName(), for: .normal)
+      }
+    }
   }
 }
 
