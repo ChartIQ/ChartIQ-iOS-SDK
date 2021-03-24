@@ -821,13 +821,9 @@ public class ChartIQView: UIView {
     configuration.userContentController = userContentController
 
     webView = WKWebView(frame: bounds, configuration: configuration)
-    webView.navigationDelegate = self
     webView.isOpaque = false
     addSubview(webView)
     setupConstraints()
-    addLayoutListener()
-    addDrawingListener()
-    addMeasureListener()
     if let url = URL(string: ChartIQView.chartIQUrl) {
       webView.load(URLRequest(url: url))
     }
@@ -877,14 +873,15 @@ public class ChartIQView: UIView {
   ///
   /// - Parameters:
   ///   - data: An array of properly formatted OHLC quote objects to append.
+  ///   - moreAvailable: A bool to determine whether to retrieve more data
   ///   - cb: The callback key used in Javascript.
-  internal func formatJSQuoteData(_ data: [ChartIQData], cb: String) {
+  internal func formatJSQuoteData(_ data: [ChartIQData], moreAvailable: Bool, cb: String) {
     let jsonObject = data.map { $0.toDictionary() }
     guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted),
           let jsonString = String(data: jsonData,
                                   encoding: .utf8)?.replacingOccurrences(of: Const.General.newlineSymbol,
                                                                          with: "") else { return }
-    let script = scriptManager.getScriptForFormatJSQuoteData(jsonString, cb: cb)
+    let script = scriptManager.getScriptForFormatJSQuoteData(jsonString, moreAvailable: moreAvailable, cb: cb)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
@@ -902,22 +899,19 @@ public class ChartIQView: UIView {
   /// Sets a callbackListener with a type of drawing.
   internal func addDrawingListener() {
     let script = scriptManager.getScriptForAddDrawingListener()
-    let userScript = WKUserScript(source: script, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
-    webView.configuration.userContentController.addUserScript(userScript)
+    webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
   /// Sets a callbackListener with a type of drawing.
   internal func addMeasureListener() {
     let script = scriptManager.getScriptForAddMeasureListener()
-    let userScript = WKUserScript(source: script, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
-    webView.configuration.userContentController.addUserScript(userScript)
+    webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
   /// Sets a callbackListener with a type of layout.
   internal func addLayoutListener() {
     let script = scriptManager.getScriptForAddLayoutListener()
-    let userScript = WKUserScript(source: script, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
-    webView.configuration.userContentController.addUserScript(userScript)
+    webView.evaluateJavaScript(script, completionHandler: nil)
   }
 }
 
@@ -936,6 +930,7 @@ extension ChartIQView: WKScriptMessageHandler {
       .layout: layoutCallbackMessageHandler,
       .drawing: drawingCallbackMessageHandler,
       .measure: measureCallbackMessageHandler,
+      .chartAvailable: chartAvailableCallbackMessageHandler,
       .accessibility: accessibilityCallbackMessageHandler,
       .log: logCallbackMessageHandler
     ]
@@ -954,7 +949,8 @@ extension ChartIQView: WKScriptMessageHandler {
     dataSource?.pullInitialData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
       DispatchQueue.main.async {
-        self.formatJSQuoteData(data, cb: cb)
+        // Set moreAvailable to true as you want to see if there is more historical data after the initial pull.
+        self.formatJSQuoteData(data, moreAvailable: true, cb: cb)
       }
     })
   }
@@ -966,7 +962,8 @@ extension ChartIQView: WKScriptMessageHandler {
     dataSource?.pullUpdateData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
       DispatchQueue.main.async {
-        self.formatJSQuoteData(data, cb: cb)
+        // Just an update, no need to see if there is more historical data available.
+        self.formatJSQuoteData(data, moreAvailable: false, cb: cb)
       }
     })
   }
@@ -978,7 +975,13 @@ extension ChartIQView: WKScriptMessageHandler {
     dataSource?.pullPaginationData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
       DispatchQueue.main.async {
-        self.formatJSQuoteData(data, cb: cb)
+        // Check to see if you need to try and retrieve more historical data.
+        // This is where you can put your own logic on when to stop retrieving historical data.
+        // By default if the last pagination request return 0 data then it has probably reached the end.
+        // If you have spotty data then another idea might be to check the last historical date,
+        // this would require you knowing what date to stop at though.
+        let moreAvailable = !(data.count < 1)
+        self.formatJSQuoteData(data, moreAvailable: moreAvailable, cb: cb)
       }
     })
   }
@@ -1002,6 +1005,17 @@ extension ChartIQView: WKScriptMessageHandler {
                                             to: Const.General.quoteSymbol) {
       delegate?.chartIQView?(self, didUpdateMeasure: measure)
     }
+  }
+
+  internal func chartAvailableCallbackMessageHandler(message: WKScriptMessage) {
+    guard let chartAvailable = message.body as? String, let isChartAvailable = Bool(chartAvailable) else { return }
+    guard isChartAvailable else { return }
+    loadDefaultSetting()
+    retrieveAllStudies()
+    addLayoutListener()
+    addDrawingListener()
+    addMeasureListener()
+    delegate?.chartIQViewDidFinishLoading(self)
   }
 
   internal func accessibilityCallbackMessageHandler(message: WKScriptMessage) {
@@ -1045,18 +1059,5 @@ extension ChartIQView: WKScriptMessageHandler {
       msg += value
     }
     debugPrint("\(method): \(msg)")
-  }
-}
-
-// MARK: - WebKit Navigation Delegate
-
-extension ChartIQView: WKNavigationDelegate {
-
-  public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-    loadDefaultSetting()
-    delegate?.chartIQViewDidFinishLoading(self)
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-      self.retrieveAllStudies()
-    }
   }
 }
