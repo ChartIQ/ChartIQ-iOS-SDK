@@ -94,22 +94,37 @@ struct IntervalModel: Equatable, Codable {
   }
 
   init(periodicity: Int, interval: String, chartIQTimeUnit: ChartIQTimeUnit?) {
+    var updatedPeriodicity = periodicity
+    var updatedInterval = interval
     if let chartIQTimeUnit = chartIQTimeUnit {
       guard let intInterval = Int(interval) else {
         fatalError("If we receive timeUnit, we must receive interval as int!")
       }
-      if periodicity > 1 && chartIQTimeUnit == .minute {
+
+      switch chartIQTimeUnit {
+      case .millisecond, .second, .minute, .day, .week, .month:
+        updatedPeriodicity = intInterval
+        updatedInterval = String(periodicity)
+      default:
+        break
+      }
+
+      guard let updatedIntInterval = Int(updatedInterval) else {
+        fatalError("If we receive timeUnit, we must receive interval as int!")
+      }
+
+      if updatedPeriodicity > 1 && chartIQTimeUnit == .minute {
         // Calculating Hours
         self.time = periodicity * intInterval / 60
         self.timeUnit = .hour
       } else {
         // Use ChartIQTimeUnit and Interval
-        self.time = intInterval
+        self.time = updatedIntInterval
         self.timeUnit = TimeUnit(chartIQTimeUnit: chartIQTimeUnit)
       }
     } else {
-      self.time = periodicity
-      self.timeUnit = TimeUnit(rawValue: interval)!
+      self.time = updatedPeriodicity
+      self.timeUnit = TimeUnit(rawValue: updatedInterval)!
     }
   }
 
@@ -125,15 +140,18 @@ struct IntervalModel: Equatable, Codable {
 
   internal func getPeriod() -> Int {
     if timeUnit == .hour {
-      return time * 2
+      return calculatePeriod()
     } else {
-      return 1
+      return calculateInterval()
     }
   }
 
   internal func getInterval() -> String {
-    let interval = timeUnit == .hour ? 30 : time
-    return "\(interval)"
+    if timeUnit == .hour {
+      return "\(calculateInterval())"
+    } else {
+      return "\(calculatePeriod())"
+    }
   }
 
   internal func getTimeUnit() -> ChartIQTimeUnit {
@@ -153,5 +171,20 @@ struct IntervalModel: Equatable, Codable {
     case .month:
       return ChartIQTimeUnit.month
     }
+  }
+
+  // MARK: - Private Methods
+
+  private func calculatePeriod() -> Int {
+    if timeUnit == .hour {
+      return time * 2
+    } else {
+      return 1
+    }
+  }
+
+  private func calculateInterval() -> Int {
+    let interval = timeUnit == .hour ? 30 : time
+    return interval
   }
 }
