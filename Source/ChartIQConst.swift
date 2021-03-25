@@ -76,6 +76,7 @@ public struct ChartIQConst {
     public static let valueKey = "value"
     public static let checkboxKey = "checkbox"
     public static let optionsKey = "options"
+    public static let autoColorKey = "auto"
 
     public static let defaultValueKey = "defaultValue"
     public static let defaultOutputKey = "defaultOutput"

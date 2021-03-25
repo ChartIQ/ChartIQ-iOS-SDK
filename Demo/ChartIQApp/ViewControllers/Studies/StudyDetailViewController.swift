@@ -86,10 +86,11 @@ class StudyDetailViewController: BaseViewController {
   // MARK: - Private Methods
 
   private func updateStudyViewModels() {
+    let isDarkTheme = isCurrentThemeDark()
     var parameterViewModels: [TableCellViewModelProtocol] = []
     let parameters: [[String: Any]] = inputParameters + outputParameters + paramParameters
     for parameter in parameters {
-      if let viewModel = studiesService.getStudyViewModel(from: parameter) {
+      if let viewModel = studiesService.getStudyViewModel(from: parameter, isDarkTheme: isDarkTheme) {
         parameterViewModels.append(viewModel)
       }
     }
@@ -263,6 +264,14 @@ class StudyDetailViewController: BaseViewController {
     didSaveStudy?(study)
     view.stopActivityIndicator()
     navigationController?.popViewController(animated: true)
+  }
+
+  private func isCurrentThemeDark() -> Bool {
+    if #available(iOS 12.0, *), traitCollection.userInterfaceStyle == .dark {
+      return true
+    } else {
+      return false
+    }
   }
 
   // MARK: - Private Alert Methods
