@@ -24,6 +24,7 @@ class FibInputTableCell: UITableViewCell {
   // MARK: - Private Properties
 
   private let locManager = LocalizationManager.shared()
+  private var isAllowNegative: Bool = false
 
   // MARK: - View Lifecycle Methods
 
@@ -60,6 +61,7 @@ class FibInputTableCell: UITableViewCell {
   // MARK: - Internal Methods
 
   internal func setupCell(withViewModel viewModel: FibInputTableCellViewModel) {
+    isAllowNegative = viewModel.isAllowNegative
     textField.text = viewModel.title
     textField.placeholder = viewModel.placeholder
     addButton.setTitle(viewModel.buttonTitle, for: .normal)
@@ -92,7 +94,8 @@ extension FibInputTableCell: UITextFieldDelegate {
                  shouldChangeCharactersIn range: NSRange,
                  replacementString string: String) -> Bool {
     guard textField.keyboardType == .numbersAndPunctuation else { return true }
-    let cs = NSCharacterSet(charactersIn: Const.StudyDetail.negativeDoubleDigits).inverted
+    let charactersSet = isAllowNegative ? Const.StudyDetail.negativeDoubleDigits : Const.StudyDetail.doubleDigits
+    let cs = NSCharacterSet(charactersIn: charactersSet).inverted
     let filtered = string.components(separatedBy: cs).joined()
     return (string == filtered)
   }
