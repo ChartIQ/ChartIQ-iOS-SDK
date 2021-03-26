@@ -35,6 +35,8 @@ class TextColorTableCell: UITableViewCell {
     backgroundColor = .whiteDarkGunmetalColor
     selectionStyle = .none
 
+    colorView.layer.borderColor = UIColor.brightGreyYankeesBlueColor.cgColor
+    colorView.layer.borderWidth = 1.0
     colorView.layer.cornerRadius = 2
     colorView.clipsToBounds = true
 
