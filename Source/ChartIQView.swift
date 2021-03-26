@@ -822,7 +822,6 @@ public class ChartIQView: UIView {
 
     webView = WKWebView(frame: bounds, configuration: configuration)
     webView.isOpaque = false
-    webView.navigationDelegate = self
     addSubview(webView)
     setupConstraints()
     if let url = URL(string: ChartIQView.chartIQUrl) {
@@ -1060,25 +1059,5 @@ extension ChartIQView: WKScriptMessageHandler {
       msg += value
     }
     debugPrint("\(method): \(msg)")
-  }
-}
-
-// Temporarily added the old logic, until a new chartAvailableCallbackMessageHandler is added from the JS side.
-// The code below needs to be removed when the chartAvailableCallbackMessageHandler starts working.
-// Also don't forget to remove "webView.navigationDelegate = self" in setupWebView() method.
-
-// MARK: - WebKit Navigation Delegate
-
-extension ChartIQView: WKNavigationDelegate {
-
-  public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-    loadDefaultSetting()
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-      self.retrieveAllStudies()
-      self.addLayoutListener()
-      self.addDrawingListener()
-      self.addMeasureListener()
-      self.delegate?.chartIQViewDidFinishLoading(self)
-    }
   }
 }
