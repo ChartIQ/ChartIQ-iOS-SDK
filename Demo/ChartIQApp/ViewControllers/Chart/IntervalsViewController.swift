@@ -15,7 +15,7 @@ class IntervalsViewController: BaseViewController {
   // MARK: - TableSection Enum
 
   enum TableSection: Int, CaseIterable {
-    case first = 0, second, third, fourth, total
+    case first = 0, second, third, total
   }
 
   // MARK: - IBOutlets
@@ -106,9 +106,6 @@ class IntervalsViewController: BaseViewController {
         IntervalModel(time: 30, timeUnit: .minute),
         IntervalModel(time: 1, timeUnit: .hour),
         IntervalModel(time: 4, timeUnit: .hour)
-      ],
-      .fourth: [
-        IntervalModel(time: 30, timeUnit: .second)
       ]
     ]
     tableView.reloadData()
@@ -122,7 +119,7 @@ class IntervalsViewController: BaseViewController {
   }
 
   private func setupTimeUnits() {
-    timeUnits = TimeUnit.allCases
+    timeUnits = [.minute, .hour, .day, .month]
   }
 
   // MARK: - Actions Methods
