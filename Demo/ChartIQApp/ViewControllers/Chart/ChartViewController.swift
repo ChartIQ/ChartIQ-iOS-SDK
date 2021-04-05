@@ -278,7 +278,7 @@ class ChartViewController: BaseViewController {
 
   private func updateInterval() {
     guard let periodicity = chartIQView.periodicity, let interval = chartIQView.interval else { return }
-    let intervalModel = IntervalModel(periodicity: periodicity,
+    let intervalModel = IntervalModel(period: periodicity,
                                       interval: interval,
                                       chartIQTimeUnit: chartIQView.timeUnit)
     selectedInterval = intervalModel

@@ -395,11 +395,6 @@ internal protocol ChartIQScriptManagerProtocol {
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   func getScriptForStudyObjects() -> String
 
-  /// Returns a script that loads a default setting.
-  ///
-  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  func getScriptForLoadDefaultSetting() -> String
-
   /// Returns a script that formats JSQuote data.
   ///
   /// - Parameters:
