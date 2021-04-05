@@ -639,14 +639,6 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
     return script
   }
 
-  /// Returns a script that loads a default setting.
-  ///
-  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  internal func getScriptForLoadDefaultSetting() -> String {
-    let script = "stxx.layout.chartScale = \"log\";"
-    return script
-  }
-
   /// Returns a script that formats JSQuote data.
   ///
   /// - Parameters:

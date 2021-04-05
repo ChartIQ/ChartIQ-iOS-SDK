@@ -863,12 +863,6 @@ public class ChartIQView: UIView {
 
   // MARK: - Internal Helpers
 
-  /// Uses this method to load the default ChartIQView setting.
-  internal func loadDefaultSetting() {
-    let script = scriptManager.getScriptForLoadDefaultSetting()
-    webView.evaluateJavaScript(script, completionHandler: nil)
-  }
-
   /// Uses this method to pass the array of ChartIQData to js and ask the chart to update.
   ///
   /// - Parameters:
@@ -1010,7 +1004,6 @@ extension ChartIQView: WKScriptMessageHandler {
   internal func chartAvailableCallbackMessageHandler(message: WKScriptMessage) {
     guard let chartAvailable = message.body as? String, let isChartAvailable = Bool(chartAvailable) else { return }
     guard isChartAvailable else { return }
-    loadDefaultSetting()
     retrieveAllStudies()
     addLayoutListener()
     addDrawingListener()
