@@ -25,6 +25,7 @@ class FibSettingsViewController: BaseViewController {
 
   // MARK: - Internal Properties
 
+  internal var selectedDrawTool: DrawToolViewModel?
   internal var fibSettings: [[String: Any]] = []
   internal var didSaveFibSettings: (([[String: Any]]) -> Void)?
 
@@ -33,12 +34,14 @@ class FibSettingsViewController: BaseViewController {
   private var saveBarButtonItem: UIBarButtonItem?
   private let locManager = LocalizationManager.shared()
   private var fibSettingsViewModels: [TableSection: [TableCellViewModelProtocol]] = [:]
+  private var isAllowNegative: Bool = true
 
   // MARK: - ViewController Lifecycle Methods
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    prepareFibSettings()
     updateFibSettingsViewModels()
   }
 
@@ -82,11 +85,17 @@ class FibSettingsViewController: BaseViewController {
 
   // MARK: - Private Methods
 
+  private func prepareFibSettings() {
+    guard selectedDrawTool?.drawingTool == .fibArc else { return }
+    fibSettings = fibSettings.filter({ ($0[ChartIQConst.DrawingParameter.levelKey] as? Double ?? -1) >= 0 })
+    isAllowNegative = false
+  }
+
   private func updateFibSettingsViewModels() {
     var baseViewModels: [TableCellViewModelProtocol] = []
     for fibSetting in fibSettings {
       if let levelDouble = fibSetting[ChartIQConst.DrawingParameter.levelKey] as? Double {
-        let levelTitle = String(levelDouble) + " \(Const.General.perCentSymbol)"
+        let levelTitle = String(levelDouble) + "\(Const.General.perCentSymbol)"
         let baseViewModel = BaseTableCellViewModel(title: levelTitle)
         baseViewModels.append(baseViewModel)
       }
@@ -96,7 +105,8 @@ class FibSettingsViewController: BaseViewController {
       .second: [
         FibInputTableCellViewModel(title: "",
                                    placeholder: Const.FibSettingsViewController.fibInputPlaceholderTitle,
-                                   buttonTitle: Const.FibSettingsViewController.fibInputAddButtonTitle)
+                                   buttonTitle: Const.FibSettingsViewController.fibInputAddButtonTitle,
+                                   isAllowNegative: isAllowNegative)
       ]
     ]
     tableView.reloadData()

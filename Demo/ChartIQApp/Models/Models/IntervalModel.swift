@@ -83,32 +83,34 @@ struct IntervalModel: Equatable, Codable {
 
   // MARK: - Internal Properties
 
-  internal let time: Int
+  internal let period: Int
+  internal let interval: Int
   internal let timeUnit: TimeUnit
 
   // MARK: - Init
 
-  init(time: Int, timeUnit: TimeUnit) {
-    self.time = time
+  init(period: Int, interval: Int, timeUnit: TimeUnit) {
+    self.period = period
+    self.interval = interval
     self.timeUnit = timeUnit
   }
 
-  init(periodicity: Int, interval: String, chartIQTimeUnit: ChartIQTimeUnit?) {
+  init(period: Int, interval: String, chartIQTimeUnit: ChartIQTimeUnit?) {
     if let chartIQTimeUnit = chartIQTimeUnit {
       guard let intInterval = Int(interval) else {
         fatalError("If we receive timeUnit, we must receive interval as int!")
       }
-      if periodicity > 1 && chartIQTimeUnit == .minute {
-        // Calculating Hours
-        self.time = periodicity * intInterval / 60
+      self.interval = intInterval
+      self.period = period
+      if (intInterval * period) % 60 == 0 {
+        // Display the periodicity as hours
         self.timeUnit = .hour
       } else {
-        // Use ChartIQTimeUnit and Interval
-        self.time = intInterval
         self.timeUnit = TimeUnit(chartIQTimeUnit: chartIQTimeUnit)
       }
     } else {
-      self.time = periodicity
+      self.interval = 1
+      self.period = period
       self.timeUnit = TimeUnit(rawValue: interval)!
     }
   }
@@ -116,23 +118,26 @@ struct IntervalModel: Equatable, Codable {
   // MARK: - Internal Methods
 
   internal func getFullDisplayName() -> String {
-    return "\(time) \(timeUnit.fullDisplayName)"
+    var fullPeriodicity = interval * period
+    if timeUnit == .hour {
+      fullPeriodicity /= 60
+    }
+    return "\(fullPeriodicity) \(timeUnit.fullDisplayName)"
   }
 
   internal func getShortDisplayName() -> String {
-    return "\(time)\(timeUnit.shortDisplayName)"
+    var fullPeriodicity = interval * period
+    if timeUnit == .hour {
+      fullPeriodicity /= 60
+    }
+    return "\(fullPeriodicity)\(timeUnit.shortDisplayName)"
   }
 
   internal func getPeriod() -> Int {
-    if timeUnit == .hour {
-      return time * 2
-    } else {
-      return 1
-    }
+    return period
   }
 
   internal func getInterval() -> String {
-    let interval = timeUnit == .hour ? 30 : time
     return "\(interval)"
   }
 

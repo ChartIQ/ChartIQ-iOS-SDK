@@ -24,59 +24,69 @@ enum StudyDetailType: String {
 
 class StudiesService {
 
-  private func getStudyDetailType(from parameter: [String: Any]) -> StudyDetailType? {
+  // MARK: - Internal Methods
+
+  internal func getStudyViewModel(from parameters: [String: Any], isDarkTheme: Bool) -> TableCellViewModelProtocol? {
+    guard let optionType = getStudyDetailType(from: parameters) else { return nil }
+    var viewModel: TableCellViewModelProtocol?
+    switch optionType {
+    case .text:
+      let title = parameters[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
+      let text = parameters[ChartIQConst.StudyParameter.valueKey] as? String ?? ""
+      viewModel = TextTableCellViewModel(title: title, text: text)
+    case .number:
+      let title = parameters[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
+      let number = parameters[ChartIQConst.StudyParameter.valueKey] as? Double ?? 0
+      viewModel = NumberTableCellViewModel(title: title, number: number)
+    case .color:
+      let title = parameters[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
+      let color = getColor(fromParameters: parameters, isDarkTheme: isDarkTheme)
+      viewModel = ColorTableCellViewModel(title: title, color: color)
+    case .textColor:
+      let title = parameters[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
+      let number = parameters[ChartIQConst.StudyParameter.valueKey] as? Int ?? 0
+      let color = getColor(fromParameters: parameters, isDarkTheme: isDarkTheme)
+      viewModel = TextColorTableCellViewModel(title: title, number: number, color: color)
+    case .toggle:
+      let title = parameters[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
+      let isToggleOn = parameters[ChartIQConst.StudyParameter.valueKey] as? Bool ?? false
+      viewModel = ToggleTableCellViewModel(title: title, isToggleOn: isToggleOn)
+    case .select:
+      let title = parameters[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
+      var detailTitle = ""
+      if let value = parameters[ChartIQConst.StudyParameter.valueKey] {
+        detailTitle = String(describing: value)
+      }
+      viewModel = SelectTableCellViewModel(title: title, detailTitle: detailTitle)
+    }
+    return viewModel
+  }
+
+  // MARK: - Private Methods
+
+  private func getStudyDetailType(from parameters: [String: Any]) -> StudyDetailType? {
     var type = ChartIQConst.StudyParameter.colorKey
-    if let typeParameter = parameter[ChartIQConst.StudyParameter.typeKey] as? String {
+    if let typeParameter = parameters[ChartIQConst.StudyParameter.typeKey] as? String {
       type = typeParameter
     }
-    if parameter[ChartIQConst.StudyParameter.colorKey] != nil,
-      parameter[ChartIQConst.StudyParameter.typeKey] != nil,
-      parameter[ChartIQConst.StudyParameter.typeKey] as? String == ChartIQConst.StudyParameter.textKey {
+    if parameters[ChartIQConst.StudyParameter.colorKey] != nil,
+       parameters[ChartIQConst.StudyParameter.typeKey] != nil,
+       parameters[ChartIQConst.StudyParameter.typeKey] as? String == ChartIQConst.StudyParameter.textKey {
       type = ChartIQConst.StudyParameter.colorTextKey
     }
     let optionType = StudyDetailType(rawValue: type)
     return optionType
   }
 
-  internal func getStudyViewModel(from parameter: [String: Any]) -> TableCellViewModelProtocol? {
-    guard let optionType = getStudyDetailType(from: parameter) else { return nil }
-    var viewModel: TableCellViewModelProtocol?
-    switch optionType {
-    case .text:
-      let title = parameter[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
-      let text = parameter[ChartIQConst.StudyParameter.valueKey] as? String ?? ""
-      viewModel = TextTableCellViewModel(title: title, text: text)
-    case .number:
-      let title = parameter[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
-      let number = parameter[ChartIQConst.StudyParameter.valueKey] as? Double ?? 0
-      viewModel = NumberTableCellViewModel(title: title, number: number)
-    case .color:
-      let title = parameter[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
-      var color = UIColor.blackColor
-      if let rawColorString = parameter[ChartIQConst.StudyParameter.colorKey] as? String {
+  private func getColor(fromParameters parameters: [String: Any], isDarkTheme: Bool) -> UIColor {
+    var color = UIColor.blackColor
+    if let rawColorString = parameters[ChartIQConst.StudyParameter.colorKey] as? String {
+      if rawColorString == ChartIQConst.StudyParameter.autoColorKey {
+        color = isDarkTheme ? UIColor.whiteColor : .blackColor
+      } else {
         color = UIColor(hexString: rawColorString.replacingOccurrences(of: Const.General.hashSymbol, with: ""))
       }
-      viewModel = ColorTableCellViewModel(title: title, color: color)
-    case .textColor:
-      let title = parameter[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
-      let number = parameter[ChartIQConst.StudyParameter.valueKey] as? Int ?? 0
-      var color = UIColor.blackColor
-      if let rawColorString = parameter[ChartIQConst.StudyParameter.colorKey] as? String {
-        color = UIColor(hexString: rawColorString.replacingOccurrences(of: Const.General.hashSymbol, with: ""))
-      }
-      viewModel = TextColorTableCellViewModel(title: title, number: number, color: color)
-    case .toggle:
-      let title = parameter[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
-      let isToggleOn = parameter[ChartIQConst.StudyParameter.valueKey] as? Bool ?? false
-      viewModel = ToggleTableCellViewModel(title: title, isToggleOn: isToggleOn)
-    case .select:
-      let title = parameter[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
-      var detailTitle = ""
-      if let value = parameter[ChartIQConst.StudyParameter.valueKey] {
-        detailTitle = String(describing: value)
-      }
-      viewModel = SelectTableCellViewModel(title: title, detailTitle: detailTitle)
     }
-    return viewModel
+    return color
   }
 }

@@ -271,6 +271,20 @@ class ChartViewController: BaseViewController {
     blurredEffectView?.fadeOutAnimation()
   }
 
+  private func updateSymbol() {
+    guard let symbol = chartIQView.symbol else { return }
+    symbolsButton.setTitle(symbol, for: .normal)
+  }
+
+  private func updateInterval() {
+    guard let periodicity = chartIQView.periodicity, let interval = chartIQView.interval else { return }
+    let intervalModel = IntervalModel(period: periodicity,
+                                      interval: interval,
+                                      chartIQTimeUnit: chartIQView.timeUnit)
+    selectedInterval = intervalModel
+    intervalsButton.setTitle(intervalModel.getShortDisplayName(), for: .normal)
+  }
+
   // MARK: - CrosshairInfoView Private Methods
 
   private func showCrosshairInfoView() {
@@ -573,17 +587,8 @@ extension ChartViewController: ChartIQDelegate {
   func chartIQViewDidFinishLoading(_ chartIQView: ChartIQView) {
     chartIQView.setDataMethod(.pull)
 
-    if let symbol = chartIQView.symbol {
-      symbolsButton.setTitle(symbol, for: .normal)
-    }
-
-    if let periodicity = chartIQView.periodicity, let interval = chartIQView.interval {
-      let intervalModel = IntervalModel(periodicity: periodicity,
-                                        interval: interval,
-                                        chartIQTimeUnit: chartIQView.timeUnit)
-      selectedInterval = intervalModel
-      intervalsButton.setTitle(intervalModel.getShortDisplayName(), for: .normal)
-    }
+    updateSymbol()
+    updateInterval()
 
     let voiceoverFields = [
       ChartIQQuoteField.date.stringValue: true,
@@ -601,7 +606,7 @@ extension ChartViewController: ChartIQDelegate {
   func chartIQView(_ chartIQView: ChartIQView, didUpdateDrawing drawings: Any) {}
 
   func chartIQView(_ chartIQView: ChartIQView, didUpdateMeasure measure: String) {
-    guard !measure.isEmpty else { return }
+    guard !measure.isEmpty, isDrawToolEnable else { return }
     measureInfoView.isHidden = false
     measureInfoLabel.text = measure
   }

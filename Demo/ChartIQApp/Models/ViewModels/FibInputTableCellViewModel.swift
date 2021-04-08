@@ -17,12 +17,14 @@ class FibInputTableCellViewModel: TableCellViewModelProtocol {
   internal var title: String
   internal var placeholder: String
   internal var buttonTitle: String
+  internal var isAllowNegative: Bool
 
   // MARK: - Init
 
-  init(title: String, placeholder: String, buttonTitle: String) {
+  init(title: String, placeholder: String, buttonTitle: String, isAllowNegative: Bool) {
     self.title = title
     self.placeholder = placeholder
     self.buttonTitle = buttonTitle
+    self.isAllowNegative = isAllowNegative
   }
 }
