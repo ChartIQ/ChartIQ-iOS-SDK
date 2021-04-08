@@ -67,12 +67,10 @@ fastlane/test_output
 # Misc
 .project
 .DS_Store
+Demo/.DS_Store
 
-ChartIQ.xcodeproj/project.xcworkspace/xcuserdata/user.xcuserdatad/UserInterfaceState.xcuserstate
-ChartIQ.xcodeproj/xcuserdata/steventao.xcuserdatad/xcschemes/ChartIQ.xcscheme
-ChartIQ.xcodeproj/xcuserdata/steventao.xcuserdatad/xcschemes/xcschememanagement.plist
-ChartIQ.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/xcschememanagement.plist
-ChartIQ.xcworkspace/xcuserdata/user.xcuserdatad/UserInterfaceState.xcuserstate
-Demo/ChartIQDemo.xcodeproj/project.xcworkspace/xcuserdata/user.xcuserdatad/UserInterfaceState.xcuserstate
-Demo/ChartIQDemo.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/ChartIQDemo.xcscheme
-Demo/ChartIQDemo.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/xcschememanagement.plist
+ChartIQ.xcodeproj/project.xcworkspace/xcuserdata/
+ChartIQ.xcodeproj/xcuserdata/
+ChartIQ.xcworkspace/xcuserdata/
+Demo/ChartIQDemo.xcodeproj/project.xcworkspace/xcuserdata/
+Demo/ChartIQDemo.xcodeproj/xcuserdata/

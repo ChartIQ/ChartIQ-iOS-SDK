@@ -639,22 +639,15 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
     return script
   }
 
-  /// Returns a script that loads a default setting.
-  ///
-  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  internal func getScriptForLoadDefaultSetting() -> String {
-    let script = "stxx.layout.chartScale = \"log\";"
-    return script
-  }
-
   /// Returns a script that formats JSQuote data.
   ///
   /// - Parameters:
   ///   - json: The String Object.
+  ///   - moreAvailable: The Bool Value.
   ///   - cb: The String Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  internal func getScriptForFormatJSQuoteData(_ json: String, cb: String) -> String {
-    let script = mobileNameSpace + "parseData('\(json)', \"\(cb)\");"
+  internal func getScriptForFormatJSQuoteData(_ json: String, moreAvailable: Bool, cb: String) -> String {
+    let script = mobileNameSpace + "parseData('\(json)', \"\(cb)\", \(moreAvailable));"
     return script
   }
 
