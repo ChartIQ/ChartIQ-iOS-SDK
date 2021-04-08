@@ -83,15 +83,15 @@ struct IntervalModel: Equatable, Codable {
 
   // MARK: - Internal Properties
 
-  internal let interval: Int
   internal let period: Int
+  internal let interval: Int
   internal let timeUnit: TimeUnit
 
   // MARK: - Init
 
-    init(period: Int, interval: Int, timeUnit: TimeUnit) {
-    self.interval = interval
+  init(period: Int, interval: Int, timeUnit: TimeUnit) {
     self.period = period
+    self.interval = interval
     self.timeUnit = timeUnit
   }
 
@@ -100,10 +100,8 @@ struct IntervalModel: Equatable, Codable {
       guard let intInterval = Int(interval) else {
         fatalError("If we receive timeUnit, we must receive interval as int!")
       }
-
       self.interval = intInterval
       self.period = period
-
       if (intInterval * period) % 60 == 0 {
         // Display the periodicity as hours
         self.timeUnit = .hour
@@ -122,7 +120,7 @@ struct IntervalModel: Equatable, Codable {
   internal func getFullDisplayName() -> String {
     var fullPeriodicity = interval * period
     if timeUnit == .hour {
-        fullPeriodicity /= 60
+      fullPeriodicity /= 60
     }
     return "\(fullPeriodicity) \(timeUnit.fullDisplayName)"
   }
@@ -130,17 +128,17 @@ struct IntervalModel: Equatable, Codable {
   internal func getShortDisplayName() -> String {
     var fullPeriodicity = interval * period
     if timeUnit == .hour {
-        fullPeriodicity /= 60
+      fullPeriodicity /= 60
     }
     return "\(fullPeriodicity)\(timeUnit.shortDisplayName)"
   }
 
   internal func getPeriod() -> Int {
-      return period
+    return period
   }
 
   internal func getInterval() -> String {
-      return "\(interval)"
+    return "\(interval)"
   }
 
   internal func getTimeUnit() -> ChartIQTimeUnit {
