@@ -606,7 +606,7 @@ extension ChartViewController: ChartIQDelegate {
   func chartIQView(_ chartIQView: ChartIQView, didUpdateDrawing drawings: Any) {}
 
   func chartIQView(_ chartIQView: ChartIQView, didUpdateMeasure measure: String) {
-    guard !measure.isEmpty else { return }
+    guard !measure.isEmpty, isDrawToolEnable else { return }
     measureInfoView.isHidden = false
     measureInfoLabel.text = measure
   }
