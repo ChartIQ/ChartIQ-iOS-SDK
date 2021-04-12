@@ -15,7 +15,7 @@ class IntervalsViewController: BaseViewController {
   // MARK: - TableSection Enum
 
   enum TableSection: Int, CaseIterable {
-    case first = 0, second, third, fourth, total
+    case first = 0, second, third, total
   }
 
   // MARK: - IBOutlets
@@ -93,22 +93,22 @@ class IntervalsViewController: BaseViewController {
 
   private func setupIntervals() {
     intervals = [
+      .first: [
+        IntervalModel(period: 1, interval: 1, timeUnit: .day),
+        IntervalModel(period: 1, interval: 1, timeUnit: .week),
+        IntervalModel(period: 1, interval: 1, timeUnit: .month)
+      ],
       .second: [
-        IntervalModel(time: 1, timeUnit: .day),
-        IntervalModel(time: 1, timeUnit: .week),
-        IntervalModel(time: 1, timeUnit: .month)
+        IntervalModel(period: 1, interval: 1, timeUnit: .minute),
+        IntervalModel(period: 1, interval: 5, timeUnit: .minute),
+        IntervalModel(period: 1, interval: 10, timeUnit: .minute),
+        IntervalModel(period: 3, interval: 5, timeUnit: .minute),
+        IntervalModel(period: 1, interval: 30, timeUnit: .minute),
+        IntervalModel(period: 2, interval: 30, timeUnit: .hour),
+        IntervalModel(period: 8, interval: 30, timeUnit: .hour)
       ],
       .third: [
-        IntervalModel(time: 1, timeUnit: .minute),
-        IntervalModel(time: 5, timeUnit: .minute),
-        IntervalModel(time: 10, timeUnit: .minute),
-        IntervalModel(time: 15, timeUnit: .minute),
-        IntervalModel(time: 30, timeUnit: .minute),
-        IntervalModel(time: 1, timeUnit: .hour),
-        IntervalModel(time: 4, timeUnit: .hour)
-      ],
-      .fourth: [
-        IntervalModel(time: 30, timeUnit: .second)
+        IntervalModel(period: 1, interval: 30, timeUnit: .second)
       ]
     ]
     tableView.reloadData()
@@ -122,7 +122,7 @@ class IntervalsViewController: BaseViewController {
   }
 
   private func setupTimeUnits() {
-    timeUnits = TimeUnit.allCases
+    timeUnits = [.minute, .hour, .day, .month]
   }
 
   // MARK: - Actions Methods
@@ -141,11 +141,11 @@ class IntervalsViewController: BaseViewController {
 
   private func updateSelectedInterval() {
     guard let selectedInterval = selectedInterval else { return }
-    var isCustomInterval = true
+    var isCustomInterval = false
     for section in TableSection.allCases {
-      if section != .first, let intervals = intervals[section],
-        intervals.contains(selectedInterval),
-        let index = intervals.firstIndex(of: selectedInterval) {
+      if let intervals = intervals[section],
+         intervals.contains(selectedInterval),
+         let index = intervals.firstIndex(of: selectedInterval) {
         isCustomInterval = false
         let selectedIndexPath = IndexPath(item: index, section: section.rawValue)
         tableView.selectRow(at: selectedIndexPath, animated: true, scrollPosition: .top)
@@ -170,7 +170,7 @@ class IntervalsViewController: BaseViewController {
     isPickerViewHidden = false
     pickerViewTextFiled?.becomeFirstResponder()
     if let selectedInterval = selectedInterval {
-      let time = selectedInterval.time
+      let time = selectedInterval.interval
       if times.contains(time), let index = times.firstIndex(of: time) {
         pickerView?.selectRow(index, inComponent: 0, animated: true)
       }
@@ -207,10 +207,10 @@ class IntervalsViewController: BaseViewController {
 
   private func getIntervalModelFromPickerView() -> IntervalModel? {
     if let timeSelectedRow = pickerView?.selectedRow(inComponent: 0),
-      let timeUnitSelectedRow = pickerView?.selectedRow(inComponent: 1) {
-      let time = times[timeSelectedRow]
+       let timeUnitSelectedRow = pickerView?.selectedRow(inComponent: 1) {
+      let interval = times[timeSelectedRow]
       let timeUnit = timeUnits[timeUnitSelectedRow]
-      return IntervalModel(time: time, timeUnit: timeUnit)
+      return IntervalModel(period: 1, interval: interval, timeUnit: timeUnit)
     }
     return nil
   }
@@ -218,13 +218,9 @@ class IntervalsViewController: BaseViewController {
   // MARK: - Private UITableView Helper Methods
 
   private func performSelection(at indexPath: IndexPath) {
-    guard let tableSection = TableSection(rawValue: indexPath.section) else { return }
-    if tableSection == .first {
-      isPickerViewHidden ? showIntervalPickerView() : hideIntervalPickerView()
-    } else {
-      guard let intervalModel = intervals[tableSection]?[indexPath.row] else { return }
-      selectInterval(withModel: intervalModel)
-    }
+    guard let tableSection = TableSection(rawValue: indexPath.section),
+          let intervalModel = intervals[tableSection]?[indexPath.row] else { return }
+    selectInterval(withModel: intervalModel)
   }
 }
 
@@ -238,25 +234,16 @@ extension IntervalsViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     guard let tableSection = TableSection(rawValue: section) else { return 0 }
-    return tableSection == .first ? 1 : intervals[tableSection]?.count ?? 0
+    return intervals[tableSection]?.count ?? 0
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let baseTableViewCell = tableView.dequeueReusableCell(withIdentifier: Const.BaseTableCell.cellId,
                                                                 for: indexPath) as? BaseTableCell,
-      let tableSection = TableSection(rawValue: indexPath.section) else { return UITableViewCell() }
-    if tableSection == .first {
-      baseTableViewCell.textLabel?.text = customIntervalString
-    } else {
-      guard let interval = intervals[tableSection]?[indexPath.row] else { return UITableViewCell() }
-      baseTableViewCell.textLabel?.text = interval.getFullDisplayName()
-    }
+          let tableSection = TableSection(rawValue: indexPath.section),
+          let interval = intervals[tableSection]?[indexPath.row] else { return UITableViewCell() }
+    baseTableViewCell.textLabel?.text = interval.getFullDisplayName()
     return baseTableViewCell
-  }
-
-  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    guard let tableSection = TableSection(rawValue: section) else { return nil }
-    return tableSection == .first ? locManager.localize(Const.Intervals.customConfigHeaderTitle) : nil
   }
 }
 
@@ -266,10 +253,6 @@ extension IntervalsViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if let cell = tableView.cellForRow(at: indexPath) { cell.accessoryType = .checkmark }
-    if let tableSection = TableSection(rawValue: indexPath.section),
-      tableSection == .first, !isPickerViewHidden {
-      if let cell = tableView.cellForRow(at: indexPath) { cell.accessoryType = .none }
-    }
     performSelection(at: indexPath)
   }
 

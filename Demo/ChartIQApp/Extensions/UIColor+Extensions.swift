@@ -8,7 +8,7 @@
 
 import UIKit
 
-// MARK: - UIColor Static Colors Extension
+// MARK: - UIColor Static Color Extensions
 
 extension UIColor {
 
@@ -31,7 +31,7 @@ extension UIColor {
   internal static let charlestonGreen = UIColor(hexString: "1F2A34")
 }
 
-// MARK: - UIColor Dynamic Colors Extension
+// MARK: - UIColor Dynamic Color Extensions
 
 extension UIColor {
 
@@ -78,7 +78,7 @@ extension UIColor {
   }
 }
 
-// MARK: - UIColor Picker Colors Extension
+// MARK: - UIColor Picker Color Extensions
 
 extension UIColor {
 

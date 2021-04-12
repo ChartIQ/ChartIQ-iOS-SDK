@@ -280,6 +280,7 @@ class DrawToolSettingsViewController: BaseViewController {
 
   private func showFibSettingsController(with viewModel: FibSettingsTableCellViewModel) {
     guard let controller = UIStoryboard.fibSettingsViewController() else { return }
+    controller.selectedDrawTool = selectedDrawTool
     controller.fibSettings = viewModel.parameters
     controller.didSaveFibSettings = { [weak self] fibSettings in
       self?.updateSelectedFibSettings(selectedFibSettings: fibSettings)

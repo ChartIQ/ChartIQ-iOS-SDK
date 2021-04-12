@@ -203,7 +203,7 @@ import Foundation
     case .vertical:
       return "vertical"
     case .noTool:
-      return "notool"
+      return ""
     case .measure:
       return "measure"
     }

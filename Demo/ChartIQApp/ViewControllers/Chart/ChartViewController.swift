@@ -59,12 +59,8 @@ class ChartViewController: BaseViewController {
 
   private var selectedViewModelIndexPath: IndexPath?
   private var selectedDrawTool: DrawToolViewModel?
-  private var selectedSymbol: SymbolModel = {
-    return SymbolModel(name: Const.Chart.defaultSymbol, fullName: "", exchange: "")
-  }()
-  private lazy var selectedInterval: IntervalModel = {
-    return IntervalModel(time: 1, timeUnit: .day)
-  }()
+  private var selectedSymbol: SymbolModel?
+  private var selectedInterval: IntervalModel?
 
   // MARK: - ViewController Lifecycle Methods
 
@@ -109,7 +105,7 @@ class ChartViewController: BaseViewController {
   }
 
   override func languageDidChange() {
-    intervalsButton.setTitle(selectedInterval.getShortDisplayName(), for: .normal)
+    intervalsButton.setTitle(selectedInterval?.getShortDisplayName(), for: .normal)
     if chartIQView.isCrosshairsEnabled(), let crosshairHUD = chartIQView.getHudDetails() {
       crosshairInfoView?.updateView(withCrosshairHUD: crosshairHUD)
     }
@@ -275,6 +271,20 @@ class ChartViewController: BaseViewController {
     blurredEffectView?.fadeOutAnimation()
   }
 
+  private func updateSymbol() {
+    guard let symbol = chartIQView.symbol else { return }
+    symbolsButton.setTitle(symbol, for: .normal)
+  }
+
+  private func updateInterval() {
+    guard let periodicity = chartIQView.periodicity, let interval = chartIQView.interval else { return }
+    let intervalModel = IntervalModel(period: periodicity,
+                                      interval: interval,
+                                      chartIQTimeUnit: chartIQView.timeUnit)
+    selectedInterval = intervalModel
+    intervalsButton.setTitle(intervalModel.getShortDisplayName(), for: .normal)
+  }
+
   // MARK: - CrosshairInfoView Private Methods
 
   private func showCrosshairInfoView() {
@@ -355,6 +365,7 @@ class ChartViewController: BaseViewController {
       drawToolButton.setImage(UIImage.Chart.drawToolActiveImage, for: .normal)
       isDrawToolEnable = true
       isDrawToolControlViewHidden = false
+      measureInfoView.isHidden = true
       updateDrawToolControlView()
       updateFullViewMode(active: false, fromRotation: false)
     }
@@ -366,6 +377,7 @@ class ChartViewController: BaseViewController {
     selectedDrawTool = nil
     isDrawToolEnable = false
     isDrawToolControlViewHidden = true
+    measureInfoView.isHidden = true
     animateDrawToolControlView(show: !isDrawToolControlViewHidden)
     chartIQView.disableDrawing()
   }
@@ -466,6 +478,7 @@ class ChartViewController: BaseViewController {
     selectedDrawTool = nil
     isDrawToolEnable = false
     isDrawToolControlViewHidden = true
+    measureInfoView.isHidden = true
     isHorizontalPickerViewHidden = true
     horizontalPickerViewBottomConstraint.constant = -Const.HorizontalPickerView.height
     crosshairInfoViewTopConstraint.constant = -Const.CrosshairInfoView.height
@@ -572,11 +585,11 @@ extension ChartViewController: ChartIQDataSource {
 extension ChartViewController: ChartIQDelegate {
 
   func chartIQViewDidFinishLoading(_ chartIQView: ChartIQView) {
-    chartIQView.loadChart(selectedSymbol.name)
     chartIQView.setDataMethod(.pull)
-    chartIQView.setPeriodicity(selectedInterval.getPeriod(),
-                               interval: selectedInterval.getInterval(),
-                               timeUnit: selectedInterval.getTimeUnit())
+
+    updateSymbol()
+    updateInterval()
+
     let voiceoverFields = [
       ChartIQQuoteField.date.stringValue: true,
       ChartIQQuoteField.close.stringValue: true,
@@ -593,7 +606,8 @@ extension ChartViewController: ChartIQDelegate {
   func chartIQView(_ chartIQView: ChartIQView, didUpdateDrawing drawings: Any) {}
 
   func chartIQView(_ chartIQView: ChartIQView, didUpdateMeasure measure: String) {
-    measureInfoView.isHidden = measure.isEmpty
+    guard !measure.isEmpty, isDrawToolEnable else { return }
+    measureInfoView.isHidden = false
     measureInfoLabel.text = measure
   }
 }
@@ -663,16 +677,10 @@ extension ChartViewController: DrawToolControlViewDelegate {
       didSelectLineColor(viewModel: viewModel)
     case .lineType:
       didSelectLineType(viewModel: viewModel)
-    case .clone:
-      didSelectClone(viewModel: viewModel)
-    case .delete:
-      didSelectDelete(viewModel: viewModel)
-    case .magnet:
-      didSelectMagnet(viewModel: viewModel)
-    case .manageLayers:
-      didSelectManageLayers(viewModel: viewModel)
     case .settings:
       didSelectSettings(viewModel: viewModel)
+    default:
+      break
     }
   }
 
@@ -715,35 +723,6 @@ extension ChartViewController: DrawToolControlViewDelegate {
     } else {
       horizontalPickerView?.updateView(withType: type, line: line)
       showHorizontalPickerView()
-    }
-  }
-
-  private func didSelectClone(viewModel: DrawToolViewModelProtocol) {
-    hideHorizontalPickerView()
-    chartIQView.cloneDrawing()
-    DispatchQueue.main.asyncAfter(deadline: .now() + AnimationTime.extremelyFast.rawValue) {
-      self.updateDrawToolControlView()
-    }
-  }
-
-  private func didSelectDelete(viewModel: DrawToolViewModelProtocol) {
-    hideHorizontalPickerView()
-    chartIQView.deleteDrawing()
-    DispatchQueue.main.asyncAfter(deadline: .now() + AnimationTime.extremelyFast.rawValue) {
-      self.updateDrawToolControlView()
-    }
-  }
-
-  private func didSelectMagnet(viewModel: DrawToolViewModelProtocol) {
-    hideHorizontalPickerView()
-    updateDrawToolControlView()
-  }
-
-  private func didSelectManageLayers(viewModel: DrawToolViewModelProtocol) {
-    hideHorizontalPickerView()
-    showManageLayersActionSheet()
-    DispatchQueue.main.asyncAfter(deadline: .now() + AnimationTime.extremelyFast.rawValue) {
-      self.updateDrawToolControlView()
     }
   }
 
