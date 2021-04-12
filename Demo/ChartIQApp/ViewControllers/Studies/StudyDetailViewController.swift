@@ -86,10 +86,11 @@ class StudyDetailViewController: BaseViewController {
   // MARK: - Private Methods
 
   private func updateStudyViewModels() {
+    let isDarkTheme = isCurrentThemeDark()
     var parameterViewModels: [TableCellViewModelProtocol] = []
     let parameters: [[String: Any]] = inputParameters + outputParameters + paramParameters
     for parameter in parameters {
-      if let viewModel = studiesService.getStudyViewModel(from: parameter) {
+      if let viewModel = studiesService.getStudyViewModel(from: parameter, isDarkTheme: isDarkTheme) {
         parameterViewModels.append(viewModel)
       }
     }
@@ -265,6 +266,14 @@ class StudyDetailViewController: BaseViewController {
     navigationController?.popViewController(animated: true)
   }
 
+  private func isCurrentThemeDark() -> Bool {
+    if #available(iOS 12.0, *), traitCollection.userInterfaceStyle == .dark {
+      return true
+    } else {
+      return false
+    }
+  }
+
   // MARK: - Private Alert Methods
 
   private func presentResetDefaultsConfirmationAlert() {
@@ -293,16 +302,19 @@ class StudyDetailViewController: BaseViewController {
     guard let controller = UIStoryboard.selectOptionViewController() else { return }
     for parameter in inputParameters {
       if parameter[ChartIQConst.StudyParameter.nameKey] as? String == parameterName,
-        let options = parameter[ChartIQConst.StudyParameter.optionsKey] as? [String: Any] {
+        let options = parameter[ChartIQConst.StudyParameter.optionsKey] as? [String: String] {
         var selectedOption = ""
         if let value = parameter[ChartIQConst.StudyParameter.valueKey] {
-            selectedOption = String(describing: value)
+          let stringValue = String(describing: value)
+          if let option = options.first(where: { $0.key == stringValue }) {
+            selectedOption = option.value
+          }
         }
-        controller.options = options.map { $0.value as! String }.sorted(by: <)
+        controller.options = options.map { $0.value }.sorted(by: <)
         controller.selectedOption = selectedOption
         controller.didSelectOption = { [weak self] option in
             guard let self = self else { return }
-            let found = options.first(where: { $0.value as! String == option})
+            let found = options.first(where: { $0.value == option })
             self.updateInputParameters(name: parameterName, value: found?.key ?? option)
             self.updateStudyViewModels()
         }
