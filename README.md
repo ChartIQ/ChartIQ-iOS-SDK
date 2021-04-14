@@ -2,12 +2,6 @@
 
 Native iOS SDK for the [ChartIQ JavaScript library](https://documentation.chartiq.com).
 
-<table>
-  <tr>
-    <td>:construction: <b>BETA Release</b>. Please visit us again starting April 15, 2021 to download the final release of this SDK and accompanying mobile application.</td>
-  </tr>
-</table>
-
 The ChartIQ iOS SDK supports a basic charting application. The SDK can be extended to support more elaborate implementations by adding code to invoke ChartIQ library functions directly or by creating a bridge file similar to *nativeSdkBridge.js* (in the *mobile/js* folder of your ChartIQ library).
 
 Contact us at <support@chartiq.com> to request sample code and guidance on how to extend the SDK.
