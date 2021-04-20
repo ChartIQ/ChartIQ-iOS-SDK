@@ -39,7 +39,7 @@ public struct Const {
   // MARK: - General
 
   struct General {
-    static let chartIQURL = "https://ios.demo.chartiq.com/sample-template-native-sdk.html"
+    static let chartIQURL = "https://mobile.demo.chartiq.com/ios/2.0.2/index.html"
 
     static let cancelTitle = "Cancel"
     static let clearTitle = "Clear"
