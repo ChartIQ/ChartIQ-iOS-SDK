@@ -2,7 +2,7 @@
 //  UIColorExtensionsTests.swift
 //  ChartIQTests
 //
-//  Copyright 2012-2020 by ChartIQ, Inc.
+//  Copyright 2012-2021 by ChartIQ, Inc.
 //  All rights reserved
 //
 
@@ -164,6 +164,43 @@ class UIColorExtensionsTests: XCTestCase {
 
     // When
     let whiteDarkGunmetalColor = UIColor.colorAsset(name: "whiteDarkGunmetal", baseColor: whiteColor)
+
+    // Then
+    XCTAssertEqual(whiteColor, whiteDarkGunmetalColor)
+  }
+
+  func testGetColorAssetWithIncorrectName() {
+    // Given
+    let whiteColor = UIColor(hexString: "ffffff")
+
+    // When
+    let whiteDarkGunmetalColor = UIColor.colorAsset(name: "darkGunmetal", baseColor: whiteColor)
+
+    // Then
+    XCTAssertEqual(whiteColor, whiteDarkGunmetalColor)
+  }
+
+  func testGetColorAssetBelowiOS11() {
+    // Given
+    let whiteColor = UIColor(hexString: "ffffff")
+
+    // When
+    let whiteDarkGunmetalColor = UIColor.colorAsset(name: "whiteDarkGunmetal",
+                                                    baseColor: whiteColor,
+                                                    aboveiOS11Mock: false)
+
+    // Then
+    XCTAssertEqual(whiteColor, whiteDarkGunmetalColor)
+  }
+
+  func testGetColorAssetAboveiOS11() {
+    // Given
+    let whiteColor = UIColor(hexString: "ffffff")
+
+    // When
+    let whiteDarkGunmetalColor = UIColor.colorAsset(name: "whiteDarkGunmetal",
+                                                    baseColor: whiteColor,
+                                                    aboveiOS11Mock: true)
 
     // Then
     XCTAssertEqual(whiteColor, whiteDarkGunmetalColor)

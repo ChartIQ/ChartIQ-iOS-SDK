@@ -1,5 +1,6 @@
 included:
-  - ChartIQApp
+  - ChartIQDemo
+  - SharedDemo
 analyzer_rules:
   - unused_declaration
   - unused_import
@@ -64,6 +65,7 @@ opt_in_rules:
 
 disabled_rules:
   - function_body_length
+  - reduce_into
 
 identifier_name:
   min_length: 1

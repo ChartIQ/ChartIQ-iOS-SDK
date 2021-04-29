@@ -2,7 +2,7 @@
 //  ChartIQDrawingToolTests.swift
 //  ChartIQTests
 //
-//  Copyright 2012-2020 by ChartIQ, Inc.
+//  Copyright 2012-2021 by ChartIQ, Inc.
 //  All rights reserved
 //
 
@@ -60,7 +60,7 @@ class ChartIQDrawingToolTests: XCTestCase {
     let tironeLevels = "tirone"
     let trend = "trendline"
     let vertical = "vertical"
-    let noTool = "notool"
+    let noTool = ""
     let measure = "measure"
 
     // When // Then
