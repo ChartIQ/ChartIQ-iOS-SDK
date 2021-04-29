@@ -1300,14 +1300,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XPJG98X97P;
+				DEVELOPMENT_TEAM = 8TPE6S3AGR;
 				INFOPLIST_FILE = "$(SRCROOT)/ChartIQApp/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chartiq.TechnicalAnalysisChart;
 				PRODUCT_MODULE_NAME = ChartIQApp;
 				PRODUCT_NAME = "ChartIQ Technical Analysis Chart";
@@ -1324,14 +1324,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XPJG98X97P;
+				DEVELOPMENT_TEAM = 8TPE6S3AGR;
 				INFOPLIST_FILE = "$(SRCROOT)/ChartIQApp/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.2;
+				MARKETING_VERSION = 2.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chartiq.TechnicalAnalysisChart;
 				PRODUCT_MODULE_NAME = ChartIQApp;
 				PRODUCT_NAME = "ChartIQ Technical Analysis Chart";
