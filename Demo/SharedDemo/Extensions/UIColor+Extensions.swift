@@ -11,6 +11,11 @@ import UIKit
 
 // MARK: - UIColor Static Color Extensions
 
+/// Extension for UIColor custom colors.
+///
+/// All color names are taken according to the resource: https://www.schemecolor.com/
+/// In order to determine the name for the desired color in hex format use this search request:
+/// https://www.schemecolor.com/sample?getcolor=202020
 extension UIColor {
 
   // MARK: - Internal Properties

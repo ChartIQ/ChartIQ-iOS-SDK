@@ -63,10 +63,11 @@ class DrawToolSettingsViewController: BaseViewController {
 
     tableView.backgroundColor = .ghostWhiteСhineseBlackColor
 
-    optionsButton.frame = CGRect(origin: .zero, size: Const.ChartButton.circleButtonSize)
-    optionsButton.setImage(UIImage.DrawTools.moreOptionsImage, for: .normal)
-    optionsButton.addTarget(self, action: #selector(optionsButtonTapped), for: .touchUpInside)
-    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: optionsButton)
+    //    Temporarily commented not yet implemented
+    //    optionsButton.frame = CGRect(origin: .zero, size: Const.ChartButton.circleButtonSize)
+    //    optionsButton.setImage(UIImage.DrawTools.moreOptionsImage, for: .normal)
+    //    optionsButton.addTarget(self, action: #selector(optionsButtonTapped), for: .touchUpInside)
+    //    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: optionsButton)
   }
 
   override func setupSettings() {
