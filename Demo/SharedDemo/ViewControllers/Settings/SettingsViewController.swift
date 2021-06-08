@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: - TableCellViewModel Protocol
 
-protocol TableCellViewModelProtocol: class {
+protocol TableCellViewModelProtocol: AnyObject {
   var title: String { get set }
 }
 

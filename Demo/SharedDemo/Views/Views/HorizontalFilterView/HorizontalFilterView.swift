@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - HorizontalFilterView Protocol
 
-protocol HorizontalFilterViewDelegate: class {
+protocol HorizontalFilterViewDelegate: AnyObject {
   func horizontalFilterView(_ horizontalFilterView: HorizontalFilterView, didSelect item: String)
 }
 

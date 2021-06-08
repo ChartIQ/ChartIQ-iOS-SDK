@@ -24,14 +24,14 @@ enum DrawToolControlViewType {
 
 // MARK: - DrawToolViewModel Protocol
 
-protocol DrawToolViewModelProtocol: class {
+protocol DrawToolViewModelProtocol: AnyObject {
   var type: DrawToolControlViewType { get set }
   var image: UIImage? { get set }
 }
 
 // MARK: - DrawToolControlView Protocol
 
-protocol DrawToolControlViewDelegate: class {
+protocol DrawToolControlViewDelegate: AnyObject {
   func drawingToolControlView(_ drawingToolControlView: DrawToolControlView, didSelectItemAt indexPath: IndexPath)
 }
 

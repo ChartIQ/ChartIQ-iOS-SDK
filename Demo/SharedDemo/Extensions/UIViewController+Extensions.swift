@@ -46,7 +46,7 @@ extension UIViewController {
   }
 }
 
-protocol UIViewControllerKeyboardProtocol: class {
+protocol UIViewControllerKeyboardProtocol: AnyObject {
 
   var scrollView: UIScrollView! { get }
 

@@ -18,7 +18,7 @@ enum HorizontalPickerViewType {
 
 // MARK: - HorizontalPickerView Protocol
 
-protocol HorizontalPickerViewDelegate: class {
+protocol HorizontalPickerViewDelegate: AnyObject {
   func horizontalPickerView(_ horizontalPickerView: HorizontalPickerView, didSelect item: PickerViewItem)
 }
 
