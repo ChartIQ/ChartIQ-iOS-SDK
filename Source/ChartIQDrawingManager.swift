@@ -41,12 +41,7 @@ public class ChartIQDrawingManager: ChartIQDrawingManagerProtocol {
   ///   - tool: The ChartIQDrawingTool.
   /// - Returns: The Bool Value. True if supports line color, false if not.
   public func isSupportingLineColor(_ tool: ChartIQDrawingTool) -> Bool {
-    switch tool {
-    case .noTool:
-      return false
-    default:
-      return true
-    }
+    return true
   }
 
   /// Check if the drawing supports line type.
@@ -56,7 +51,7 @@ public class ChartIQDrawingManager: ChartIQDrawingManagerProtocol {
   /// - Returns: The Bool Value. True if supports line type, false if not.
   public func isSupportingLineType(_ tool: ChartIQDrawingTool) -> Bool {
     switch tool {
-    case .annotation, .noTool:
+    case .annotation:
       return false
     default:
       return true
@@ -70,7 +65,7 @@ public class ChartIQDrawingManager: ChartIQDrawingManagerProtocol {
   /// - Returns: The Bool Value. True if supports pattern, false if not.
   public func isSupportingSettings(_ tool: ChartIQDrawingTool) -> Bool {
     switch tool {
-    case .noTool, .measure:
+    case .measure:
       return false
     default:
       return true

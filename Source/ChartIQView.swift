@@ -712,7 +712,6 @@ public class ChartIQView: UIView {
   ///   - tool: The ChartIQDrawingTool.
   /// - Returns: The dictionary value of drawing parameters.
   public func getDrawingParameters(_ tool: ChartIQDrawingTool) -> [String: Any]? {
-    if tool == .noTool { return [:] }
     let script = scriptManager.getScriptForDrawingParameters(tool)
     if let jsonString = webView.evaluateJavaScriptWithReturn(script), let data = jsonString.data(using: .utf8) {
       return try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]

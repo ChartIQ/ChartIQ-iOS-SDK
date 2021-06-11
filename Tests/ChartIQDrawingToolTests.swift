@@ -60,7 +60,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     let tironeLevels = "tirone"
     let trend = "trendline"
     let vertical = "vertical"
-    let noTool = ""
     let measure = "measure"
 
     // When // Then
@@ -100,7 +99,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(tironeLevels, ChartIQDrawingTool.tironeLevels.stringValue)
     XCTAssertEqual(trend, ChartIQDrawingTool.trend.stringValue)
     XCTAssertEqual(vertical, ChartIQDrawingTool.vertical.stringValue)
-    XCTAssertEqual(noTool, ChartIQDrawingTool.noTool.stringValue)
     XCTAssertEqual(measure, ChartIQDrawingTool.measure.stringValue)
   }
 
@@ -142,7 +140,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     let tironeLevels = "Tirone Levels"
     let trend = "Trend Line"
     let vertical = "Vertical"
-    let noTool = "No Tool"
     let measure = "Measure"
 
     // When // Then
@@ -182,7 +179,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(tironeLevels, ChartIQDrawingTool.tironeLevels.displayName)
     XCTAssertEqual(trend, ChartIQDrawingTool.trend.displayName)
     XCTAssertEqual(vertical, ChartIQDrawingTool.vertical.displayName)
-    XCTAssertEqual(noTool, ChartIQDrawingTool.noTool.displayName)
     XCTAssertEqual(measure, ChartIQDrawingTool.measure.displayName)
   }
 
@@ -224,7 +220,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     let tironeLevels: ChartIQDrawingToolType = .statistics
     let trend: ChartIQDrawingToolType = .text
     let vertical: ChartIQDrawingToolType = .lines
-    let noTool: ChartIQDrawingToolType = .text
     let measure: ChartIQDrawingToolType = .text
 
     // When // Then
@@ -264,7 +259,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(tironeLevels, ChartIQDrawingTool.tironeLevels.type)
     XCTAssertEqual(trend, ChartIQDrawingTool.trend.type)
     XCTAssertEqual(vertical, ChartIQDrawingTool.vertical.type)
-    XCTAssertEqual(noTool, ChartIQDrawingTool.noTool.type)
     XCTAssertEqual(measure, ChartIQDrawingTool.measure.type)
   }
 
@@ -306,7 +300,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     let tironeLevels = "tirone"
     let trend = "trendline"
     let vertical = "vertical"
-    let noTool = "notool"
     let measure = "measure"
 
     let invalidString = "invalid string"
@@ -348,7 +341,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(ChartIQDrawingTool.tironeLevels, ChartIQDrawingTool(stringValue: tironeLevels))
     XCTAssertEqual(ChartIQDrawingTool.trend, ChartIQDrawingTool(stringValue: trend))
     XCTAssertEqual(ChartIQDrawingTool.vertical, ChartIQDrawingTool(stringValue: vertical))
-    XCTAssertEqual(ChartIQDrawingTool.noTool, ChartIQDrawingTool(stringValue: noTool))
     XCTAssertEqual(ChartIQDrawingTool.measure, ChartIQDrawingTool(stringValue: measure))
 
     XCTAssertNil(ChartIQDrawingTool(stringValue: invalidString))

@@ -89,8 +89,6 @@ extension ChartIQDrawingTool {
       return UIImage.ChartIQDrawingTool.trendImage
     case .vertical:
       return UIImage.ChartIQDrawingTool.verticalImage
-    case .noTool:
-      return UIImage.ChartIQDrawingTool.noToolImage
     case .measure:
       return UIImage.ChartIQDrawingTool.measureImage
     }

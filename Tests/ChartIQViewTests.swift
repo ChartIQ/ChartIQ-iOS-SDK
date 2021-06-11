@@ -435,16 +435,4 @@ class ChartIQViewTests: XCTestCase {
     // Then
     XCTAssertNil(chartIQDrawingParameters)
   }
-
-  func testGetDrawingParametersMethodNoTool() {
-    // Given
-    let drawingParametersIsEmpty = true
-
-    // Given // When
-    let chartIQDrawingParameters = chartIQView.getDrawingParameters(.noTool)
-
-    // Then
-    XCTAssertNotNil(chartIQDrawingParameters)
-    XCTAssertEqual(drawingParametersIsEmpty, chartIQDrawingParameters?.isEmpty)
-  }
 }
