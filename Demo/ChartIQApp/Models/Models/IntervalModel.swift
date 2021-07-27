@@ -13,6 +13,7 @@ import UIKit
 
 enum TimeUnit: String, CaseIterable, Codable {
 
+  case tick
   case millisecond
   case second
   case minute
@@ -23,6 +24,8 @@ enum TimeUnit: String, CaseIterable, Codable {
 
   internal var fullDisplayName: String {
     switch self {
+    case .tick:
+      return LocalizationManager.shared().localize(Const.IntervalModel.tickTitle)
     case .millisecond:
       return LocalizationManager.shared().localize(Const.IntervalModel.millisecondTitle)
     case .second:
@@ -42,6 +45,8 @@ enum TimeUnit: String, CaseIterable, Codable {
 
   internal var shortDisplayName: String {
     switch self {
+    case .tick:
+        return LocalizationManager.shared().localize(Const.IntervalModel.tickShortTitle)
     case .millisecond:
       return LocalizationManager.shared().localize(Const.IntervalModel.millisecondShortTitle)
     case .second:
@@ -61,6 +66,8 @@ enum TimeUnit: String, CaseIterable, Codable {
 
   internal init(chartIQTimeUnit: ChartIQTimeUnit) {
     switch chartIQTimeUnit {
+    case .tick:
+      self = .tick
     case .millisecond:
       self = .millisecond
     case .second:
@@ -143,6 +150,8 @@ struct IntervalModel: Equatable, Codable {
 
   internal func getTimeUnit() -> ChartIQTimeUnit {
     switch timeUnit {
+    case .tick:
+      return ChartIQTimeUnit.tick
     case .millisecond:
       return ChartIQTimeUnit.millisecond
     case .second:
