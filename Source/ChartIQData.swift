@@ -17,22 +17,22 @@ public class ChartIQData: NSObject {
   public var date: Date
 
   /// The ChartIQData open parameter.
-  public var open: Double
+  public var open: Double?
 
   /// The ChartIQData high parameter.
-  public var high: Double
+  public var high: Double?
 
   /// The ChartIQData low parameter.
-  public var low: Double
+  public var low: Double?
 
   /// The ChartIQData close parameter.
-  public var close: Double
+  public var close: Double?
 
   /// The ChartIQData volume parameter.
-  public var volume: Double
+  public var volume: Double?
 
   /// The ChartIQData adjClose parameter.
-  public var adjClose: Double
+  public var adjClose: Double?
 
   // MARK: - Initializers
 
@@ -64,12 +64,12 @@ public class ChartIQData: NSObject {
     let dt = dictionary["DT"] as? String ?? ""
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-    let close = dictionary["Close"] as? Double ?? 0
+    let close = dictionary["Close"] as? Double
     self.close = close
     self.date = dateFormatter.date(from: dt) ?? Date()
-    self.high = dictionary["High"] as? Double ?? 0
-    self.low = dictionary["Low"] as? Double ?? 0
-    self.open = dictionary["Open"] as? Double ?? 0
+    self.high = dictionary["High"] as? Double
+    self.low = dictionary["Low"] as? Double
+    self.open = dictionary["Open"] as? Double
     self.volume = Double(dictionary["Volume"] as? Int ?? 0)
     self.adjClose = close
   }
