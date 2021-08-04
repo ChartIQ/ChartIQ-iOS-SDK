@@ -184,6 +184,7 @@ public struct Const {
   // MARK: - Models
 
   struct IntervalModel {
+    static let tickTitle = "tick"
     static let millisecondTitle = "millisecond"
     static let secondTitle = "second"
     static let minuteTitle = "minute"
@@ -192,6 +193,7 @@ public struct Const {
     static let weekTitle = "week"
     static let monthTitle = "month"
 
+    static let tickShortTitle = "T"
     static let millisecondShortTitle = "ms"
     static let secondShortTitle = "s"
     static let minuteShortTitle = "m"
