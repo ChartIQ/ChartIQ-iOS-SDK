@@ -39,6 +39,8 @@ class TabBarController: UITabBarController {
     tabBar.backgroundColor = .ghostWhiteСhineseBlackColor
     tabBar.backgroundImage = UIImage()
     tabBar.unselectedItemTintColor = .cadetBlueColor
+
+    setupScrollEdgeAppearance()
   }
 
   private func setupSettings() {
@@ -48,8 +50,8 @@ class TabBarController: UITabBarController {
                                            object: nil)
     chartIQView = ChartIQView(frame: CGRect.zero)
     guard let chartController = UIStoryboard.chartViewController(),
-      let studiesController = UIStoryboard.studiesViewController(),
-      let settingsController = UIStoryboard.settingsViewController() else { return }
+          let studiesController = UIStoryboard.studiesViewController(),
+          let settingsController = UIStoryboard.settingsViewController() else { return }
     locManager.setChartIQView(chartIQView)
     chartController.chartIQView = chartIQView
     studiesController.chartIQView = chartIQView
@@ -66,6 +68,21 @@ class TabBarController: UITabBarController {
     let controllers = [chartController, studiesController, settingsController]
     viewControllers = controllers.map { NavigationController(rootViewController: $0) }
   }
+
+  /// In iOS 15, UIKit has extended the usage of the scrollEdgeAppearance,
+  /// which by default produces a transparent background, to all navigation bars.
+  /// The background is controlled by when we scroll view scrolls content behind the navigation bar.
+  /// To restore the old look, we must adopt the new UINavigationBar appearance APIs.
+  /// The last line navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance,
+  /// which resolves the issue by having the UINavigationBar use the same appearance
+  /// for both its standard and edge states.
+  private func setupScrollEdgeAppearance() {
+    if #available(iOS 15.0, *) {
+      tabBar.scrollEdgeAppearance = tabBar.standardAppearance
+    }
+  }
+
+  // MARK: - Private Methods
 
   @objc private func languageDidChange() {
     guard let tabBarItems = tabBar.items, tabBarItems.count == 3 else { return }
