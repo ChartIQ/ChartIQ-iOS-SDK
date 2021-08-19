@@ -1098,7 +1098,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = ChartIQ;
 				TargetAttributes = {
 					CE386945240E8C1F00CC63C2 = {

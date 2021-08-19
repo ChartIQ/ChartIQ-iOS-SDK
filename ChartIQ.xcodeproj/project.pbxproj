@@ -383,7 +383,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = ChartIQ;
 				TargetAttributes = {
 					7AA3C6591E24975500DD69AE = {
