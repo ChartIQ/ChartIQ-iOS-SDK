@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="NavigationView" customModule="ChartIQDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="48"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RsP-74-Kng">
+                    <rect key="frame" x="16" y="0.0" width="368" height="47"/>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lua-CD-gO5">
+                    <rect key="frame" x="0.0" y="47" width="400" height="1"/>
+                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="0Xb-fY-ny2"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="lua-CD-gO5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="C6H-3m-QdW"/>
+                <constraint firstAttribute="trailing" secondItem="RsP-74-Kng" secondAttribute="trailing" constant="16" id="IBg-ZA-pUn"/>
+                <constraint firstAttribute="bottom" secondItem="lua-CD-gO5" secondAttribute="bottom" id="Inz-i3-UAb"/>
+                <constraint firstItem="RsP-74-Kng" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="MdS-6q-vZb"/>
+                <constraint firstItem="RsP-74-Kng" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZbB-RD-atW"/>
+                <constraint firstAttribute="trailing" secondItem="lua-CD-gO5" secondAttribute="trailing" id="lRo-7r-tBd"/>
+                <constraint firstItem="lua-CD-gO5" firstAttribute="top" secondItem="RsP-74-Kng" secondAttribute="bottom" id="paA-se-pGs"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="separatorView" destination="lua-CD-gO5" id="v5f-HX-bJ8"/>
+                <outlet property="stackView" destination="RsP-74-Kng" id="xye-er-V7y"/>
+            </connections>
+            <point key="canvasLocation" x="85.507246376811594" y="180.80357142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

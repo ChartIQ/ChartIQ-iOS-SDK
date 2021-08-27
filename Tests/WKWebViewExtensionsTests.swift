@@ -2,7 +2,7 @@
 //  WKWebViewExtensionsTests.swift
 //  ChartIQTests
 //
-//  Copyright 2012-2020 by ChartIQ, Inc.
+//  Copyright 2012-2021 by ChartIQ, Inc.
 //  All rights reserved
 //
 

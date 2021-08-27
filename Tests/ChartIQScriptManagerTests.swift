@@ -2,7 +2,7 @@
 //  ChartIQScriptManagerTests.swift
 //  ChartIQTests
 //
-//  Copyright 2012-2020 by ChartIQ, Inc.
+//  Copyright 2012-2021 by ChartIQ, Inc.
 //  All rights reserved
 //
 
@@ -49,7 +49,7 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetScriptForTimeUnit() {
     // Given
-    let correctScript = "stxx.timeUnit"
+    let correctScript = "stxx.layout.timeUnit"
 
     // When
     let script = chartIQScriptManager.getScriptForTimeUnit()
@@ -135,6 +135,17 @@ class ChartIQScriptManagerTests: XCTestCase {
     XCTAssertEqual(correctScript, script)
   }
 
+  func testsGetScriptForSeries() {
+    // Given
+    let correctScript = mobileNameSpace + "getAllSeries();"
+
+    // When
+    let script = chartIQScriptManager.getScriptForSeries()
+
+    // Then
+    XCTAssertEqual(correctScript, script)
+  }
+
   func testsGetScriptForSetChartType() {
     // Given
     let correctScript = mobileNameSpace + "setChartType(\"bar\");"
@@ -213,6 +224,22 @@ class ChartIQScriptManagerTests: XCTestCase {
     XCTAssertEqual(correctScript, script)
   }
 
+  func testsGetScriptForSetSeriesParameter() {
+    // Given
+    let symbol = "AAPL"
+    let parameterName = "color"
+    let value = "#960616"
+    let correctScript = mobileNameSpace + "modifySeries(\"AAPL\", \"color\", \"#960616\");"
+
+    // When
+    let script = chartIQScriptManager.getScriptForSetSeriesParameter(symbol: symbol,
+                                                                     parameterName: parameterName,
+                                                                     value: value)
+
+    // Then
+    XCTAssertEqual(correctScript, script)
+  }
+
   func testsGetScriptForChartScale() {
     // Given
     let correctScript = "stxx.layout.chartScale;"
@@ -226,7 +253,7 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetScriptForSetChartScale() {
     // Given
-    let correctScript = "stxx.layout.chartScale = \"log\";"
+    let correctScript = "stxx.setChartScale(\"log\")"
 
     // When
     let script = chartIQScriptManager.getScriptForSetChartScale(.log)
@@ -634,10 +661,21 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetScriptForSetDrawingParameter() {
     // Given
-    let correctScript = mobileNameSpace + "setDrawingParameters(\"color\", \"#0073ba\");"
+    let correctScript = mobileNameSpace + "setDrawingParameters(\"color\", `#0073ba`);"
 
     // When
     let script = chartIQScriptManager.getScriptForSetDrawingParameter("color", value: "#0073ba")
+
+    // Then
+    XCTAssertEqual(correctScript, script)
+  }
+
+  func testsGetScriptForSetNotStringDrawingParameter() {
+    // Given
+    let correctScript = mobileNameSpace + "setDrawingParameters(\"isComparison\", true);"
+
+    // When
+    let script = chartIQScriptManager.getScriptForSetDrawingParameter("isComparison", value: true)
 
     // Then
     XCTAssertEqual(correctScript, script)
@@ -742,29 +780,18 @@ class ChartIQScriptManagerTests: XCTestCase {
     XCTAssertEqual(correctScript, script)
   }
 
-  func testsGetScriptForLoadDefaultSetting() {
-    // Given
-    let correctScript = "stxx.layout.chartScale = \"log\";"
-
-    // When
-    let script = chartIQScriptManager.getScriptForLoadDefaultSetting()
-
-    // Then
-    XCTAssertEqual(correctScript, script)
-  }
-
   func testsGetScriptForFormatJSQuoteData() {
     // Given
     let correctScript = mobileNameSpace + "parseData(\'[  {    \"Open\" : 100.2,    \"Volume\" : 66188138,    " +
       "\"Adj_Close\" : 100.42,    \"DT\" : \"2020-09-08T10:00:00.000Z\",    \"High\" : 100.75,    " +
-    "\"Low\" : 99.599999999999994,    \"Close\" : 100.42  }]\', \"KETSMXAUPW\");"
+    "\"Low\" : 99.599999999999994,    \"Close\" : 100.42  }]\', \"KETSMXAUPW\", true);"
 
     let jsonString = "[  {    \"Open\" : 100.2,    \"Volume\" : 66188138,    \"Adj_Close\" : 100.42,    " +
       "\"DT\" : \"2020-09-08T10:00:00.000Z\",    \"High\" : 100.75,    \"Low\" : 99.599999999999994,    " +
     "\"Close\" : 100.42  }]"
 
     // When
-    let script = chartIQScriptManager.getScriptForFormatJSQuoteData(jsonString, cb: "KETSMXAUPW")
+    let script = chartIQScriptManager.getScriptForFormatJSQuoteData(jsonString, moreAvailable: true, cb: "KETSMXAUPW")
 
     // Then
     XCTAssertEqual(correctScript, script)

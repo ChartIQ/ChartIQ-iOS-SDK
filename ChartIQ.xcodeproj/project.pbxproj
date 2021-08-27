@@ -16,6 +16,7 @@
 		487358B524ED250F003AAE1E /* ChartIQDrawingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487358B424ED250F003AAE1E /* ChartIQDrawingTool.swift */; };
 		487358B724ED2599003AAE1E /* ChartIQChartType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487358B624ED2599003AAE1E /* ChartIQChartType.swift */; };
 		48774D0B24405BC300CA2929 /* ChartIQConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48774D0A24405BC300CA2929 /* ChartIQConst.swift */; };
+		48ABA8572636C69E00932C19 /* ChartIQSeriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ABA8562636C69E00932C19 /* ChartIQSeriesTests.swift */; };
 		48BEFDD2244081570047D0B7 /* WKWebViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BEFDD1244081570047D0B7 /* WKWebViewExtensionsTests.swift */; };
 		48C8230C25063C5200047C39 /* ChartIQScriptManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C8230B25063C5200047C39 /* ChartIQScriptManagerTests.swift */; };
 		48E827BB24E6777A00A7A291 /* ChartIQDrawingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E827BA24E6777A00A7A291 /* ChartIQDrawingManager.swift */; };
@@ -66,6 +67,7 @@
 		487358B424ED250F003AAE1E /* ChartIQDrawingTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingTool.swift; sourceTree = "<group>"; };
 		487358B624ED2599003AAE1E /* ChartIQChartType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQChartType.swift; sourceTree = "<group>"; };
 		48774D0A24405BC300CA2929 /* ChartIQConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQConst.swift; sourceTree = "<group>"; };
+		48ABA8562636C69E00932C19 /* ChartIQSeriesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQSeriesTests.swift; sourceTree = "<group>"; };
 		48BEFDD1244081570047D0B7 /* WKWebViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKWebViewExtensionsTests.swift; sourceTree = "<group>"; };
 		48C8230B25063C5200047C39 /* ChartIQScriptManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQScriptManagerTests.swift; sourceTree = "<group>"; };
 		48E827BA24E6777A00A7A291 /* ChartIQDrawingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingManager.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				CE5699362417D6C7001798FE /* ChartIQStudyTests.swift */,
+				48ABA8562636C69E00932C19 /* ChartIQSeriesTests.swift */,
 				CE5699392417ED64001798FE /* ChartIQDataTests.swift */,
 				CE56993B2418E682001798FE /* ChartIQQuoteFeedParamsTests.swift */,
 				CE56993D2418EB25001798FE /* ChartIQCrosshairHUDTests.swift */,
@@ -380,7 +383,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = ChartIQ;
 				TargetAttributes = {
 					7AA3C6591E24975500DD69AE = {
@@ -499,6 +502,7 @@
 				48C8230C25063C5200047C39 /* ChartIQScriptManagerTests.swift in Sources */,
 				CE5699402418F057001798FE /* StringExtensionsTests.swift in Sources */,
 				CE5699302417B09D001798FE /* UIColorExtensionsTests.swift in Sources */,
+				48ABA8572636C69E00932C19 /* ChartIQSeriesTests.swift in Sources */,
 				483F8A6925026DA800526054 /* ChartIQDrawingManagerTests.swift in Sources */,
 				48BEFDD2244081570047D0B7 /* WKWebViewExtensionsTests.swift in Sources */,
 				CE899C16241932560044A47C /* ChartIQViewTests.swift in Sources */,
@@ -719,7 +723,7 @@
 				DEVELOPMENT_TEAM = XPJG98X97P;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "$(SRCROOT)/Tests/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -741,7 +745,7 @@
 				DEVELOPMENT_TEAM = XPJG98X97P;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "$(SRCROOT)/Tests/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chartiq-demo.ChartIQ-Tests";

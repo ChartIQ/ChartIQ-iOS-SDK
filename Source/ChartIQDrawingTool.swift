@@ -121,9 +121,6 @@ import Foundation
   /// The vertical option.
   case vertical
 
-  /// The noTool option.
-  case noTool
-
   /// The measure option.
   case measure
 
@@ -202,8 +199,6 @@ import Foundation
       return "trendline"
     case .vertical:
       return "vertical"
-    case .noTool:
-      return ""
     case .measure:
       return "measure"
     }
@@ -284,8 +279,6 @@ import Foundation
       return "Trend Line"
     case .vertical:
       return "Vertical"
-    case .noTool:
-      return "No Tool"
     case .measure:
       return "Measure"
     }
@@ -366,8 +359,6 @@ import Foundation
       return .text
     case .vertical:
       return .lines
-    case .noTool:
-      return .text
     case .measure:
       return .text
     }
@@ -415,7 +406,6 @@ import Foundation
       "tirone": .tironeLevels,
       "trendline": .trend,
       "vertical": .vertical,
-      "notool": .noTool,
       "measure": .measure
     ]
     if let value = dictionary[stringValue] {
