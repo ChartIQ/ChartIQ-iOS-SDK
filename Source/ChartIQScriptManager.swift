@@ -508,7 +508,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForCurrentDrawTool() -> String {
-    let script = "currentDrawing"
+    let script = "stxx.currentVectorParameters.vectorType;"
     return script
   }
 
@@ -518,7 +518,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///   - tool: The ChartIQDrawingTool Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForEnableDrawing(_ tool: ChartIQDrawingTool) -> String {
-    let script = "currentDrawing = \"\(tool.stringValue)\"; stxx.changeVectorType(currentDrawing); "
+    let script = "stxx.changeVectorType(\"\(tool.stringValue)\"); "
     return script
   }
 
