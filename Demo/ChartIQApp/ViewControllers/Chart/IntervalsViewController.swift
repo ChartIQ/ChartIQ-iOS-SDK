@@ -94,7 +94,7 @@ class IntervalsViewController: BaseViewController {
   private func setupIntervals() {
     intervals = [
       .first: [
-        IntervalModel(period: 1, interval: 1, timeUnit: .tick),
+        // IntervalModel(period: 1, interval: 1, timeUnit: .tick),
         IntervalModel(period: 1, interval: 1, timeUnit: .day),
         IntervalModel(period: 1, interval: 1, timeUnit: .week),
         IntervalModel(period: 1, interval: 1, timeUnit: .month)
