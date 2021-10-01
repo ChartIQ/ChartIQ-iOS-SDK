@@ -10,6 +10,8 @@ Contact us at <support@chartiq.com> to request sample code and guidance on how t
 
 - Version 8.2.0 or later of the ChartIQ library
 
+  For previous version support, please refer to the [Releases](https://github.com/ChartIQ/ChartIQ-iOS-SDK/releases) section.
+
   Go to our <a href="https://cosaic.io/chartiq-sdk-library-download/" target="_blank">download site</a> to obtain a free 30-day trial version of the library, or send us an email at <info@cosaic.io>, and we'll send you an evaluation version.
 
 - iOS 10.3 or later

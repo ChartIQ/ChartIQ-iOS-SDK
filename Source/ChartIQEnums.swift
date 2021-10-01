@@ -388,6 +388,9 @@ public enum ChartIQStudyError: Error {
 /// Chart time unit.
 @objc public enum ChartIQTimeUnit: Int {
 
+  /// The tick option.
+  case tick
+
   /// The millisecond option.
   case millisecond
 
@@ -409,6 +412,8 @@ public enum ChartIQStudyError: Error {
   /// Chart time unit string value.
   public var stringValue: String {
     switch self {
+    case .tick:
+      return "tick"
     case .millisecond:
       return "millisecond"
     case .second:
@@ -430,6 +435,7 @@ public enum ChartIQStudyError: Error {
   ///   - stringValue: The String Object.
   public init?(stringValue: String) {
     let dictionary: [String: ChartIQTimeUnit] = [
+      "tick": .tick,
       "millisecond": .millisecond,
       "second": .second,
       "minute": .minute,
