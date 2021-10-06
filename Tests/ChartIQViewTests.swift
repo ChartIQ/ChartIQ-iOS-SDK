@@ -2,7 +2,7 @@
 //  ChartIQViewTests.swift
 //  ChartIQTests
 //
-//  Copyright 2012-2020 by ChartIQ, Inc.
+//  Copyright 2012-2021 by ChartIQ, Inc.
 //  All rights reserved
 //
 
@@ -72,6 +72,24 @@ class ChartIQViewTests: XCTestCase {
 
     // When
     chartIQView.setVoiceoverFields(voiceoverFields)
+
+    // Then
+    XCTAssertEqual(voiceoverFields, ChartIQView.chartIQVoiceoverFields)
+  }
+
+  func testSetDefaultVoiceoverFieldsMethod() {
+    // Given
+    let voiceoverFields: [String: Bool] = [
+      ChartIQQuoteField.date.stringValue: true,
+      ChartIQQuoteField.close.stringValue: true,
+      ChartIQQuoteField.open.stringValue: false,
+      ChartIQQuoteField.high.stringValue: false,
+      ChartIQQuoteField.low.stringValue: false,
+      ChartIQQuoteField.volume.stringValue: false
+    ]
+
+    // When
+    chartIQView.setVoiceoverFields(nil, default: true)
 
     // Then
     XCTAssertEqual(voiceoverFields, ChartIQView.chartIQVoiceoverFields)
@@ -182,6 +200,30 @@ class ChartIQViewTests: XCTestCase {
     XCTAssertEqual(correctJSONString, jsonString)
   }
 
+  func testFormatEmptyObjectToPrintedJSONFormatMethod() {
+    // Given
+    let parametersObject: [String: Any] = [:]
+    let correctJSONString = "{\n\n}"
+
+    // When
+    let jsonString = chartIQView.formatObjectToPrintedJSONFormat(parametersObject)
+
+    // Then
+    XCTAssertEqual(correctJSONString, jsonString)
+  }
+
+  func testFormatIncorrectObjectToPrintedJSONFormatMethod() {
+    // Given
+    let parametersObject: String = "studyOverBoughtColor"
+    let correctJSONString = ""
+
+    // When
+    let jsonString = chartIQView.formatObjectToPrintedJSONFormat(parametersObject)
+
+    // Then
+    XCTAssertEqual(correctJSONString, jsonString)
+  }
+
   func testGetUpdateStudyParametersScript() {
     // Given
     let chartIQScriptManager = ChartIQScriptManager()
@@ -256,47 +298,35 @@ class ChartIQViewTests: XCTestCase {
   }
 
   func testGetBaseSymbolValue() {
-    // Given
-    let symbol = ""
-
-    // When
+    // Given // When
     let chartIQViewSymbol = chartIQView.symbol
 
     // Then
-    XCTAssertEqual(symbol, chartIQViewSymbol)
+    XCTAssertNil(chartIQViewSymbol)
   }
 
   func testGetBaseIntervalValue() {
-    // Given
-    let interval = "day"
-
-    // When
+    // Given // When
     let chartIQViewInterval = chartIQView.interval
 
     // Then
-    XCTAssertEqual(interval, chartIQViewInterval)
+    XCTAssertNil(chartIQViewInterval)
   }
 
   func testGetBaseTimeUnitValue() {
-    // Given
-    let timeUnit: ChartIQTimeUnit = .minute
-
-    // When
+    // Given // When
     let chartIQTimeUnit = chartIQView.timeUnit
 
     // Then
-    XCTAssertEqual(timeUnit, chartIQTimeUnit)
+    XCTAssertNil(chartIQTimeUnit)
   }
 
   func testGetBasePeriodicityValue() {
-    // Given
-    let periodicity = 1
-
-    // When
+    // Given // When
     let chartIQPeriodicity = chartIQView.periodicity
 
     // Then
-    XCTAssertEqual(periodicity, chartIQPeriodicity)
+    XCTAssertNil(chartIQPeriodicity)
   }
 
   func testGetBaseChartTypeValue() {
@@ -404,17 +434,5 @@ class ChartIQViewTests: XCTestCase {
 
     // Then
     XCTAssertNil(chartIQDrawingParameters)
-  }
-
-  func testGetDrawingParametersMethodNoTool() {
-    // Given
-    let drawingParametersIsEmpty = true
-
-    // Given // When
-    let chartIQDrawingParameters = chartIQView.getDrawingParameters(.noTool)
-
-    // Then
-    XCTAssertNotNil(chartIQDrawingParameters)
-    XCTAssertEqual(drawingParametersIsEmpty, chartIQDrawingParameters?.isEmpty)
   }
 }

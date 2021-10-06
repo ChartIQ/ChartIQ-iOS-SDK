@@ -212,8 +212,20 @@ public class ChartIQView: UIView {
   ///
   /// - Parameters:
   ///   - voiceoverFields: The ChartIQ voiceover fields.
-  public func setVoiceoverFields(_ voiceoverFields: [String: Bool]) {
-    ChartIQView.voiceoverFields = voiceoverFields
+  public func setVoiceoverFields(_ voiceoverFields: [String: Bool]? = nil, default: Bool? = nil) {
+    if let voiceoverFields = voiceoverFields {
+      ChartIQView.voiceoverFields = voiceoverFields
+    } else if let isDefault = `default`, isDefault {
+      let voiceoverFields = [
+        ChartIQQuoteField.date.stringValue: true,
+        ChartIQQuoteField.close.stringValue: true,
+        ChartIQQuoteField.open.stringValue: false,
+        ChartIQQuoteField.high.stringValue: false,
+        ChartIQQuoteField.low.stringValue: false,
+        ChartIQQuoteField.volume.stringValue: false
+      ]
+      ChartIQView.voiceoverFields = voiceoverFields
+    }
   }
 
   // MARK: - Public Chart Controls
@@ -700,7 +712,6 @@ public class ChartIQView: UIView {
   ///   - tool: The ChartIQDrawingTool.
   /// - Returns: The dictionary value of drawing parameters.
   public func getDrawingParameters(_ tool: ChartIQDrawingTool) -> [String: Any]? {
-    if tool == .noTool { return [:] }
     let script = scriptManager.getScriptForDrawingParameters(tool)
     if let jsonString = webView.evaluateJavaScriptWithReturn(script), let data = jsonString.data(using: .utf8) {
       return try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
@@ -885,7 +896,8 @@ public class ChartIQView: UIView {
   ///   - object: The object.
   /// - Returns: The JSON object.
   internal func formatObjectToPrintedJSONFormat(_ object: Any) -> String {
-    guard let jsonData = try? JSONSerialization.data(withJSONObject: object, options: .prettyPrinted),
+    guard let jsonObject = object as? [String: Any],
+          let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted),
           let jsonString = String(data: jsonData, encoding: .utf8) else { return "" }
     return jsonString
   }

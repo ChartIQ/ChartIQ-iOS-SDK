@@ -58,8 +58,8 @@ public extension UIColor {
   ///   - colorAssetName: The String Object. The name for color asset used for dark mode in iOS 13 and higher.
   ///   - baseColor: The UIColor Object. The color used as base color for iOS versions below iOS 13.
   /// - Returns: The UIColor Object.
-  static func colorAsset(name colorAssetName: String, baseColor: UIColor) -> UIColor {
-    if #available(iOS 11.0, *) {
+  static func colorAsset(name colorAssetName: String, baseColor: UIColor, aboveiOS11Mock: Bool = true) -> UIColor {
+    if #available(iOS 11.0, *), aboveiOS11Mock {
       return UIColor(named: colorAssetName) ?? baseColor
     } else {
       return baseColor

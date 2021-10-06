@@ -2,7 +2,7 @@
 //  ChartIQDrawingManagerTests.swift
 //  ChartIQTests
 //
-//  Copyright 2012-2020 by ChartIQ, Inc.
+//  Copyright 2012-2021 by ChartIQ, Inc.
 //  All rights reserved
 //
 
@@ -62,7 +62,7 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let tironeLevels = true
     let trend = true
     let vertical = false
-    let noTool = false, measure = false
+    let measure = false
 
     // When // Then
     XCTAssertEqual(annotation, chartIQDrawingManager.isSupportingFillColor(.annotation))
@@ -101,7 +101,6 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingFillColor(.tironeLevels))
     XCTAssertEqual(trend, chartIQDrawingManager.isSupportingFillColor(.trend))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingFillColor(.vertical))
-    XCTAssertEqual(noTool, chartIQDrawingManager.isSupportingFillColor(.noTool))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingFillColor(.measure))
   }
 
@@ -143,7 +142,6 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let tironeLevels = true
     let trend = true
     let vertical = true
-    let noTool = false
     let measure = true
 
     // When // Then
@@ -183,7 +181,6 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingLineColor(.tironeLevels))
     XCTAssertEqual(trend, chartIQDrawingManager.isSupportingLineColor(.trend))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingLineColor(.vertical))
-    XCTAssertEqual(noTool, chartIQDrawingManager.isSupportingLineColor(.noTool))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingLineColor(.measure))
   }
 
@@ -225,7 +222,6 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let tironeLevels = true
     let trend = true
     let vertical = true
-    let noTool = false
     let measure = true
 
     // When // Then
@@ -265,7 +261,6 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingLineType(.tironeLevels))
     XCTAssertEqual(trend, chartIQDrawingManager.isSupportingLineType(.trend))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingLineType(.vertical))
-    XCTAssertEqual(noTool, chartIQDrawingManager.isSupportingLineType(.noTool))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingLineType(.measure))
   }
 
@@ -307,7 +302,7 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let tironeLevels = true
     let trend = true
     let vertical = true
-    let noTool = false, measure = false
+    let measure = false
 
     // When // Then
     XCTAssertEqual(annotation, chartIQDrawingManager.isSupportingSettings(.annotation))
@@ -346,7 +341,6 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingSettings(.tironeLevels))
     XCTAssertEqual(trend, chartIQDrawingManager.isSupportingSettings(.trend))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingSettings(.vertical))
-    XCTAssertEqual(noTool, chartIQDrawingManager.isSupportingSettings(.noTool))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingSettings(.measure))
   }
 
@@ -388,7 +382,7 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let tironeLevels = false
     let trend = true
     let vertical = false
-    let noTool = false, measure = false
+    let measure = false
 
     // When // Then
     XCTAssertEqual(annotation, chartIQDrawingManager.isSupportingFont(.annotation))
@@ -427,7 +421,6 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingFont(.tironeLevels))
     XCTAssertEqual(trend, chartIQDrawingManager.isSupportingFont(.trend))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingFont(.vertical))
-    XCTAssertEqual(noTool, chartIQDrawingManager.isSupportingFont(.noTool))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingFont(.measure))
   }
 
@@ -444,7 +437,7 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let ray = false, rectangle = false, regression = false, segment = false, speedResistanceArc = false
     let speedResistanceLine = false, star = false, timeCycle = false, tironeLevels = false, trend = false
     let vertical = true
-    let noTool = false, measure = false
+    let measure = false
 
     // When // Then
     XCTAssertEqual(annotation, chartIQDrawingManager.isSupportingAxisLabel(.annotation))
@@ -483,7 +476,6 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingAxisLabel(.tironeLevels))
     XCTAssertEqual(trend, chartIQDrawingManager.isSupportingAxisLabel(.trend))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingAxisLabel(.vertical))
-    XCTAssertEqual(noTool, chartIQDrawingManager.isSupportingAxisLabel(.noTool))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingAxisLabel(.measure))
   }
 
@@ -499,7 +491,7 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let regression = true
     let segment = false, speedResistanceArc = false, speedResistanceLine = false
     let star = false, timeCycle = false, tironeLevels = false, trend = false, vertical = false
-    let noTool = false, measure = false
+    let measure = false
 
     // When // Then
     XCTAssertEqual(annotation, chartIQDrawingManager.isSupportingDeviations(.annotation))
@@ -538,7 +530,6 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingDeviations(.tironeLevels))
     XCTAssertEqual(trend, chartIQDrawingManager.isSupportingDeviations(.trend))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingDeviations(.vertical))
-    XCTAssertEqual(noTool, chartIQDrawingManager.isSupportingDeviations(.noTool))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingDeviations(.measure))
   }
 
@@ -552,7 +543,7 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let line = false, pitchfork = false, quadrantLines = false, ray = false, rectangle = false
     let regression = false, segment = false, speedResistanceArc = false, speedResistanceLine = false
     let star = false, timeCycle = false, tironeLevels = false, trend = false, vertical = false
-    let noTool = false, measure = false
+    let measure = false
 
     // When // Then
     XCTAssertEqual(annotation, chartIQDrawingManager.isSupportingFibonacci(.annotation))
@@ -591,7 +582,6 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingFibonacci(.tironeLevels))
     XCTAssertEqual(trend, chartIQDrawingManager.isSupportingFibonacci(.trend))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingFibonacci(.vertical))
-    XCTAssertEqual(noTool, chartIQDrawingManager.isSupportingFibonacci(.noTool))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingFibonacci(.measure))
   }
 
@@ -606,7 +596,7 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let line = false, pitchfork = false, quadrantLines = false, ray = false, rectangle = false
     let regression = false, segment = false, speedResistanceArc = false, speedResistanceLine = false
     let star = false, timeCycle = false, tironeLevels = false, trend = false, vertical = false
-    let noTool = false, measure = false
+    let measure = false
 
     // When // Then
     XCTAssertEqual(annotation, chartIQDrawingManager.isSupportingElliottWave(.annotation))
@@ -645,7 +635,6 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingElliottWave(.tironeLevels))
     XCTAssertEqual(trend, chartIQDrawingManager.isSupportingElliottWave(.trend))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingElliottWave(.vertical))
-    XCTAssertEqual(noTool, chartIQDrawingManager.isSupportingElliottWave(.noTool))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingElliottWave(.measure))
   }
 }
