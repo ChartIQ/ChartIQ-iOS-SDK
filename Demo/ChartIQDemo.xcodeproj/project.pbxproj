@@ -1491,7 +1491,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chartiq.TechnicalAnalysisChart.App;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chartiq.TechnicalAnalysisChart;
 				PRODUCT_MODULE_NAME = ChartIQDemo;
 				PRODUCT_NAME = ChartIQDemo;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1515,7 +1515,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chartiq.TechnicalAnalysisChart.App;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chartiq.TechnicalAnalysisChart;
 				PRODUCT_MODULE_NAME = ChartIQDemo;
 				PRODUCT_NAME = ChartIQDemo;
 				SWIFT_VERSION = 5.0;
