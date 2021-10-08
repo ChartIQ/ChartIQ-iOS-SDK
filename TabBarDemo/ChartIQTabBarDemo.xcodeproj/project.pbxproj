@@ -1483,7 +1483,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.4;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = XPJG98X97P;
 				INFOPLIST_FILE = "$(SRCROOT)/ChartIQTabBarDemo/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -1491,8 +1491,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.chartiq-demo";
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chartiq.TechnicalAnalysisChart.TabBar;
 				PRODUCT_MODULE_NAME = ChartIQTabBarDemo;
 				PRODUCT_NAME = ChartIQTabBarDemo;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1507,7 +1507,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.4;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = XPJG98X97P;
 				INFOPLIST_FILE = "$(SRCROOT)/ChartIQTabBarDemo/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -1515,8 +1515,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.chartiq-demo";
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chartiq.TechnicalAnalysisChart.TabBar;
 				PRODUCT_MODULE_NAME = ChartIQTabBarDemo;
 				PRODUCT_NAME = ChartIQTabBarDemo;
 				SWIFT_VERSION = 5.0;
