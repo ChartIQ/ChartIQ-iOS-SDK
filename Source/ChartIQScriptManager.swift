@@ -407,8 +407,9 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   /// - Parameters:
   ///   - jsonString: The String Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  internal func getScriptForPush(_ jsonString: String) -> String {
-    let script = mobileNameSpace + "loadChart(\"\", \(jsonString)); "
+  internal func getScriptForPush(_ symbol: String, data: String) -> String {
+    let safeProperty = safeScriptParameter(symbol)
+    let script = mobileNameSpace + "loadChart(\"\(safeProperty)\", \(data)); "
     return script
   }
 
@@ -417,8 +418,8 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   /// - Parameters:
   ///   - jsonString: The String Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  internal func getScriptForPushUpdate(_ jsonString: String) -> String {
-    let script = mobileNameSpace + "parseData('\(jsonString)');"
+  internal func getScriptForPushUpdate(_ data: String, useAsLastSale: Bool) -> String {
+    let script = mobileNameSpace + "parseData('\(data)', null, null, null, \(useAsLastSale));"
     return script
   }
 
@@ -646,8 +647,8 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///   - moreAvailable: The Bool Value.
   ///   - cb: The String Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  internal func getScriptForFormatJSQuoteData(_ json: String, moreAvailable: Bool, cb: String) -> String {
-    let script = mobileNameSpace + "parseData('\(json)', \"\(cb)\", \(moreAvailable));"
+  internal func getScriptForFormatJSQuoteData(_ data: String, callbackId: String, moreAvailable: Bool, upToDate: Bool) -> String {
+    let script = mobileNameSpace + "parseData('\(data)', \"\(callbackId)\", \(moreAvailable), \(upToDate));"
     return script
   }
 

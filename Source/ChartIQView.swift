@@ -526,13 +526,13 @@ public class ChartIQView: UIView {
   ///
   /// - Parameters:
   ///   - data: An array of properly formatted OHLC quote objects to create a chart.
-  public func push(_ data: [ChartIQData]) {
+  public func push(_ symbol: String, data: [ChartIQData]) {
     let obj = data.map { $0.toDictionary() }
     guard let jsonData = try? JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted),
           let jsonString = String(data: jsonData,
                                   encoding: .utf8)?.replacingOccurrences(of: Const.General.newlineSymbol,
                                                                          with: "") else { return }
-    let script = scriptManager.getScriptForPush(jsonString)
+    let script = scriptManager.getScriptForPush(symbol, data: jsonString)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
@@ -540,13 +540,13 @@ public class ChartIQView: UIView {
   ///
   /// - Parameters:
   ///   - data: An array of properly formatted OHLC quote objects to append.
-  public func pushUpdate(_ data: [ChartIQData]) {
+  public func pushUpdate(_ data: [ChartIQData], useAsLastSale: Bool) {
     let obj = data.map { $0.toDictionary() }
     guard let jsonData = try? JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted),
           let jsonString = String(data: jsonData,
                                   encoding: .utf8)?.replacingOccurrences(of: Const.General.newlineSymbol,
                                                                          with: "") else { return }
-    let script = scriptManager.getScriptForPushUpdate(jsonString)
+    let script = scriptManager.getScriptForPushUpdate(jsonString, useAsLastSale: useAsLastSale)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
@@ -880,13 +880,13 @@ public class ChartIQView: UIView {
   ///   - data: An array of properly formatted OHLC quote objects to append.
   ///   - moreAvailable: A bool to determine whether to retrieve more data
   ///   - cb: The callback key used in Javascript.
-  internal func formatJSQuoteData(_ data: [ChartIQData], moreAvailable: Bool, cb: String) {
+  internal func formatJSQuoteData(_ data: [ChartIQData], callbackId: String, moreAvailable: Bool, upToDate: Bool) {
     let jsonObject = data.map { $0.toDictionary() }
     guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted),
           let jsonString = String(data: jsonData,
                                   encoding: .utf8)?.replacingOccurrences(of: Const.General.newlineSymbol,
                                                                          with: "") else { return }
-    let script = scriptManager.getScriptForFormatJSQuoteData(jsonString, moreAvailable: moreAvailable, cb: cb)
+    let script = scriptManager.getScriptForFormatJSQuoteData(jsonString, callbackId: callbackId, moreAvailable: moreAvailable, upToDate: upToDate)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
@@ -950,33 +950,33 @@ extension ChartIQView: WKScriptMessageHandler {
 
   internal func pullInitialDataCallbackMessageHandler(message: WKScriptMessage) {
     guard let message = message.body as? [String: Any] else { return }
-    let cb = message[Const.CallbackMessage.callbackKeyParam] as? String ?? ""
+    let callbackId = message[Const.CallbackMessage.callbackKeyParam] as? String ?? ""
     let params = ChartIQQuoteFeedParams(dictionary: message)
     dataSource?.pullInitialData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
       DispatchQueue.main.async {
         // Set moreAvailable to true as you want to see if there is more historical data after the initial pull.
-        self.formatJSQuoteData(data, moreAvailable: true, cb: cb)
+        self.formatJSQuoteData(data, callbackId: callbackId, moreAvailable: true, upToDate: true )
       }
     })
   }
 
   internal func pullUpdateDataCallbackMessageHandler(message: WKScriptMessage) {
     guard let message = message.body as? [String: Any] else { return }
-    let cb = message[Const.CallbackMessage.callbackKeyParam] as? String ?? ""
+    let callbackId = message[Const.CallbackMessage.callbackKeyParam] as? String ?? ""
     let params = ChartIQQuoteFeedParams(dictionary: message)
     dataSource?.pullUpdateData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
       DispatchQueue.main.async {
         // Just an update, no need to see if there is more historical data available.
-        self.formatJSQuoteData(data, moreAvailable: false, cb: cb)
+        self.formatJSQuoteData(data, callbackId: callbackId, moreAvailable: false, upToDate: true)
       }
     })
   }
 
   internal func pullPaginationDataCallbackMessageHandler(message: WKScriptMessage) {
     guard let message = message.body as? [String: Any] else { return }
-    let cb = message[Const.CallbackMessage.callbackKeyParam] as? String ?? ""
+    let callbackId = message[Const.CallbackMessage.callbackKeyParam] as? String ?? ""
     let params = ChartIQQuoteFeedParams(dictionary: message)
     dataSource?.pullPaginationData(by: params, completionHandler: { [weak self] data in
       guard let self = self else { return }
@@ -987,7 +987,7 @@ extension ChartIQView: WKScriptMessageHandler {
         // If you have spotty data then another idea might be to check the last historical date,
         // this would require you knowing what date to stop at though.
         let moreAvailable = !(data.count < 1)
-        self.formatJSQuoteData(data, moreAvailable: moreAvailable, cb: cb)
+        self.formatJSQuoteData(data, callbackId: callbackId, moreAvailable: moreAvailable, upToDate: true)
       }
     })
   }
