@@ -16,9 +16,9 @@ Contact us at <support@chartiq.com> to request sample code and guidance on how t
 
 - iOS 10.3 or later
 
-## Sample app
+## App
 
-The [Demo](https://github.com/ChartIQ/ChartIQ-iOS-SDK/tree/master/Demo) folder of this repository contains a sample app that was built using the SDK. Customize the app to quickly create your own iOS charting application.
+The [Demo](https://github.com/ChartIQ/ChartIQ-iOS-SDK/tree/master/Demo) folder of this repository contains an app that was built using the SDK. Customize the app to quickly create your own iOS charting application.
 
 The app is also available on the Apple Store.
 
