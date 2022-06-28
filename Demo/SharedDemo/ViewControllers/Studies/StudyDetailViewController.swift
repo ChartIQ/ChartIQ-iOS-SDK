@@ -31,6 +31,7 @@ class StudyDetailViewController: BaseViewController {
   internal var paramParameters: [[String: Any]] = [[:]]
   internal var didRemoveStudy: ((ChartIQStudy) -> Void)?
   internal var didSaveStudy: ((ChartIQStudy) -> Void)?
+  internal var isAdditionalActionsAllowed: Bool = true
 
   // MARK: - Private Properties
 
@@ -49,6 +50,8 @@ class StudyDetailViewController: BaseViewController {
   }
 
   override func languageDidChange() {
+    let studyName = study.name.isEmpty ? study.shortName : study.name
+    navigationItem.title = locManager.localize(studyName)
     saveBarButtonItem?.title = locManager.localize(Const.General.saveTitle)
     updateStudyViewModels()
   }
@@ -56,7 +59,8 @@ class StudyDetailViewController: BaseViewController {
   // MARK: - Setup Methods
 
   override func setupUI() {
-    navigationItem.title = locManager.localize(study.name)
+    let studyName = study.name.isEmpty ? study.shortName : study.name
+    navigationItem.title = locManager.localize(studyName)
     tableView.backgroundColor = .ghostWhiteСhineseBlackColor
     saveBarButtonItem = UIBarButtonItem(title: locManager.localize(Const.General.saveTitle),
                                         style: .done,
@@ -93,14 +97,21 @@ class StudyDetailViewController: BaseViewController {
         parameterViewModels.append(viewModel)
       }
     }
-    studyViewModels = [
-      .first: parameterViewModels,
-      .second: [
+
+    var actionViewModels: [TableCellViewModelProtocol] = []
+
+    if isAdditionalActionsAllowed {
+      actionViewModels = [
         ButtonTableCellViewModel(title: locManager.localize(Const.StudyDetail.resetDefaultsButtonTitle),
                                  titleColor: .mountainMeadowColor),
         ButtonTableCellViewModel(title: locManager.localize(Const.StudyDetail.removeStudyButtonTitle),
                                  titleColor: .coralRedColor)
       ]
+    }
+
+    studyViewModels = [
+      .first: parameterViewModels,
+      .second: actionViewModels
     ]
     tableView.reloadData()
   }
@@ -372,7 +383,7 @@ class StudyDetailViewController: BaseViewController {
       let toggleCell = tableView.dequeueReusableCell(withIdentifier: Const.ToggleTableCell.cellId,
                                                      for: indexPath) as? ToggleTableCell {
       toggleCell.setupCell(withViewModel: toggleViewModel)
-      toggleCell.toggleDidChange = { [weak self] isToggleOn in
+      toggleCell.didChangeToggle = { [weak self] isToggleOn in
         self?.updateSelectedToggle(with: toggleViewModel, isToggleOn: isToggleOn)
       }
       return toggleCell

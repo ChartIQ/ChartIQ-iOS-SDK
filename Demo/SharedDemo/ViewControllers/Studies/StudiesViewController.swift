@@ -111,7 +111,7 @@ class StudiesViewController: BaseViewController {
 
   // MARK: - Actions Methods
 
-  @IBAction private func emptyStateAddStudiesButtonAction(_ sender: Any) {
+  @IBAction private func emptyStateAddStudiesButtonTapped(_ sender: Any) {
     presentAllStudiesViewController()
   }
 

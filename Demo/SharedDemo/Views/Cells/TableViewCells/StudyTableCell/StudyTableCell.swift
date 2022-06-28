@@ -30,9 +30,9 @@ class StudyTableCell: UITableViewCell {
   // MARK: - Internal Methods
 
   internal func setupCell(withViewModel viewModel: TableCellViewModelProtocol) {
-    guard let studyCellViewModel = viewModel as? StudyTableCellViewModel else { return }
-    textLabel?.text = studyCellViewModel.title
-    detailTextLabel?.text = studyCellViewModel.detailTitle
+    guard let studyViewModel = viewModel as? StudyTableCellViewModel else { return }
+    textLabel?.text = studyViewModel.title
+    detailTextLabel?.text = studyViewModel.detailTitle
     accessoryType = .disclosureIndicator
   }
 }

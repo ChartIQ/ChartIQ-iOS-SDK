@@ -52,6 +52,9 @@ class SelectOptionViewController: BaseViewController {
     let title = selectedOptionTitle ?? Const.SelectOption.screenTitle
     navigationItem.title = locManager.localize(title)
     tableView.backgroundColor = .ghostWhiteСhineseBlackColor
+
+    tableView.tableHeaderView = UIView()
+    tableView.tableFooterView = UIView()
   }
 
   override func setupSettings() {

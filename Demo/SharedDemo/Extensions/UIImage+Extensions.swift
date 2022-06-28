@@ -26,6 +26,7 @@ extension UIImage {
 
   struct Chart {
     internal static let seriesImage = UIImage(named: "iconSeries")
+    internal static let signalsImage = UIImage(named: "iconSignals")
     internal static let studiesImage = UIImage(named: "iconStudies")
     internal static let settingsImage = UIImage(named: "iconSettings")
 
@@ -136,6 +137,7 @@ extension UIImage {
     internal static let tironeLevelsImage = UIImage(named: "drawingToolTironeLevelsIcon")
     internal static let trendImage = UIImage(named: "drawingToolTrendLineIcon")
     internal static let verticalImage = UIImage(named: "drawingToolVerticallineIcon")
+    internal static let volumeProfileImage = UIImage(named: "drawingToolVolumeProfileIcon")
   }
 
   // MARK: - ChartIQChartType Images

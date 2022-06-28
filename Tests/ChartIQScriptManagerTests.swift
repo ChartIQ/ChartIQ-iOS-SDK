@@ -617,7 +617,7 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetScriptForCurrentDrawTool() {
     // Given
-    let correctScript = "currentDrawing"
+    let correctScript = "stxx.currentVectorParameters.vectorType;"
 
     // When
     let script = chartIQScriptManager.getScriptForCurrentDrawTool()
@@ -628,7 +628,7 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetScriptForEnableDrawing() {
     // Given
-    let correctScript = "currentDrawing = \"freeform\"; stxx.changeVectorType(currentDrawing); "
+    let correctScript = "stxx.changeVectorType(\"freeform\");"
 
     // When
     let script = chartIQScriptManager.getScriptForEnableDrawing(.doodle)

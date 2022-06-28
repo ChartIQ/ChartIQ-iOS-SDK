@@ -108,7 +108,7 @@ class SearchSymbolsViewController: BaseViewController {
 
   // MARK: - Actions Methods
 
-  @IBAction private func emptyStateApplySymbolButtonAction(_ sender: Any) {
+  @IBAction private func emptyStateApplySymbolButtonTapped(_ sender: Any) {
     if let symbolString = searchController.searchBar.text {
       let symbol = SymbolModel(name: symbolString, fullName: symbolString, exchange: symbolString)
       searchController.dismiss(animated: false) {

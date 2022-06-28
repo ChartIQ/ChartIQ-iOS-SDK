@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,34 +19,42 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbH-4S-q97">
-                        <rect key="frame" x="16" y="0.0" width="233" height="44"/>
+                        <rect key="frame" x="20" y="0.0" width="199" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kyi-EK-w65">
-                        <rect key="frame" x="257" y="6.5" width="49" height="31"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="31" id="NjD-en-k9l"/>
-                            <constraint firstAttribute="width" constant="47" id="lvS-3J-Ylo"/>
-                        </constraints>
+                        <rect key="frame" x="227" y="6.5" width="51" height="31"/>
                     </switch>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="529-wB-erE">
+                        <rect key="frame" x="289.5" y="15" width="10.5" height="14"/>
+                        <imageReference key="image" image="chevron.right" catalog="system" symbolScale="small"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default" weight="semibold"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="cbH-4S-q97" secondAttribute="bottom" id="1Ty-cD-H9J"/>
-                    <constraint firstItem="cbH-4S-q97" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ETV-nL-Rnr"/>
+                    <constraint firstAttribute="trailing" secondItem="529-wB-erE" secondAttribute="trailing" constant="20" id="6Hy-8O-u8e"/>
+                    <constraint firstItem="cbH-4S-q97" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ETV-nL-Rnr"/>
                     <constraint firstItem="cbH-4S-q97" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="NFD-E4-9ki"/>
-                    <constraint firstAttribute="trailing" secondItem="kyi-EK-w65" secondAttribute="trailing" constant="16" id="Q9M-9W-eAL"/>
+                    <constraint firstAttribute="trailing" secondItem="kyi-EK-w65" secondAttribute="trailing" constant="44" id="Q9M-9W-eAL"/>
                     <constraint firstItem="kyi-EK-w65" firstAttribute="leading" secondItem="cbH-4S-q97" secondAttribute="trailing" constant="8" id="W6T-vX-Xgl"/>
                     <constraint firstItem="kyi-EK-w65" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gPU-yI-7Rc"/>
+                    <constraint firstItem="529-wB-erE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vcc-T9-NjD"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="disclosureIndicatorImageView" destination="529-wB-erE" id="KYU-U0-jxD"/>
                 <outlet property="titleLabel" destination="cbH-4S-q97" id="Oeq-Ex-m15"/>
-                <outlet property="toggleView" destination="kyi-EK-w65" id="0cE-8y-LRL"/>
+                <outlet property="toggle" destination="kyi-EK-w65" id="8rv-qy-TGn"/>
+                <outlet property="toggleTrailingConstraint" destination="Q9M-9W-eAL" id="fKf-jv-7x7"/>
             </connections>
-            <point key="canvasLocation" x="139" y="107"/>
+            <point key="canvasLocation" x="137.68115942028987" y="106.47321428571428"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
+    </resources>
 </document>

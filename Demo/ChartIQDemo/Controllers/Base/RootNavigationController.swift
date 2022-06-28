@@ -38,7 +38,7 @@ class RootNavigationController: UINavigationController {
     navigationBar.barTintColor = .ghostWhiteСhineseBlackColor
     navigationBar.backgroundColor = .ghostWhiteСhineseBlackColor
     navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-    
+
     setupScrollEdgeAppearance()
   }
 

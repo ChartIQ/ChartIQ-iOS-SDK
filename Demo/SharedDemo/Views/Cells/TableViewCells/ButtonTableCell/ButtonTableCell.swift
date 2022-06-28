@@ -31,8 +31,8 @@ class ButtonTableCell: UITableViewCell {
   // MARK: - Internal Methods
 
   internal func setupCell(withViewModel viewModel: TableCellViewModelProtocol) {
-    guard let buttonCellViewModel = viewModel as? ButtonTableCellViewModel else { return }
-    titleLabel?.text = buttonCellViewModel.title
-    titleLabel?.textColor = buttonCellViewModel.titleColor
+    guard let buttonViewModel = viewModel as? ButtonTableCellViewModel else { return }
+    titleLabel?.text = buttonViewModel.title
+    titleLabel?.textColor = buttonViewModel.titleColor
   }
 }

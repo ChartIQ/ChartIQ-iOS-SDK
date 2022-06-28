@@ -35,6 +35,8 @@ extension UIColor {
   internal static let brillianteAzureColor = UIColor(hexString: "3a8eff")
   internal static let lightGrayColor = UIColor(hexString: "D4D4D4")
   internal static let outerSpaceColor = UIColor(hexString: "3E4A53")
+  internal static let arsenicColor = UIColor(hexString: "3C3C43")
+  internal static let brightGrayMediumColor = UIColor(hexString: "EBEBF5")
 }
 
 // MARK: - UIColor Dynamic Color Extensions
@@ -63,6 +65,10 @@ extension UIColor {
     return colorAsset(name: "brightGreyYankeesBlue", baseColor: UIColor.brightGreyColor)
   }
 
+  internal class var brightGreyDarkGunmetalColor: UIColor {
+    return colorAsset(name: "brightGreyDarkGunmetal", baseColor: UIColor.brightGreyColor)
+  }
+
   internal class var darkElectricBlueWhiteColor: UIColor {
     return colorAsset(name: "darkElectricBlueWhite", baseColor: UIColor.darkElectricBlueColor)
   }
@@ -85,6 +91,10 @@ extension UIColor {
 
   internal class var lightGrayOuterSpaceColor: UIColor {
     return colorAsset(name: "lightGrayOuterSpace", baseColor: UIColor.lightGrayColor)
+  }
+
+  internal class var arsenicBrightGrayMediumColor: UIColor {
+    return colorAsset(name: "arsenicBrightGrayMedium", baseColor: UIColor.arsenicColor)
   }
 }
 

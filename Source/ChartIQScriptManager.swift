@@ -422,6 +422,16 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
     return script
   }
 
+  // MARK: - Studies
+
+  /// Returns a script that gets active studies.
+  ///
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  internal func getScriptForActiveStudies() -> String {
+    let script = mobileNameSpace + "getActiveStudies();"
+    return script
+  }
+
   /// Returns a script that gets study parameters.
   ///
   /// - Parameters:
@@ -496,13 +506,59 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
     return script
   }
 
-  /// Returns a script that gets active studies.
+  // MARK: - Signals
+
+  /// Returns a script that adds a study as a signal.
   ///
+  /// - Parameters:
+  ///   - study: The ChartIQStudy model.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  internal func getScriptForActiveStudies() -> String {
-    let script = mobileNameSpace + "getActiveStudies();"
+  internal func getScriptForAddSignalStudy(_ study: ChartIQStudy) -> String {
+    let script = mobileNameSpace + "addStudyAsSignal('\(study.shortName)');"
     return script
   }
+
+  /// Returns a script that save a signal.
+  ///
+  /// - Parameters:
+  ///   - signal: The ChartIQSignal model.
+  ///   - isEdit: The Bool value.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  internal func getScriptForSaveSignal(_ signal: ChartIQSignal, isEdit: Bool) -> String {
+    let signalJsonString = signal.toJSONString()
+    let script = mobileNameSpace + "saveSignal('\(signalJsonString)','\(isEdit)');"
+    return script
+  }
+
+  /// Returns a script that gets active signals.
+  ///
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  internal func getScriptForActiveSignals() -> String {
+    let script = mobileNameSpace + "getActiveSignals();"
+    return script
+  }
+
+  /// Returns a script that toggle signal study.
+  ///
+  /// - Parameters:
+  ///   - signal: The ChartIQSignal model.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  internal func getScriptForToggleSignal(_ signal: ChartIQSignal) -> String {
+    let script = mobileNameSpace + "toggleSignalStudy('\(signal.signalStudy.fullName)');"
+    return script
+  }
+
+  /// Returns a script that removes a signal.
+  ///
+  /// - Parameters:
+  ///   - signal: The ChartIQSignal model.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  internal func getScriptForRemoveSignal(_ signal: ChartIQSignal) -> String {
+    let script = mobileNameSpace + "removeSignal('\(signal.signalStudy.fullName)');"
+    return script
+  }
+
+  // MARK: - Drawings
 
   /// Returns a script that gets a current drawing tool.
   ///
@@ -518,7 +574,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///   - tool: The ChartIQDrawingTool Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForEnableDrawing(_ tool: ChartIQDrawingTool) -> String {
-    let script = "stxx.changeVectorType(\"\(tool.stringValue)\"); "
+    let script = "stxx.changeVectorType(\"\(tool.stringValue)\");"
     return script
   }
 

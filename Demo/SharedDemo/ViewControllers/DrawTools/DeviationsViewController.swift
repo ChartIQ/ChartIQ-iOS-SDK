@@ -232,7 +232,7 @@ class DeviationsViewController: BaseViewController {
        let toggleCell = tableView.dequeueReusableCell(withIdentifier: Const.ToggleTableCell.cellId,
                                                       for: indexPath) as? ToggleTableCell {
       toggleCell.setupCell(withViewModel: toggleViewModel)
-      toggleCell.toggleDidChange = { [weak self] isToggleOn in
+      toggleCell.didChangeToggle = { [weak self] isToggleOn in
         self?.updateSelectedToggle(with: toggleViewModel, isToggleOn: isToggleOn, at: indexPath)
       }
       return toggleCell

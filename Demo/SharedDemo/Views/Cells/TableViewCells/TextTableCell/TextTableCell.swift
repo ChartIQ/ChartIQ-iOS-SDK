@@ -42,12 +42,16 @@ class TextTableCell: UITableViewCell {
 
   internal func setupCell(withViewModel viewModel: TableCellViewModelProtocol) {
     titleLabel.text = viewModel.title.capitalizeFirst()
-    if let textCellViewModel = viewModel as? TextTableCellViewModel {
-      textField.text = textCellViewModel.text
+    if let textViewModel = viewModel as? TextTableCellViewModel {
+      textField.text = textViewModel.text
       textField.keyboardType = .default
       textField.inputAccessoryView = nil
-    } else if let textColorCellViewModel = viewModel as? NumberTableCellViewModel {
-      textField.text = String(textColorCellViewModel.number)
+
+      if let placeholder = textViewModel.placeholder {
+        textField.placeholder = placeholder
+      }
+    } else if let textColorViewModel = viewModel as? NumberTableCellViewModel {
+      textField.text = String(textColorViewModel.number)
       textField.keyboardType = .decimalPad
       textField.inputAccessoryView = UIView.doneAccessoryView(target: self, action: #selector(doneButtonTapped))
     }

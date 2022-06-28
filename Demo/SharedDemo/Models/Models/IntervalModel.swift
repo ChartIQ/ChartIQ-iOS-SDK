@@ -80,8 +80,6 @@ enum TimeUnit: String, CaseIterable, Codable {
       self = .week
     case .month:
       self = .month
-    case .tick:
-      self = .tick
     }
   }
 }

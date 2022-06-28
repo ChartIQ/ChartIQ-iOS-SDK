@@ -42,8 +42,8 @@ class LineTableCell: UITableViewCell {
   // MARK: - Internal Methods
 
   internal func setupCell(withViewModel viewModel: TableCellViewModelProtocol) {
-    guard let lineCellViewModel = viewModel as? LineTableCellViewModel else { return }
-    titleLabel?.text = lineCellViewModel.title.capitalizeFirst()
-    lineImageView.image = lineCellViewModel.lineModel.lineImage
+    guard let lineViewModel = viewModel as? LineTableCellViewModel else { return }
+    titleLabel?.text = lineViewModel.title.capitalizeFirst()
+    lineImageView.image = lineViewModel.lineModel.lineImage
   }
 }

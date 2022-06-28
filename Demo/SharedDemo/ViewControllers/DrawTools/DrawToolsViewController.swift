@@ -185,7 +185,7 @@ class DrawToolsViewController: BaseViewController {
 
   private func getFiltredDrawToolViewModels() -> [DrawToolViewModel] {
     var drawToolViewModels: [DrawToolViewModel] = []
-    for index in 0...ChartIQDrawingTool.vertical.rawValue {
+    for index in 0...ChartIQDrawingTool.volumeProfile.rawValue {
       if let drawingTool = ChartIQDrawingTool(rawValue: index) {
         let isInFavorites = isDrawToolInFavorites(drawingTool)
         let drawToolViewModel = DrawToolViewModel(drawingTool: drawingTool, isInFavorites: isInFavorites)
@@ -314,7 +314,7 @@ class DrawToolsViewController: BaseViewController {
 
   private func getAddTableAction(_ drawingTool: ChartIQDrawingTool) -> UITableViewRowAction {
     let localizedAddActionTitle = locManager.localize(Const.General.addTitle)
-    let addActionTitle = "\(Const.General.filledStar) \(localizedAddActionTitle)"
+    let addActionTitle = "\(Const.General.filledStarSymbol) \(localizedAddActionTitle)"
     let addAction = UITableViewRowAction(style: .normal, title: addActionTitle) { [weak self] _, _ in
       self?.addToFavorites(drawingTool)
     }
@@ -324,7 +324,7 @@ class DrawToolsViewController: BaseViewController {
 
   private func getRemoveTableAction(_ drawingTool: ChartIQDrawingTool) -> UITableViewRowAction {
     let localizedRemoveActionTitle = locManager.localize(Const.General.removeTitle)
-    let removeActionTitle = "\(Const.General.unfilledStar) \(localizedRemoveActionTitle)"
+    let removeActionTitle = "\(Const.General.unfilledStarSymbol) \(localizedRemoveActionTitle)"
     let removeAction = UITableViewRowAction(style: .destructive, title: removeActionTitle) { [weak self] _, _ in
       self?.removeFromFavorites(drawingTool)
     }

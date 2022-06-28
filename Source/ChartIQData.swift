@@ -83,12 +83,12 @@ public class ChartIQData: NSObject {
     let dateString = ChartIQUtils.chartDateFormatter.string(from: date)
     return [
       Const.Data.dateParam: dateString,
-      Const.Data.openParam: open,
-      Const.Data.highParam: high,
-      Const.Data.lowParam: low,
-      Const.Data.closeParam: close,
-      Const.Data.volumeParam: volume,
-      Const.Data.adjCloseParam: adjClose
+      Const.Data.openParam: open as Any,
+      Const.Data.highParam: high as Any,
+      Const.Data.lowParam: low as Any,
+      Const.Data.closeParam: close as Any,
+      Const.Data.volumeParam: volume as Any,
+      Const.Data.adjCloseParam: adjClose as Any
     ]
   }
 
