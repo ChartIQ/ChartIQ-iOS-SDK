@@ -26,7 +26,7 @@ class ToggleDisclosureTableCellViewModel: TableCellViewModelProtocol {
   }
 
   init(signal: ChartIQSignal) {
-    self.title = LocalizationManager.shared().localize(signal.signalName)
+    self.title = LocalizationManager.shared().localize(signal.name)
     self.isToggleOn = false
   }
 }

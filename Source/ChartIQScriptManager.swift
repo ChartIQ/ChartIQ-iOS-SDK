@@ -544,7 +544,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///   - signal: The ChartIQSignal model.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForToggleSignal(_ signal: ChartIQSignal) -> String {
-    let script = mobileNameSpace + "toggleSignalStudy('\(signal.signalStudy.fullName)');"
+    let script = mobileNameSpace + "toggleSignalStudy('\(signal.study.fullName)');"
     return script
   }
 
@@ -554,7 +554,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///   - signal: The ChartIQSignal model.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForRemoveSignal(_ signal: ChartIQSignal) -> String {
-    let script = mobileNameSpace + "removeSignal('\(signal.signalStudy.fullName)');"
+    let script = mobileNameSpace + "removeSignal('\(signal.study.fullName)');"
     return script
   }
 

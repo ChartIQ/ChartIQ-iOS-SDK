@@ -101,9 +101,10 @@ class SignalConditionViewController: BaseViewController {
 
   private func setupCondition() {
     guard let study = study, condition == nil else { return }
+    let firstIndicatorOptions = getFirstIndicatorOptions()
     var firstIndicatorName: String = ""
-    if let outputs = study.outputs, let key = outputs.keys.first {
-      firstIndicatorName = key
+    if let firstIndicatorOption = firstIndicatorOptions.first {
+      firstIndicatorName = firstIndicatorOption
     }
     let markerOptions = ChartIQMarkerOptions(markerType: .marker,
                                              color: .clear,
@@ -111,21 +112,29 @@ class SignalConditionViewController: BaseViewController {
                                              label: "X",
                                              size: .medium,
                                              position: .aboveCandle)
-    condition = ConditionViewModel(firstIndicatorName: firstIndicatorName, markerOptions: markerOptions)
+    condition = ConditionViewModel(firstIndicatorName: firstIndicatorName,
+                                   markerOptions: markerOptions,
+                                   studyParameters: study.nameParams)
+  }
+
+  private func getOutputs() -> [String] {
+    var outputs: [String] = []
+    if let study = study, let studyOutputs = study.outputs {
+      let formattedOutputs = studyOutputs.map({ "\($0.key) \(study.fullName)" })
+      outputs.append(contentsOf: formattedOutputs)
+    }
+    return outputs
   }
 
   private func getFirstIndicatorOptions() -> [String] {
-    var options: [String] = []
-    if let study = study, let outputs = study.outputs {
-      options.append(contentsOf: outputs.keys)
-    }
-    return options
+    return getOutputs()
   }
 
   private func getSecondIndicatorOptions(firstIndicatorName: String?) -> [String] {
     var options: [String] = []
-    if let study = study, let outputs = study.outputs, let firstIndicatorName = firstIndicatorName {
-      let values = outputs.keys.filter({ $0 != firstIndicatorName })
+    if let firstIndicatorName = firstIndicatorName {
+      let outputs = getOutputs()
+      let values = outputs.filter({ $0 != firstIndicatorName })
       options.append(contentsOf: values)
     }
     options.append("Value")
@@ -136,14 +145,14 @@ class SignalConditionViewController: BaseViewController {
   private func updateConditionViewModels() {
     var conditionSettingsViewModels: [TableCellViewModelProtocol] = [
       SelectTableCellViewModel(title: locManager.localize("Indicator 1"),
-                               detailTitle: condition?.firstIndicatorName),
+                               detailTitle: condition?.firstIndicatorShortName),
       SelectTableCellViewModel(title: locManager.localize("Condition"),
                                detailTitle: condition?.conditionOperator?.displayName ?? "Select Action")
     ]
 
     if condition?.conditionOperator != nil {
       conditionSettingsViewModels.append(SelectTableCellViewModel(title: locManager.localize("Indicator 2"),
-                                                                  detailTitle: condition?.secondIndicatorName))
+                                                                  detailTitle: condition?.secondIndicatorShortName))
 
       if let secondIndicatorName = condition?.secondIndicatorName, secondIndicatorName == "Value" {
         var number = 0.0

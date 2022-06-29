@@ -151,12 +151,12 @@ class SignalDetailViewController: BaseViewController {
         let conditionTitle = "\(conditionNumber) \(locManager.localize(Const.SignalDetail.conditionTitle))"
         let conditionOperator = condition.conditionOperator?.displayName ?? ""
         var secondIndicator = ""
-        if let secondIndicatorName = condition.secondIndicatorName, secondIndicatorName != "Value" {
+        if let secondIndicatorName = condition.secondIndicatorShortName, secondIndicatorName != "Value" {
           secondIndicator = secondIndicatorName
         } else if let secondIndicatorValue = condition.secondIndicatorValue {
           secondIndicator = String(secondIndicatorValue)
         }
-        let conditionDescription = "\(condition.firstIndicatorName) \(conditionOperator) \(secondIndicator)"
+        let conditionDescription = "\(condition.firstIndicatorShortName) \(conditionOperator) \(secondIndicator)"
         var segmentType: ConditionSegmentType = .one
         if index == 0 {
           segmentType = .both
@@ -266,10 +266,10 @@ class SignalDetailViewController: BaseViewController {
                               rightIndicator: rightIndicator,
                               markerOptions: viewModel.markerOptions)
     }
-    return ChartIQSignal(signalStudy: signalStudy,
-                         signalConditions: signalConditions,
-                         signalJoiner: signalJoiner,
-                         signalName: signalName,
+    return ChartIQSignal(study: signalStudy,
+                         conditions: signalConditions,
+                         joiner: signalJoiner,
+                         name: signalName,
                          signalDescription: signalDescription)
   }
 

@@ -13,19 +13,19 @@ public class ChartIQSignal: NSObject {
 
   // MARK: - Public Properties
 
-  /// The ChartIQSignal signalStudy parameter.
-  public var signalStudy: ChartIQStudy
+  /// The ChartIQSignal study parameter.
+  public var study: ChartIQStudy
 
-  /// The ChartIQSignal signalConditions parameter.
-  public var signalConditions: [ChartIQCondition]
+  /// The ChartIQSignal conditions parameter.
+  public var conditions: [ChartIQCondition]
 
-  /// The ChartIQSignal signalJoiner parameter.
-  public var signalJoiner: ChartIQSignalJoiner
+  /// The ChartIQSignal joiner parameter.
+  public var joiner: ChartIQSignalJoiner
 
-  /// The ChartIQSignal signalName parameter.
-  public var signalName: String
+  /// The ChartIQSignal name parameter.
+  public var name: String
 
-  /// The ChartIQSignal signalDescription parameter.
+  /// The ChartIQSignal description parameter.
   public var signalDescription: String?
 
   // MARK: - Initializers
@@ -33,20 +33,20 @@ public class ChartIQSignal: NSObject {
   /// Init Signal model with all parameters.
   ///
   /// - Parameters:
-  ///   - signalStudy: The ChartIQStudy Object.
-  ///   - signalConditions: The Array of ChartIQCondition Objects.
-  ///   - signalJoiner: The ChartIQSignalJoiner Object.
-  ///   - signalName: The String Object.
-  ///   - signalDescription: The String Object.
-  public init(signalStudy: ChartIQStudy,
-              signalConditions: [ChartIQCondition],
-              signalJoiner: ChartIQSignalJoiner,
-              signalName: String,
+  ///   - study: The ChartIQStudy Object.
+  ///   - conditions: The Array of ChartIQCondition Objects.
+  ///   - joiner: The ChartIQSignalJoiner Object.
+  ///   - name: The String Object.
+  ///   - description: The String Object.
+  public init(study: ChartIQStudy,
+              conditions: [ChartIQCondition],
+              joiner: ChartIQSignalJoiner,
+              name: String,
               signalDescription: String? = nil) {
-    self.signalStudy = signalStudy
-    self.signalConditions = signalConditions
-    self.signalJoiner = signalJoiner
-    self.signalName = signalName
+    self.study = study
+    self.conditions = conditions
+    self.joiner = joiner
+    self.name = name
     self.signalDescription = signalDescription
   }
 
@@ -65,14 +65,14 @@ public class ChartIQSignal: NSObject {
   /// - Returns: The dictionary with Data model.
   public func toDictionary() -> [String: Any] {
     var conditions: [[Any]] = []
-    signalConditions.forEach { condition in
+    self.conditions.forEach { condition in
       conditions.append(condition.toArray())
     }
     return [
-      "studyName": signalStudy.fullName,
-      "name": signalName,
+      "studyName": study.fullName,
+      "name": name,
       "description": signalDescription ?? "",
-      "joiner": signalJoiner.stringValue,
+      "joiner": joiner.stringValue,
       "conditions": conditions
     ]
   }

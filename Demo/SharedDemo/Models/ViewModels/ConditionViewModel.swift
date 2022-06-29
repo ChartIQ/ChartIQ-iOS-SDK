@@ -22,4 +22,16 @@ struct ConditionViewModel {
   internal var secondIndicatorName: String?
   internal var secondIndicatorValue: Double?
   internal var markerOptions: ChartIQMarkerOptions?
+
+  internal var studyParameters: String?
+
+  internal var firstIndicatorShortName: String {
+    let studyParameters = studyParameters ?? ""
+    return firstIndicatorName.replace(studyParameters, with: "")
+  }
+
+  internal var secondIndicatorShortName: String? {
+    let studyParameters = studyParameters ?? ""
+    return secondIndicatorName?.replace(studyParameters, with: "")
+  }
 }

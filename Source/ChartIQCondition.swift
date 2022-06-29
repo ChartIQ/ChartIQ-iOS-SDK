@@ -13,16 +13,16 @@ public class ChartIQCondition: NSObject {
 
   // MARK: - Public Properties
 
-  /// The ChartIQCondition firstIndicatorName parameter.
+  /// The ChartIQCondition leftIndicator parameter.
   public var leftIndicator: String
 
-  /// The ChartIQCondition firstConditionName parameter.
+  /// The ChartIQCondition operator parameter.
   public var `operator`: ChartIQSignalOperator
 
-  /// The ChartIQCondition secondIndicatorName parameter.
+  /// The ChartIQCondition rightIndicator parameter.
   public var rightIndicator: String
 
-  /// The ChartIQCondition appearance parameter.
+  /// The ChartIQCondition markerOptions parameter.
   public var markerOptions: ChartIQMarkerOptions?
 
   // MARK: - Initializers
@@ -50,6 +50,11 @@ public class ChartIQCondition: NSObject {
   ///
   /// - Returns: The dictionary with Data model.
   public func toArray() -> [Any] {
-    return [leftIndicator, `operator`.stringValue, rightIndicator, markerOptions?.toDictionary() as Any]
+    return [
+      leftIndicator,
+      `operator`.stringValue,
+      rightIndicator, markerOptions?.color.toHexString() as Any,
+      markerOptions?.toDictionary() as Any
+    ]
   }
 }
