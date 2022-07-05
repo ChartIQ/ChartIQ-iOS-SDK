@@ -405,7 +405,7 @@ public struct Const {
     static let maxRightBarButtonItems = 8
 
     static let maxTabBarLeftBarButtonItems = 2
-    static let maxTabBarRightBarButtonItems = 4
+    static let maxTabBarRightBarButtonItems = 5
 
     static let manageLayersTitle = "Manage Layers"
 
@@ -474,6 +474,8 @@ public struct Const {
 
     static let conditionSettingsHeaderTitle = "Condition Settings"
     static let appearanceSettingsHeaderTitle = "Appearance Settings"
+
+    static let valueField = "Value"
   }
 
   struct DrawTools {

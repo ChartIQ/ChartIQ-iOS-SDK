@@ -33,7 +33,7 @@ public class ChartIQMarkerOptions: NSObject {
 
   // MARK: - Initializers
 
-  /// Init ConditionAppearance model with all parameters.
+  /// Init ChartIQMarkerOptions model with all parameters.
   ///
   /// - Parameters:
   ///   - markerType: The ChartIQSignalMarkerType Object.
@@ -56,6 +56,29 @@ public class ChartIQMarkerOptions: NSObject {
     self.position = position
   }
 
+  /// Init ChartIQMarkerOptions model with dictionary.
+  ///
+  /// - Parameters:
+  ///   - dictionary: The dictionary with data for init Signal model.
+  public init?(dictionary: [String: Any]) {
+    guard let markerTypeString = dictionary[Const.MarkerOptions.typeParam] as? String,
+          let markerType = ChartIQSignalMarkerType(stringValue: markerTypeString),
+          let colorHexString = dictionary[Const.MarkerOptions.colorParam] as? String,
+          let shapeString = dictionary[Const.MarkerOptions.shapeParam] as? String,
+          let shape = ChartIQSignalShape(stringValue: shapeString),
+          let labelString = dictionary[Const.MarkerOptions.labelParam] as? String,
+          let sizeString = dictionary[Const.MarkerOptions.sizeParam] as? String,
+          let size = ChartIQSignalSize(stringValue: sizeString),
+          let positionString = dictionary[Const.MarkerOptions.positionParam] as? String,
+          let position = ChartIQSignalPosition(stringValue: positionString) else { return nil }
+    self.markerType = markerType
+    self.color = UIColor(hexString: colorHexString)
+    self.shape = shape
+    self.label = labelString
+    self.size = size
+    self.position = position
+  }
+
   // MARK: - Helpers
 
   /// Convert Data model to dictionary.
@@ -63,11 +86,12 @@ public class ChartIQMarkerOptions: NSObject {
   /// - Returns: The dictionary with Data model.
   public func toDictionary() -> [String: String] {
     return [
-      "type": markerType.stringValue,
-      "shape": shape.stringValue,
-      "label": label,
-      "size": size.stringValue,
-      "position": position.stringValue
+      Const.MarkerOptions.typeParam: markerType.stringValue,
+      Const.MarkerOptions.colorParam: color.toHexString(),
+      Const.MarkerOptions.shapeParam: shape.stringValue,
+      Const.MarkerOptions.labelParam: label,
+      Const.MarkerOptions.sizeParam: size.stringValue,
+      Const.MarkerOptions.positionParam: position.stringValue
     ]
   }
 }

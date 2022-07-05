@@ -25,12 +25,9 @@ class SignalConditionViewController: BaseViewController {
 
   // MARK: - Internal Properties
 
-  internal var chartIQView: ChartIQView!
-
   internal var study: ChartIQStudy?
   internal var condition: ConditionViewModel?
   internal var isAppearanceSettingsHidden: Bool = false
-
   internal var didSaveConditon: ((ConditionViewModel) -> Void)?
 
   // MARK: - Private Properties
@@ -90,7 +87,7 @@ class SignalConditionViewController: BaseViewController {
   // MARK: - Actions Methods
 
   @objc private func cancelButtonTapped() {
-    dismiss(animated: true, completion: nil)
+    closeScreen()
   }
 
   @objc private func saveButtonTapped() {
@@ -117,27 +114,23 @@ class SignalConditionViewController: BaseViewController {
                                    studyParameters: study.nameParams)
   }
 
-  private func getOutputs() -> [String] {
-    var outputs: [String] = []
-    if let study = study, let studyOutputs = study.outputs {
-      let formattedOutputs = studyOutputs.map({ "\($0.key) \(study.fullName)" })
-      outputs.append(contentsOf: formattedOutputs)
-    }
-    return outputs
-  }
-
   private func getFirstIndicatorOptions() -> [String] {
-    return getOutputs()
+    var options: [String] = []
+    if let study = study, let studyOutputs = study.outputs {
+      let formattedOutputs = studyOutputs.map({ "\($0.key)" })
+      options.append(contentsOf: formattedOutputs)
+    }
+    return options
   }
 
   private func getSecondIndicatorOptions(firstIndicatorName: String?) -> [String] {
     var options: [String] = []
     if let firstIndicatorName = firstIndicatorName {
-      let outputs = getOutputs()
+      let outputs = getFirstIndicatorOptions()
       let values = outputs.filter({ $0 != firstIndicatorName })
       options.append(contentsOf: values)
     }
-    options.append("Value")
+    options.append(Const.SignalCondition.valueField)
     options.append(contentsOf: ChartIQQuoteField.conditionCases.map({ $0.displayName }))
     return options
   }
@@ -149,22 +142,20 @@ class SignalConditionViewController: BaseViewController {
       SelectTableCellViewModel(title: locManager.localize("Condition"),
                                detailTitle: condition?.conditionOperator?.displayName ?? "Select Action")
     ]
-
     if condition?.conditionOperator != nil {
       conditionSettingsViewModels.append(SelectTableCellViewModel(title: locManager.localize("Indicator 2"),
                                                                   detailTitle: condition?.secondIndicatorShortName))
-
-      if let secondIndicatorName = condition?.secondIndicatorName, secondIndicatorName == "Value" {
+      if let secondIndicatorName = condition?.secondIndicatorName,
+          secondIndicatorName == Const.SignalCondition.valueField {
         var number = 0.0
         if let secondIndicatorValue = condition?.secondIndicatorValue {
           number = secondIndicatorValue
         } else {
           condition?.secondIndicatorValue = number
         }
-        conditionSettingsViewModels.append(NumberTableCellViewModel(title: locManager.localize("Value"),
+        conditionSettingsViewModels.append(NumberTableCellViewModel(title: Const.SignalCondition.valueField,
                                                                     number: number))
       }
-
       if !isAppearanceSettingsHidden {
         var appearanceSettingsViewModels: [TableCellViewModelProtocol] = [
           SelectTableCellViewModel(title: locManager.localize("Marker Type"),
@@ -172,7 +163,6 @@ class SignalConditionViewController: BaseViewController {
           ColorTableCellViewModel(title: locManager.localize("Color"),
                                   color: condition?.markerOptions?.color ?? .clear)
         ]
-
         if condition?.markerOptions?.markerType == .marker {
           let markerSettingsViewModels: [TableCellViewModelProtocol] = [
               SelectTableCellViewModel(title: locManager.localize("Shape"),
@@ -186,7 +176,6 @@ class SignalConditionViewController: BaseViewController {
           ]
           appearanceSettingsViewModels.append(contentsOf: markerSettingsViewModels)
         }
-
         conditionViewModels = [
           .first: conditionSettingsViewModels,
           .second: appearanceSettingsViewModels
@@ -201,7 +190,6 @@ class SignalConditionViewController: BaseViewController {
         .first: conditionSettingsViewModels
       ]
     }
-
     tableView.reloadData()
     validateAll()
   }
@@ -212,11 +200,7 @@ class SignalConditionViewController: BaseViewController {
     view.startActivityIndicator()
     didSaveConditon?(condition)
     view.stopActivityIndicator()
-    if isPresentedModally {
-      dismiss(animated: true)
-    } else {
-      navigationController?.popViewController(animated: true)
-    }
+    closeScreen()
   }
 
   private func getOptions(at indexPath: IndexPath) -> (options: [String], selectedOption: String) {

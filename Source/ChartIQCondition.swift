@@ -27,7 +27,7 @@ public class ChartIQCondition: NSObject {
 
   // MARK: - Initializers
 
-  /// Init Study model with all parameters.
+  /// Init Condition model with all parameters.
   ///
   /// - Parameters:
   ///   - leftIndicator: The String Object.
@@ -44,6 +44,24 @@ public class ChartIQCondition: NSObject {
     self.markerOptions = markerOptions
   }
 
+  /// Init Condition model with dictionary.
+  ///
+  /// - Parameters:
+  ///   - array: The array with data for init Condition model.
+  public init?(array: [Any]) {
+    guard let leftIndicator = array[0] as? String,
+          let operatorStringValue = array[1] as? String,
+          let signalOperator = ChartIQSignalOperator(stringValue: operatorStringValue),
+          let rightIndicator = array[2] as? String else { return nil }
+    self.leftIndicator = leftIndicator
+    self.`operator` = signalOperator
+    self.rightIndicator = rightIndicator
+    if let markerOptionsDictionary = array[4] as? [String: Any],
+       let markerOptions = ChartIQMarkerOptions(dictionary: markerOptionsDictionary) {
+      self.markerOptions = markerOptions
+    }
+  }
+
   // MARK: - Helpers
 
   /// Convert Data model to dictionary.
@@ -53,7 +71,8 @@ public class ChartIQCondition: NSObject {
     return [
       leftIndicator,
       `operator`.stringValue,
-      rightIndicator, markerOptions?.color.toHexString() as Any,
+      rightIndicator,
+      markerOptions?.color.toHexString() as Any,
       markerOptions?.toDictionary() as Any
     ]
   }

@@ -43,33 +43,29 @@ class SignalDetailViewController: BaseViewController {
 
   internal var signalDetailType: SignalDetailType!
   internal var chartIQView: ChartIQView!
-
-  internal var study: ChartIQStudy?
-  internal var conditions: [ConditionViewModel] = []
   internal var signal: ChartIQSignal?
-
-  internal var inputParameters: [[String: Any]] = [[:]]
-  internal var outputParameters: [[String: Any]] = [[:]]
-  internal var paramParameters: [[String: Any]] = [[:]]
-  internal var didSaveSignal: ((ChartIQSignal) -> Void)?
+  internal var didSaveSignal: ((ChartIQSignal, Bool) -> Void)?
 
   // MARK: - Private Properties
 
   private var cancelBarButtonItem: UIBarButtonItem?
   private var saveBarButtonItem: UIBarButtonItem?
   private var signalViewModels: [TableSection: [TableCellViewModelProtocol]] = [:]
-  private let studiesService = StudiesService()
   private let locManager = LocalizationManager.shared()
 
+  private var study: ChartIQStudy?
+  private var conditions: [ConditionViewModel] = []
   private var signalName: String?
   private var signalDescription: String?
-  private var joinerType: ConditionJoinerType = .or
+  private var joinerType: ChartIQSignalJoiner = .or
+  private var isSaving: Bool = false
 
   // MARK: - ViewController Lifecycle Methods
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    setupSignal()
     updateSignalViewModels()
   }
 
@@ -122,7 +118,7 @@ class SignalDetailViewController: BaseViewController {
 
   @objc private func cancelButtonTapped() {
     removeStudy()
-    dismiss(animated: true, completion: nil)
+    closeScreen()
   }
 
   @objc private func saveButtonTapped() {
@@ -131,11 +127,32 @@ class SignalDetailViewController: BaseViewController {
 
   // MARK: - Private Methods
 
+  private func setupSignal() {
+    guard let signal = signal else { return }
+    study = signal.study
+    conditions = signal.conditions.map({
+      var secondIndicatorName = $0.rightIndicator
+      var secondIndicatorValue: Double?
+      if let value = Double($0.rightIndicator) {
+        secondIndicatorName = Const.SignalCondition.valueField
+        secondIndicatorValue = value
+      }
+      return ConditionViewModel(firstIndicatorName: $0.leftIndicator,
+                                conditionOperator: $0.operator,
+                                secondIndicatorName: secondIndicatorName,
+                                secondIndicatorValue: secondIndicatorValue,
+                                markerOptions: $0.markerOptions,
+                                studyParameters: signal.study.nameParams)
+    })
+    signalName = signal.name
+    signalDescription = signal.signalDescription
+    joinerType = signal.joiner
+  }
+
   private func updateSignalViewModels() {
     var studiesViewModels: [TableCellViewModelProtocol] = []
     var conditionsViewModels: [TableCellViewModelProtocol] = []
     var descriptionViewModels: [TableCellViewModelProtocol] = []
-
     if let study = study {
       let studyName = study.name.isEmpty ? study.shortName : study.name
       studiesViewModels = [
@@ -145,13 +162,13 @@ class SignalDetailViewController: BaseViewController {
         studiesViewModels.append(ButtonTableCellViewModel(title: locManager.localize(Const.SignalDetail.changeStudyTitle),
                                                           titleColor: .mountainMeadowColor))
       }
-
       for (index, condition) in conditions.enumerated() {
         let conditionNumber = index + 1
         let conditionTitle = "\(conditionNumber) \(locManager.localize(Const.SignalDetail.conditionTitle))"
         let conditionOperator = condition.conditionOperator?.displayName ?? ""
         var secondIndicator = ""
-        if let secondIndicatorName = condition.secondIndicatorShortName, secondIndicatorName != "Value" {
+        if let secondIndicatorName = condition.secondIndicatorShortName,
+            secondIndicatorName != Const.SignalCondition.valueField {
           secondIndicator = secondIndicatorName
         } else if let secondIndicatorValue = condition.secondIndicatorValue {
           secondIndicator = String(secondIndicatorValue)
@@ -171,7 +188,6 @@ class SignalDetailViewController: BaseViewController {
                                                              joinerType: joinerType)
         conditionsViewModels.append(conditionViewModel)
       }
-
       let addCondition = ButtonTableCellViewModel(title: locManager.localize(Const.SignalDetail.addCondtionTitle),
                                                   titleColor: .mountainMeadowColor)
       conditionsViewModels.append(addCondition)
@@ -181,7 +197,6 @@ class SignalDetailViewController: BaseViewController {
                                  titleColor: .mountainMeadowColor)
       ]
     }
-
     descriptionViewModels = [
       TextViewTableCellViewModel(title: locManager.localize(Const.SignalDetail.descriptionTitle),
                                  text: signalDescription,
@@ -190,7 +205,6 @@ class SignalDetailViewController: BaseViewController {
                              text: signalName,
                              placeholder: locManager.localize(Const.SignalDetail.namePlaceholder))
     ]
-
     signalViewModels = [
       .first: studiesViewModels,
       .second: conditionsViewModels,
@@ -230,33 +244,20 @@ class SignalDetailViewController: BaseViewController {
     view.endEditing(true)
     guard let signal = prepareSignal() else { return }
     view.startActivityIndicator()
-    didSaveSignal?(signal)
+    let isEdit = signalDetailType == .editSignal
+    didSaveSignal?(signal, isEdit)
     view.stopActivityIndicator()
-    if isPresentedModally {
-      dismiss(animated: true)
-    } else {
-      navigationController?.popViewController(animated: true)
-    }
+    isSaving = true
+    closeScreen()
   }
 
   private func prepareSignal() -> ChartIQSignal? {
-    guard let signalDetailType = signalDetailType else { return nil }
-    switch signalDetailType {
-    case .createSignal:
-      signal = createSignal()
-    case .editSignal:
-      signal = updateSignal()
-    }
-    return signal
-  }
-
-  private func createSignal() -> ChartIQSignal? {
     guard let signalStudy = study,
-          let signalName = signalName,
-          let signalJoiner = joinerType.signalJoiner else { return nil }
+          let signalName = signalName else { return nil }
     let signalConditions: [ChartIQCondition] = conditions.map { viewModel in
       var rightIndicator: String = ""
-      if let secondIndicatorName = viewModel.secondIndicatorName, secondIndicatorName != "Value" {
+      if let secondIndicatorName = viewModel.secondIndicatorName,
+          secondIndicatorName != Const.SignalCondition.valueField {
         rightIndicator = secondIndicatorName
       } else if let secondIndicatorValue = viewModel.secondIndicatorValue {
         rightIndicator = "\(secondIndicatorValue)"
@@ -268,18 +269,15 @@ class SignalDetailViewController: BaseViewController {
     }
     return ChartIQSignal(study: signalStudy,
                          conditions: signalConditions,
-                         joiner: signalJoiner,
+                         joiner: joinerType,
                          name: signalName,
                          signalDescription: signalDescription)
-  }
-
-  private func updateSignal() -> ChartIQSignal? {
-    return signal
   }
 
   private func updateStudy(newStudy: ChartIQStudy) {
     view.startActivityIndicator()
     if let oldStudy = study {
+      isSaving = true
       chartIQView.removeStudy(oldStudy)
       conditions.removeAll()
     }
@@ -314,9 +312,10 @@ class SignalDetailViewController: BaseViewController {
   }
 
   private func removeStudy() {
-    guard signalDetailType == .createSignal, let study = study else { return }
+    guard signalDetailType == .createSignal, let study = study, !isSaving else { return }
     chartIQView.removeStudy(study)
     self.study = nil
+    self.isSaving = false
   }
 
   private func validateAll() {
@@ -389,13 +388,13 @@ class SignalDetailViewController: BaseViewController {
       buttonCell.setupCell(withViewModel: buttonViewModel)
       return buttonCell
     } else if let disclosureViewModel = viewModel as? DisclosureTableCellViewModel,
-       let disclosureCell = tableView.dequeueReusableCell(withIdentifier: Const.DisclosureTableCell.cellId,
-                                                          for: indexPath) as? DisclosureTableCell {
+              let disclosureCell = tableView.dequeueReusableCell(withIdentifier: Const.DisclosureTableCell.cellId,
+                                                                 for: indexPath) as? DisclosureTableCell {
       disclosureCell.setupCell(withViewModel: disclosureViewModel)
       return disclosureCell
     } else if let conditionViewModel = viewModel as? ConditionTableCellViewModel,
-       let conditionCell = tableView.dequeueReusableCell(withIdentifier: Const.ConditionTableCell.cellId,
-                                                         for: indexPath) as? ConditionTableCell {
+              let conditionCell = tableView.dequeueReusableCell(withIdentifier: Const.ConditionTableCell.cellId,
+                                                                for: indexPath) as? ConditionTableCell {
       conditionCell.setupCell(withViewModel: conditionViewModel)
       conditionCell.didSegmentedControlValueChanged = { [weak self] segmentType in
         self?.joinerType = segmentType
@@ -403,8 +402,8 @@ class SignalDetailViewController: BaseViewController {
       }
       return conditionCell
     } else if let textViewViewModel = viewModel as? TextViewTableCellViewModel,
-       let textViewCell = tableView.dequeueReusableCell(withIdentifier: Const.TextViewTableCell.cellId,
-                                                        for: indexPath) as? TextViewTableCell {
+              let textViewCell = tableView.dequeueReusableCell(withIdentifier: Const.TextViewTableCell.cellId,
+                                                               for: indexPath) as? TextViewTableCell {
       textViewCell.setupCell(withViewModel: textViewViewModel)
       textViewCell.didTextViewBeginEditing = { [weak self] _ in
         self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
@@ -414,8 +413,8 @@ class SignalDetailViewController: BaseViewController {
       }
       return textViewCell
     } else if let textViewModel = viewModel as? TextTableCellViewModel,
-       let textCell = tableView.dequeueReusableCell(withIdentifier: Const.TextTableCell.cellId,
-                                                    for: indexPath) as? TextTableCell {
+              let textCell = tableView.dequeueReusableCell(withIdentifier: Const.TextTableCell.cellId,
+                                                           for: indexPath) as? TextTableCell {
       textCell.setupCell(withViewModel: textViewModel)
       textCell.didTextFieldEndEditing = { [weak self] textField in
         self?.signalName = textField.text

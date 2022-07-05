@@ -51,9 +51,9 @@ public class ChartIQStudy: NSObject {
   public init(shortName: String,
               fullName: String,
               originalName: String,
-              inputs: [String: Any]?,
-              outputs: [String: Any]?,
-              parameters: [String: Any]?) {
+              inputs: [String: Any]? = nil,
+              outputs: [String: Any]? = nil,
+              parameters: [String: Any]? = nil) {
     self.shortName = shortName
     self.fullName = fullName
     self.originalName = originalName
@@ -112,5 +112,23 @@ public class ChartIQStudy: NSObject {
     if let parameters = dictionary[Const.Study.parametersParam] as? [String: Any]? {
       self.parameters = parameters
     }
+  }
+
+  /// Init Study model with dictionary and key parameters.
+  ///
+  /// - Parameters:
+  ///   - dictionary: The dictionary with data for init Study model.
+  public init?(dictionary: [String: Any]) {
+    guard let name = dictionary[Const.Study.typeParam] as? String,
+          let fullName = dictionary[Const.Study.studyNameParam] as? String,
+          let outputs = dictionary[Const.Study.outputsParam] as? [String: Any]? else { return nil }
+    self.originalName = name
+    self.fullName = fullName
+    let fullNameComponents = self.fullName.components(separatedBy: Const.General.zwnjSymbol)
+    if fullNameComponents.count > 2 {
+      self.name = fullNameComponents[1]
+      self.nameParams = fullNameComponents[2]
+    }
+    self.outputs = outputs
   }
 }

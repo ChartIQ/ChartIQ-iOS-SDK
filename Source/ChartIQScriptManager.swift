@@ -526,7 +526,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForSaveSignal(_ signal: ChartIQSignal, isEdit: Bool) -> String {
     let signalJsonString = signal.toJSONString()
-    let script = mobileNameSpace + "saveSignal('\(signalJsonString)','\(isEdit)');"
+    let script = mobileNameSpace + "saveSignal('\(signal.study.fullName)','\(signalJsonString)','\(isEdit)');"
     return script
   }
 

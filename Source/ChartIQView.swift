@@ -682,10 +682,8 @@ public class ChartIQView: UIView {
     let script = scriptManager.getScriptForAddSignalStudy(study)
     if let activeStudyRawString = webView.evaluateJavaScriptWithReturn(script) {
       if !activeStudyRawString.isEmpty, let data = activeStudyRawString.data(using: .utf8),
-         let activeStudyParameters = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any],
-         let activeStudyName = activeStudyParameters["name"] as? String {
-        let activeStudies = getActiveStudies()
-        let activeStudy = activeStudies.first(where: { $0.fullName == activeStudyName })
+         let activeStudyDictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any],
+         let activeStudy = ChartIQStudy(dictionary: activeStudyDictionary) {
         return activeStudy
       }
     }
@@ -699,9 +697,7 @@ public class ChartIQView: UIView {
   ///   - isEdit: The Bool value.
   public func saveSignal(_ signal: ChartIQSignal, isEdit: Bool) {
     let script = scriptManager.getScriptForSaveSignal(signal, isEdit: isEdit)
-    webView.evaluateJavaScript(script) { result, error in
-      debugPrint("result: \(result), error: \(error)")
-    }
+    webView.evaluateJavaScript(script)
   }
 
   /// Returns an array of active signals added on the chart.
@@ -710,10 +706,11 @@ public class ChartIQView: UIView {
   public func getActiveSignals() -> [ChartIQSignal] {
     var activeSignals: [ChartIQSignal] = []
     let script = scriptManager.getScriptForActiveSignals()
-    if let activeSignalsRawString = webView.evaluateJavaScriptWithReturn(script), !activeSignalsRawString.isEmpty {
-      let activeSignalsString = activeSignalsRawString.components(separatedBy: Const.General.doubleVerticalLinesSymbol)
-      activeSignalsString.forEach({ signalString in
-        if let activeSignal = ChartIQSignal(jsSignalString: signalString) {
+    if let activeSignalsJsonString = webView.evaluateJavaScriptWithReturn(script), !activeSignalsJsonString.isEmpty,
+       let data = activeSignalsJsonString.data(using: .utf8),
+       let activeSignalsDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
+      activeSignalsDict.forEach({ signalDictionary in
+        if let activeSignal = ChartIQSignal(dictionary: signalDictionary) {
           activeSignals.append(activeSignal)
         }
       })

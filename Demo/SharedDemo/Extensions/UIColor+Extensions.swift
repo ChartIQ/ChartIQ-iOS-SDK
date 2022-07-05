@@ -169,7 +169,7 @@ extension UIColor {
   }
 }
 
-// MARK: - UIColor Dynamic ChartIQ Color Extensions
+// MARK: - UIColor Dynamic Color Extensions
 
 extension UIColor {
 
@@ -185,5 +185,17 @@ extension UIColor {
       }
     }
     return color
+  }
+}
+
+// MARK: - UIColor Contrast Color Extensions
+
+extension UIColor {
+
+  internal func getContrastColor() -> UIColor {
+    var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+    getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+    let luminance = red * 0.299 * 255 + green * 0.587 * 255 + blue * 0.114 * 255
+    return luminance > 186 ? UIColor.blackColor : UIColor.whiteColor
   }
 }

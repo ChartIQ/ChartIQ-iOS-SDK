@@ -109,4 +109,12 @@ extension UIViewController {
       return false
     }
   }
+
+  internal func closeScreen() {
+    if isPresentedModally {
+      dismiss(animated: true)
+    } else {
+      navigationController?.popViewController(animated: true)
+    }
+  }
 }

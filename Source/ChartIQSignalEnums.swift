@@ -99,6 +99,31 @@
       return "Does Not Change"
     }
   }
+
+  /// Init signal operator with string value.
+  ///
+  /// - Parameters:
+  ///   - stringValue: The String Object.
+  public init?(stringValue: String) {
+    let dictionary: [String: ChartIQSignalOperator] = [
+      ">": .isGreaterThan,
+      "<": .isLessThan,
+      "=": .isEqualTo,
+      "x": .crosses,
+      "x+": .crossesAbove,
+      "x-": .crossesBelow,
+      "t+": .turnsUp,
+      "t-": .turnsDown,
+      ">p": .increases,
+      "<p": .decreases,
+      "=p": .doesNotChange
+    ]
+    if let value = dictionary[stringValue] {
+      self = value
+    } else {
+      return nil
+    }
+  }
 }
 
 // MARK: - ChartIQSignalShape Enum
@@ -136,6 +161,23 @@
       return "Square"
     case .diamond:
       return "Diamond"
+    }
+  }
+
+  /// Init signal shape with string value.
+  ///
+  /// - Parameters:
+  ///   - stringValue: The String Object.
+  public init?(stringValue: String) {
+    let dictionary: [String: ChartIQSignalShape] = [
+      "circle": .circle,
+      "square": .square,
+      "diamond": .diamond
+    ]
+    if let value = dictionary[stringValue] {
+      self = value
+    } else {
+      return nil
     }
   }
 }
@@ -177,6 +219,23 @@
       return "Large"
     }
   }
+
+  /// Init signal operator with string value.
+  ///
+  /// - Parameters:
+  ///   - stringValue: The String Object.
+  public init?(stringValue: String) {
+    let dictionary: [String: ChartIQSignalSize] = [
+      "S": .small,
+      "M": .medium,
+      "L": .large
+    ]
+    if let value = dictionary[stringValue] {
+      self = value
+    } else {
+      return nil
+    }
+  }
 }
 
 // MARK: - ChartIQSignalPosition Enum
@@ -216,6 +275,23 @@
       return "On Line"
     }
   }
+
+  /// Init signal operator with string value.
+  ///
+  /// - Parameters:
+  ///   - stringValue: The String Object.
+  public init?(stringValue: String) {
+    let dictionary: [String: ChartIQSignalPosition] = [
+      "above_candle": .aboveCandle,
+      "below_candle": .belowCandle,
+      "on_candle": .onCandle
+    ]
+    if let value = dictionary[stringValue] {
+      self = value
+    } else {
+      return nil
+    }
+  }
 }
 
 // MARK: - ChartIQSignalMarkerType Enum
@@ -248,6 +324,22 @@
       return "Paintbar"
     }
   }
+
+  /// Init signal operator with string value.
+  ///
+  /// - Parameters:
+  ///   - stringValue: The String Object.
+  public init?(stringValue: String) {
+    let dictionary: [String: ChartIQSignalMarkerType] = [
+      "marker": .marker,
+      "paintbar": .paintbar
+    ]
+    if let value = dictionary[stringValue] {
+      self = value
+    } else {
+      return nil
+    }
+  }
 }
 
 // MARK: - ChartIQSignalJoiner Enum
@@ -278,6 +370,22 @@
       return "Or"
     case .and:
       return "And"
+    }
+  }
+
+  /// Init chart type with string value.
+  ///
+  /// - Parameters:
+  ///   - stringValue: The String Object.
+  public init?(stringValue: String) {
+    let dictionary: [String: ChartIQSignalJoiner] = [
+      "|": .or,
+      "&": .and
+    ]
+    if let value = dictionary[stringValue] {
+      self = value
+    } else {
+      return nil
     }
   }
 }

@@ -568,17 +568,6 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
     moreButton.setImage(UIImage.Chart.moreInactiveImage, for: .normal)
   }
 
-  private func updateNativeNavigationBar(isSeparatorHidden: Bool) {
-    guard let navigationBar = navigationController?.navigationBar else { return }
-    if #available(iOS 15.0, *) {
-      let navigationBarAppearance = UINavigationBarAppearance()
-      navigationBarAppearance.shadowColor = .clear
-      navigationBar.scrollEdgeAppearance = isSeparatorHidden ? navigationBarAppearance : UINavigationBarAppearance()
-    } else {
-      navigationBar.shadowImage = isSeparatorHidden ? UIImage() : nil
-    }
-  }
-
   private func updateNavigationView() {
     let image = isNavigationViewVisible ? UIImage.Chart.moreActiveImage : UIImage.Chart.moreInactiveImage
     moreButton.setImage(image, for: .normal)

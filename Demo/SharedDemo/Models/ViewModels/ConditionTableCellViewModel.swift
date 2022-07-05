@@ -9,31 +9,6 @@
 import ChartIQ
 import UIKit
 
-// MARK: - ConditionJoinerType Enum
-
-enum ConditionJoinerType: Int {
-  case or
-  case and
-
-  internal var title: String {
-    switch self {
-    case .or:
-      return "Or"
-    case .and:
-      return "And"
-    }
-  }
-
-  internal var signalJoiner: ChartIQSignalJoiner? {
-    switch self {
-    case .or:
-      return .or
-    case .and:
-      return .and
-    }
-  }
-}
-
 // MARK: - ConditionSegmentType Enum
 
 enum ConditionSegmentType: Int {
@@ -53,7 +28,7 @@ class ConditionTableCellViewModel: TableCellViewModelProtocol {
   internal var tagMark: String
   internal var color: UIColor
   internal var segmentType: ConditionSegmentType
-  internal var joinerType: ConditionJoinerType
+  internal var joinerType: ChartIQSignalJoiner
 
   // MARK: - Init
 
@@ -62,7 +37,7 @@ class ConditionTableCellViewModel: TableCellViewModelProtocol {
        tagMark: String,
        color: UIColor,
        segmentType: ConditionSegmentType,
-       joinerType: ConditionJoinerType) {
+       joinerType: ChartIQSignalJoiner) {
     self.title = title
     self.description = description
     self.tagMark = tagMark

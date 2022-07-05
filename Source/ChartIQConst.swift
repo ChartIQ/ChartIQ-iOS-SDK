@@ -157,10 +157,42 @@ internal struct Const {
     static let idParam = "id"
     static let displayParam = "display"
     static let nameParam = "name"
+    static let studyNameParam = "studyName"
+    static let typeParam = "type"
     static let inputsParam = "inputs"
     static let outputsParam = "outputs"
     static let parametersParam = "parameters"
     static let nullParam = "null"
+  }
+
+  // MARK: - ChartIQSeries
+
+  /// Provides constants for ChartIQSeries model.
+  internal struct Series {
+    static let colorParam = "color"
+  }
+
+  // MARK: - ChartIQMarkerOptions
+
+  /// Provides constants for ChartIQMarkerOptions model.
+  internal struct MarkerOptions {
+    static let typeParam = "type"
+    static let colorParam = "color"
+    static let shapeParam = "shape"
+    static let labelParam = "label"
+    static let sizeParam = "size"
+    static let positionParam = "position"
+  }
+
+  // MARK: - ChartIQSignal
+
+  /// Provides constants for ChartIQSignal model.
+  internal struct Signal {
+    static let conditionsParam = "conditions"
+    static let joinerParam = "joiner"
+    static let nameParam = "name"
+    static let disabledParam = "disabled"
+    static let descriptionParam = "description"
   }
 
   // MARK: - CallbackMessage

@@ -28,6 +28,9 @@ public class ChartIQSignal: NSObject {
   /// The ChartIQSignal description parameter.
   public var signalDescription: String?
 
+  /// The ChartIQSignal isEnabled parameter.
+  public var isEnabled: Bool
+
   // MARK: - Initializers
 
   /// Init Signal model with all parameters.
@@ -38,24 +41,45 @@ public class ChartIQSignal: NSObject {
   ///   - joiner: The ChartIQSignalJoiner Object.
   ///   - name: The String Object.
   ///   - description: The String Object.
+  ///   - isEnabled: The Bool Object.
   public init(study: ChartIQStudy,
               conditions: [ChartIQCondition],
               joiner: ChartIQSignalJoiner,
               name: String,
-              signalDescription: String? = nil) {
+              signalDescription: String? = nil,
+              isEnabled: Bool = false) {
     self.study = study
     self.conditions = conditions
     self.joiner = joiner
     self.name = name
     self.signalDescription = signalDescription
+    self.isEnabled = isEnabled
   }
 
-  /// Init Signal model with js study string parameter.
+  /// Init Signal model with dictionary.
   ///
   /// - Parameters:
-  ///   - signal: The js signal string with data for init Signal model.
-  public init?(jsSignalString signal: String) {
-    return nil
+  ///   - dictionary: The dictionary with data for init Signal model.
+  ///   - study: The ChartIQStudy Object.
+  public init?(dictionary: [String: Any]) {
+    guard let study = ChartIQStudy(dictionary: dictionary),
+          let conditionsArray = dictionary[Const.Signal.conditionsParam] as? [[Any]],
+          let joinerString = dictionary[Const.Signal.joinerParam] as? String,
+          let joiner = ChartIQSignalJoiner(stringValue: joinerString),
+          let name = dictionary[Const.Signal.nameParam] as? String,
+          let isDisabled = dictionary[Const.Signal.disabledParam] as? Bool else { return nil }
+    self.study = study
+    var conditions: [ChartIQCondition] = []
+    conditionsArray.forEach { conditionArray in
+      if let condition = ChartIQCondition(array: conditionArray) {
+        conditions.append(condition)
+      }
+    }
+    self.conditions = conditions
+    self.joiner = joiner
+    self.name = name
+    self.signalDescription = dictionary[Const.Signal.descriptionParam] as? String
+    self.isEnabled = !isDisabled
   }
 
   // MARK: - Helpers
@@ -69,11 +93,10 @@ public class ChartIQSignal: NSObject {
       conditions.append(condition.toArray())
     }
     return [
-      "studyName": study.fullName,
-      "name": name,
-      "description": signalDescription ?? "",
-      "joiner": joiner.stringValue,
-      "conditions": conditions
+      Const.Signal.nameParam: name,
+      Const.Signal.descriptionParam: signalDescription ?? "",
+      Const.Signal.joinerParam: joiner.stringValue,
+      Const.Signal.conditionsParam: conditions
     ]
   }
 

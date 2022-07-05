@@ -153,9 +153,9 @@ class SignalsViewController: BaseViewController {
     guard let controller = UIStoryboard.signalDetailViewController() else { return }
     controller.signalDetailType = .createSignal
     controller.chartIQView = chartIQView
-    controller.didSaveSignal = { [weak self] signal in
+    controller.didSaveSignal = { [weak self] signal, isEdit in
       guard let self = self else { return }
-      self.chartIQView.saveSignal(signal, isEdit: false)
+      self.chartIQView.saveSignal(signal, isEdit: isEdit)
       self.updateSignals()
     }
     let navigationController = NavigationController(rootViewController: controller)
@@ -169,6 +169,11 @@ class SignalsViewController: BaseViewController {
     controller.signalDetailType = .editSignal
     controller.chartIQView = chartIQView
     controller.signal = signal
+    controller.didSaveSignal = { [weak self] signal, isEdit in
+      guard let self = self else { return }
+      self.chartIQView.saveSignal(signal, isEdit: isEdit)
+      self.updateSignals()
+    }
     navigationController?.pushViewController(controller, animated: true)
   }
 
@@ -218,7 +223,7 @@ extension SignalsViewController: UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return Const.BaseTableCell.cellHeight
+    return Const.ConditionTableCell.cellHeight
   }
 
   func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {

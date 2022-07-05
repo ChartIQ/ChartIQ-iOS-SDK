@@ -61,16 +61,16 @@ public class ChartIQData: NSObject {
   /// - Parameters:
   ///   - dictionary: The dictionary with data for init Data model.
   public init(dictionary: [String: Any]) {
-    let dt = dictionary["DT"] as? String ?? ""
+    let dt = dictionary[Const.Data.dateParam] as? String ?? ""
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-    let close = dictionary["Close"] as? Double
+    let close = dictionary[Const.Data.closeParam] as? Double
     self.close = close
     self.date = dateFormatter.date(from: dt) ?? Date()
-    self.high = dictionary["High"] as? Double
-    self.low = dictionary["Low"] as? Double
-    self.open = dictionary["Open"] as? Double
-    self.volume = Double(dictionary["Volume"] as? Int ?? 0)
+    self.high = dictionary[Const.Data.highParam] as? Double
+    self.low = dictionary[Const.Data.lowParam] as? Double
+    self.open = dictionary[Const.Data.openParam] as? Double
+    self.volume = Double(dictionary[Const.Data.volumeParam] as? Int ?? 0)
     self.adjClose = close
   }
 

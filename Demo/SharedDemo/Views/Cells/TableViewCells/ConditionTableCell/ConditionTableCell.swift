@@ -6,6 +6,7 @@
 //  All rights reserved
 //
 
+import ChartIQ
 import UIKit
 
 // MARK: - Condition TableCell
@@ -28,7 +29,7 @@ class ConditionTableCell: UITableViewCell {
 
   // MARK: - Internal Properties
 
-  internal var didSegmentedControlValueChanged: ((ConditionJoinerType) -> Void)?
+  internal var didSegmentedControlValueChanged: ((ChartIQSignalJoiner) -> Void)?
 
   // MARK: - Private Properties
 
@@ -40,21 +41,19 @@ class ConditionTableCell: UITableViewCell {
     super.awakeFromNib()
 
     selectionStyle = .none
-
     conditionContentView.backgroundColor = .whiteDarkGunmetalColor
 
     titleLabel.textColor = .darkElectricBlueWhiteColor
     titleLabel.font = .systemFont(ofSize: 17, weight: .regular)
-
     descriptionLabel.textColor = .cadetBlueColor
     descriptionLabel.font = .systemFont(ofSize: 13, weight: .regular)
 
+    tagMarkView.layer.borderColor = UIColor.brightGreyYankeesBlueColor.cgColor
+    tagMarkView.layer.borderWidth = 1.0
     tagMarkView.layer.cornerRadius = 4.0
-    tagMarkViewLabel.textColor = .whiteColor
     tagMarkViewLabel.font = .systemFont(ofSize: 17, weight: .regular)
 
     disclosureIndicatorImageView.tintColor = .arsenicBrightGrayMediumColor.withAlphaComponent(0.3)
-
     segemntContentView.backgroundColor = .ghostWhiteСhineseBlackColor
 
     segmentView.backgroundColor = .brightGreyDarkGunmetalColor
@@ -62,8 +61,8 @@ class ConditionTableCell: UITableViewCell {
     segmentViewLabel.textColor = .darkElectricBlueCadetBlueColor
     segmentViewLabel.font = .systemFont(ofSize: 14, weight: .medium)
 
-    segmentedControl.setTitle(ConditionJoinerType.or.title, forSegmentAt: ConditionJoinerType.or.rawValue)
-    segmentedControl.setTitle(ConditionJoinerType.and.title, forSegmentAt: ConditionJoinerType.and.rawValue)
+    segmentedControl.setTitle(ChartIQSignalJoiner.or.displayName, forSegmentAt: ChartIQSignalJoiner.or.rawValue)
+    segmentedControl.setTitle(ChartIQSignalJoiner.and.displayName, forSegmentAt: ChartIQSignalJoiner.and.rawValue)
 
     let attributes: [NSAttributedString.Key: Any] = [
       .foregroundColor: UIColor.darkElectricBlueCadetBlueColor,
@@ -91,8 +90,13 @@ class ConditionTableCell: UITableViewCell {
     descriptionLabel.text = conditionViewModel.description
 
     tagMarkView.backgroundColor = conditionViewModel.color
+    if conditionViewModel.color == .clear {
+      tagMarkViewLabel.textColor = UIColor.whiteDarkGunmetalColor.getContrastColor()
+    } else {
+      tagMarkViewLabel.textColor = conditionViewModel.color.getContrastColor()
+    }
     tagMarkViewLabel.text = conditionViewModel.tagMark
-    segmentViewLabel.text = conditionViewModel.joinerType.title
+    segmentViewLabel.text = conditionViewModel.joinerType.displayName
     segmentedControl.selectedSegmentIndex = conditionViewModel.joinerType.rawValue
 
     updateSegmentedControlSettings(segmentType: conditionViewModel.segmentType)
@@ -102,7 +106,7 @@ class ConditionTableCell: UITableViewCell {
 
   // MARK: - Private Methods
 
-  private func updateAppearanceSettings(segmentType: ConditionSegmentType, joinerType: ConditionJoinerType) {
+  private func updateAppearanceSettings(segmentType: ConditionSegmentType, joinerType: ChartIQSignalJoiner) {
     var isAppearanceSettingsHidden = joinerType == .and
     if segmentType == .both {
       isAppearanceSettingsHidden = false
@@ -126,7 +130,7 @@ class ConditionTableCell: UITableViewCell {
   }
 
   @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-    guard let conditionSegmentType = ConditionJoinerType(rawValue: sender.selectedSegmentIndex) else { return }
+    guard let conditionSegmentType = ChartIQSignalJoiner(rawValue: sender.selectedSegmentIndex) else { return }
     didSegmentedControlValueChanged?(conditionSegmentType)
   }
 }
