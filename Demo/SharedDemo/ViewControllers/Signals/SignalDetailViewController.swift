@@ -305,12 +305,6 @@ class SignalDetailViewController: BaseViewController {
     updateSignalViewModels()
   }
 
-  private func refetchStudy(studyName: String) {
-    let studies = chartIQView.getActiveStudies()
-    study = studies.first(where: { $0.fullName == studyName })
-    updateSignalViewModels()
-  }
-
   private func removeStudy() {
     guard signalDetailType == .createSignal, let study = study, !isSaving else { return }
     chartIQView.removeStudy(study)

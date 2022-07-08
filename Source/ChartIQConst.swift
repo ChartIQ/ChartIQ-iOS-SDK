@@ -159,6 +159,7 @@ internal struct Const {
     static let nameParam = "name"
     static let studyNameParam = "studyName"
     static let typeParam = "type"
+    static let uniqueIdParam = "uniqueId"
     static let inputsParam = "inputs"
     static let outputsParam = "outputs"
     static let parametersParam = "parameters"
@@ -191,6 +192,7 @@ internal struct Const {
     static let conditionsParam = "conditions"
     static let joinerParam = "joiner"
     static let nameParam = "name"
+    static let signalNameParam = "signalName"
     static let disabledParam = "disabled"
     static let descriptionParam = "description"
   }

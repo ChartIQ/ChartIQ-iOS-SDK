@@ -66,7 +66,7 @@ public class ChartIQSignal: NSObject {
           let conditionsArray = dictionary[Const.Signal.conditionsParam] as? [[Any]],
           let joinerString = dictionary[Const.Signal.joinerParam] as? String,
           let joiner = ChartIQSignalJoiner(stringValue: joinerString),
-          let name = dictionary[Const.Signal.nameParam] as? String,
+          let name = dictionary[Const.Signal.signalNameParam] as? String,
           let isDisabled = dictionary[Const.Signal.disabledParam] as? Bool else { return nil }
     self.study = study
     var conditions: [ChartIQCondition] = []
