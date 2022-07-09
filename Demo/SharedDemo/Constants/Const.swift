@@ -476,6 +476,18 @@ public struct Const {
     static let appearanceSettingsHeaderTitle = "Appearance Settings"
 
     static let valueField = "Value"
+
+    static let firstIndicatorTitle = "Indicator 1"
+    static let conditionTitle = "Condition"
+    static let selectActionTitle = "Select Action"
+    static let secondIndicatorTitle = "Indicator 2"
+
+    static let markerTypeTitle = "Marker Type"
+    static let colorTitle = "Color"
+    static let shapeTitle = "Shape"
+    static let tagMarkTitle = "Tag Mark"
+    static let sizeTitle = "Size"
+    static let positionTitle = "Position"
   }
 
   struct DrawTools {

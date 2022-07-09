@@ -49,9 +49,9 @@ public class ChartIQStudy: NSObject {
   ///   - fullName: The String Object.
   ///   - originalName: The String Object.
   ///   - uniqueId: The String Object.
-  ///   - inputs: The Dictionary Object.
-  ///   - outputs: The Dictionary Object.
-  ///   - parameters: The Dictionary Object.
+  ///   - inputs: The Dictionary Object. Can be nil.
+  ///   - outputs: The Dictionary Object. Can be nil.
+  ///   - parameters: The Dictionary Object. Can be nil.
   public init(shortName: String,
               fullName: String,
               originalName: String,
@@ -120,7 +120,7 @@ public class ChartIQStudy: NSObject {
     }
   }
 
-  /// Init Study model with dictionary and key parameters.
+  /// Init Study model with dictionary.
   ///
   /// - Parameters:
   ///   - dictionary: The dictionary with data for init Study model.

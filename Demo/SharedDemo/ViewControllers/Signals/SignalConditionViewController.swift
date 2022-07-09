@@ -13,12 +13,6 @@ import UIKit
 
 class SignalConditionViewController: BaseViewController {
 
-  // MARK: - TableSection Enum
-
-  enum TableSection: Int, CaseIterable {
-    case first = 0, second
-  }
-
   // MARK: - IBOutlets
 
   @IBOutlet private var tableView: UITableView!
@@ -34,8 +28,9 @@ class SignalConditionViewController: BaseViewController {
 
   private var cancelBarButtonItem: UIBarButtonItem?
   private var saveBarButtonItem: UIBarButtonItem?
-  private var conditionViewModels: [TableSection: [TableCellViewModelProtocol]] = [:]
+  private var conditionViewModels: [SignalConditionTableSection: [TableCellViewModelProtocol]] = [:]
   private let locManager = LocalizationManager.shared()
+  private var conditionService: SignalConditionService!
 
   // MARK: - ViewController Lifecycle Methods
 
@@ -73,6 +68,8 @@ class SignalConditionViewController: BaseViewController {
   }
 
   override func setupSettings() {
+    conditionService = SignalConditionService(isAppearanceSettingsHidden: isAppearanceSettingsHidden)
+
     tableView.register(nibName: Const.SelectTableCell.cellNibName, cellId: Const.SelectTableCell.cellId)
     tableView.register(nibName: Const.TextTableCell.cellNibName, cellId: Const.TextTableCell.cellId)
     tableView.register(nibName: Const.TextColorTableCell.cellNibName, cellId: Const.TextColorTableCell.cellId)
@@ -98,98 +95,18 @@ class SignalConditionViewController: BaseViewController {
 
   private func setupCondition() {
     guard let study = study, condition == nil else { return }
-    let firstIndicatorOptions = getFirstIndicatorOptions()
-    var firstIndicatorName: String = ""
-    if let firstIndicatorOption = firstIndicatorOptions.first {
-      firstIndicatorName = firstIndicatorOption
-    }
-    let markerOptions = ChartIQMarkerOptions(markerType: .marker,
-                                             color: .clear,
-                                             shape: .circle,
-                                             label: "X",
-                                             size: .medium,
-                                             position: .aboveCandle)
-    condition = ConditionViewModel(firstIndicatorName: firstIndicatorName,
-                                   markerOptions: markerOptions,
+    condition = ConditionViewModel(firstIndicatorName: conditionService.getFirstIndicatorName(study: study),
+                                   markerOptions: ChartIQMarkerOptions.defaultOptions(),
                                    studyParameters: study.nameParams)
   }
 
-  private func getFirstIndicatorOptions() -> [String] {
-    var options: [String] = []
-    if let study = study, let studyOutputs = study.outputs {
-      let formattedOutputs = studyOutputs.map({ "\($0.key)" })
-      options.append(contentsOf: formattedOutputs)
-    }
-    return options
-  }
-
-  private func getSecondIndicatorOptions(firstIndicatorName: String?) -> [String] {
-    var options: [String] = []
-    if let firstIndicatorName = firstIndicatorName {
-      let outputs = getFirstIndicatorOptions()
-      let values = outputs.filter({ $0 != firstIndicatorName })
-      options.append(contentsOf: values)
-    }
-    options.append(Const.SignalCondition.valueField)
-    options.append(contentsOf: ChartIQQuoteField.conditionCases.map({ $0.displayName }))
-    return options
-  }
-
   private func updateConditionViewModels() {
-    var conditionSettingsViewModels: [TableCellViewModelProtocol] = [
-      SelectTableCellViewModel(title: locManager.localize("Indicator 1"),
-                               detailTitle: condition?.firstIndicatorShortName),
-      SelectTableCellViewModel(title: locManager.localize("Condition"),
-                               detailTitle: condition?.conditionOperator?.displayName ?? "Select Action")
-    ]
-    if condition?.conditionOperator != nil {
-      conditionSettingsViewModels.append(SelectTableCellViewModel(title: locManager.localize("Indicator 2"),
-                                                                  detailTitle: condition?.secondIndicatorShortName))
-      if let secondIndicatorName = condition?.secondIndicatorName,
-          secondIndicatorName == Const.SignalCondition.valueField {
-        var number = 0.0
-        if let secondIndicatorValue = condition?.secondIndicatorValue {
-          number = secondIndicatorValue
-        } else {
-          condition?.secondIndicatorValue = number
-        }
-        conditionSettingsViewModels.append(NumberTableCellViewModel(title: Const.SignalCondition.valueField,
-                                                                    number: number))
-      }
-      if !isAppearanceSettingsHidden {
-        var appearanceSettingsViewModels: [TableCellViewModelProtocol] = [
-          SelectTableCellViewModel(title: locManager.localize("Marker Type"),
-                                   detailTitle: condition?.markerOptions?.markerType.displayName),
-          ColorTableCellViewModel(title: locManager.localize("Color"),
-                                  color: condition?.markerOptions?.color ?? .clear)
-        ]
-        if condition?.markerOptions?.markerType == .marker {
-          let markerSettingsViewModels: [TableCellViewModelProtocol] = [
-              SelectTableCellViewModel(title: locManager.localize("Shape"),
-                                       detailTitle: condition?.markerOptions?.shape.displayName),
-              TextTableCellViewModel(title: locManager.localize("Tag Mark"),
-                                     text: condition?.markerOptions?.label),
-              SelectTableCellViewModel(title: locManager.localize("Size"),
-                                       detailTitle: condition?.markerOptions?.size.displayName),
-              SelectTableCellViewModel(title: locManager.localize("Position"),
-                                       detailTitle: condition?.markerOptions?.position.displayName)
-          ]
-          appearanceSettingsViewModels.append(contentsOf: markerSettingsViewModels)
-        }
-        conditionViewModels = [
-          .first: conditionSettingsViewModels,
-          .second: appearanceSettingsViewModels
-        ]
-      } else {
-        conditionViewModels = [
-          .first: conditionSettingsViewModels
-        ]
-      }
-    } else {
-      conditionViewModels = [
-        .first: conditionSettingsViewModels
-      ]
+    conditionViewModels = conditionService.getConditionViewModels(condition: condition)
+
+    if condition?.secondIndicatorName == Const.SignalCondition.valueField, condition?.secondIndicatorValue == nil {
+      condition?.secondIndicatorValue = 0.0
     }
+
     tableView.reloadData()
     validateAll()
   }
@@ -203,49 +120,13 @@ class SignalConditionViewController: BaseViewController {
     closeScreen()
   }
 
-  private func getOptions(at indexPath: IndexPath) -> (options: [String], selectedOption: String) {
-    var options: [String] = []
-    var selectedOption: String = ""
-    if indexPath.section == 0 {
-      if indexPath.row == 0 {
-        // First Indicator Option
-        options = getFirstIndicatorOptions()
-        let key = condition?.firstIndicatorName ?? options.first
-        selectedOption = key ?? ""
-      } else if indexPath.row == 1 {
-        // First Indicator Condition
-        options = ChartIQSignalOperator.allCases.map({ $0.displayName })
-        selectedOption = condition?.conditionOperator?.displayName ?? ""
-      } else if indexPath.row == 2 {
-        // Second Indicator Option
-        options = getSecondIndicatorOptions(firstIndicatorName: condition?.firstIndicatorName)
-        selectedOption = condition?.secondIndicatorName ?? options.first ?? ""
-      }
-    } else {
-      if indexPath.row == 0 {
-        options = ChartIQSignalMarkerType.allCases.map({ $0.displayName })
-        selectedOption = condition?.markerOptions?.markerType.displayName ?? ""
-      } else if indexPath.row == 2 {
-        options = ChartIQSignalShape.allCases.map({ $0.displayName })
-        selectedOption = condition?.markerOptions?.shape.displayName ?? ""
-      } else if indexPath.row == 4 {
-        options = ChartIQSignalSize.allCases.map({ $0.displayName })
-        selectedOption = condition?.markerOptions?.size.displayName ?? ""
-      } else if indexPath.row == 5 {
-        options = ChartIQSignalPosition.allCases.map({ $0.displayName })
-        selectedOption = condition?.markerOptions?.position.displayName ?? ""
-      }
-    }
-    return (options: options, selectedOption: selectedOption)
-  }
-
   private func updateSelectedOption(with newOption: String, and options: [String], at indexPath: IndexPath) {
-    guard let tableSection = TableSection(rawValue: indexPath.section) else { return }
+    guard let tableSection = SignalConditionTableSection(rawValue: indexPath.section) else { return }
     switch tableSection {
     case .first:
-        updateConditionSettings(with: newOption, and: options, at: indexPath.row)
+      updateConditionSettings(with: newOption, and: options, at: indexPath.row)
     case .second:
-        updateAppearanceSettings(with: newOption, and: options, at: indexPath.row)
+      updateAppearanceSettings(with: newOption, and: options, at: indexPath.row)
     }
     updateConditionViewModels()
   }
@@ -279,7 +160,8 @@ class SignalConditionViewController: BaseViewController {
   private func updateSecondIndicatorName() {
     DispatchQueue.main.async {
       let firstIndicatorName = self.condition?.firstIndicatorName
-      let secondIndicatorName = self.getSecondIndicatorOptions(firstIndicatorName: firstIndicatorName).first
+      let secondIndicatorName = self.conditionService.getSecondIndicatorOptions(study: self.study,
+                                                                                firstIndicatorName: firstIndicatorName).first
       self.condition?.secondIndicatorName = secondIndicatorName
       self.updateConditionViewModels()
     }
@@ -311,7 +193,7 @@ class SignalConditionViewController: BaseViewController {
 
   private func showSelectOptionsController(indexPath: IndexPath) {
     guard let controller = UIStoryboard.selectOptionViewController() else { return }
-    let options = getOptions(at: indexPath)
+    let options = conditionService.getOptions(for: condition, with: study, at: indexPath)
     controller.options = options.options
     controller.selectedOption = options.selectedOption
     controller.didSelectOption = { [weak self] option in
@@ -350,16 +232,16 @@ class SignalConditionViewController: BaseViewController {
       }
       return selectCell
     } else if (viewModel is TextTableCellViewModel) || (viewModel is NumberTableCellViewModel),
-       let textCell = tableView.dequeueReusableCell(withIdentifier: Const.TextTableCell.cellId,
-                                                    for: indexPath) as? TextTableCell {
+              let textCell = tableView.dequeueReusableCell(withIdentifier: Const.TextTableCell.cellId,
+                                                           for: indexPath) as? TextTableCell {
       textCell.setupCell(withViewModel: viewModel)
       textCell.didTextFieldEndEditing = { [weak self] textField in
         self?.updateSelectedText(with: viewModel, from: textField)
       }
       return textCell
     } else if let colorViewModel = viewModel as? ColorTableCellViewModel,
-       let textColorCell = tableView.dequeueReusableCell(withIdentifier: Const.TextColorTableCell.cellId,
-                                                         for: indexPath) as? TextColorTableCell {
+              let textColorCell = tableView.dequeueReusableCell(withIdentifier: Const.TextColorTableCell.cellId,
+                                                                for: indexPath) as? TextColorTableCell {
       textColorCell.setupCell(withViewModel: colorViewModel)
       textColorCell.didSelectColorButtonTapped = { [weak self] in
         self?.presentFullScreenPickerController()
@@ -379,18 +261,18 @@ extension SignalConditionViewController: UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    guard let tableSection = TableSection(rawValue: section) else { return 0 }
+    guard let tableSection = SignalConditionTableSection(rawValue: section) else { return 0 }
     return conditionViewModels[tableSection]?.count ?? 0
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let tableSection = TableSection(rawValue: indexPath.section),
+    guard let tableSection = SignalConditionTableSection(rawValue: indexPath.section),
           let viewModel = conditionViewModels[tableSection]?[indexPath.row] else { return UITableViewCell() }
     return getTableCell(from: viewModel, at: indexPath)
   }
 
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    guard let tableSection = TableSection(rawValue: section) else { return nil }
+    guard let tableSection = SignalConditionTableSection(rawValue: section) else { return nil }
     switch tableSection {
     case .first:
       return locManager.localize(Const.SignalCondition.conditionSettingsHeaderTitle)

@@ -17,18 +17,23 @@ public class ChartIQMarkerOptions: NSObject {
   public var markerType: ChartIQSignalMarkerType
 
   /// The ChartIQMarkerOptions color parameter.
+  /// The color of the signal.
   public var color: UIColor
 
   /// The ChartIQMarkerOptions shape parameter.
+  /// Shape of the signal marker on the chart.
   public var shape: ChartIQSignalShape
 
   /// The ChartIQMarkerOptions label parameter.
+  /// The string to display in the marker.
   public var label: String
 
   /// The ChartIQMarkerOptions size parameter.
+  /// Size of the signal marker on the chart. Possible values are S/M/L.
   public var size: ChartIQSignalSize
 
   /// The ChartIQMarkerOptions position parameter.
+  /// Where to display the signal as a marker in relation to the main plot.
   public var position: ChartIQSignalPosition
 
   // MARK: - Initializers
@@ -36,12 +41,12 @@ public class ChartIQMarkerOptions: NSObject {
   /// Init ChartIQMarkerOptions model with all parameters.
   ///
   /// - Parameters:
-  ///   - markerType: The ChartIQSignalMarkerType Object.
+  ///   - markerType: The ChartIQSignalMarkerType model.
   ///   - color: The UIColor Object.
-  ///   - shape: The ChartIQSignalShape Object.
+  ///   - shape: The ChartIQSignalShape model.
   ///   - label: The String Object.
-  ///   - size: The ChartIQSignalSize Object.
-  ///   - position: The ChartIQSignalPosition Object.
+  ///   - size: The ChartIQSignalSize model.
+  ///   - position: The ChartIQSignalPosition model.
   public init(markerType: ChartIQSignalMarkerType,
               color: UIColor,
               shape: ChartIQSignalShape,
@@ -59,7 +64,7 @@ public class ChartIQMarkerOptions: NSObject {
   /// Init ChartIQMarkerOptions model with dictionary.
   ///
   /// - Parameters:
-  ///   - dictionary: The dictionary with data for init Signal model.
+  ///   - dictionary: The dictionary with data for init MarkerOptions model.
   public init?(dictionary: [String: Any]) {
     guard let markerTypeString = dictionary[Const.MarkerOptions.typeParam] as? String,
           let markerType = ChartIQSignalMarkerType(stringValue: markerTypeString),
@@ -79,11 +84,23 @@ public class ChartIQMarkerOptions: NSObject {
     self.position = position
   }
 
+  // MARK: - Public Methods
+
+  /// Init ChartIQMarkerOptions model with default options.
+  public static func defaultOptions() -> ChartIQMarkerOptions {
+    return ChartIQMarkerOptions(markerType: .marker,
+                                color: .clear,
+                                shape: .circle,
+                                label: "X",
+                                size: .medium,
+                                position: .aboveCandle)
+  }
+
   // MARK: - Helpers
 
-  /// Convert Data model to dictionary.
+  /// Convert MarkerOptions model to dictionary.
   ///
-  /// - Returns: The dictionary with Data model.
+  /// - Returns: The dictionary with MarkerOptions model parameters.
   public func toDictionary() -> [String: String] {
     return [
       Const.MarkerOptions.typeParam: markerType.stringValue,

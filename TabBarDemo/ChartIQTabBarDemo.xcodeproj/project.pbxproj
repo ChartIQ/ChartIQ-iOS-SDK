@@ -155,6 +155,7 @@
 		48908D022452E0A300E50153 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48908D012452E0A300E50153 /* ChartViewController.swift */; };
 		48908D082452E13800E50153 /* Chart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48908D072452E13800E50153 /* Chart.storyboard */; };
 		48B97BA12518DB090015BD0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7765F2240E8CB7001DE51E /* Assets.xcassets */; };
+		48F8986A2879A55F00EDCB9B /* SignalConditionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F898692879A55F00EDCB9B /* SignalConditionService.swift */; };
 		CE7765FC240E8CB7001DE51E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7765DE240E8CB7001DE51E /* LaunchScreen.storyboard */; };
 		CE7765FD240E8CB7001DE51E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7765E0240E8CB7001DE51E /* Main.storyboard */; };
 		CE7765FE240E8CB7001DE51E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7765E2240E8CB7001DE51E /* SceneDelegate.swift */; };
@@ -341,6 +342,7 @@
 		48908CEE2452DEC100E50153 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		48908D012452E0A300E50153 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48908D072452E13800E50153 /* Chart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chart.storyboard; sourceTree = "<group>"; };
+		48F898692879A55F00EDCB9B /* SignalConditionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalConditionService.swift; sourceTree = "<group>"; };
 		CE386946240E8C1F00CC63C2 /* ChartIQTabBarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChartIQTabBarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7765E2240E8CB7001DE51E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE7765E5240E8CB7001DE51E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1002,6 +1004,7 @@
 				485EC1F72870855D00F8ECBF /* SearchSymbolsService.swift */,
 				485EC1F82870855D00F8ECBF /* DrawToolsService.swift */,
 				485EC1F92870855D00F8ECBF /* DataSimulatorService.swift */,
+				48F898692879A55F00EDCB9B /* SignalConditionService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1392,6 +1395,7 @@
 				485EC6652870856200F8ECBF /* DrawToolSettingsViewController.swift in Sources */,
 				CE7765FE240E8CB7001DE51E /* SceneDelegate.swift in Sources */,
 				485EC60F2870856200F8ECBF /* ColorTableCellViewModel.swift in Sources */,
+				48F8986A2879A55F00EDCB9B /* SignalConditionService.swift in Sources */,
 				485EC64A2870856200F8ECBF /* UISearchBar+Extensions.swift in Sources */,
 				485EC6DC2870856300F8ECBF /* ConditionTableCell.swift in Sources */,
 				485EC6E52870856300F8ECBF /* ColorPickerCollectionCell.swift in Sources */,
@@ -1488,6 +1492,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1544,6 +1549,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

@@ -178,7 +178,7 @@ extension UIColor {
                                        isDarkTheme: Bool) -> UIColor {
     var color = UIColor.blackColor
     if let rawColorString = parameters[colorKey] as? String {
-      if rawColorString == ChartIQConst.StudyParameter.autoColorKey {
+      if rawColorString == ChartIQConst.Study.autoColorKey {
         color = isDarkTheme ? UIColor.whiteColor : .blackColor
       } else {
         color = UIColor(hexString: rawColorString.replacingOccurrences(of: Const.General.hashSymbol, with: ""))

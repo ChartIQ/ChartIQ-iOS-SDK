@@ -197,12 +197,12 @@ class DrawToolSettingsViewController: BaseViewController {
   }
 
   private func updateSelectedBoldParameter(isBoldSelected: Bool) {
-    let value = isBoldSelected ? ChartIQConst.DrawingParameter.boldKey : ChartIQConst.DrawingParameter.boldOffKey
+    let value = isBoldSelected ? ChartIQConst.DrawingTool.boldKey : ChartIQConst.DrawingTool.boldOffKey
     chartIQView?.setDrawingParameter(.weight, value: value)
   }
 
   private func updateSelectedItalicParameter(isItalicSelected: Bool) {
-    let value = isItalicSelected ? ChartIQConst.DrawingParameter.italicKey : ChartIQConst.DrawingParameter.normalKey
+    let value = isItalicSelected ? ChartIQConst.DrawingTool.italicKey : ChartIQConst.DrawingTool.normalKey
     chartIQView?.setDrawingParameter(.style, value: value)
   }
 

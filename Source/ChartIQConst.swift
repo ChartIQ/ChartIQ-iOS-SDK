@@ -13,10 +13,10 @@ import Foundation
 /// Provides constants grouped by data structures used in the SDK and Demo App.
 public struct ChartIQConst {
 
-  // MARK: - DrawingParameter
+  // MARK: - DrawingTool
 
   /// Provides constants for ChartIQDrawingTool.
-  public struct DrawingParameter {
+  public struct DrawingTool {
     public static let fillColorKey = "fillColor"
     public static let lineColorKey = "color"
     public static let patternKey = "pattern"
@@ -64,10 +64,10 @@ public struct ChartIQConst {
     public static let pattern3Key = "pattern3"
   }
 
-  // MARK: - StudyParameter
+  // MARK: - Study
 
   /// Provides constants for ChartIQStudy.
-  public struct StudyParameter {
+  public struct Study {
     public static let typeKey = "type"
     public static let colorKey = "color"
     public static let textKey = "text"
@@ -96,6 +96,7 @@ internal struct Const {
 
   // MARK: - General
 
+  /// Provides general constants.
   internal struct General {
     static let zwnjSymbol = "\u{200c}"
     static let doubleVerticalLinesSymbol = "||"
@@ -107,6 +108,7 @@ internal struct Const {
 
   // MARK: - Core
 
+  /// Provides constants for Core.
   internal struct Core {
     static let baseChartType = ChartIQChartType.bar
     static let baseChartScale = ChartIQScale.linear

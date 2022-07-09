@@ -168,7 +168,7 @@ class SignalDetailViewController: BaseViewController {
         let conditionOperator = condition.conditionOperator?.displayName ?? ""
         var secondIndicator = ""
         if let secondIndicatorName = condition.secondIndicatorShortName,
-            secondIndicatorName != Const.SignalCondition.valueField {
+           secondIndicatorName != Const.SignalCondition.valueField {
           secondIndicator = secondIndicatorName
         } else if let secondIndicatorValue = condition.secondIndicatorValue {
           secondIndicator = String(secondIndicatorValue)
@@ -254,10 +254,19 @@ class SignalDetailViewController: BaseViewController {
   private func prepareSignal() -> ChartIQSignal? {
     guard let signalStudy = study,
           let signalName = signalName else { return nil }
+    let signalConditions = prepareSignalConditions()
+    return ChartIQSignal(study: signalStudy,
+                         conditions: signalConditions,
+                         joiner: joinerType,
+                         name: signalName,
+                         signalDescription: signalDescription)
+  }
+
+  private func prepareSignalConditions() -> [ChartIQCondition] {
     let signalConditions: [ChartIQCondition] = conditions.map { viewModel in
       var rightIndicator: String = ""
       if let secondIndicatorName = viewModel.secondIndicatorName,
-          secondIndicatorName != Const.SignalCondition.valueField {
+         secondIndicatorName != Const.SignalCondition.valueField {
         rightIndicator = secondIndicatorName
       } else if let secondIndicatorValue = viewModel.secondIndicatorValue {
         rightIndicator = "\(secondIndicatorValue)"
@@ -267,17 +276,12 @@ class SignalDetailViewController: BaseViewController {
                               rightIndicator: rightIndicator,
                               markerOptions: viewModel.markerOptions)
     }
-    return ChartIQSignal(study: signalStudy,
-                         conditions: signalConditions,
-                         joiner: joinerType,
-                         name: signalName,
-                         signalDescription: signalDescription)
+    return signalConditions
   }
 
   private func updateStudy(newStudy: ChartIQStudy) {
     view.startActivityIndicator()
     if let oldStudy = study {
-      isSaving = true
       chartIQView.removeStudy(oldStudy)
       conditions.removeAll()
     }
@@ -301,15 +305,18 @@ class SignalDetailViewController: BaseViewController {
     study.parameters?.forEach({ param in
       parameters[param.key] = String(describing: param.value)
     })
+    // TODO: Bottleneck - changes Study name and we can't know the new name of Study.
+    debugPrint("BUG: setStudyParameters")
     chartIQView.setStudyParameters(study, parameters: parameters)
+    // TODO: Remove comments after fix.
     updateSignalViewModels()
   }
 
   private func removeStudy() {
-    guard signalDetailType == .createSignal, let study = study, !isSaving else { return }
-    chartIQView.removeStudy(study)
-    self.study = nil
-    self.isSaving = false
+    guard signalDetailType == .createSignal, let studyToRemove = study, !isSaving else { return }
+    chartIQView.removeStudy(studyToRemove)
+    study = nil
+    isSaving = false
   }
 
   private func validateAll() {
@@ -323,10 +330,12 @@ class SignalDetailViewController: BaseViewController {
     guard let controller = UIStoryboard.studyDetailViewController() else { return }
     controller.isAdditionalActionsAllowed = false
     controller.study = study
-    // Bottleneck - returns nil after study updated and changed their name.
+    // TODO: Bottleneck - returns nil after study updated and changed their name.
+    debugPrint("BUG: getStudyParameters")
     let input = chartIQView.getStudyParameters(study, type: .inputs)
     let output = chartIQView.getStudyParameters(study, type: .outputs)
     let parameters = chartIQView.getStudyParameters(study, type: .parameters)
+    // TODO: Remove comments after fix.
     controller.inputParameters = input as? [[String: Any]] ?? [[:]]
     controller.outputParameters = output as? [[String: Any]] ?? [[:]]
     controller.paramParameters = parameters as? [[String: Any]] ?? [[:]]

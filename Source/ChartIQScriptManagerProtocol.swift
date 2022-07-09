@@ -98,6 +98,8 @@ internal protocol ChartIQScriptManagerProtocol {
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   func getScriptForLoadChart(_ symbol: String) -> String
 
+  // MARK: - Series
+
   /// Returns a script that returns series.
   ///
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
@@ -259,6 +261,13 @@ internal protocol ChartIQScriptManagerProtocol {
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   func getScriptForPushUpdate(_ jsonString: String) -> String
 
+  // MARK: - Studies
+
+  /// Returns a script that gets active studies.
+  ///
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  func getScriptForActiveStudies() -> String
+
   /// Returns a script that gets study parameters.
   ///
   /// - Parameters:
@@ -305,10 +314,43 @@ internal protocol ChartIQScriptManagerProtocol {
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   func getScriptForRemoveAllStudies() -> String
 
-  /// Returns a script that gets active studies.
+  // MARK: - Signals
+
+  /// Returns a script that adds a study as a signal.
+  ///
+  /// - Parameters:
+  ///   - study: The ChartIQStudy model.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  func getScriptForAddSignalStudy(_ study: ChartIQStudy) -> String
+
+  /// Returns a script that save a signal.
+  ///
+  /// - Parameters:
+  ///   - signal: The ChartIQSignal model.
+  ///   - isEdit: The Bool value.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  func getScriptForSaveSignal(_ signal: ChartIQSignal, isEdit: Bool) -> String
+
+  /// Returns a script that gets active signals.
   ///
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  func getScriptForActiveStudies() -> String
+  func getScriptForActiveSignals() -> String
+
+  /// Returns a script that toggle signal study.
+  ///
+  /// - Parameters:
+  ///   - signal: The ChartIQSignal model.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  func getScriptForToggleSignal(_ signal: ChartIQSignal) -> String
+
+  /// Returns a script that removes a signal.
+  ///
+  /// - Parameters:
+  ///   - signal: The ChartIQSignal model.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  func getScriptForRemoveSignal(_ signal: ChartIQSignal) -> String
+
+  // MARK: - Drawings
 
   /// Returns a script that gets a current drawing tool.
   ///
@@ -399,7 +441,7 @@ internal protocol ChartIQScriptManagerProtocol {
   ///
   /// - Parameters:
   ///   - json: The String Object.
-  ///   - moreAvailable:The Bool Value.
+  ///   - moreAvailable: The Bool Value.
   ///   - cb: The String Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   func getScriptForFormatJSQuoteData(_ json: String, moreAvailable: Bool, cb: String) -> String
@@ -418,4 +460,26 @@ internal protocol ChartIQScriptManagerProtocol {
   ///
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   func getScriptForAddLayoutListener() -> String
+
+  /// Uses this method to generate the javascript of getting study descriptor.
+  ///
+  /// - Parameters:
+  ///   - name: The name of study descriptor.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  func getStudyDescriptorScript(_ name: String) -> String
+
+  /// Uses this method in order to prevent the possibility of Javascript code injections.
+  ///
+  /// - Parameters:
+  ///   - parameter: The javascript string parameter.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  func safeScriptParameter(_ parameter: String) -> String
+
+  /// Uses this method to generate the javascript of updating study parameter.
+  ///
+  /// - Parameters:
+  ///   - parameter: The study parameter name.
+  ///   - value: The study parameter value.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  func getUpdateStudyParametersScript(_ parameter: String, value: String) -> String
 }

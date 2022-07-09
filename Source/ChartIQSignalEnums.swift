@@ -220,7 +220,7 @@
     }
   }
 
-  /// Init signal operator with string value.
+  /// Init signal size with string value.
   ///
   /// - Parameters:
   ///   - stringValue: The String Object.
@@ -276,7 +276,7 @@
     }
   }
 
-  /// Init signal operator with string value.
+  /// Init signal position with string value.
   ///
   /// - Parameters:
   ///   - stringValue: The String Object.
@@ -325,7 +325,7 @@
     }
   }
 
-  /// Init signal operator with string value.
+  /// Init signal marker type with string value.
   ///
   /// - Parameters:
   ///   - stringValue: The String Object.
@@ -344,7 +344,7 @@
 
 // MARK: - ChartIQSignalJoiner Enum
 
-/// Chart signal joiner type.
+/// Chart signal joiner.
 @objc public enum ChartIQSignalJoiner: Int, CaseIterable {
 
   /// The or option.
@@ -353,7 +353,7 @@
   /// The and option.
   case and
 
-  /// Chart signal marker type string value.
+  /// Chart signal joiner string value.
   public var stringValue: String {
     switch self {
     case .or:
@@ -363,7 +363,7 @@
     }
   }
 
-  /// Chart signal marker type display name.
+  /// Chart signal joiner display name.
   public var displayName: String {
     switch self {
     case .or:
@@ -373,7 +373,7 @@
     }
   }
 
-  /// Init chart type with string value.
+  /// Init signal joiner with string value.
   ///
   /// - Parameters:
   ///   - stringValue: The String Object.

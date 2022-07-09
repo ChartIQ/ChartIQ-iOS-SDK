@@ -17,15 +17,19 @@ public class ChartIQSignal: NSObject {
   public var study: ChartIQStudy
 
   /// The ChartIQSignal conditions parameter.
+  /// Array of conditions. Each condition is itself an array of [leftIndicator, operator, rightIndicator, color, markerOptions]
   public var conditions: [ChartIQCondition]
 
   /// The ChartIQSignal joiner parameter.
+  /// & or | to join conditions. If omitted, "|" assumed.
   public var joiner: ChartIQSignalJoiner
 
   /// The ChartIQSignal name parameter.
+  /// Name of Signal. Signal will be saved with this name and this name will appear in any study legend and in the expanded signal's title.
   public var name: String
 
   /// The ChartIQSignal description parameter.
+  /// Description of signal. Can be nil.
   public var signalDescription: String?
 
   /// The ChartIQSignal isEnabled parameter.
@@ -36,11 +40,11 @@ public class ChartIQSignal: NSObject {
   /// Init Signal model with all parameters.
   ///
   /// - Parameters:
-  ///   - study: The ChartIQStudy Object.
-  ///   - conditions: The Array of ChartIQCondition Objects.
-  ///   - joiner: The ChartIQSignalJoiner Object.
+  ///   - study: The ChartIQStudy model.
+  ///   - conditions: The Array of ChartIQCondition models.
+  ///   - joiner: The ChartIQSignalJoiner model.
   ///   - name: The String Object.
-  ///   - description: The String Object.
+  ///   - signalDescription: The String Object. Can be nil.
   ///   - isEnabled: The Bool Object.
   public init(study: ChartIQStudy,
               conditions: [ChartIQCondition],
@@ -60,7 +64,6 @@ public class ChartIQSignal: NSObject {
   ///
   /// - Parameters:
   ///   - dictionary: The dictionary with data for init Signal model.
-  ///   - study: The ChartIQStudy Object.
   public init?(dictionary: [String: Any]) {
     guard let study = ChartIQStudy(dictionary: dictionary),
           let conditionsArray = dictionary[Const.Signal.conditionsParam] as? [[Any]],
@@ -84,9 +87,9 @@ public class ChartIQSignal: NSObject {
 
   // MARK: - Helpers
 
-  /// Convert Data model to dictionary.
+  /// Convert Signal model to dictionary.
   ///
-  /// - Returns: The dictionary with Data model.
+  /// - Returns: The dictionary with Signal model parameters.
   public func toDictionary() -> [String: Any] {
     var conditions: [[Any]] = []
     self.conditions.forEach { condition in
@@ -100,9 +103,9 @@ public class ChartIQSignal: NSObject {
     ]
   }
 
-  /// Convert Data model to JSON string.
+  /// Convert Signal model to JSON string.
   ///
-  /// - Returns: The JSON string with Data model.
+  /// - Returns: The JSON string with Signal model parameters.
   public func toJSONString() -> String {
     guard let data = try? JSONSerialization.data(withJSONObject: self.toDictionary(), options: []),
           let stringValue = String(data: data, encoding: .utf8) else { return "" }

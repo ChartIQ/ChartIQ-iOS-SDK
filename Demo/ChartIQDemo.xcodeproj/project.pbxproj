@@ -151,6 +151,7 @@
 		48F766A0260E0ADA00C75461 /* HorizontalPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7666E260E0ADA00C75461 /* HorizontalPickerView.swift */; };
 		48F766A1260E0ADA00C75461 /* HorizontalPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48F7666F260E0ADA00C75461 /* HorizontalPickerView.xib */; };
 		48F76727260E0B7900C75461 /* DrawToolTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48F76626260E0ADA00C75461 /* DrawToolTableCell.xib */; };
+		48F89864287989EE00EDCB9B /* SignalConditionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F89863287989EE00EDCB9B /* SignalConditionService.swift */; };
 		48F9995024641BC4006B07CB /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F9994F24641BC4006B07CB /* Array+Extensions.swift */; };
 		48FE69552486A3F700DB5C7F /* StudiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE69542486A3F700DB5C7F /* StudiesService.swift */; };
 		48FE695924878BBD00DB5C7F /* SelectOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE695824878BBD00DB5C7F /* SelectOptionViewController.swift */; };
@@ -337,6 +338,7 @@
 		48F7666C260E0ADA00C75461 /* HorizontalFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalFilterView.swift; sourceTree = "<group>"; };
 		48F7666E260E0ADA00C75461 /* HorizontalPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalPickerView.swift; sourceTree = "<group>"; };
 		48F7666F260E0ADA00C75461 /* HorizontalPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalPickerView.xib; sourceTree = "<group>"; };
+		48F89863287989EE00EDCB9B /* SignalConditionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalConditionService.swift; sourceTree = "<group>"; };
 		48F9994F24641BC4006B07CB /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		48FE69542486A3F700DB5C7F /* StudiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudiesService.swift; sourceTree = "<group>"; };
 		48FE695824878BBD00DB5C7F /* SelectOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOptionViewController.swift; sourceTree = "<group>"; };
@@ -646,6 +648,7 @@
 				481983152452EEAE007D2AC1 /* DataSimulatorService.swift */,
 				48A81B0B24653101000FC6E2 /* DrawToolsService.swift */,
 				48FE69542486A3F700DB5C7F /* StudiesService.swift */,
+				48F89863287989EE00EDCB9B /* SignalConditionService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1391,6 +1394,7 @@
 				48F76698260E0ADA00C75461 /* CustomTextField.swift in Sources */,
 				483B648E24A4C9E30037310C /* LanguagesViewController.swift in Sources */,
 				48421A8B24850ECE00005B91 /* ColorTableCellViewModel.swift in Sources */,
+				48F89864287989EE00EDCB9B /* SignalConditionService.swift in Sources */,
 				48908D022452E0A300E50153 /* ChartViewController.swift in Sources */,
 				48169CF024C1F333004ABC3D /* DrawToolViewModel.swift in Sources */,
 				48908CF92452DF2200E50153 /* UIImage+Extensions.swift in Sources */,
@@ -1487,6 +1491,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1543,6 +1548,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

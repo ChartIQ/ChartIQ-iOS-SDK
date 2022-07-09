@@ -121,34 +121,34 @@ class StudyDetailViewController: BaseViewController {
     var outputs: [String: Any] = [:]
     var parameters: [String: Any] = [:]
     for inputParameter in inputParameters {
-      if let name = inputParameter[ChartIQConst.StudyParameter.nameKey] as? String,
-        let value = inputParameter[ChartIQConst.StudyParameter.valueKey] {
+      if let name = inputParameter[ChartIQConst.Study.nameKey] as? String,
+        let value = inputParameter[ChartIQConst.Study.valueKey] {
         inputs[name] = value
       }
     }
     for outputParameter in outputParameters {
-      if let name = outputParameter[ChartIQConst.StudyParameter.nameKey] as? String,
-        let color = outputParameter[ChartIQConst.StudyParameter.colorKey] {
+      if let name = outputParameter[ChartIQConst.Study.nameKey] as? String,
+        let color = outputParameter[ChartIQConst.Study.colorKey] {
         outputs[name] = color
       }
     }
     for paramParameter in paramParameters {
-      if let type = paramParameter[ChartIQConst.StudyParameter.typeKey] as? String,
-        type == ChartIQConst.StudyParameter.checkboxKey {
-        if var name = paramParameter[ChartIQConst.StudyParameter.nameKey] as? String,
-          let value = paramParameter[ChartIQConst.StudyParameter.valueKey] {
-          name += ChartIQConst.StudyParameter.enabledAdditionalKey
+      if let type = paramParameter[ChartIQConst.Study.typeKey] as? String,
+        type == ChartIQConst.Study.checkboxKey {
+        if var name = paramParameter[ChartIQConst.Study.nameKey] as? String,
+          let value = paramParameter[ChartIQConst.Study.valueKey] {
+          name += ChartIQConst.Study.enabledAdditionalKey
           parameters[name] = value
         }
       } else {
-        if var name = paramParameter[ChartIQConst.StudyParameter.nameKey] as? String,
-          let textValue = paramParameter[ChartIQConst.StudyParameter.valueKey] {
-          name += ChartIQConst.StudyParameter.valueAdditionalKey
+        if var name = paramParameter[ChartIQConst.Study.nameKey] as? String,
+          let textValue = paramParameter[ChartIQConst.Study.valueKey] {
+          name += ChartIQConst.Study.valueAdditionalKey
           parameters[name] = textValue
         }
-        if var name = paramParameter[ChartIQConst.StudyParameter.nameKey] as? String,
-          let colorValue = paramParameter[ChartIQConst.StudyParameter.colorKey] {
-          name += ChartIQConst.StudyParameter.colorAdditionalKey
+        if var name = paramParameter[ChartIQConst.Study.nameKey] as? String,
+          let colorValue = paramParameter[ChartIQConst.Study.colorKey] {
+          name += ChartIQConst.Study.colorAdditionalKey
           parameters[name] = colorValue
         }
       }
@@ -160,29 +160,29 @@ class StudyDetailViewController: BaseViewController {
 
   private func resetStudyParameters() {
     for (index, var inputParameter) in inputParameters.enumerated() {
-      if let defaultValue = inputParameter[ChartIQConst.StudyParameter.defaultInputKey] {
-        inputParameter[ChartIQConst.StudyParameter.valueKey] = defaultValue
+      if let defaultValue = inputParameter[ChartIQConst.Study.defaultInputKey] {
+        inputParameter[ChartIQConst.Study.valueKey] = defaultValue
       }
       inputParameters[index] = inputParameter
     }
     for (index, var outputParameter) in outputParameters.enumerated() {
-      if let defaultColor = outputParameter[ChartIQConst.StudyParameter.defaultOutputKey] {
-        outputParameter[ChartIQConst.StudyParameter.colorKey] = defaultColor
+      if let defaultColor = outputParameter[ChartIQConst.Study.defaultOutputKey] {
+        outputParameter[ChartIQConst.Study.colorKey] = defaultColor
       }
       outputParameters[index] = outputParameter
     }
     for (index, var paramParameter) in paramParameters.enumerated() {
-      if let type = paramParameter[ChartIQConst.StudyParameter.typeKey] as? String,
-        type == ChartIQConst.StudyParameter.checkboxKey {
-        if let defaultValue = paramParameter[ChartIQConst.StudyParameter.defaultValueKey] {
-          paramParameter[ChartIQConst.StudyParameter.valueKey] = defaultValue
+      if let type = paramParameter[ChartIQConst.Study.typeKey] as? String,
+        type == ChartIQConst.Study.checkboxKey {
+        if let defaultValue = paramParameter[ChartIQConst.Study.defaultValueKey] {
+          paramParameter[ChartIQConst.Study.valueKey] = defaultValue
         }
       } else {
-        if let defaultValue = paramParameter[ChartIQConst.StudyParameter.defaultValueKey] {
-          paramParameter[ChartIQConst.StudyParameter.valueKey] = defaultValue
+        if let defaultValue = paramParameter[ChartIQConst.Study.defaultValueKey] {
+          paramParameter[ChartIQConst.Study.valueKey] = defaultValue
         }
-        if let defaultColor = paramParameter[ChartIQConst.StudyParameter.defaultColorKey] {
-          paramParameter[ChartIQConst.StudyParameter.colorKey] = defaultColor
+        if let defaultColor = paramParameter[ChartIQConst.Study.defaultColorKey] {
+          paramParameter[ChartIQConst.Study.colorKey] = defaultColor
         }
       }
       paramParameters[index] = paramParameter
@@ -191,8 +191,8 @@ class StudyDetailViewController: BaseViewController {
 
   private func updateInputParameters(name: String, value: Any) {
     for (index, var inputParameter) in inputParameters.enumerated()
-      where inputParameter[ChartIQConst.StudyParameter.nameKey] as? String == name {
-        inputParameter[ChartIQConst.StudyParameter.valueKey] = value
+      where inputParameter[ChartIQConst.Study.nameKey] as? String == name {
+        inputParameter[ChartIQConst.Study.valueKey] = value
         inputParameters[index] = inputParameter
         break
     }
@@ -200,8 +200,8 @@ class StudyDetailViewController: BaseViewController {
 
   private func updateOutputParameters(name: String, value: Any) {
     for (index, var outputParameter) in outputParameters.enumerated()
-      where outputParameter[ChartIQConst.StudyParameter.nameKey] as? String == name {
-        outputParameter[ChartIQConst.StudyParameter.colorKey] = value
+      where outputParameter[ChartIQConst.Study.nameKey] as? String == name {
+        outputParameter[ChartIQConst.Study.colorKey] = value
         outputParameters[index] = outputParameter
         break
     }
@@ -209,7 +209,7 @@ class StudyDetailViewController: BaseViewController {
 
   private func updateParamParameters(name: String, valueKey: String, value: Any) {
     for (index, var paramParameter) in paramParameters.enumerated()
-      where paramParameter[ChartIQConst.StudyParameter.nameKey] as? String == name {
+      where paramParameter[ChartIQConst.Study.nameKey] as? String == name {
         paramParameter[valueKey] = value
         paramParameters[index] = paramParameter
         break
@@ -241,13 +241,13 @@ class StudyDetailViewController: BaseViewController {
     } else if let textColorViewModel = viewModel as? TextColorTableCellViewModel {
       let value = Int(textField.text ?? "0") ?? 0
       textColorViewModel.number = value
-      updateParamParameters(name: textColorViewModel.title, valueKey: ChartIQConst.StudyParameter.valueKey, value: value)
+      updateParamParameters(name: textColorViewModel.title, valueKey: ChartIQConst.Study.valueKey, value: value)
     }
   }
 
   private func updateSelectedToggle(with toggleViewModel: ToggleTableCellViewModel, isToggleOn: Bool) {
     toggleViewModel.isToggleOn = isToggleOn
-    updateParamParameters(name: toggleViewModel.title, valueKey: ChartIQConst.StudyParameter.valueKey, value: isToggleOn)
+    updateParamParameters(name: toggleViewModel.title, valueKey: ChartIQConst.Study.valueKey, value: isToggleOn)
     updateInputParameters(name: toggleViewModel.title, value: isToggleOn)
   }
 
@@ -303,10 +303,10 @@ class StudyDetailViewController: BaseViewController {
   private func showSelectOptionsController(parameterName: String) {
     guard let controller = UIStoryboard.selectOptionViewController() else { return }
     for parameter in inputParameters {
-      if parameter[ChartIQConst.StudyParameter.nameKey] as? String == parameterName,
-        let options = parameter[ChartIQConst.StudyParameter.optionsKey] as? [String: String] {
+      if parameter[ChartIQConst.Study.nameKey] as? String == parameterName,
+        let options = parameter[ChartIQConst.Study.optionsKey] as? [String: String] {
         var selectedOption = ""
-        if let value = parameter[ChartIQConst.StudyParameter.valueKey] {
+        if let value = parameter[ChartIQConst.Study.valueKey] {
           let stringValue = String(describing: value)
           if let option = options.first(where: { $0.key == stringValue }) {
             selectedOption = option.value
@@ -336,7 +336,7 @@ class StudyDetailViewController: BaseViewController {
       guard let self = self, let selectedColor = item.selectedColor else { return }
       if self.selectedCellIndex > (self.inputParameters.count + self.outputParameters.count) {
         self.updateParamParameters(name: parameterName,
-                                   valueKey: ChartIQConst.StudyParameter.colorKey,
+                                   valueKey: ChartIQConst.Study.colorKey,
                                    value: selectedColor.toHexString())
       } else {
         self.updateOutputParameters(name: parameterName, value: selectedColor.toHexString())

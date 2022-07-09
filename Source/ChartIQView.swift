@@ -673,19 +673,19 @@ public class ChartIQView: UIView {
 
   // MARK: - Public Signals
 
+  /// Creates a default study and converts it into an signal study.
   /// Add an active study as a signal in the chart engine's layout.
   ///
   /// - Parameters:
   ///   - study: The ChartIQStudy model.
-  /// - Returns: The ChartIQStudy model with all parameters.
+  /// - Returns: The full ChartIQStudy model with all parameters.
   public func addSignalStudy(_ study: ChartIQStudy) -> ChartIQStudy? {
     let script = scriptManager.getScriptForAddSignalStudy(study)
-    if let activeStudyRawString = webView.evaluateJavaScriptWithReturn(script) {
-      if !activeStudyRawString.isEmpty, let data = activeStudyRawString.data(using: .utf8),
-         let activeStudyDictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any],
-         let activeStudy = ChartIQStudy(dictionary: activeStudyDictionary) {
-        return activeStudy
-      }
+    if let activeStudyRawString = webView.evaluateJavaScriptWithReturn(script),
+       !activeStudyRawString.isEmpty, let data = activeStudyRawString.data(using: .utf8),
+       let activeStudyDictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any],
+       let activeStudy = ChartIQStudy(dictionary: activeStudyDictionary) {
+      return activeStudy
     }
     return nil
   }
@@ -694,7 +694,7 @@ public class ChartIQView: UIView {
   ///
   /// - Parameters:
   ///   - signal: The ChartIQSignal model.
-  ///   - isEdit: The Bool value.
+  ///   - isEdit: The Bool value indicates whether we save or edit signal.
   public func saveSignal(_ signal: ChartIQSignal, isEdit: Bool) {
     let script = scriptManager.getScriptForSaveSignal(signal, isEdit: isEdit)
     webView.evaluateJavaScript(script)

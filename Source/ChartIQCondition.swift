@@ -14,15 +14,18 @@ public class ChartIQCondition: NSObject {
   // MARK: - Public Properties
 
   /// The ChartIQCondition leftIndicator parameter.
+  /// Is a field in the study's outputMap.
   public var leftIndicator: String
 
   /// The ChartIQCondition operator parameter.
   public var `operator`: ChartIQSignalOperator
 
   /// The ChartIQCondition rightIndicator parameter.
+  /// Can be either a numeric value in string or a field in the study's outputMap.
   public var rightIndicator: String
 
   /// The ChartIQCondition markerOptions parameter.
+  /// Optional settings for main series marker. When multiple conditions match, markerOptions from the first matching condition are applied.
   public var markerOptions: ChartIQMarkerOptions?
 
   // MARK: - Initializers
@@ -31,9 +34,9 @@ public class ChartIQCondition: NSObject {
   ///
   /// - Parameters:
   ///   - leftIndicator: The String Object.
-  ///   - operator: The ChartIQSignalOperator Object.
+  ///   - operator: The ChartIQSignalOperator model.
   ///   - rightIndicator: The String Object.
-  ///   - markerOptions: The ChartIQMarkerOptions Object.
+  ///   - markerOptions: The ChartIQMarkerOptions model.
   public init(leftIndicator: String,
               `operator`: ChartIQSignalOperator,
               rightIndicator: String,
@@ -64,9 +67,9 @@ public class ChartIQCondition: NSObject {
 
   // MARK: - Helpers
 
-  /// Convert Data model to dictionary.
+  /// Convert Condition model to array.
   ///
-  /// - Returns: The dictionary with Data model.
+  /// - Returns: The dictionary with Condition model parameters.
   public func toArray() -> [Any] {
     return [
       leftIndicator,
