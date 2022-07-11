@@ -305,9 +305,7 @@ class SignalDetailViewController: BaseViewController {
     study.parameters?.forEach({ param in
       parameters[param.key] = String(describing: param.value)
     })
-    // TODO: Bottleneck - changes Study name and we can't know the new name of Study.
-    debugPrint("BUG: setStudyParameters")
-    chartIQView.setStudyParameters(study, parameters: parameters)
+    self.study = chartIQView.setStudyParameters(study, parameters: parameters)
     // TODO: Remove comments after fix.
     updateSignalViewModels()
   }
@@ -330,12 +328,9 @@ class SignalDetailViewController: BaseViewController {
     guard let controller = UIStoryboard.studyDetailViewController() else { return }
     controller.isAdditionalActionsAllowed = false
     controller.study = study
-    // TODO: Bottleneck - returns nil after study updated and changed their name.
-    debugPrint("BUG: getStudyParameters")
     let input = chartIQView.getStudyParameters(study, type: .inputs)
     let output = chartIQView.getStudyParameters(study, type: .outputs)
     let parameters = chartIQView.getStudyParameters(study, type: .parameters)
-    // TODO: Remove comments after fix.
     controller.inputParameters = input as? [[String: Any]] ?? [[:]]
     controller.outputParameters = output as? [[String: Any]] ?? [[:]]
     controller.paramParameters = parameters as? [[String: Any]] ?? [[:]]
@@ -345,10 +340,13 @@ class SignalDetailViewController: BaseViewController {
     navigationController?.show(controller, sender: nil)
   }
 
-  private func showSignalConditionViewController(condition: ConditionViewModel, isAppearanceSettingsHidden: Bool) {
+  private func showSignalConditionViewController(condition: ConditionViewModel,
+                                                 conditionIndex: Int,
+                                                 isAppearanceSettingsHidden: Bool) {
     guard let controller = UIStoryboard.signalConditionViewController() else { return }
     controller.study = study
     controller.condition = condition
+    controller.conditionIndex = conditionIndex
     controller.isAppearanceSettingsHidden = isAppearanceSettingsHidden
     controller.didSaveConditon = { [weak self] condition in
       self?.updateCondition(condition: condition)
@@ -373,6 +371,7 @@ class SignalDetailViewController: BaseViewController {
   private func presentSignalConditionViewController(isAppearanceSettingsHidden: Bool) {
     guard let controller = UIStoryboard.signalConditionViewController() else { return }
     controller.study = study
+    controller.conditionIndex = conditions.count
     controller.isAppearanceSettingsHidden = isAppearanceSettingsHidden
     controller.didSaveConditon = { [weak self] condition in
       self?.addCondition(condition: condition)
@@ -476,13 +475,12 @@ extension SignalDetailViewController: UITableViewDelegate {
       }
     case .second:
       if let conditionViewModel = viewModel as? ConditionTableCellViewModel {
-        var condition = conditions[indexPath.row]
-        condition.conditionName = viewModel.title
         var isAppearanceSettingsHidden = conditionViewModel.joinerType == .and
         if conditionViewModel.segmentType == .both {
           isAppearanceSettingsHidden = false
         }
-        showSignalConditionViewController(condition: condition,
+        showSignalConditionViewController(condition: conditions[indexPath.row],
+                                          conditionIndex: indexPath.row,
                                           isAppearanceSettingsHidden: isAppearanceSettingsHidden)
       } else if viewModel is ButtonTableCellViewModel {
         presentSignalConditionViewController(isAppearanceSettingsHidden: joinerType == .and)

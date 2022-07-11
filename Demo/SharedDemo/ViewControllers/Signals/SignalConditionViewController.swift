@@ -21,6 +21,7 @@ class SignalConditionViewController: BaseViewController {
 
   internal var study: ChartIQStudy?
   internal var condition: ConditionViewModel?
+  internal var conditionIndex: Int = 0
   internal var isAppearanceSettingsHidden: Bool = false
   internal var didSaveConditon: ((ConditionViewModel) -> Void)?
 
@@ -50,7 +51,7 @@ class SignalConditionViewController: BaseViewController {
   // MARK: - Setup Methods
 
   override func setupUI() {
-    navigationItem.title = condition?.conditionName ?? Const.SignalCondition.screenTitle
+    navigationItem.title = Const.SignalCondition.screenTitle
     tableView.backgroundColor = .ghostWhiteСhineseBlackColor
     saveBarButtonItem = UIBarButtonItem(title: locManager.localize(Const.General.saveTitle),
                                         style: .done,
@@ -94,10 +95,13 @@ class SignalConditionViewController: BaseViewController {
   // MARK: - Private Methods
 
   private func setupCondition() {
-    guard let study = study, condition == nil else { return }
-    condition = ConditionViewModel(firstIndicatorName: conditionService.getFirstIndicatorName(study: study),
-                                   markerOptions: ChartIQMarkerOptions.defaultOptions(),
-                                   studyParameters: study.nameParams)
+    guard let study = study else { return }
+    if condition == nil {
+      condition = ConditionViewModel(firstIndicatorName: conditionService.getFirstIndicatorName(study: study),
+                                     markerOptions: ChartIQMarkerOptions.defaultOptions(),
+                                     studyParameters: study.nameParams)
+    }
+    navigationItem.title = "\(conditionIndex + 1) \(Const.SignalCondition.screenTitle)"
   }
 
   private func updateConditionViewModels() {

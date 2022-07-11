@@ -16,7 +16,6 @@ struct ConditionViewModel {
   // MARK: - Internal Properties
 
   internal var id: String = UUID().uuidString
-  internal var conditionName: String?
   internal var firstIndicatorName: String
   internal var conditionOperator: ChartIQSignalOperator?
   internal var secondIndicatorName: String?

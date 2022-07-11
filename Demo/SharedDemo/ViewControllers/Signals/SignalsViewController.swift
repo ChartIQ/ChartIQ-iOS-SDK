@@ -128,7 +128,7 @@ class SignalsViewController: BaseViewController {
   }
 
   private func updateBarButtonItems(isEnabled: Bool) {
-    addBarButtonItem?.isEnabled = isEnabled
+    addBarButtonItem?.isEnabled = signals.isEmpty ? false : isEnabled
   }
 
   private func removeActiveSignal(at indexPath: IndexPath) {

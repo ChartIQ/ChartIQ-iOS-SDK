@@ -211,7 +211,7 @@
 		482ADEA4246C4B98006C8DA4 /* ChartStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartStyleViewController.swift; sourceTree = "<group>"; };
 		482ADEAA246C5189006C8DA4 /* ChartStyleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartStyleModel.swift; sourceTree = "<group>"; };
 		482BEF1324B60FC60099B78F /* StudyTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTableCellViewModel.swift; sourceTree = "<group>"; };
-		4839EAA328422CD400DA3D67 /* SignalConditionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalConditionViewController.swift; sourceTree = "<group>"; };
+		4839EAA328422CD400DA3D67 /* SignalConditionViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SignalConditionViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		483B648D24A4C9E30037310C /* LanguagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesViewController.swift; sourceTree = "<group>"; };
 		483B649124A4CA730037310C /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		483D178B24A6793E003EA48E /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -279,12 +279,12 @@
 		48C69E47246D4230000BD594 /* ChartIQChartType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartIQChartType+Extensions.swift"; sourceTree = "<group>"; };
 		48C69E4B246D4292000BD594 /* ChartIQChartAggregationType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartIQChartAggregationType+Extensions.swift"; sourceTree = "<group>"; };
 		48D319FB2836BA47005C23FD /* Signals.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Signals.storyboard; sourceTree = "<group>"; };
-		48D319FD2836BAAF005C23FD /* SignalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalsViewController.swift; sourceTree = "<group>"; };
+		48D319FD2836BAAF005C23FD /* SignalsViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SignalsViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48D31A032837E7BA005C23FD /* ToggleDisclosureTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleDisclosureTableCellViewModel.swift; sourceTree = "<group>"; };
 		48D8E586246AA027009B0C61 /* IntervalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalModel.swift; sourceTree = "<group>"; };
 		48DB80FD251CAE59005B1E37 /* DeviationsTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviationsTableCellViewModel.swift; sourceTree = "<group>"; };
 		48DB9F6D2477BCC0006D4666 /* SymbolModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolModel.swift; sourceTree = "<group>"; };
-		48DE5A62283E7CFE00E0187D /* SignalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalDetailViewController.swift; sourceTree = "<group>"; };
+		48DE5A62283E7CFE00E0187D /* SignalDetailViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SignalDetailViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48E3F61F24E6A5A700AE6C03 /* LineTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTableCellViewModel.swift; sourceTree = "<group>"; };
 		48E7AA0D245705B900D09796 /* LineModel+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LineModel+Extensions.swift"; sourceTree = "<group>"; };
 		48E7AA0F245705E700D09796 /* LineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineModel.swift; sourceTree = "<group>"; };

@@ -634,9 +634,16 @@ public class ChartIQView: UIView {
   /// - Parameters:
   ///   - study: The ChartIQStudy model.
   ///   - parameter: The parameter name that must be defined in CIQ.Studies.DialogHelper.
-  public func setStudyParameters(_ study: ChartIQStudy, parameters: [String: String]) {
+  /// - Returns: The new ChartIQStudy model with updated parameters.
+  public func setStudyParameters(_ study: ChartIQStudy, parameters: [String: String]) -> ChartIQStudy? {
     let script = scriptManager.getScriptForSetStudyParameters(study, parameters: parameters)
-    webView.evaluateJavaScript(script, completionHandler: nil)
+    if let updatedStudyRawString = webView.evaluateJavaScriptWithReturn(script),
+       !updatedStudyRawString.isEmpty, let data = updatedStudyRawString.data(using: .utf8),
+       let updatedStudyDictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any],
+       let updatedStudy = ChartIQStudy(dictionary: updatedStudyDictionary) {
+      return updatedStudy
+    }
+    return nil
   }
 
   /// Returns an array of active studies added on the Chart.

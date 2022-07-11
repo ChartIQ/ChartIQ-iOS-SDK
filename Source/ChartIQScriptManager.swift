@@ -471,7 +471,10 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
     parameters.forEach { parameter in
       script += getUpdateStudyParametersScript(parameter.key, value: parameter.value)
     }
-    script += "helper.updateStudy({inputs:newInputParameters, outputs:newOutputParameters, parameters:newParameters}); console.log(JSON.stringify(newParameters)) "
+    script += "helper.updateStudy({inputs:newInputParameters, outputs:newOutputParameters, parameters:newParameters}); console.log(JSON.stringify(newParameters));"
+    // Logic to return back the updated study
+    script += "var sd = helper.sd; var slimSd = {}; slimSd.outputs = sd.outputMap;" +
+    "slimSd.studyName = sd.name; slimSd.type = sd.type; return JSON.stringify(slimSd);"
     return script
   }
 
