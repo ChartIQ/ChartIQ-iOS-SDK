@@ -46,13 +46,17 @@ class TextTableCell: UITableViewCell {
       textField.text = textViewModel.text
       textField.keyboardType = .default
       textField.inputAccessoryView = nil
-
       if let placeholder = textViewModel.placeholder {
         textField.placeholder = placeholder
       }
-    } else if let textColorViewModel = viewModel as? NumberTableCellViewModel {
-      textField.text = String(textColorViewModel.number)
-      textField.keyboardType = .decimalPad
+    } else if let numberViewModel = viewModel as? NumberTableCellViewModel {
+      if numberViewModel.shouldDisplayAsInt {
+        textField.text = String(Int(numberViewModel.number))
+        textField.keyboardType = .numberPad
+      } else {
+        textField.text = String(numberViewModel.number)
+        textField.keyboardType = .decimalPad
+      }
       textField.inputAccessoryView = UIView.doneAccessoryView(target: self, action: #selector(doneButtonTapped))
     }
   }
@@ -64,7 +68,10 @@ class TextTableCell: UITableViewCell {
   }
 
   private func updateTextFieldText(_ textField: UITextField) {
-    if textField.keyboardType == .decimalPad {
+    if textField.keyboardType == .numberPad {
+      guard let textFieldText = textField.text else { return }
+      textField.text = "\(Int(textFieldText) ?? 0)"
+    } else if textField.keyboardType == .decimalPad {
       guard let textFieldText = textField.text else { return }
       let text = textFieldText.replace(Const.General.commaSymbol, with: Const.General.dotSymbol)
       textField.text = "\(Double(text) ?? 0.0)"

@@ -551,6 +551,9 @@ import Foundation
   /// The pattern3 option.
   case pattern3
 
+  /// The priceBuckets option.
+  case priceBuckets
+
   /// Chart drawing parameter type string value.
   public var stringValue: String {
     switch self {
@@ -606,6 +609,8 @@ import Foundation
       return "pattern2"
     case .pattern3:
       return "pattern3"
+    case .priceBuckets:
+      return "priceBuckets"
     }
   }
 }

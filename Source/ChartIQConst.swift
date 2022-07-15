@@ -62,6 +62,9 @@ public struct ChartIQConst {
     public static let pattern1Key = "pattern1"
     public static let pattern2Key = "pattern2"
     public static let pattern3Key = "pattern3"
+
+    public static let volumeProfileKey = "volumeProfile"
+    public static let priceBucketsKey = "priceBuckets"
   }
 
   // MARK: - Study

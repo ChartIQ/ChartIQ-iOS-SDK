@@ -107,7 +107,10 @@ class SignalConditionViewController: BaseViewController {
   private func updateConditionViewModels() {
     conditionViewModels = conditionService.getConditionViewModels(condition: condition)
 
-    if condition?.secondIndicatorName == Const.SignalCondition.valueField, condition?.secondIndicatorValue == nil {
+    if conditionService.shouldClearSecondIndicatorName(condition: condition) {
+      condition?.secondIndicatorName = nil
+      condition?.secondIndicatorValue = nil
+    } else if conditionService.shouldClearSecondIndicatorValue(condition: condition) {
       condition?.secondIndicatorValue = 0.0
     }
 

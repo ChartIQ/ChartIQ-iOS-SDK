@@ -69,9 +69,9 @@
 		483F8A642502630300526054 /* ChartIQDrawingToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingToolTests.swift; sourceTree = "<group>"; };
 		483F8A66250269B000526054 /* ChartIQChartTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQChartTypeTests.swift; sourceTree = "<group>"; };
 		483F8A6825026DA800526054 /* ChartIQDrawingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingManagerTests.swift; sourceTree = "<group>"; };
-		487358B424ED250F003AAE1E /* ChartIQDrawingToolEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingToolEnums.swift; sourceTree = "<group>"; };
+		487358B424ED250F003AAE1E /* ChartIQDrawingToolEnums.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingToolEnums.swift; sourceTree = "<group>"; tabWidth = 2; };
 		487358B624ED2599003AAE1E /* ChartIQChartTypeEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQChartTypeEnums.swift; sourceTree = "<group>"; };
-		48774D0A24405BC300CA2929 /* ChartIQConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQConst.swift; sourceTree = "<group>"; };
+		48774D0A24405BC300CA2929 /* ChartIQConst.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQConst.swift; sourceTree = "<group>"; tabWidth = 2; };
 		489837B328623DA000F6B6EE /* ChartIQCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQCondition.swift; sourceTree = "<group>"; };
 		489837B528623F0400F6B6EE /* ChartIQMarkerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQMarkerOptions.swift; sourceTree = "<group>"; };
 		48ABA8562636C69E00932C19 /* ChartIQSeriesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQSeriesTests.swift; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 		48DF2CCF28579E2A00546D5F /* ChartIQSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQSignal.swift; sourceTree = "<group>"; };
 		48DF2CD12857A16C00546D5F /* ChartIQSignalEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQSignalEnums.swift; sourceTree = "<group>"; };
 		48DF2CD32857A1D600546D5F /* ChartIQStudyEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQStudyEnums.swift; sourceTree = "<group>"; };
-		48E827BA24E6777A00A7A291 /* ChartIQDrawingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingManager.swift; sourceTree = "<group>"; };
+		48E827BA24E6777A00A7A291 /* ChartIQDrawingManager.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingManager.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48ECB3B225237A2D00559490 /* ChartIQElliottWaveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQElliottWaveTests.swift; sourceTree = "<group>"; };
 		48EDA82A2552CFAD002CFCA8 /* ChartIQSeries.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQSeries.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48EFB52925150188006FD052 /* ChartIQElliottWaveEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQElliottWaveEnums.swift; sourceTree = "<group>"; };

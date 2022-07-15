@@ -207,7 +207,7 @@
 		485EC13E2870855C00F8ECBF /* Symbols.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Symbols.storyboard; sourceTree = "<group>"; };
 		485EC1402870855C00F8ECBF /* DrawTools.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DrawTools.storyboard; sourceTree = "<group>"; };
 		485EC1422870855C00F8ECBF /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
-		485EC1482870855C00F8ECBF /* NumberTableCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTableCellViewModel.swift; sourceTree = "<group>"; };
+		485EC1482870855C00F8ECBF /* NumberTableCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = NumberTableCellViewModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		485EC1492870855C00F8ECBF /* FibSettingsTableCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FibSettingsTableCellViewModel.swift; sourceTree = "<group>"; };
 		485EC14A2870855C00F8ECBF /* SelectTableCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTableCellViewModel.swift; sourceTree = "<group>"; };
 		485EC14B2870855C00F8ECBF /* DisclosureTableCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclosureTableCellViewModel.swift; sourceTree = "<group>"; };
@@ -303,7 +303,7 @@
 		485EC1C32870855D00F8ECBF /* FontTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FontTableCell.xib; sourceTree = "<group>"; };
 		485EC1C42870855D00F8ECBF /* FontTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTableCell.swift; sourceTree = "<group>"; };
 		485EC1C62870855D00F8ECBF /* TextTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextTableCell.xib; sourceTree = "<group>"; };
-		485EC1C72870855D00F8ECBF /* TextTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTableCell.swift; sourceTree = "<group>"; };
+		485EC1C72870855D00F8ECBF /* TextTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = TextTableCell.swift; sourceTree = "<group>"; tabWidth = 2; };
 		485EC1C92870855D00F8ECBF /* TextColorTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextColorTableCell.xib; sourceTree = "<group>"; };
 		485EC1CA2870855D00F8ECBF /* TextColorTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextColorTableCell.swift; sourceTree = "<group>"; };
 		485EC1CC2870855D00F8ECBF /* ConditionTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionTableCell.swift; sourceTree = "<group>"; };
@@ -334,7 +334,7 @@
 		485EC1F42870855D00F8ECBF /* HorizontalPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalPickerView.xib; sourceTree = "<group>"; };
 		485EC1F62870855D00F8ECBF /* StudiesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudiesService.swift; sourceTree = "<group>"; };
 		485EC1F72870855D00F8ECBF /* SearchSymbolsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSymbolsService.swift; sourceTree = "<group>"; };
-		485EC1F82870855D00F8ECBF /* DrawToolsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawToolsService.swift; sourceTree = "<group>"; };
+		485EC1F82870855D00F8ECBF /* DrawToolsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = DrawToolsService.swift; sourceTree = "<group>"; tabWidth = 2; };
 		485EC1F92870855D00F8ECBF /* DataSimulatorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSimulatorService.swift; sourceTree = "<group>"; };
 		485EC2512870855D00F8ECBF /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		485EC3712870855E00F8ECBF /* LocalizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
@@ -342,7 +342,7 @@
 		48908CEE2452DEC100E50153 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		48908D012452E0A300E50153 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48908D072452E13800E50153 /* Chart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chart.storyboard; sourceTree = "<group>"; };
-		48F898692879A55F00EDCB9B /* SignalConditionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalConditionService.swift; sourceTree = "<group>"; };
+		48F898692879A55F00EDCB9B /* SignalConditionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SignalConditionService.swift; sourceTree = "<group>"; tabWidth = 2; };
 		CE386946240E8C1F00CC63C2 /* ChartIQTabBarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChartIQTabBarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7765E2240E8CB7001DE51E /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CE7765E5240E8CB7001DE51E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };

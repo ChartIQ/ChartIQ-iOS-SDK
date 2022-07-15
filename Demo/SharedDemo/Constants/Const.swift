@@ -181,6 +181,8 @@ public struct Const {
     static let line1TypeTitle = "Line 1 Type"
     static let line2TypeTitle = "Line 2 Type"
     static let line3TypeTitle = "Line 3 Type"
+
+    static let priceBucketsTitle = "Price Buckets"
   }
 
   // MARK: - Models

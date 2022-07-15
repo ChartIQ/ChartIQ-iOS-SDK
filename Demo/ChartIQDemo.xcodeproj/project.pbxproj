@@ -260,14 +260,14 @@
 		48913955283F6BD400C7FA0F /* TextViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTableCell.swift; sourceTree = "<group>"; };
 		48913956283F6BD400C7FA0F /* TextViewTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextViewTableCell.xib; sourceTree = "<group>"; };
 		48913959283F6C4B00C7FA0F /* TextViewTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTableCellViewModel.swift; sourceTree = "<group>"; };
-		4891BB4224BC45CE00E56C01 /* DrawToolSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawToolSettingsViewController.swift; sourceTree = "<group>"; };
+		4891BB4224BC45CE00E56C01 /* DrawToolSettingsViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = DrawToolSettingsViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48978A0B2867073900FC4738 /* ConditionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionViewModel.swift; sourceTree = "<group>"; };
 		4899B3B6245AF4170094B204 /* ChartIQDrawingTool+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChartIQDrawingTool+Extensions.swift"; sourceTree = "<group>"; };
 		4899B3B9245AF4170094B204 /* ChartIQLineType+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChartIQLineType+Extensions.swift"; sourceTree = "<group>"; };
 		48A7B2C3284A84C10083D8B5 /* ConditionTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionTableCell.swift; sourceTree = "<group>"; };
 		48A7B2C4284A84C10083D8B5 /* ConditionTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConditionTableCell.xib; sourceTree = "<group>"; };
 		48A7B2C7284A85680083D8B5 /* ConditionTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionTableCellViewModel.swift; sourceTree = "<group>"; };
-		48A81B0B24653101000FC6E2 /* DrawToolsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawToolsService.swift; sourceTree = "<group>"; };
+		48A81B0B24653101000FC6E2 /* DrawToolsService.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = DrawToolsService.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48AA96A424A2257C0091AE0E /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
 		48ADDE7326248A2D006C7E2D /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		48B1E974284A9E3000DEF901 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };

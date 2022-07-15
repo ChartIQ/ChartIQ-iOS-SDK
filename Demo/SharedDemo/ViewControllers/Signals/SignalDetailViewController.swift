@@ -306,7 +306,6 @@ class SignalDetailViewController: BaseViewController {
       parameters[param.key] = String(describing: param.value)
     })
     self.study = chartIQView.setStudyParameters(study, parameters: parameters)
-    // TODO: Remove comments after fix.
     updateSignalViewModels()
   }
 

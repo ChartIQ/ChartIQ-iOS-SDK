@@ -104,6 +104,9 @@ class DrawToolsService {
     let elliottWaveViewModels = getElliottWaveViewModels(tool: tool, parameters: parameters)
     drawToolViewModels.append(contentsOf: elliottWaveViewModels)
 
+    let volumeProfileViewModels = getVolumeProfileViewModels(tool: tool, parameters: parameters)
+    drawToolViewModels.append(contentsOf: volumeProfileViewModels)
+
     return drawToolViewModels
   }
 
@@ -269,6 +272,20 @@ class DrawToolsService {
                                                           isToggleOn: isShowLines)
         drawToolViewModels.append(showLinesViewModel)
       }
+    }
+    return drawToolViewModels
+  }
+
+  private func getVolumeProfileViewModels(tool: ChartIQDrawingTool,
+                                          parameters: [String: Any]) -> [TableCellViewModelProtocol] {
+    var drawToolViewModels: [TableCellViewModelProtocol] = []
+    if chartIQDrawingManager.isSupportingVolumeProfile(tool),
+       let volumeProfileDict = parameters[ChartIQConst.DrawingTool.volumeProfileKey] as? [String: Any],
+       let priceBucketsValue = volumeProfileDict[ChartIQConst.DrawingTool.priceBucketsKey] as? Double {
+      let numberViewModel = NumberTableCellViewModel(title: Const.DrawToolsService.priceBucketsTitle,
+                                                     number: priceBucketsValue,
+                                                     shouldDisplayAsInt: true)
+      drawToolViewModels.append(numberViewModel)
     }
     return drawToolViewModels
   }

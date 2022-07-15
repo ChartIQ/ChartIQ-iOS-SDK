@@ -26,6 +26,10 @@ class SignalConditionService {
   private var isAppearanceSettingsHidden: Bool = false
   private let locManager = LocalizationManager.shared()
 
+  private let excludedOperators: [ChartIQSignalOperator] = [
+    .increases, .decreases, .doesNotChange, .turnsUp, .turnsDown
+  ]
+
   // MARK: - Init
 
   init(isAppearanceSettingsHidden: Bool) {
@@ -43,18 +47,21 @@ class SignalConditionService {
                                detailTitle: conditionDetailTitle)
     ]
 
-    if condition?.conditionOperator != nil {
-      let secondIndicatorTitle = locManager.localize(Const.SignalCondition.secondIndicatorTitle)
-      conditionSettingsViewModels.append(SelectTableCellViewModel(title: secondIndicatorTitle,
-                                                                  detailTitle: condition?.secondIndicatorShortName))
-      if let secondIndicatorName = condition?.secondIndicatorName,
-         secondIndicatorName == Const.SignalCondition.valueField {
-        var number = 0.0
-        if let secondIndicatorValue = condition?.secondIndicatorValue {
-          number = secondIndicatorValue
+    if let conditionOperator = condition?.conditionOperator {
+
+      if !excludedOperators.contains(where: { $0 == conditionOperator }) {
+        let secondIndicatorTitle = locManager.localize(Const.SignalCondition.secondIndicatorTitle)
+        conditionSettingsViewModels.append(SelectTableCellViewModel(title: secondIndicatorTitle,
+                                                                    detailTitle: condition?.secondIndicatorShortName))
+        if let secondIndicatorName = condition?.secondIndicatorName,
+           secondIndicatorName == Const.SignalCondition.valueField {
+          var number = 0.0
+          if let secondIndicatorValue = condition?.secondIndicatorValue {
+            number = secondIndicatorValue
+          }
+          conditionSettingsViewModels.append(NumberTableCellViewModel(title: Const.SignalCondition.valueField,
+                                                                      number: number))
         }
-        conditionSettingsViewModels.append(NumberTableCellViewModel(title: Const.SignalCondition.valueField,
-                                                                    number: number))
       }
 
       if !isAppearanceSettingsHidden {
@@ -89,6 +96,22 @@ class SignalConditionService {
     return [
       .first: conditionSettingsViewModels
     ]
+  }
+
+  internal func shouldClearSecondIndicatorValue(condition: ConditionViewModel?) -> Bool {
+    if shouldClearSecondIndicatorName(condition: condition) {
+      return true
+    } else {
+      return condition?.secondIndicatorName == Const.SignalCondition.valueField && condition?.secondIndicatorValue == nil
+    }
+  }
+
+  internal func shouldClearSecondIndicatorName(condition: ConditionViewModel?) -> Bool {
+    if let conditionOperator = condition?.conditionOperator,
+       excludedOperators.contains(where: { $0 == conditionOperator }) {
+      return true
+    }
+    return false
   }
 
   internal func getFirstIndicatorName(study: ChartIQStudy?) -> String {

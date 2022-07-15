@@ -76,6 +76,7 @@ class DrawToolSettingsViewController: BaseViewController {
     tableView.register(nibName: Const.ToggleTableCell.cellNibName, cellId: Const.ToggleTableCell.cellId)
     tableView.register(nibName: Const.SelectTableCell.cellNibName, cellId: Const.SelectTableCell.cellId)
     tableView.register(nibName: Const.LineTableCell.cellNibName, cellId: Const.LineTableCell.cellId)
+    tableView.register(nibName: Const.TextTableCell.cellNibName, cellId: Const.TextTableCell.cellId)
 
     tableView.delegate = self
     tableView.dataSource = self
@@ -168,6 +169,15 @@ class DrawToolSettingsViewController: BaseViewController {
       showFibSettingsController(with: fibSettingsViewModel)
     } else if let deviationsViewModel = viewModel as? DeviationsTableCellViewModel {
       showDeviationsSettingsController(with: deviationsViewModel)
+    }
+  }
+
+  private func updateSelectedText(with viewModel: TableCellViewModelProtocol,
+                                  from textField: UITextField) {
+    if let numberViewModel = viewModel as? NumberTableCellViewModel {
+      let value = Int(textField.text ?? "0") ?? 0
+      numberViewModel.number = Double(value)
+      chartIQView?.setDrawingParameter(.priceBuckets, value: value)
     }
   }
 
@@ -374,6 +384,15 @@ class DrawToolSettingsViewController: BaseViewController {
         self?.updateSelectedOption(with: viewModel, at: indexPath)
       }
       return selectCell
+    }
+    if (viewModel is NumberTableCellViewModel),
+       let textCell = tableView.dequeueReusableCell(withIdentifier: Const.TextTableCell.cellId,
+                                                    for: indexPath) as? TextTableCell {
+      textCell.setupCell(withViewModel: viewModel)
+      textCell.didTextFieldEndEditing = { [weak self] textField in
+        self?.updateSelectedText(with: viewModel, from: textField)
+      }
+      return textCell
     }
     return UITableViewCell()
   }
