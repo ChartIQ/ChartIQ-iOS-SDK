@@ -504,6 +504,7 @@ class ChartIQScriptManagerTests: XCTestCase {
     let study = ChartIQStudy(shortName: studyFullName,
                              fullName: studyFullName,
                              originalName: studyFullName,
+                             uniqueId: "",
                              inputs: nil,
                              outputs: nil,
                              parameters: nil)
@@ -530,21 +531,22 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetScriptForSetStudyWithParameters() {
     // Given
-    let correctScript = "var s=stxx.layout.studies; var selectedSd = {}; for(var n in s){ " +
-      "var sd=s[n]; if (sd.name === \"‌Alligator‌ (y,13,8,8,5,5,3,n)-2\") { selectedSd = sd; }} var helper = " +
-      "new CIQ.Studies.DialogHelper({sd:selectedSd,stx:stxx}); var isFound = false; var newInputParameters = {}; " +
-      "var newOutputParameters = {}; var newParameters = {}; for (x in helper.inputs) {   var input = " +
-      "helper.inputs[x];    if (input[\"name\"] === \"Lips\") {        isFound = true;        if (input[\"type\"] === " +
-      "\"text\" || input[\"type\"] === \"select\") {            newInputParameters[\"Lips\"] = \"#00DD00\";        } " +
-      "else if (input[\"type\"] === \"number\") {            newInputParameters[\"Lips\"] = parseFloat(\"#00DD00\");" +
-      "        } else if (input[\"type\"] === \"checkbox\") {            newInputParameters[\"Lips\"] = true;        " +
-      "}    } } if (isFound == false) {    for (x in helper.outputs) {        var output = helper.outputs[x];        " +
-      "if (output[\"name\"] === \"Lips\") {            newOutputParameters[\"Lips\"] = \"#00DD00\";        }    } } " +
-      "if (isFound == false) {    if(\"Lips\".includes(\"Color\")) {        newParameters[\"Lips\"] = \"#00DD00\";    " +
-      "} else if(\"Lips\".includes(\"Enabled\")) {        newParameters[\"Lips\"] = true;    } else {        " +
-      "newParameters[\"Lips\"] = parseFloat(\"#00DD00\");    } } isFound = false; helper.updateStudy({inputs:" +
-      "newInputParameters, outputs:newOutputParameters, parameters:newParameters}); console.log(JSON.stringify" +
-    "(newParameters)) "
+    let correctScript = "var s=stxx.layout.studies; var selectedSd = {}; for(var n in s){ var sd=s[n]; " +
+    "if (sd.name === \"‌Alligator‌ (y,13,8,8,5,5,3,n)-2\") { selectedSd = sd; }} " +
+    "var helper = new CIQ.Studies.DialogHelper({sd:selectedSd,stx:stxx}); var isFound = false; " +
+    "var newInputParameters = {}; var newOutputParameters = {}; var newParameters = {}; for (x in helper.inputs) " +
+    "{   var input = helper.inputs[x];    if (input[\"name\"] === \"Lips\") {        isFound = true;        " +
+    "if (input[\"type\"] === \"text\" || input[\"type\"] === \"select\") {            " +
+    "newInputParameters[\"Lips\"] = \"#00DD00\";        } else if (input[\"type\"] === \"number\") " +
+    "{            newInputParameters[\"Lips\"] = parseFloat(\"#00DD00\");        } " +
+    "else if (input[\"type\"] === \"checkbox\") {            newInputParameters[\"Lips\"] = true;        }    } }" +
+    " if (isFound == false) {    for (x in helper.outputs) {        var output = helper.outputs[x];        " +
+    "if (output[\"name\"] === \"Lips\") {            newOutputParameters[\"Lips\"] = \"#00DD00\";        }    } } " +
+    "if (isFound == false) {    if(\"Lips\".includes(\"Color\")) {        newParameters[\"Lips\"] = \"#00DD00\";    } " +
+    "else if(\"Lips\".includes(\"Enabled\")) {        newParameters[\"Lips\"] = true;    } else {        " +
+    "newParameters[\"Lips\"] = parseFloat(\"#00DD00\");    } } isFound = false; " +
+    "helper.updateStudy({inputs:newInputParameters, outputs:newOutputParameters," +
+    " parameters:newParameters}); console.log(JSON.stringify(newParameters));CIQ.MobileBridge.getSlimSd(helper.sd.name);"
 
     let parameters: [String: String] = [
       "Lips": "#00DD00"
@@ -554,6 +556,7 @@ class ChartIQScriptManagerTests: XCTestCase {
     let study = ChartIQStudy(shortName: studyFullName,
                              fullName: studyFullName,
                              originalName: studyFullName,
+                             uniqueId: "",
                              inputs: nil,
                              outputs: nil,
                              parameters: nil)
@@ -580,9 +583,10 @@ class ChartIQScriptManagerTests: XCTestCase {
     // Given
     let correctScript = mobileNameSpace + "removeStudy(\'‌Alligator‌ (y,13,8,8,5,5,3,n)\');"
     let studyFullName = "‌Alligator‌ (y,13,8,8,5,5,3,n)"
-    let study = ChartIQStudy(shortName: studyFullName,
+    let study = ChartIQStudy(shortName: "",
                              fullName: studyFullName,
-                             originalName: studyFullName,
+                             originalName: "",
+                             uniqueId: "",
                              inputs: nil,
                              outputs: nil,
                              parameters: nil)
@@ -869,6 +873,86 @@ class ChartIQScriptManagerTests: XCTestCase {
 
     // When
     let script = chartIQScriptManager.getUpdateStudyParametersScript("Aroon Up", value: "#1d1d1d")
+
+    // Then
+    XCTAssertEqual(correctScript, script)
+  }
+
+  func testsGetScriptForAddSignalStudy() {
+    // Given
+    let correctScript = mobileNameSpace + "addStudyAsSignal('‌Alligator‌');"
+    let studyShortName = "‌Alligator‌"
+    let study = ChartIQStudy(shortName: studyShortName,
+                             fullName: "",
+                             originalName: "",
+                             uniqueId: "",
+                             inputs: nil,
+                             outputs: nil,
+                             parameters: nil)
+
+    // When
+    let script = chartIQScriptManager.getScriptForAddSignalStudy(study)
+
+    // Then
+    XCTAssertEqual(correctScript, script)
+  }
+
+  func testsGetScriptForActiveSignals() {
+    // Given
+    let correctScript = mobileNameSpace + "getActiveSignals();"
+
+    // When
+    let script = chartIQScriptManager.getScriptForActiveSignals()
+
+    // Then
+    XCTAssertEqual(correctScript, script)
+  }
+
+  func testsGetScriptForToggleSignal() {
+    // Given
+    let correctScript = mobileNameSpace + "toggleSignalStudy('‌Alligator‌ (y,13,8,8,5,5,3,n)');"
+    let studyFullName = "‌Alligator‌ (y,13,8,8,5,5,3,n)"
+    let study = ChartIQStudy(shortName: "",
+                             fullName: studyFullName,
+                             originalName: "",
+                             uniqueId: "",
+                             inputs: nil,
+                             outputs: nil,
+                             parameters: nil)
+    let signal = ChartIQSignal(study: study,
+                               conditions: [],
+                               joiner: .and,
+                               name: "",
+                               signalDescription: "",
+                               isEnabled: false)
+
+    // When
+    let script = chartIQScriptManager.getScriptForToggleSignal(signal)
+
+    // Then
+    XCTAssertEqual(correctScript, script)
+  }
+
+  func testsGetScriptForRemoveSignal() {
+    // Given
+    let correctScript = mobileNameSpace + "removeSignal('‌Alligator‌ (y,13,8,8,5,5,3,n)');"
+    let studyFullName = "‌Alligator‌ (y,13,8,8,5,5,3,n)"
+    let study = ChartIQStudy(shortName: "",
+                             fullName: studyFullName,
+                             originalName: "",
+                             uniqueId: "",
+                             inputs: nil,
+                             outputs: nil,
+                             parameters: nil)
+    let signal = ChartIQSignal(study: study,
+                               conditions: [],
+                               joiner: .and,
+                               name: "",
+                               signalDescription: "",
+                               isEnabled: false)
+
+    // When
+    let script = chartIQScriptManager.getScriptForRemoveSignal(signal)
 
     // Then
     XCTAssertEqual(correctScript, script)

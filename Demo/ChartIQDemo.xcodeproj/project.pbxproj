@@ -338,7 +338,7 @@
 		48F7666C260E0ADA00C75461 /* HorizontalFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalFilterView.swift; sourceTree = "<group>"; };
 		48F7666E260E0ADA00C75461 /* HorizontalPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalPickerView.swift; sourceTree = "<group>"; };
 		48F7666F260E0ADA00C75461 /* HorizontalPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HorizontalPickerView.xib; sourceTree = "<group>"; };
-		48F89863287989EE00EDCB9B /* SignalConditionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalConditionService.swift; sourceTree = "<group>"; };
+		48F89863287989EE00EDCB9B /* SignalConditionService.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SignalConditionService.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48F9994F24641BC4006B07CB /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		48FE69542486A3F700DB5C7F /* StudiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudiesService.swift; sourceTree = "<group>"; };
 		48FE695824878BBD00DB5C7F /* SelectOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOptionViewController.swift; sourceTree = "<group>"; };

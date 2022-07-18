@@ -306,7 +306,27 @@ class SignalDetailViewController: BaseViewController {
       parameters[param.key] = String(describing: param.value)
     })
     self.study = chartIQView.setStudyParameters(study, parameters: parameters)
+    updateConditionStudyParameters()
     updateSignalViewModels()
+  }
+
+  private func updateConditionStudyParameters() {
+    conditions = conditions.map { condition in
+      var condition = condition
+      condition.studyParameters = study?.nameParams
+      study?.outputs?.forEach({ output in
+        if let value = output.value as? String,
+           condition.firstIndicatorName.contains(value) {
+          condition.firstIndicatorName = output.key
+        }
+        if let secondIndicatorName = condition.secondIndicatorName,
+           let value = output.value as? String,
+           secondIndicatorName.contains(value) {
+          condition.secondIndicatorName = output.key
+        }
+      })
+      return condition
+    }
   }
 
   private func removeStudy() {
@@ -367,8 +387,10 @@ class SignalDetailViewController: BaseViewController {
     present(navigationController, animated: true, completion: nil)
   }
 
-  private func presentSignalConditionViewController(isAppearanceSettingsHidden: Bool) {
+  private func presentSignalConditionViewController(isAppearanceSettingsHidden: Bool, study: ChartIQStudy) {
     guard let controller = UIStoryboard.signalConditionViewController() else { return }
+    let outputs = chartIQView.getStudyParameters(study, type: .outputs)
+    controller.outputs = outputs as? [[String: Any]] ?? [[:]]
     controller.study = study
     controller.conditionIndex = conditions.count
     controller.isAppearanceSettingsHidden = isAppearanceSettingsHidden
@@ -481,8 +503,8 @@ extension SignalDetailViewController: UITableViewDelegate {
         showSignalConditionViewController(condition: conditions[indexPath.row],
                                           conditionIndex: indexPath.row,
                                           isAppearanceSettingsHidden: isAppearanceSettingsHidden)
-      } else if viewModel is ButtonTableCellViewModel {
-        presentSignalConditionViewController(isAppearanceSettingsHidden: joinerType == .and)
+      } else if viewModel is ButtonTableCellViewModel, let study = study {
+        presentSignalConditionViewController(isAppearanceSettingsHidden: joinerType == .and, study: study)
       }
     default:
       break

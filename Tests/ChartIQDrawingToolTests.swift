@@ -60,6 +60,7 @@ class ChartIQDrawingToolTests: XCTestCase {
     let tironeLevels = "tirone"
     let trend = "trendline"
     let vertical = "vertical"
+    let volumeProfile = "volumeprofile"
     let measure = "measure"
 
     // When // Then
@@ -99,6 +100,7 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(tironeLevels, ChartIQDrawingTool.tironeLevels.stringValue)
     XCTAssertEqual(trend, ChartIQDrawingTool.trend.stringValue)
     XCTAssertEqual(vertical, ChartIQDrawingTool.vertical.stringValue)
+    XCTAssertEqual(volumeProfile, ChartIQDrawingTool.volumeProfile.stringValue)
     XCTAssertEqual(measure, ChartIQDrawingTool.measure.stringValue)
   }
 
@@ -140,6 +142,7 @@ class ChartIQDrawingToolTests: XCTestCase {
     let tironeLevels = "Tirone Levels"
     let trend = "Trend Line"
     let vertical = "Vertical"
+    let volumeProfile = "Volume Profile"
     let measure = "Measure"
 
     // When // Then
@@ -179,6 +182,7 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(tironeLevels, ChartIQDrawingTool.tironeLevels.displayName)
     XCTAssertEqual(trend, ChartIQDrawingTool.trend.displayName)
     XCTAssertEqual(vertical, ChartIQDrawingTool.vertical.displayName)
+    XCTAssertEqual(volumeProfile, ChartIQDrawingTool.volumeProfile.displayName)
     XCTAssertEqual(measure, ChartIQDrawingTool.measure.displayName)
   }
 
@@ -220,6 +224,7 @@ class ChartIQDrawingToolTests: XCTestCase {
     let tironeLevels: ChartIQDrawingToolType = .statistics
     let trend: ChartIQDrawingToolType = .text
     let vertical: ChartIQDrawingToolType = .lines
+    let volumeProfile: ChartIQDrawingToolType = .statistics
     let measure: ChartIQDrawingToolType = .text
 
     // When // Then
@@ -259,6 +264,7 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(tironeLevels, ChartIQDrawingTool.tironeLevels.type)
     XCTAssertEqual(trend, ChartIQDrawingTool.trend.type)
     XCTAssertEqual(vertical, ChartIQDrawingTool.vertical.type)
+    XCTAssertEqual(volumeProfile, ChartIQDrawingTool.volumeProfile.type)
     XCTAssertEqual(measure, ChartIQDrawingTool.measure.type)
   }
 
@@ -364,5 +370,67 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(fibonacci, ChartIQDrawingToolType.fibonacci.displayName)
     XCTAssertEqual(markings, ChartIQDrawingToolType.markings.displayName)
     XCTAssertEqual(lines, ChartIQDrawingToolType.lines.displayName)
+  }
+
+  // MARK: - ChartIQDrawingParameterType
+
+  func testsChartIQDrawingParameterTypeEnumGetStringValue() {
+    // Given
+    let fillColor = "fillColor"
+    let lineColor = "color"
+    let pattern = "pattern"
+    let lineWidth = "lineWidth"
+    let family = "family"
+    let size = "size"
+    let style = "style"
+    let weight = "weight"
+    let fibs = "fibs"
+    let showLines = "showLines"
+    let waveTemplate = "waveTemplate"
+    let impulse = "impulse"
+    let corrective = "corrective"
+    let decoration = "decoration"
+    let active1 = "active1"
+    let active2 = "active2"
+    let active3 = "active3"
+    let color1 = "color1"
+    let color2 = "color2"
+    let color3 = "color3"
+    let lineWidth1 = "lineWidth1"
+    let lineWidth2 = "lineWidth2"
+    let lineWidth3 = "lineWidth3"
+    let pattern1 = "pattern1"
+    let pattern2 = "pattern2"
+    let pattern3 = "pattern3"
+    let priceBuckets = "priceBuckets"
+
+    // When // Then
+    XCTAssertEqual(fillColor, ChartIQDrawingParameterType.fillColor.stringValue)
+    XCTAssertEqual(lineColor, ChartIQDrawingParameterType.lineColor.stringValue)
+    XCTAssertEqual(pattern, ChartIQDrawingParameterType.pattern.stringValue)
+    XCTAssertEqual(lineWidth, ChartIQDrawingParameterType.lineWidth.stringValue)
+    XCTAssertEqual(family, ChartIQDrawingParameterType.family.stringValue)
+    XCTAssertEqual(size, ChartIQDrawingParameterType.size.stringValue)
+    XCTAssertEqual(style, ChartIQDrawingParameterType.style.stringValue)
+    XCTAssertEqual(weight, ChartIQDrawingParameterType.weight.stringValue)
+    XCTAssertEqual(fibs, ChartIQDrawingParameterType.fibs.stringValue)
+    XCTAssertEqual(showLines, ChartIQDrawingParameterType.showLines.stringValue)
+    XCTAssertEqual(waveTemplate, ChartIQDrawingParameterType.waveTemplate.stringValue)
+    XCTAssertEqual(impulse, ChartIQDrawingParameterType.impulse.stringValue)
+    XCTAssertEqual(corrective, ChartIQDrawingParameterType.corrective.stringValue)
+    XCTAssertEqual(decoration, ChartIQDrawingParameterType.decoration.stringValue)
+    XCTAssertEqual(active1, ChartIQDrawingParameterType.active1.stringValue)
+    XCTAssertEqual(active2, ChartIQDrawingParameterType.active2.stringValue)
+    XCTAssertEqual(active3, ChartIQDrawingParameterType.active3.stringValue)
+    XCTAssertEqual(color1, ChartIQDrawingParameterType.color1.stringValue)
+    XCTAssertEqual(color2, ChartIQDrawingParameterType.color2.stringValue)
+    XCTAssertEqual(color3, ChartIQDrawingParameterType.color3.stringValue)
+    XCTAssertEqual(lineWidth1, ChartIQDrawingParameterType.lineWidth1.stringValue)
+    XCTAssertEqual(lineWidth2, ChartIQDrawingParameterType.lineWidth2.stringValue)
+    XCTAssertEqual(lineWidth3, ChartIQDrawingParameterType.lineWidth3.stringValue)
+    XCTAssertEqual(pattern1, ChartIQDrawingParameterType.pattern1.stringValue)
+    XCTAssertEqual(pattern2, ChartIQDrawingParameterType.pattern2.stringValue)
+    XCTAssertEqual(pattern3, ChartIQDrawingParameterType.pattern3.stringValue)
+    XCTAssertEqual(priceBuckets, ChartIQDrawingParameterType.priceBuckets.stringValue)
   }
 }

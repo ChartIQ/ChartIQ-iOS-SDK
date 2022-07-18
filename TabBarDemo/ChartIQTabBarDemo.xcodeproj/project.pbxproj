@@ -267,7 +267,7 @@
 		485EC1872870855C00F8ECBF /* StudyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyDetailViewController.swift; sourceTree = "<group>"; };
 		485EC1882870855C00F8ECBF /* AllStudiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllStudiesViewController.swift; sourceTree = "<group>"; };
 		485EC18A2870855C00F8ECBF /* SignalConditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalConditionViewController.swift; sourceTree = "<group>"; };
-		485EC18B2870855C00F8ECBF /* SignalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalDetailViewController.swift; sourceTree = "<group>"; };
+		485EC18B2870855C00F8ECBF /* SignalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SignalDetailViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		485EC18C2870855C00F8ECBF /* SignalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalsViewController.swift; sourceTree = "<group>"; };
 		485EC18E2870855C00F8ECBF /* IntervalsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalsViewController.swift; sourceTree = "<group>"; };
 		485EC1902870855C00F8ECBF /* SelectOptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOptionViewController.swift; sourceTree = "<group>"; };

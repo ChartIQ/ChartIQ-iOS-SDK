@@ -38,7 +38,7 @@ class SignalConditionService {
 
   // MARK: - Internal Methods
 
-  internal func getConditionViewModels(condition: ConditionViewModel?) -> SignalConditionViewModels {
+  internal func getConditionViewModels(condition: ConditionViewModel?, study: ChartIQStudy?) -> SignalConditionViewModels {
     let conditionDetailTitle = condition?.conditionOperator?.displayName ?? Const.SignalCondition.selectActionTitle
     var conditionSettingsViewModels: [TableCellViewModelProtocol] = [
       SelectTableCellViewModel(title: locManager.localize(Const.SignalCondition.firstIndicatorTitle),
@@ -177,5 +177,13 @@ class SignalConditionService {
       }
     }
     return (options: options, selectedOption: selectedOption)
+  }
+
+  internal func getDefaultSignalColor(outputs: [[String: Any]]) -> UIColor {
+    var defaultColor: UIColor = .clear
+    if let colorHexString = outputs.first?["color"] as? String {
+      defaultColor = UIColor(hexString: colorHexString)
+    }
+    return defaultColor
   }
 }

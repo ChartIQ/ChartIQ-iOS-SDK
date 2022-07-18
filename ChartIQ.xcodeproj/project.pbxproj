@@ -28,6 +28,10 @@
 		48ECB3B325237A2D00559490 /* ChartIQElliottWaveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48ECB3B225237A2D00559490 /* ChartIQElliottWaveTests.swift */; };
 		48EDA82D2552CFAD002CFCA8 /* ChartIQSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EDA82A2552CFAD002CFCA8 /* ChartIQSeries.swift */; };
 		48EFB52A25150188006FD052 /* ChartIQElliottWaveEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EFB52925150188006FD052 /* ChartIQElliottWaveEnums.swift */; };
+		48F18D952882D09E007CFBDD /* ChartIQSignalEnumsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F18D942882D09E007CFBDD /* ChartIQSignalEnumsTests.swift */; };
+		48F18D972882E28B007CFBDD /* ChartIQSignalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F18D962882E28B007CFBDD /* ChartIQSignalTests.swift */; };
+		48F18D992882E29C007CFBDD /* ChartIQConditionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F18D982882E29C007CFBDD /* ChartIQConditionTests.swift */; };
+		48F18D9B2882E2B0007CFBDD /* ChartIQMarkerOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F18D9A2882E2B0007CFBDD /* ChartIQMarkerOptionsTests.swift */; };
 		CE1CE7B8240E81110076EC5D /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CE7B4240E81110076EC5D /* UIColor+Extensions.swift */; };
 		CE1CE7BA240E81110076EC5D /* WKWebView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CE7B6240E81110076EC5D /* WKWebView+Extensions.swift */; };
 		CE1CE7BC240E81210076EC5D /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1CE7BB240E81210076EC5D /* String+Extensions.swift */; };
@@ -66,17 +70,17 @@
 		48126D9C24F8EFC9009EB20C /* ChartIQScriptManager.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQScriptManager.swift; sourceTree = "<group>"; tabWidth = 2; };
 		481B7F1924FE216E00DD298A /* ChartIQScriptManagerProtocol.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQScriptManagerProtocol.swift; sourceTree = "<group>"; tabWidth = 2; };
 		481B7F1B24FE301600DD298A /* ChartIQDrawingManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingManagerProtocol.swift; sourceTree = "<group>"; };
-		483F8A642502630300526054 /* ChartIQDrawingToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingToolTests.swift; sourceTree = "<group>"; };
+		483F8A642502630300526054 /* ChartIQDrawingToolTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingToolTests.swift; sourceTree = "<group>"; tabWidth = 2; };
 		483F8A66250269B000526054 /* ChartIQChartTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQChartTypeTests.swift; sourceTree = "<group>"; };
-		483F8A6825026DA800526054 /* ChartIQDrawingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingManagerTests.swift; sourceTree = "<group>"; };
+		483F8A6825026DA800526054 /* ChartIQDrawingManagerTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingManagerTests.swift; sourceTree = "<group>"; tabWidth = 2; };
 		487358B424ED250F003AAE1E /* ChartIQDrawingToolEnums.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQDrawingToolEnums.swift; sourceTree = "<group>"; tabWidth = 2; };
 		487358B624ED2599003AAE1E /* ChartIQChartTypeEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQChartTypeEnums.swift; sourceTree = "<group>"; };
 		48774D0A24405BC300CA2929 /* ChartIQConst.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQConst.swift; sourceTree = "<group>"; tabWidth = 2; };
 		489837B328623DA000F6B6EE /* ChartIQCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQCondition.swift; sourceTree = "<group>"; };
-		489837B528623F0400F6B6EE /* ChartIQMarkerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQMarkerOptions.swift; sourceTree = "<group>"; };
-		48ABA8562636C69E00932C19 /* ChartIQSeriesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQSeriesTests.swift; sourceTree = "<group>"; };
+		489837B528623F0400F6B6EE /* ChartIQMarkerOptions.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQMarkerOptions.swift; sourceTree = "<group>"; tabWidth = 2; };
+		48ABA8562636C69E00932C19 /* ChartIQSeriesTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQSeriesTests.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48BEFDD1244081570047D0B7 /* WKWebViewExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKWebViewExtensionsTests.swift; sourceTree = "<group>"; };
-		48C8230B25063C5200047C39 /* ChartIQScriptManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQScriptManagerTests.swift; sourceTree = "<group>"; };
+		48C8230B25063C5200047C39 /* ChartIQScriptManagerTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQScriptManagerTests.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48DF2CCF28579E2A00546D5F /* ChartIQSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQSignal.swift; sourceTree = "<group>"; };
 		48DF2CD12857A16C00546D5F /* ChartIQSignalEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQSignalEnums.swift; sourceTree = "<group>"; };
 		48DF2CD32857A1D600546D5F /* ChartIQStudyEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQStudyEnums.swift; sourceTree = "<group>"; };
@@ -84,6 +88,10 @@
 		48ECB3B225237A2D00559490 /* ChartIQElliottWaveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQElliottWaveTests.swift; sourceTree = "<group>"; };
 		48EDA82A2552CFAD002CFCA8 /* ChartIQSeries.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQSeries.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48EFB52925150188006FD052 /* ChartIQElliottWaveEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQElliottWaveEnums.swift; sourceTree = "<group>"; };
+		48F18D942882D09E007CFBDD /* ChartIQSignalEnumsTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQSignalEnumsTests.swift; sourceTree = "<group>"; tabWidth = 2; };
+		48F18D962882E28B007CFBDD /* ChartIQSignalTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQSignalTests.swift; sourceTree = "<group>"; tabWidth = 2; };
+		48F18D982882E29C007CFBDD /* ChartIQConditionTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQConditionTests.swift; sourceTree = "<group>"; tabWidth = 2; };
+		48F18D9A2882E2B0007CFBDD /* ChartIQMarkerOptionsTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQMarkerOptionsTests.swift; sourceTree = "<group>"; tabWidth = 2; };
 		7AA3C65A1E24975500DD69AE /* ChartIQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChartIQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1CE7B4240E81110076EC5D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		CE1CE7B6240E81110076EC5D /* WKWebView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WKWebView+Extensions.swift"; sourceTree = "<group>"; };
@@ -99,14 +107,14 @@
 		CE1CE7D8240E827E0076EC5D /* ChartIQ.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChartIQ.podspec; sourceTree = "<group>"; };
 		CE1CE7DA240E82870076EC5D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		CE1CE7DC240E828E0076EC5D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		CE4371B1241F73730088F110 /* ChartIQEnumsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartIQEnumsTests.swift; sourceTree = "<group>"; };
+		CE4371B1241F73730088F110 /* ChartIQEnumsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQEnumsTests.swift; sourceTree = "<group>"; tabWidth = 2; };
 		CE56991D2412B24F001798FE /* ChartIQTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChartIQTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5699212412B24F001798FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE56992E2417AF8C001798FE /* UIColorExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensionsTests.swift; sourceTree = "<group>"; };
-		CE5699362417D6C7001798FE /* ChartIQStudyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQStudyTests.swift; sourceTree = "<group>"; };
-		CE5699392417ED64001798FE /* ChartIQDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQDataTests.swift; sourceTree = "<group>"; };
-		CE56993B2418E682001798FE /* ChartIQQuoteFeedParamsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQQuoteFeedParamsTests.swift; sourceTree = "<group>"; };
-		CE56993D2418EB25001798FE /* ChartIQCrosshairHUDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartIQCrosshairHUDTests.swift; sourceTree = "<group>"; };
+		CE5699362417D6C7001798FE /* ChartIQStudyTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQStudyTests.swift; sourceTree = "<group>"; tabWidth = 2; };
+		CE5699392417ED64001798FE /* ChartIQDataTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQDataTests.swift; sourceTree = "<group>"; tabWidth = 2; };
+		CE56993B2418E682001798FE /* ChartIQQuoteFeedParamsTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQQuoteFeedParamsTests.swift; sourceTree = "<group>"; tabWidth = 2; };
+		CE56993D2418EB25001798FE /* ChartIQCrosshairHUDTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ChartIQCrosshairHUDTests.swift; sourceTree = "<group>"; tabWidth = 2; };
 		CE56993F2418F057001798FE /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
 		CE6C57BB240E7C11003C103F /* ChartIQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartIQ.h; sourceTree = "<group>"; };
 		CE6C57BC240E7C11003C103F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -278,6 +286,9 @@
 			isa = PBXGroup;
 			children = (
 				CE5699362417D6C7001798FE /* ChartIQStudyTests.swift */,
+				48F18D962882E28B007CFBDD /* ChartIQSignalTests.swift */,
+				48F18D982882E29C007CFBDD /* ChartIQConditionTests.swift */,
+				48F18D9A2882E2B0007CFBDD /* ChartIQMarkerOptionsTests.swift */,
 				48ABA8562636C69E00932C19 /* ChartIQSeriesTests.swift */,
 				CE5699392417ED64001798FE /* ChartIQDataTests.swift */,
 				CE56993B2418E682001798FE /* ChartIQQuoteFeedParamsTests.swift */,
@@ -300,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				CE4371B1241F73730088F110 /* ChartIQEnumsTests.swift */,
+				48F18D942882D09E007CFBDD /* ChartIQSignalEnumsTests.swift */,
 				48ECB3B225237A2D00559490 /* ChartIQElliottWaveTests.swift */,
 				483F8A642502630300526054 /* ChartIQDrawingToolTests.swift */,
 				483F8A66250269B000526054 /* ChartIQChartTypeTests.swift */,
@@ -530,9 +542,13 @@
 				483F8A652502630300526054 /* ChartIQDrawingToolTests.swift in Sources */,
 				CE56993A2417ED64001798FE /* ChartIQDataTests.swift in Sources */,
 				48ECB3B325237A2D00559490 /* ChartIQElliottWaveTests.swift in Sources */,
+				48F18D9B2882E2B0007CFBDD /* ChartIQMarkerOptionsTests.swift in Sources */,
 				483F8A67250269B000526054 /* ChartIQChartTypeTests.swift in Sources */,
 				CE56993C2418E682001798FE /* ChartIQQuoteFeedParamsTests.swift in Sources */,
+				48F18D952882D09E007CFBDD /* ChartIQSignalEnumsTests.swift in Sources */,
+				48F18D992882E29C007CFBDD /* ChartIQConditionTests.swift in Sources */,
 				CE4371B3241F73DF0088F110 /* ChartIQEnumsTests.swift in Sources */,
+				48F18D972882E28B007CFBDD /* ChartIQSignalTests.swift in Sources */,
 				CE56993E2418EB25001798FE /* ChartIQCrosshairHUDTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

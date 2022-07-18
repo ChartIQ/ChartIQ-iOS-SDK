@@ -23,6 +23,7 @@ class SignalConditionViewController: BaseViewController {
   internal var condition: ConditionViewModel?
   internal var conditionIndex: Int = 0
   internal var isAppearanceSettingsHidden: Bool = false
+  internal var outputs: [[String: Any]] = [[:]]
   internal var didSaveConditon: ((ConditionViewModel) -> Void)?
 
   // MARK: - Private Properties
@@ -97,15 +98,17 @@ class SignalConditionViewController: BaseViewController {
   private func setupCondition() {
     guard let study = study else { return }
     if condition == nil {
+      let markerOptions = ChartIQMarkerOptions.defaultOptions()
+      markerOptions.color = conditionService.getDefaultSignalColor(outputs: outputs)
       condition = ConditionViewModel(firstIndicatorName: conditionService.getFirstIndicatorName(study: study),
-                                     markerOptions: ChartIQMarkerOptions.defaultOptions(),
+                                     markerOptions: markerOptions,
                                      studyParameters: study.nameParams)
     }
     navigationItem.title = "\(conditionIndex + 1) \(Const.SignalCondition.screenTitle)"
   }
 
   private func updateConditionViewModels() {
-    conditionViewModels = conditionService.getConditionViewModels(condition: condition)
+    conditionViewModels = conditionService.getConditionViewModels(condition: condition, study: study)
 
     if conditionService.shouldClearSecondIndicatorName(condition: condition) {
       condition?.secondIndicatorName = nil
