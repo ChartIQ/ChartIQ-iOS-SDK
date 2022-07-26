@@ -270,7 +270,6 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   internal func getScriptForChartProperty(_ property: String) -> String {
     let safeProperty = safeScriptParameter(property)
     let script = mobileBridgeNameSpace + "getChartProperty(\"\(safeProperty)\");"
-    //let script = chartIQJsObject + "chart.\(safeProperty)"
     return script
   }
 
@@ -300,7 +299,6 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   internal func getScriptForEngineProperty(_ property: String) -> String {
     let safeProperty = safeScriptParameter(property)
     let script = chartIQJsObject + "getEngineProperty(\"\(safeProperty)\");"
-    //let script = chartIQJsObject + "\(safeProperty)"
     return script
   }
 
