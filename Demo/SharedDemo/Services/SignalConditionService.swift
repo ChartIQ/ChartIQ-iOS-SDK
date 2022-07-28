@@ -60,7 +60,8 @@ class SignalConditionService {
             number = secondIndicatorValue
           }
           conditionSettingsViewModels.append(NumberTableCellViewModel(title: Const.SignalCondition.valueField,
-                                                                      number: number))
+                                                                      number: number,
+                                                                      shouldAllowNegative: true))
         }
       }
 

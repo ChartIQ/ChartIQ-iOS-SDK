@@ -55,7 +55,7 @@ class TextTableCell: UITableViewCell {
         textField.keyboardType = .numberPad
       } else {
         textField.text = String(numberViewModel.number)
-        textField.keyboardType = .decimalPad
+        textField.keyboardType = numberViewModel.shouldAllowNegative ? .numbersAndPunctuation : .decimalPad
       }
       textField.inputAccessoryView = UIView.doneAccessoryView(target: self, action: #selector(doneButtonTapped))
     }
@@ -71,7 +71,7 @@ class TextTableCell: UITableViewCell {
     if textField.keyboardType == .numberPad {
       guard let textFieldText = textField.text else { return }
       textField.text = "\(Int(textFieldText) ?? 0)"
-    } else if textField.keyboardType == .decimalPad {
+    } else if textField.keyboardType == .decimalPad || textField.keyboardType == .numbersAndPunctuation {
       guard let textFieldText = textField.text else { return }
       let text = textFieldText.replace(Const.General.commaSymbol, with: Const.General.dotSymbol)
       textField.text = "\(Double(text) ?? 0.0)"
@@ -95,9 +95,15 @@ extension TextTableCell: UITextFieldDelegate {
   func textField(_ textField: UITextField,
                  shouldChangeCharactersIn range: NSRange,
                  replacementString string: String) -> Bool {
-    guard textField.keyboardType == .decimalPad else { return true }
-    let cs = NSCharacterSet(charactersIn: Const.StudyDetail.doubleDigits).inverted
-    let filtered = string.components(separatedBy: cs).joined()
-    return (string == filtered)
+    if textField.keyboardType == .decimalPad {
+      let cs = NSCharacterSet(charactersIn: Const.StudyDetail.doubleDigits).inverted
+      let filtered = string.components(separatedBy: cs).joined()
+      return (string == filtered)
+    } else if textField.keyboardType == .numbersAndPunctuation {
+      let cs = NSCharacterSet(charactersIn: Const.StudyDetail.negativeDoubleDigits).inverted
+      let filtered = string.components(separatedBy: cs).joined()
+      return (string == filtered)
+    }
+    return true
   }
 }

@@ -222,7 +222,7 @@
 		48421A8A24850ECE00005B91 /* ColorTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableCellViewModel.swift; sourceTree = "<group>"; };
 		48421A8C24850EE600005B91 /* TextColorTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextColorTableCellViewModel.swift; sourceTree = "<group>"; };
 		48421A9824851B6A00005B91 /* TextTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableCellViewModel.swift; sourceTree = "<group>"; };
-		48421A9A24851B7900005B91 /* NumberTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberTableCellViewModel.swift; sourceTree = "<group>"; };
+		48421A9A24851B7900005B91 /* NumberTableCellViewModel.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = NumberTableCellViewModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48421AA724852E3300005B91 /* SelectTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableCellViewModel.swift; sourceTree = "<group>"; };
 		4851D449261460A1009A9D97 /* UIVisualEffectView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVisualEffectView+Extensions.swift"; sourceTree = "<group>"; };
 		4851D44D261461D8009A9D97 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 		48F76644260E0ADA00C75461 /* FontTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FontTableCell.xib; sourceTree = "<group>"; };
 		48F76645260E0ADA00C75461 /* FontTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTableCell.swift; sourceTree = "<group>"; };
 		48F76647260E0ADA00C75461 /* TextTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextTableCell.xib; sourceTree = "<group>"; };
-		48F76648260E0ADA00C75461 /* TextTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTableCell.swift; sourceTree = "<group>"; };
+		48F76648260E0ADA00C75461 /* TextTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = TextTableCell.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48F7664A260E0ADA00C75461 /* TextColorTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextColorTableCell.xib; sourceTree = "<group>"; };
 		48F7664B260E0ADA00C75461 /* TextColorTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextColorTableCell.swift; sourceTree = "<group>"; };
 		48F7664E260E0ADA00C75461 /* DrawToolColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrawToolColorCell.xib; sourceTree = "<group>"; };
