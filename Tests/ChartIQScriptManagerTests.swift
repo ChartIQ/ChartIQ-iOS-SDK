@@ -897,6 +897,40 @@ class ChartIQScriptManagerTests: XCTestCase {
     XCTAssertEqual(correctScript, script)
   }
 
+  func testsGetScriptForSaveSignal() {
+    // Given
+    let correctScriptPart = mobileNameSpace + "saveSignal("
+    let studyName = "ATR Trailing Stops"
+    let study: ChartIQStudy = ChartIQStudy(shortName: studyName,
+                                           fullName: studyName,
+                                           originalName: "",
+                                           uniqueId: "",
+                                           inputs: [:],
+                                           outputs: [:],
+                                           parameters: [:])
+    let joiner: ChartIQSignalJoiner = .and
+    let name: String = "New Signal"
+    let signalDescription: String = "New Signal Unit Test"
+    let signal = ChartIQSignal(study: study,
+                               conditions: [],
+                               joiner: joiner,
+                               name: name,
+                               signalDescription: signalDescription,
+                               isEnabled: true)
+    let isEdit = false
+
+    // When
+    let script = chartIQScriptManager.getScriptForSaveSignal(signal, isEdit: isEdit)
+
+    // Then
+    XCTAssertTrue(script.contains(correctScriptPart))
+    XCTAssertTrue(script.contains(studyName))
+    XCTAssertTrue(script.contains(joiner.stringValue))
+    XCTAssertTrue(script.contains(name))
+    XCTAssertTrue(script.contains(signalDescription))
+    XCTAssertTrue(script.contains(String(isEdit)))
+  }
+
   func testsGetScriptForActiveSignals() {
     // Given
     let correctScript = mobileNameSpace + "getActiveSignals();"
