@@ -18,7 +18,7 @@ public class ChartIQMarkerOptions: NSObject {
 
   /// The ChartIQMarkerOptions color parameter.
   /// The color of the signal.
-  public var color: UIColor
+  public var color: UIColor?
 
   /// The ChartIQMarkerOptions shape parameter.
   /// Shape of the signal marker on the chart.
@@ -48,7 +48,7 @@ public class ChartIQMarkerOptions: NSObject {
   ///   - size: The ChartIQSignalSize model.
   ///   - position: The ChartIQSignalPosition model.
   public init(markerType: ChartIQSignalMarkerType,
-              color: UIColor,
+              color: UIColor?,
               shape: ChartIQSignalShape,
               label: String,
               size: ChartIQSignalSize,
@@ -77,7 +77,9 @@ public class ChartIQMarkerOptions: NSObject {
           let positionString = dictionary[Const.MarkerOptions.positionParam] as? String,
           let position = ChartIQSignalPosition(stringValue: positionString) else { return nil }
     self.markerType = markerType
-    self.color = UIColor(hexString: colorHexString)
+    if !colorHexString.isEmpty {
+      self.color = UIColor(hexString: colorHexString)
+    }
     self.shape = shape
     self.label = labelString
     self.size = size
@@ -89,7 +91,7 @@ public class ChartIQMarkerOptions: NSObject {
   /// Init ChartIQMarkerOptions model with default options.
   public static func defaultOptions() -> ChartIQMarkerOptions {
     return ChartIQMarkerOptions(markerType: .marker,
-                                color: .clear,
+                                color: nil,
                                 shape: .circle,
                                 label: "X",
                                 size: .medium,
@@ -104,7 +106,7 @@ public class ChartIQMarkerOptions: NSObject {
   public func toDictionary() -> [String: String] {
     return [
       Const.MarkerOptions.typeParam: markerType.stringValue,
-      Const.MarkerOptions.colorParam: color.toHexString(),
+      Const.MarkerOptions.colorParam: color?.toHexString() ?? "",
       Const.MarkerOptions.shapeParam: shape.stringValue,
       Const.MarkerOptions.labelParam: label,
       Const.MarkerOptions.sizeParam: size.stringValue,

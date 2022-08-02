@@ -75,7 +75,7 @@ public class ChartIQCondition: NSObject {
       leftIndicator,
       `operator`.stringValue,
       rightIndicator,
-      markerOptions?.color.toHexString() as Any,
+      markerOptions?.color?.toHexString() as Any,
       markerOptions?.toDictionary() as Any
     ]
   }

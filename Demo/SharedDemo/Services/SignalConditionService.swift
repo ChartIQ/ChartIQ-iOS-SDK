@@ -23,6 +23,8 @@ class SignalConditionService {
 
   // MARK: - Private Properties
 
+  private var study: ChartIQStudy?
+  private var outputs: [[String: Any]] = [[:]]
   private var isAppearanceSettingsHidden: Bool = false
   private let locManager = LocalizationManager.shared()
 
@@ -32,13 +34,15 @@ class SignalConditionService {
 
   // MARK: - Init
 
-  init(isAppearanceSettingsHidden: Bool) {
+  init(study: ChartIQStudy?, outputs: [[String: Any]], isAppearanceSettingsHidden: Bool) {
+    self.study = study
+    self.outputs = outputs
     self.isAppearanceSettingsHidden = isAppearanceSettingsHidden
   }
 
   // MARK: - Internal Methods
 
-  internal func getConditionViewModels(condition: ConditionViewModel?, study: ChartIQStudy?) -> SignalConditionViewModels {
+  internal func getConditionViewModels(condition: ConditionViewModel?) -> SignalConditionViewModels {
     let conditionDetailTitle = condition?.conditionOperator?.displayName ?? Const.SignalCondition.selectActionTitle
     var conditionSettingsViewModels: [TableCellViewModelProtocol] = [
       SelectTableCellViewModel(title: locManager.localize(Const.SignalCondition.firstIndicatorTitle),
@@ -66,11 +70,12 @@ class SignalConditionService {
       }
 
       if !isAppearanceSettingsHidden {
+        let defaultColor = getDefaultSignalColor()
         var appearanceSettingsViewModels: [TableCellViewModelProtocol] = [
           SelectTableCellViewModel(title: locManager.localize(Const.SignalCondition.markerTypeTitle),
                                    detailTitle: condition?.markerOptions?.markerType.displayName),
           ColorTableCellViewModel(title: locManager.localize(Const.SignalCondition.colorTitle),
-                                  color: condition?.markerOptions?.color ?? .clear)
+                                  color: condition?.markerOptions?.color ?? defaultColor)
         ]
 
         if condition?.markerOptions?.markerType == .marker {
@@ -115,8 +120,8 @@ class SignalConditionService {
     return false
   }
 
-  internal func getFirstIndicatorName(study: ChartIQStudy?) -> String {
-    let firstIndicatorOptions = getFirstIndicatorOptions(study: study)
+  internal func getFirstIndicatorName() -> String {
+    let firstIndicatorOptions = getFirstIndicatorOptions()
     var firstIndicatorName: String = ""
     if let firstIndicatorOption = firstIndicatorOptions.first {
       firstIndicatorName = firstIndicatorOption
@@ -124,7 +129,7 @@ class SignalConditionService {
     return firstIndicatorName
   }
 
-  internal func getFirstIndicatorOptions(study: ChartIQStudy?) -> [String] {
+  internal func getFirstIndicatorOptions() -> [String] {
     var options: [String] = []
     if let study = study, let studyOutputs = study.outputs {
       let formattedOutputs = studyOutputs.map({ "\($0.key)" })
@@ -133,10 +138,10 @@ class SignalConditionService {
     return options
   }
 
-  internal func getSecondIndicatorOptions(study: ChartIQStudy?, firstIndicatorName: String?) -> [String] {
+  internal func getSecondIndicatorOptions(firstIndicatorName: String?) -> [String] {
     var options: [String] = []
     if let firstIndicatorName = firstIndicatorName {
-      let outputs = getFirstIndicatorOptions(study: study)
+      let outputs = getFirstIndicatorOptions()
       let values = outputs.filter({ $0 != firstIndicatorName })
       options.append(contentsOf: values)
     }
@@ -146,20 +151,19 @@ class SignalConditionService {
   }
 
   internal func getOptions(for condition: ConditionViewModel?,
-                           with study: ChartIQStudy?,
                            at indexPath: IndexPath) -> (options: [String], selectedOption: String) {
     var options: [String] = []
     var selectedOption: String = ""
     if indexPath.section == 0 {
       if indexPath.row == 0 {
-        options = getFirstIndicatorOptions(study: study)
+        options = getFirstIndicatorOptions()
         let key = condition?.firstIndicatorName ?? options.first
         selectedOption = key ?? ""
       } else if indexPath.row == 1 {
         options = ChartIQSignalOperator.allCases.map({ $0.displayName })
         selectedOption = condition?.conditionOperator?.displayName ?? ""
       } else if indexPath.row == 2 {
-        options = getSecondIndicatorOptions(study: study, firstIndicatorName: condition?.firstIndicatorName)
+        options = getSecondIndicatorOptions(firstIndicatorName: condition?.firstIndicatorName)
         selectedOption = condition?.secondIndicatorName ?? options.first ?? ""
       }
     } else {
@@ -180,7 +184,7 @@ class SignalConditionService {
     return (options: options, selectedOption: selectedOption)
   }
 
-  internal func getDefaultSignalColor(outputs: [[String: Any]]) -> UIColor {
+  internal func getDefaultSignalColor() -> UIColor {
     var defaultColor: UIColor = .clear
     if let colorHexString = outputs.first?["color"] as? String {
       defaultColor = UIColor(hexString: colorHexString)

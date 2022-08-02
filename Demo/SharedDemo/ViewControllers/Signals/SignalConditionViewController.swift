@@ -70,7 +70,9 @@ class SignalConditionViewController: BaseViewController {
   }
 
   override func setupSettings() {
-    conditionService = SignalConditionService(isAppearanceSettingsHidden: isAppearanceSettingsHidden)
+    conditionService = SignalConditionService(study: study,
+                                              outputs: outputs,
+                                              isAppearanceSettingsHidden: isAppearanceSettingsHidden)
 
     tableView.register(nibName: Const.SelectTableCell.cellNibName, cellId: Const.SelectTableCell.cellId)
     tableView.register(nibName: Const.TextTableCell.cellNibName, cellId: Const.TextTableCell.cellId)
@@ -98,17 +100,15 @@ class SignalConditionViewController: BaseViewController {
   private func setupCondition() {
     guard let study = study else { return }
     if condition == nil {
-      let markerOptions = ChartIQMarkerOptions.defaultOptions()
-      markerOptions.color = conditionService.getDefaultSignalColor(outputs: outputs)
-      condition = ConditionViewModel(firstIndicatorName: conditionService.getFirstIndicatorName(study: study),
-                                     markerOptions: markerOptions,
+      condition = ConditionViewModel(firstIndicatorName: conditionService.getFirstIndicatorName(),
+                                     markerOptions: ChartIQMarkerOptions.defaultOptions(),
                                      studyParameters: study.nameParams)
     }
     navigationItem.title = "\(conditionIndex + 1) \(Const.SignalCondition.screenTitle)"
   }
 
   private func updateConditionViewModels() {
-    conditionViewModels = conditionService.getConditionViewModels(condition: condition, study: study)
+    conditionViewModels = conditionService.getConditionViewModels(condition: condition)
 
     if conditionService.shouldClearSecondIndicatorName(condition: condition) {
       condition?.secondIndicatorName = nil
@@ -170,8 +170,7 @@ class SignalConditionViewController: BaseViewController {
   private func updateSecondIndicatorName() {
     DispatchQueue.main.async {
       let firstIndicatorName = self.condition?.firstIndicatorName
-      let secondIndicatorName = self.conditionService.getSecondIndicatorOptions(study: self.study,
-                                                                                firstIndicatorName: firstIndicatorName).first
+      let secondIndicatorName = self.conditionService.getSecondIndicatorOptions(firstIndicatorName: firstIndicatorName).first
       self.condition?.secondIndicatorName = secondIndicatorName
       self.updateConditionViewModels()
     }
@@ -203,7 +202,7 @@ class SignalConditionViewController: BaseViewController {
 
   private func showSelectOptionsController(indexPath: IndexPath) {
     guard let controller = UIStoryboard.selectOptionViewController() else { return }
-    let options = conditionService.getOptions(for: condition, with: study, at: indexPath)
+    let options = conditionService.getOptions(for: condition, at: indexPath)
     controller.options = options.options
     controller.selectedOption = options.selectedOption
     controller.didSelectOption = { [weak self] option in

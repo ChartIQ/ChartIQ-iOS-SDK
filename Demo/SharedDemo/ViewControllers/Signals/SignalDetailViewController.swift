@@ -57,6 +57,7 @@ class SignalDetailViewController: BaseViewController {
   private var conditions: [ConditionViewModel] = []
   private var signalName: String?
   private var signalDescription: String?
+  private var selectedColor: UIColor?
   private var joinerType: ChartIQSignalJoiner = .or
   private var isSaving: Bool = false
 
@@ -180,10 +181,16 @@ class SignalDetailViewController: BaseViewController {
         } else if index == (conditions.count - 1) {
           segmentType = .none
         }
+        let outputs = chartIQView.getStudyParameters(study, type: .outputs) as? [[String: Any]] ?? [[:]]
+        var defaultColor = getDefaultSignalColor(outputs: outputs)
+        if let сolor = condition.markerOptions?.color {
+          selectedColor = сolor
+          defaultColor = сolor
+        }
         let conditionViewModel = ConditionTableCellViewModel(title: conditionTitle,
                                                              description: conditionDescription,
                                                              tagMark: condition.markerOptions?.label ?? "",
-                                                             color: condition.markerOptions?.color ?? .clear,
+                                                             color: defaultColor,
                                                              segmentType: segmentType,
                                                              joinerType: joinerType)
         conditionsViewModels.append(conditionViewModel)
@@ -271,6 +278,7 @@ class SignalDetailViewController: BaseViewController {
       } else if let secondIndicatorValue = viewModel.secondIndicatorValue {
         rightIndicator = "\(secondIndicatorValue)"
       }
+      viewModel.markerOptions?.color = selectedColor
       return ChartIQCondition(leftIndicator: viewModel.firstIndicatorName,
                               operator: viewModel.conditionOperator ?? .crosses,
                               rightIndicator: rightIndicator,
@@ -361,8 +369,11 @@ class SignalDetailViewController: BaseViewController {
 
   private func showSignalConditionViewController(condition: ConditionViewModel,
                                                  conditionIndex: Int,
-                                                 isAppearanceSettingsHidden: Bool) {
+                                                 isAppearanceSettingsHidden: Bool,
+                                                 study: ChartIQStudy) {
     guard let controller = UIStoryboard.signalConditionViewController() else { return }
+    let outputs = chartIQView.getStudyParameters(study, type: .outputs)
+    controller.outputs = outputs as? [[String: Any]] ?? [[:]]
     controller.study = study
     controller.condition = condition
     controller.conditionIndex = conditionIndex
@@ -495,14 +506,15 @@ extension SignalDetailViewController: UITableViewDelegate {
         presentAllStudiesViewController()
       }
     case .second:
-      if let conditionViewModel = viewModel as? ConditionTableCellViewModel {
+      if let conditionViewModel = viewModel as? ConditionTableCellViewModel, let study = study {
         var isAppearanceSettingsHidden = conditionViewModel.joinerType == .and
         if conditionViewModel.segmentType == .both {
           isAppearanceSettingsHidden = false
         }
         showSignalConditionViewController(condition: conditions[indexPath.row],
                                           conditionIndex: indexPath.row,
-                                          isAppearanceSettingsHidden: isAppearanceSettingsHidden)
+                                          isAppearanceSettingsHidden: isAppearanceSettingsHidden,
+                                          study: study)
       } else if viewModel is ButtonTableCellViewModel, let study = study {
         presentSignalConditionViewController(isAppearanceSettingsHidden: joinerType == .and, study: study)
       }
@@ -553,5 +565,18 @@ extension SignalDetailViewController: UIViewControllerKeyboardProtocol {
 
   var scrollView: UIScrollView! {
     return tableView
+  }
+}
+
+// MARK: - Move to new Service
+
+extension SignalDetailViewController {
+
+  internal func getDefaultSignalColor(outputs: [[String: Any]]) -> UIColor {
+    var defaultColor: UIColor = .clear
+    if let colorHexString = outputs.first?["color"] as? String {
+      defaultColor = UIColor(hexString: colorHexString)
+    }
+    return defaultColor
   }
 }
