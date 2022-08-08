@@ -57,7 +57,6 @@ class SignalDetailViewController: BaseViewController {
   private var conditions: [ConditionViewModel] = []
   private var signalName: String?
   private var signalDescription: String?
-  private var selectedColor: UIColor?
   private var joinerType: ChartIQSignalJoiner = .or
   private var isSaving: Bool = false
 
@@ -184,7 +183,6 @@ class SignalDetailViewController: BaseViewController {
         let outputs = chartIQView.getStudyParameters(study, type: .outputs) as? [[String: Any]] ?? [[:]]
         var defaultColor = getDefaultSignalColor(outputs: outputs)
         if let сolor = condition.markerOptions?.color {
-          selectedColor = сolor
           defaultColor = сolor
         }
         let conditionViewModel = ConditionTableCellViewModel(title: conditionTitle,
@@ -278,7 +276,6 @@ class SignalDetailViewController: BaseViewController {
       } else if let secondIndicatorValue = viewModel.secondIndicatorValue {
         rightIndicator = "\(secondIndicatorValue)"
       }
-      viewModel.markerOptions?.color = selectedColor
       return ChartIQCondition(leftIndicator: viewModel.firstIndicatorName,
                               operator: viewModel.conditionOperator ?? .crosses,
                               rightIndicator: rightIndicator,
