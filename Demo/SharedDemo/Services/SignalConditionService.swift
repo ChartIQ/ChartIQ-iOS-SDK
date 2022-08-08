@@ -27,6 +27,7 @@ class SignalConditionService {
   private var outputs: [[String: Any]] = [[:]]
   private var isAppearanceSettingsHidden: Bool = false
   private let locManager = LocalizationManager.shared()
+  private let conditionMarkerService = ConditionMarkerService()
 
   private let excludedOperators: [ChartIQSignalOperator] = [
     .increases, .decreases, .doesNotChange, .turnsUp, .turnsDown
@@ -69,25 +70,25 @@ class SignalConditionService {
         }
       }
 
-      if !isAppearanceSettingsHidden {
-        let defaultColor = getDefaultSignalColor()
+      if !isAppearanceSettingsHidden, let condition = condition {
+        let defaultColor = conditionMarkerService.getDefaultSignalColor(condition: condition, outputs: outputs)
         var appearanceSettingsViewModels: [TableCellViewModelProtocol] = [
           SelectTableCellViewModel(title: locManager.localize(Const.SignalCondition.markerTypeTitle),
-                                   detailTitle: condition?.markerOptions?.markerType.displayName),
+                                   detailTitle: condition.markerOptions?.markerType.displayName),
           ColorTableCellViewModel(title: locManager.localize(Const.SignalCondition.colorTitle),
-                                  color: condition?.markerOptions?.color ?? defaultColor)
+                                  color: condition.markerOptions?.color ?? defaultColor)
         ]
 
-        if condition?.markerOptions?.markerType == .marker {
+        if condition.markerOptions?.markerType == .marker {
           let markerSettingsViewModels: [TableCellViewModelProtocol] = [
             SelectTableCellViewModel(title: locManager.localize(Const.SignalCondition.shapeTitle),
-                                     detailTitle: condition?.markerOptions?.shape.displayName),
+                                     detailTitle: condition.markerOptions?.shape.displayName),
             TextTableCellViewModel(title: locManager.localize(Const.SignalCondition.tagMarkTitle),
-                                   text: condition?.markerOptions?.label),
+                                   text: condition.markerOptions?.label),
             SelectTableCellViewModel(title: locManager.localize(Const.SignalCondition.sizeTitle),
-                                     detailTitle: condition?.markerOptions?.size.displayName),
+                                     detailTitle: condition.markerOptions?.size.displayName),
             SelectTableCellViewModel(title: locManager.localize(Const.SignalCondition.positionTitle),
-                                     detailTitle: condition?.markerOptions?.position.displayName)
+                                     detailTitle: condition.markerOptions?.position.displayName)
           ]
           appearanceSettingsViewModels.append(contentsOf: markerSettingsViewModels)
         }
@@ -182,13 +183,5 @@ class SignalConditionService {
       }
     }
     return (options: options, selectedOption: selectedOption)
-  }
-
-  internal func getDefaultSignalColor() -> UIColor {
-    var defaultColor: UIColor = .clear
-    if let colorHexString = outputs.first?["color"] as? String {
-      defaultColor = UIColor(hexString: colorHexString)
-    }
-    return defaultColor
   }
 }

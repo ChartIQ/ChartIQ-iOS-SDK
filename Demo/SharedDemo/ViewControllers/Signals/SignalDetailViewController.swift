@@ -52,6 +52,7 @@ class SignalDetailViewController: BaseViewController {
   private var saveBarButtonItem: UIBarButtonItem?
   private var signalViewModels: [TableSection: [TableCellViewModelProtocol]] = [:]
   private let locManager = LocalizationManager.shared()
+  private let conditionMarkerService = ConditionMarkerService()
 
   private var study: ChartIQStudy?
   private var conditions: [ConditionViewModel] = []
@@ -181,7 +182,7 @@ class SignalDetailViewController: BaseViewController {
           segmentType = .none
         }
         let outputs = chartIQView.getStudyParameters(study, type: .outputs) as? [[String: Any]] ?? [[:]]
-        var defaultColor = getDefaultSignalColor(outputs: outputs)
+        var defaultColor = conditionMarkerService.getDefaultSignalColor(condition: condition, outputs: outputs)
         if let сolor = condition.markerOptions?.color {
           defaultColor = сolor
         }
@@ -564,18 +565,5 @@ extension SignalDetailViewController: UIViewControllerKeyboardProtocol {
 
   var scrollView: UIScrollView! {
     return tableView
-  }
-}
-
-// MARK: - Move to new Service
-
-extension SignalDetailViewController {
-
-  internal func getDefaultSignalColor(outputs: [[String: Any]]) -> UIColor {
-    var defaultColor: UIColor = .clear
-    if let colorHexString = outputs.first?["color"] as? String {
-      defaultColor = UIColor(hexString: colorHexString)
-    }
-    return defaultColor
   }
 }

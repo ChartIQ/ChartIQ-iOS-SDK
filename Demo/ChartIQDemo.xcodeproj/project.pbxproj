@@ -36,6 +36,7 @@
 		48421A9924851B6A00005B91 /* TextTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48421A9824851B6A00005B91 /* TextTableCellViewModel.swift */; };
 		48421A9B24851B7900005B91 /* NumberTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48421A9A24851B7900005B91 /* NumberTableCellViewModel.swift */; };
 		48421AA824852E3300005B91 /* SelectTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48421AA724852E3300005B91 /* SelectTableCellViewModel.swift */; };
+		484445E028A13E5600DE74FF /* ConditionMarkerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484445DF28A13E5600DE74FF /* ConditionMarkerService.swift */; };
 		4851D44A261460A1009A9D97 /* UIVisualEffectView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4851D449261460A1009A9D97 /* UIVisualEffectView+Extensions.swift */; };
 		4851D44E261461D8009A9D97 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4851D44D261461D8009A9D97 /* UIStackView+Extensions.swift */; };
 		4851D57E261492BD009A9D97 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4851D57D261492BD009A9D97 /* UIButton+Extensions.swift */; };
@@ -224,6 +225,7 @@
 		48421A9824851B6A00005B91 /* TextTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableCellViewModel.swift; sourceTree = "<group>"; };
 		48421A9A24851B7900005B91 /* NumberTableCellViewModel.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = NumberTableCellViewModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		48421AA724852E3300005B91 /* SelectTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableCellViewModel.swift; sourceTree = "<group>"; };
+		484445DF28A13E5600DE74FF /* ConditionMarkerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionMarkerService.swift; sourceTree = "<group>"; };
 		4851D449261460A1009A9D97 /* UIVisualEffectView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVisualEffectView+Extensions.swift"; sourceTree = "<group>"; };
 		4851D44D261461D8009A9D97 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		4851D57D261492BD009A9D97 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
@@ -649,6 +651,7 @@
 				48A81B0B24653101000FC6E2 /* DrawToolsService.swift */,
 				48FE69542486A3F700DB5C7F /* StudiesService.swift */,
 				48F89863287989EE00EDCB9B /* SignalConditionService.swift */,
+				484445DF28A13E5600DE74FF /* ConditionMarkerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1355,6 +1358,7 @@
 				48F76691260E0ADA00C75461 /* DrawToolBaseCell.swift in Sources */,
 				48DE5A63283E7CFE00E0187D /* SignalDetailViewController.swift in Sources */,
 				48F7669A260E0ADA00C75461 /* DrawToolControlView.swift in Sources */,
+				484445E028A13E5600DE74FF /* ConditionMarkerService.swift in Sources */,
 				48F766A0260E0ADA00C75461 /* HorizontalPickerView.swift in Sources */,
 				48729C9B261313B0002E7204 /* NavigationView.swift in Sources */,
 				48E3F62024E6A5A700AE6C03 /* LineTableCellViewModel.swift in Sources */,
