@@ -32,6 +32,7 @@ extension UIColor {
   internal static let chineseBlackColor = UIColor(hexString: "091924")
   internal static let yankeesBlueColor = UIColor(hexString: "153246")
   internal static let coralRedColor = UIColor(hexString: "ff3b30")
+  internal static let mistyRoseColor = UIColor(hexString: "ffe9e7")
   internal static let brillianteAzureColor = UIColor(hexString: "3a8eff")
   internal static let lightGrayColor = UIColor(hexString: "D4D4D4")
   internal static let outerSpaceColor = UIColor(hexString: "3E4A53")

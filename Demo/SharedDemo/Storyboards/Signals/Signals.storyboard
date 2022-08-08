@@ -136,6 +136,56 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="j9F-Ul-9BZ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="ozG-1T-qby">
+                                    <rect key="frame" x="0.0" y="111" width="414" height="80"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NEZ-N0-fV6">
+                                            <rect key="frame" x="16" y="0.0" width="382" height="80"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warningIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lFe-yw-LBl">
+                                                    <rect key="frame" x="16" y="25" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="7Og-8Q-JpE"/>
+                                                        <constraint firstAttribute="height" constant="30" id="Xel-WD-xDT"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paintbar doesn’t work with this chart type." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiN-Re-uTc">
+                                                    <rect key="frame" x="62" y="16" width="304" height="48"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="lFe-yw-LBl" firstAttribute="centerY" secondItem="NEZ-N0-fV6" secondAttribute="centerY" id="0Db-l1-ejH"/>
+                                                <constraint firstAttribute="bottom" secondItem="UiN-Re-uTc" secondAttribute="bottom" constant="16" id="5uK-xK-m5h"/>
+                                                <constraint firstItem="UiN-Re-uTc" firstAttribute="leading" secondItem="lFe-yw-LBl" secondAttribute="trailing" constant="16" id="YdX-iF-ZWR"/>
+                                                <constraint firstItem="lFe-yw-LBl" firstAttribute="leading" secondItem="NEZ-N0-fV6" secondAttribute="leading" constant="16" id="bLH-Wf-EB4"/>
+                                                <constraint firstItem="UiN-Re-uTc" firstAttribute="top" secondItem="NEZ-N0-fV6" secondAttribute="top" constant="16" id="l1I-uY-sbR"/>
+                                                <constraint firstAttribute="trailing" secondItem="UiN-Re-uTc" secondAttribute="trailing" constant="16" id="tVm-qg-nH1"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="NEZ-N0-fV6" secondAttribute="bottom" id="JbD-Sb-SWk"/>
+                                        <constraint firstItem="NEZ-N0-fV6" firstAttribute="top" secondItem="ozG-1T-qby" secondAttribute="top" id="MG0-83-QU4"/>
+                                        <constraint firstAttribute="trailing" secondItem="NEZ-N0-fV6" secondAttribute="trailing" constant="16" id="ZaD-rQ-8ax"/>
+                                        <constraint firstItem="NEZ-N0-fV6" firstAttribute="leading" secondItem="ozG-1T-qby" secondAttribute="leading" constant="16" id="woy-QO-dft"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BaseRID" id="IJe-c4-MFE">
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IJe-c4-MFE" id="NIr-x5-mcL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Oh6-Di-U6L"/>
@@ -149,15 +199,19 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="j9F-Ul-9BZ" id="ZYs-mQ-YC0"/>
+                        <outlet property="warningContentView" destination="NEZ-N0-fV6" id="W21-ZJ-dDw"/>
+                        <outlet property="warningLabel" destination="UiN-Re-uTc" id="lS4-7x-zdy"/>
+                        <outlet property="warningView" destination="ozG-1T-qby" id="ftb-Gv-Chs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aZI-Vr-xRz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3304" y="-670"/>
+            <point key="canvasLocation" x="3302.898550724638" y="-670.3125"/>
         </scene>
     </scenes>
     <resources>
         <image name="studiesEmptyStateIcon" width="120" height="112"/>
+        <image name="warningIcon" width="25" height="23"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -490,6 +490,8 @@ public struct Const {
     static let tagMarkTitle = "Tag Mark"
     static let sizeTitle = "Size"
     static let positionTitle = "Position"
+
+    static let warningTitle = "Paintbar doesn’t work with this chart type."
   }
 
   struct DrawTools {

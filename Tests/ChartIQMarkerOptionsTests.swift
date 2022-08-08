@@ -62,7 +62,7 @@ class ChartIQMarkerOptionsTests: XCTestCase {
 
     // Then
     XCTAssertEqual(dictionary[Const.MarkerOptions.typeParam] as? String, markerOptions?.markerType.stringValue)
-    XCTAssertEqual(dictionary[Const.MarkerOptions.colorParam] as? String, markerOptions?.color.toHexString())
+    XCTAssertEqual(dictionary[Const.MarkerOptions.colorParam] as? String, markerOptions?.color?.toHexString())
     XCTAssertEqual(dictionary[Const.MarkerOptions.shapeParam] as? String, markerOptions?.shape.stringValue)
     XCTAssertEqual(dictionary[Const.MarkerOptions.labelParam] as? String, markerOptions?.label)
     XCTAssertEqual(dictionary[Const.MarkerOptions.sizeParam] as? String, markerOptions?.size.stringValue)
@@ -89,7 +89,7 @@ class ChartIQMarkerOptionsTests: XCTestCase {
   func testDefaultOptions() {
     // Given
     let markerType: ChartIQSignalMarkerType = .marker
-    let color: UIColor = .clear
+    let color: UIColor? = nil
     let shape: ChartIQSignalShape = .circle
     let label: String = "X"
     let size: ChartIQSignalSize = .medium
@@ -116,7 +116,7 @@ class ChartIQMarkerOptionsTests: XCTestCase {
 
     // Then
     XCTAssertEqual(dictionary[Const.MarkerOptions.typeParam], markerOptions.markerType.stringValue)
-    XCTAssertEqual(dictionary[Const.MarkerOptions.colorParam], markerOptions.color.toHexString())
+    XCTAssertEqual(dictionary[Const.MarkerOptions.colorParam], String())
     XCTAssertEqual(dictionary[Const.MarkerOptions.shapeParam], markerOptions.shape.stringValue)
     XCTAssertEqual(dictionary[Const.MarkerOptions.labelParam], markerOptions.label)
     XCTAssertEqual(dictionary[Const.MarkerOptions.sizeParam], markerOptions.size.stringValue)

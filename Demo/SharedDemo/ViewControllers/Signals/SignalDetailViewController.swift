@@ -374,6 +374,7 @@ class SignalDetailViewController: BaseViewController {
     guard let controller = UIStoryboard.signalConditionViewController() else { return }
     let outputs = chartIQView.getStudyParameters(study, type: .outputs)
     controller.outputs = outputs as? [[String: Any]] ?? [[:]]
+    controller.chartAggregationType = chartIQView.chartAggregationType
     controller.study = study
     controller.condition = condition
     controller.conditionIndex = conditionIndex
@@ -402,6 +403,7 @@ class SignalDetailViewController: BaseViewController {
     guard let controller = UIStoryboard.signalConditionViewController() else { return }
     let outputs = chartIQView.getStudyParameters(study, type: .outputs)
     controller.outputs = outputs as? [[String: Any]] ?? [[:]]
+    controller.chartAggregationType = chartIQView.chartAggregationType
     controller.study = study
     controller.conditionIndex = conditions.count
     controller.isAppearanceSettingsHidden = isAppearanceSettingsHidden

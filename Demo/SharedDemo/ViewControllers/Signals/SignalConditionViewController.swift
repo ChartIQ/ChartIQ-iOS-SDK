@@ -17,8 +17,13 @@ class SignalConditionViewController: BaseViewController {
 
   @IBOutlet private var tableView: UITableView!
 
+  @IBOutlet private var warningView: UIView!
+  @IBOutlet private var warningContentView: UIView!
+  @IBOutlet private var warningLabel: UILabel!
+
   // MARK: - Internal Properties
 
+  internal var chartAggregationType: ChartIQChartAggregationType?
   internal var study: ChartIQStudy?
   internal var condition: ConditionViewModel?
   internal var conditionIndex: Int = 0
@@ -46,6 +51,7 @@ class SignalConditionViewController: BaseViewController {
   override func languageDidChange() {
     cancelBarButtonItem?.title = locManager.localize(Const.General.cancelTitle)
     saveBarButtonItem?.title = locManager.localize(Const.General.saveTitle)
+    warningLabel.text = locManager.localize(Const.SignalCondition.warningTitle)
     updateConditionViewModels()
   }
 
@@ -67,6 +73,12 @@ class SignalConditionViewController: BaseViewController {
                                             action: #selector(cancelButtonTapped))
       navigationItem.leftBarButtonItem = cancelBarButtonItem
     }
+
+    warningContentView.layer.cornerRadius = 8.0
+    warningContentView.backgroundColor = .mistyRoseColor
+
+    warningLabel.text = locManager.localize(Const.SignalCondition.warningTitle)
+    warningLabel.textColor = .coralRedColor
   }
 
   override func setupSettings() {
@@ -196,6 +208,13 @@ class SignalConditionViewController: BaseViewController {
   private func validateAll() {
     let isAllFieldsValid = condition?.conditionOperator != nil
     saveBarButtonItem?.isEnabled = isAllFieldsValid
+
+    warningContentView.isHidden = true
+    if let chartAggregationType = chartAggregationType,
+       chartAggregationType == .kagi || chartAggregationType == .pandf,
+       condition?.markerOptions?.markerType == .paintbar {
+      warningContentView.isHidden = false
+    }
   }
 
   // MARK: - Show Controllers Private Methods
