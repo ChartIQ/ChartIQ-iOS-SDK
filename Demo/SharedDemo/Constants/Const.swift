@@ -39,7 +39,7 @@ public struct Const {
   // MARK: - General
 
   struct General {
-    static let chartIQURL = "https://mobile.demo.chartiq.com/ios/3.0.0/sample-template-native-sdk.html"
+    static let chartIQURL = "https://mobile.demo.chartiq.com/ios/3.1.0/sample-template-native-sdk.html"
 
     static let cancelTitle = "Cancel"
     static let clearTitle = "Clear"
@@ -87,37 +87,37 @@ public struct Const {
     static let languageChangedNotificationName = "LanguageDidChange"
 
     static let englishLanguageName = "English"
-    static let englishLanguageCode = "en"
+    static let englishLanguageCode = "en-US"
 
     static let germanLanguageName = "German"
-    static let germanLanguageCode = "de"
+    static let germanLanguageCode = "de-DE"
 
     static let frenchLanguageName = "French"
-    static let frenchLanguageCode = "fr"
+    static let frenchLanguageCode = "fr-FR"
 
     static let russianLanguageName = "Russian"
-    static let russianLanguageCode = "ru"
+    static let russianLanguageCode = "ru-RU"
 
     static let italianLanguageName = "Italian"
-    static let italianLanguageCode = "it"
+    static let italianLanguageCode = "it-IT"
 
     static let spanishLanguageName = "Spanish"
-    static let spanishLanguageCode = "es"
+    static let spanishLanguageCode = "es-ES"
 
     static let portugueseLanguageName = "Portuguese"
-    static let portugueseLanguageCode = "pt"
+    static let portugueseLanguageCode = "pt-PT"
 
     static let hungarianLanguageName = "Hungarian"
-    static let hungarianLanguageCode = "hu"
+    static let hungarianLanguageCode = "hu-HU"
 
     static let chineseLanguageName = "Chinese"
-    static let chineseLanguageCode = "zh"
+    static let chineseLanguageCode = "zh-CN"
 
     static let japaneseLanguageName = "Japanese"
-    static let japaneseLanguageCode = "ja"
+    static let japaneseLanguageCode = "ja-JP"
 
     static let arabicLanguageName = "Arabic"
-    static let arabicLanguageCode = "ar"
+    static let arabicLanguageCode = "ar-EG"
 
     static let languageChangedNotification = NSNotification.Name(rawValue: languageChangedNotificationName)
     static let baseLanguageModel = LanguageModel(name: englishLanguageName, languageCode: englishLanguageCode)
