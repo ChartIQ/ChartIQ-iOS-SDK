@@ -410,7 +410,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForPush(_ symbol: String, data: String) -> String {
     let safeProperty = safeScriptParameter(symbol)
-    let script = mobileBridgeNameSpace + ".loadChart(\"\(safeProperty)\", \(data)); "
+    let script = mobileBridgeNameSpace + ".loadChart(\"\(safeProperty)\", '\(data)'); "
     return script
   }
 
