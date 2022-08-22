@@ -652,7 +652,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   /// Returns a script that formats JSQuote data.
   ///
   /// - Parameters:
-  ///   - data: data: The data you want to display on the chart as a JSON string.
+  ///   - data: The data you want to display on the chart as a JSON string.
   ///   - calbackId: The unique string that determines which callback to execute on the Javascript side.
   ///   - moreAvailable: A boolean value that lets the quotefeed know whether to fetch pagination data.
   ///   - upToDate: A boolean value that lets the quotefeed know whether to fetch future data.
