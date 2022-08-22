@@ -525,7 +525,8 @@ public class ChartIQView: UIView {
   /// Sets the chart data by push.
   ///
   /// - Parameters:
-  ///   - data: An array of properly formatted OHLC quote objects to create a chart.
+  ///   - symbol: The string symbol you want to display on the chart.
+  ///   - data: An array of properly formatted OHLC quote objects to load into the chart.
   public func push(_ symbol: String, data: [ChartIQData]) {
     let obj = data.map { $0.toDictionary() }
     guard let jsonData = try? JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted),
@@ -539,7 +540,8 @@ public class ChartIQView: UIView {
   /// Uses this method to stream OHLC data into a chart.
   ///
   /// - Parameters:
-  ///   - data: An array of properly formatted OHLC quote objects to append.
+  ///   - data: An array of properly formatted OHLC quote objects to load into the chart.
+  ///   - useAsLastSale: A boolean value that forces the data sent to be used as the last sale price.
   public func pushUpdate(_ data: [ChartIQData], useAsLastSale: Bool) {
     let obj = data.map { $0.toDictionary() }
     guard let jsonData = try? JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted),

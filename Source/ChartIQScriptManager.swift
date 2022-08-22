@@ -406,7 +406,8 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   /// Returns a script that pushes a smth.
   ///
   /// - Parameters:
-  ///   - jsonString: The String Object.
+  ///   - symbol: The string symbol you want to display on the chart.
+  ///   - data: The data you want to display on the chart as a JSON string.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForPush(_ symbol: String, data: String) -> String {
     let safeProperty = safeScriptParameter(symbol)
@@ -417,7 +418,8 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   /// Returns a script that pushes an update.
   ///
   /// - Parameters:
-  ///   - jsonString: The String Object.
+  ///   - data: The data you want to display on the chart as a JSON string.
+  ///   - useAsLastSale: A boolean value that forces the data sent to be used as the last sale price.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForPushUpdate(_ data: String, useAsLastSale: Bool) -> String {
     let script = mobileBridgeNameSpace + ".parseData('\(data)', null, null, null, \(useAsLastSale));"
@@ -650,9 +652,10 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   /// Returns a script that formats JSQuote data.
   ///
   /// - Parameters:
-  ///   - json: The String Object.
-  ///   - moreAvailable: The Bool Value.
-  ///   - cb: The String Object.
+  ///   - data: data: The data you want to display on the chart as a JSON string.
+  ///   - calbackId: The unique string that determines which callback to execute on the Javascript side.
+  ///   - moreAvailable: A boolean value that lets the quotefeed know whether to fetch pagination data.
+  ///   - upToDate: A boolean value that lets the quotefeed know whether to fetch future data.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForFormatJSQuoteData(_ data: String, callbackId: String, moreAvailable: Bool, upToDate: Bool) -> String {
     let script = mobileBridgeNameSpace + ".parseData('\(data)', \"\(callbackId)\", \(moreAvailable), \(upToDate));"
