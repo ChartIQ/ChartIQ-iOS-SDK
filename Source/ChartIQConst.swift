@@ -168,6 +168,7 @@ internal struct Const {
     static let inputsParam = "inputs"
     static let outputsParam = "outputs"
     static let parametersParam = "parameters"
+    static let signalIQExclude = "signalIQExclude"
     static let nullParam = "null"
   }
 

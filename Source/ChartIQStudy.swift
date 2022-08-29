@@ -40,6 +40,8 @@ public class ChartIQStudy: NSObject {
   /// The ChartIQStudy parameters parameter.
   public var parameters: [String: Any]?
 
+  public var signalIQExclude: Bool = false
+
   // MARK: - Initializers
 
   /// Init Study model with all parameters.
@@ -58,7 +60,8 @@ public class ChartIQStudy: NSObject {
               uniqueId: String,
               inputs: [String: Any]? = nil,
               outputs: [String: Any]? = nil,
-              parameters: [String: Any]? = nil) {
+              parameters: [String: Any]? = nil,
+              signalIQExclude: Bool) {
     self.shortName = shortName
     self.fullName = fullName
     self.originalName = originalName
@@ -66,6 +69,7 @@ public class ChartIQStudy: NSObject {
     self.inputs = inputs
     self.outputs = outputs
     self.parameters = parameters
+    self.signalIQExclude = signalIQExclude
   }
 
   /// Init Study model with js study string parameter.
@@ -117,6 +121,9 @@ public class ChartIQStudy: NSObject {
     }
     if let parameters = dictionary[Const.Study.parametersParam] as? [String: Any]? {
       self.parameters = parameters
+    }
+    if let signalIQExclude = dictionary[Const.Study.signalIQExclude] as? Bool {
+      self.signalIQExclude = signalIQExclude
     }
   }
 

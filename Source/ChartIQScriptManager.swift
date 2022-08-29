@@ -694,7 +694,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForStudyObjects() -> String {
-    let script = "JSON.stringify(CIQ.Studies.studyLibrary);"
+    let script = mobileBridgeNameSpace + ".getStudyList();"
     return script
   }
 

@@ -194,7 +194,7 @@ class SignalDetailViewController: BaseViewController {
                                                              joinerType: joinerType)
         conditionsViewModels.append(conditionViewModel)
       }
-      let addCondition = ButtonTableCellViewModel(title: locManager.localize(Const.SignalDetail.addCondtionTitle),
+      let addCondition = ButtonTableCellViewModel(title: locManager.localize(Const.SignalDetail.addConditionTitle),
                                                   titleColor: .mountainMeadowColor)
       conditionsViewModels.append(addCondition)
     } else {
@@ -388,7 +388,9 @@ class SignalDetailViewController: BaseViewController {
   private func presentAllStudiesViewController() {
     guard let controller = UIStoryboard.allStudiesViewController() else { return }
     controller.isMultipleSelectionAllowed = false
-    controller.allStudies = chartIQView.getAllStudies()
+    controller.allStudies = chartIQView.getAllStudies().filter { study in
+      return !study.signalIQExclude
+    }
     controller.didAddStudies = { [weak self] studies in
       guard let self = self, let study = studies.first else { return }
       self.updateStudy(newStudy: study)

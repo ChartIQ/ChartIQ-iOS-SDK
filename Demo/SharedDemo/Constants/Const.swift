@@ -465,7 +465,7 @@ public struct Const {
 
     static let changeStudyTitle = "Change Study"
     static let conditionTitle = "Condition"
-    static let addCondtionTitle = "Add Condtion"
+    static let addConditionTitle = "Add Condition"
     static let selectStudyTitle = "Select Study"
     static let descriptionTitle = "Description"
     static let nameTitle = "Name"
