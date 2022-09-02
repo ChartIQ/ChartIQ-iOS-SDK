@@ -250,16 +250,18 @@ internal protocol ChartIQScriptManagerProtocol {
   /// Returns a script that pushes a smth.
   ///
   /// - Parameters:
-  ///   - jsonString: The String Object.
+  ///   - symbol: The String Object
+  ///   - data: The String Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  func getScriptForPush(_ jsonString: String) -> String
+  func getScriptForPush(_ symbol: String, data: String) -> String
 
   /// Returns a script that pushes an update.
   ///
   /// - Parameters:
-  ///   - jsonString: The String Object.
+  ///   - data: The String Object.
+  ///   - useAsLastSale: The Bool Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  func getScriptForPushUpdate(_ jsonString: String) -> String
+  func getScriptForPushUpdate(_ data: String, useAsLastSale: Bool) -> String
 
   // MARK: - Studies
 
@@ -441,10 +443,11 @@ internal protocol ChartIQScriptManagerProtocol {
   ///
   /// - Parameters:
   ///   - json: The String Object.
-  ///   - moreAvailable: The Bool Value.
-  ///   - cb: The String Object.
+  ///   - callbackId: The String Object.
+  ///   - moreAvailable:The Bool Value.
+  ///   - upToDate: The Bool Value
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  func getScriptForFormatJSQuoteData(_ json: String, moreAvailable: Bool, cb: String) -> String
+  func getScriptForFormatJSQuoteData(_ json: String, callbackId: String, moreAvailable: Bool, upToDate: Bool) -> String
 
   /// Returns a script that gets a drawing listener.
   ///
