@@ -1,5 +1,5 @@
 //
-//  ChartIQElliottWave.swift
+//  ChartIQElliottWaveEnums.swift
 //  ChartIQ
 //
 //  Copyright 2012-2020 by ChartIQ, Inc.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: - ChartIQElliottWaveTemplate
+// MARK: - ChartIQElliottWaveTemplate Enum
 
 /// Chart Elliott Wave Template.
 @objc public enum ChartIQElliottWaveTemplate: Int, CaseIterable {
@@ -70,7 +70,7 @@ import Foundation
   }
 }
 
-// MARK: - ChartIQElliottWaveImpulse
+// MARK: - ChartIQElliottWaveImpulse Enum
 
 /// Chart Elliott Wave Impulse.
 @objc public enum ChartIQElliottWaveImpulse: Int, CaseIterable {
@@ -122,7 +122,7 @@ import Foundation
   }
 }
 
-// MARK: - ChartIQElliottWaveCorrective
+// MARK: - ChartIQElliottWaveCorrective Enum
 
 /// Chart Elliott Wave Corrective.
 @objc public enum ChartIQElliottWaveCorrective: Int, CaseIterable {
@@ -159,7 +159,7 @@ import Foundation
   }
 }
 
-// MARK: - ChartIQElliottWaveDecoration
+// MARK: - ChartIQElliottWaveDecoration Enum
 
 /// Chart Elliott Wave Decoration.
 @objc public enum ChartIQElliottWaveDecoration: Int, CaseIterable {

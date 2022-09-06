@@ -194,6 +194,24 @@ class ChartIQEnumsTests: XCTestCase {
     XCTAssertEqual(volume, ChartIQQuoteField.volume.stringValue)
   }
 
+  func testsChartIQQuoteFieldEnumGetDisplayNameValue() {
+    // Given
+    let date = "Date"
+    let close = "Close"
+    let open = "Open"
+    let high = "High"
+    let low = "Low"
+    let volume = "Volume"
+
+    // When // Then
+    XCTAssertEqual(date, ChartIQQuoteField.date.displayName)
+    XCTAssertEqual(close, ChartIQQuoteField.close.displayName)
+    XCTAssertEqual(open, ChartIQQuoteField.open.displayName)
+    XCTAssertEqual(high, ChartIQQuoteField.high.displayName)
+    XCTAssertEqual(low, ChartIQQuoteField.low.displayName)
+    XCTAssertEqual(volume, ChartIQQuoteField.volume.displayName)
+  }
+
   // MARK: - ChartIQStudyParametersType
 
   func testsChartIQStudyParametersTypeEnumGetStringValue() {
@@ -212,6 +230,7 @@ class ChartIQEnumsTests: XCTestCase {
 
   func testsChartIQTimeUnitEnumGetStringValue() {
     // Given
+    let tick = "tick"
     let millisecond = "millisecond"
     let second = "second"
     let minute = "minute"
@@ -220,6 +239,7 @@ class ChartIQEnumsTests: XCTestCase {
     let month = "month"
 
     // When // Then
+    XCTAssertEqual(tick, ChartIQTimeUnit.tick.stringValue)
     XCTAssertEqual(millisecond, ChartIQTimeUnit.millisecond.stringValue)
     XCTAssertEqual(second, ChartIQTimeUnit.second.stringValue)
     XCTAssertEqual(minute, ChartIQTimeUnit.minute.stringValue)
@@ -230,6 +250,7 @@ class ChartIQEnumsTests: XCTestCase {
 
   func testsChartIQTimeUnitEnumInitWithStringValue() {
     // Given
+    let tick = "tick"
     let millisecond = "millisecond"
     let second = "second"
     let minute = "minute"
@@ -240,6 +261,7 @@ class ChartIQEnumsTests: XCTestCase {
     let invalidString = "invalid string"
 
     // When // Then
+    XCTAssertEqual(ChartIQTimeUnit.tick, ChartIQTimeUnit(stringValue: tick))
     XCTAssertEqual(ChartIQTimeUnit.millisecond, ChartIQTimeUnit(stringValue: millisecond))
     XCTAssertEqual(ChartIQTimeUnit.second, ChartIQTimeUnit(stringValue: second))
     XCTAssertEqual(ChartIQTimeUnit.minute, ChartIQTimeUnit(stringValue: minute))
@@ -248,66 +270,6 @@ class ChartIQEnumsTests: XCTestCase {
     XCTAssertEqual(ChartIQTimeUnit.month, ChartIQTimeUnit(stringValue: month))
 
     XCTAssertNil(ChartIQTimeUnit(stringValue: invalidString))
-  }
-
-  // MARK: - ChartIQDrawingParameterType
-
-  func testsChartIQDrawingParameterTypeEnumGetStringValue() {
-    // Given
-    let fillColor = "fillColor"
-    let lineColor = "color"
-    let pattern = "pattern"
-    let lineWidth = "lineWidth"
-    let family = "family"
-    let size = "size"
-    let style = "style"
-    let weight = "weight"
-    let fibs = "fibs"
-    let showLines = "showLines"
-    let waveTemplate = "waveTemplate"
-    let impulse = "impulse"
-    let corrective = "corrective"
-    let decoration = "decoration"
-    let active1 = "active1"
-    let active2 = "active2"
-    let active3 = "active3"
-    let color1 = "color1"
-    let color2 = "color2"
-    let color3 = "color3"
-    let lineWidth1 = "lineWidth1"
-    let lineWidth2 = "lineWidth2"
-    let lineWidth3 = "lineWidth3"
-    let pattern1 = "pattern1"
-    let pattern2 = "pattern2"
-    let pattern3 = "pattern3"
-
-    // When // Then
-    XCTAssertEqual(fillColor, ChartIQDrawingParameterType.fillColor.stringValue)
-    XCTAssertEqual(lineColor, ChartIQDrawingParameterType.lineColor.stringValue)
-    XCTAssertEqual(pattern, ChartIQDrawingParameterType.pattern.stringValue)
-    XCTAssertEqual(lineWidth, ChartIQDrawingParameterType.lineWidth.stringValue)
-    XCTAssertEqual(family, ChartIQDrawingParameterType.family.stringValue)
-    XCTAssertEqual(size, ChartIQDrawingParameterType.size.stringValue)
-    XCTAssertEqual(style, ChartIQDrawingParameterType.style.stringValue)
-    XCTAssertEqual(weight, ChartIQDrawingParameterType.weight.stringValue)
-    XCTAssertEqual(fibs, ChartIQDrawingParameterType.fibs.stringValue)
-    XCTAssertEqual(showLines, ChartIQDrawingParameterType.showLines.stringValue)
-    XCTAssertEqual(waveTemplate, ChartIQDrawingParameterType.waveTemplate.stringValue)
-    XCTAssertEqual(impulse, ChartIQDrawingParameterType.impulse.stringValue)
-    XCTAssertEqual(corrective, ChartIQDrawingParameterType.corrective.stringValue)
-    XCTAssertEqual(decoration, ChartIQDrawingParameterType.decoration.stringValue)
-    XCTAssertEqual(active1, ChartIQDrawingParameterType.active1.stringValue)
-    XCTAssertEqual(active2, ChartIQDrawingParameterType.active2.stringValue)
-    XCTAssertEqual(active3, ChartIQDrawingParameterType.active3.stringValue)
-    XCTAssertEqual(color1, ChartIQDrawingParameterType.color1.stringValue)
-    XCTAssertEqual(color2, ChartIQDrawingParameterType.color2.stringValue)
-    XCTAssertEqual(color3, ChartIQDrawingParameterType.color3.stringValue)
-    XCTAssertEqual(lineWidth1, ChartIQDrawingParameterType.lineWidth1.stringValue)
-    XCTAssertEqual(lineWidth2, ChartIQDrawingParameterType.lineWidth2.stringValue)
-    XCTAssertEqual(lineWidth3, ChartIQDrawingParameterType.lineWidth3.stringValue)
-    XCTAssertEqual(pattern1, ChartIQDrawingParameterType.pattern1.stringValue)
-    XCTAssertEqual(pattern2, ChartIQDrawingParameterType.pattern2.stringValue)
-    XCTAssertEqual(pattern3, ChartIQDrawingParameterType.pattern3.stringValue)
   }
 
   // MARK: - ChartIQCallbackMessage

@@ -78,6 +78,10 @@ class TabBarController: UITabBarController {
   /// for both its standard and edge states.
   private func setupScrollEdgeAppearance() {
     if #available(iOS 15.0, *) {
+      let appearance = UITabBarAppearance()
+      appearance.configureWithOpaqueBackground()
+      appearance.backgroundColor = .ghostWhiteСhineseBlackColor
+      tabBar.standardAppearance = appearance
       tabBar.scrollEdgeAppearance = tabBar.standardAppearance
     }
   }

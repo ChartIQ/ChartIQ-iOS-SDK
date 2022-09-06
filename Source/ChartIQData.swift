@@ -61,16 +61,16 @@ public class ChartIQData: NSObject {
   /// - Parameters:
   ///   - dictionary: The dictionary with data for init Data model.
   public init(dictionary: [String: Any]) {
-    let dt = dictionary["DT"] as? String ?? ""
+    let dt = dictionary[Const.Data.dateParam] as? String ?? ""
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-    let close = dictionary["Close"] as? Double
+    let close = dictionary[Const.Data.closeParam] as? Double
     self.close = close
     self.date = dateFormatter.date(from: dt) ?? Date()
-    self.high = dictionary["High"] as? Double
-    self.low = dictionary["Low"] as? Double
-    self.open = dictionary["Open"] as? Double
-    self.volume = Double(dictionary["Volume"] as? Int ?? 0)
+    self.high = dictionary[Const.Data.highParam] as? Double
+    self.low = dictionary[Const.Data.lowParam] as? Double
+    self.open = dictionary[Const.Data.openParam] as? Double
+    self.volume = Double(dictionary[Const.Data.volumeParam] as? Int ?? 0)
     self.adjClose = close
   }
 
@@ -83,12 +83,12 @@ public class ChartIQData: NSObject {
     let dateString = ChartIQUtils.chartDateFormatter.string(from: date)
     return [
       Const.Data.dateParam: dateString,
-      Const.Data.openParam: open,
-      Const.Data.highParam: high,
-      Const.Data.lowParam: low,
-      Const.Data.closeParam: close,
-      Const.Data.volumeParam: volume,
-      Const.Data.adjCloseParam: adjClose
+      Const.Data.openParam: open as Any,
+      Const.Data.highParam: high as Any,
+      Const.Data.lowParam: low as Any,
+      Const.Data.closeParam: close as Any,
+      Const.Data.volumeParam: volume as Any,
+      Const.Data.adjCloseParam: adjClose as Any
     ]
   }
 

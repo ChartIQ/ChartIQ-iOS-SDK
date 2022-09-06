@@ -14,6 +14,7 @@ import UIKit
 enum ChartRouterDestination {
   case symbols
   case series
+  case signals
   case intervals
   case drawingTools
   case chartStyle
@@ -81,6 +82,8 @@ extension ChartRouter: ChartRouterOutputProtocol {
       presentSearchSymbolsViewController(with: transition)
     case .series:
       presentSeriesViewController(with: transition)
+    case .signals:
+        presentSignalsViewController(with: transition)
     case .intervals:
       presentIntervalsViewController(with: transition)
     case .drawingTools:
@@ -111,6 +114,12 @@ extension ChartRouter: ChartRouterOutputProtocol {
 
   private func presentSeriesViewController(with transition: RouterTransition) {
     guard let controller = UIStoryboard.seriesViewController() else { return }
+    controller.chartIQView = input?.chartIQView
+    openController(controller, with: transition)
+  }
+
+  private func presentSignalsViewController(with transition: RouterTransition) {
+    guard let controller = UIStoryboard.signalsViewController() else { return }
     controller.chartIQView = input?.chartIQView
     openController(controller, with: transition)
   }

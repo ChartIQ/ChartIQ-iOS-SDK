@@ -111,7 +111,7 @@ class StudiesViewController: BaseViewController {
 
   // MARK: - Actions Methods
 
-  @IBAction private func emptyStateAddStudiesButtonAction(_ sender: Any) {
+  @IBAction private func emptyStateAddStudiesButtonTapped(_ sender: Any) {
     presentAllStudiesViewController()
   }
 
@@ -193,7 +193,7 @@ class StudiesViewController: BaseViewController {
     study.parameters?.forEach({ param in
       parameters[param.key] = String(describing: param.value)
     })
-    chartIQView.setStudyParameters(study, parameters: parameters)
+    _ = chartIQView.setStudyParameters(study, parameters: parameters)
     updateStudies()
   }
 

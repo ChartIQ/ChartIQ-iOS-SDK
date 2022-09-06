@@ -46,6 +46,7 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
   private let intervalsButton = ChartButton(type: .system)
 
   private let seriesButton = ChartButton(type: .custom)
+  private let signalsButton = ChartButton(type: .custom)
   private let crosshairButton = ChartButton(type: .custom)
   private let drawToolButton = ChartButton(type: .custom)
   private let fullViewButton = ChartButton(type: .custom)
@@ -173,7 +174,8 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
   }
 
   private func setupRightNavigationButtons() {
-    seriesButton.applyStyle(for: .series, target: self, action: #selector(addSeriesButtonTapped))
+    seriesButton.applyStyle(for: .series, target: self, action: #selector(seriesButtonTapped))
+    signalsButton.applyStyle(for: .signals, target: self, action: #selector(signalsButtonTapped))
     drawToolButton.applyStyle(for: .drawTool, target: self, action: #selector(drawToolButtonTapped))
     crosshairButton.applyStyle(for: .crosshair, target: self, action: #selector(crosshairButtonTapped))
     fullViewButton.applyStyle(for: .fullView, target: self, action: #selector(fullViewButtonTapped))
@@ -208,7 +210,8 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
       settingsButton,
       drawToolButton,
       crosshairButton,
-      seriesButton
+      seriesButton,
+      signalsButton
     ]
   }
 
@@ -223,7 +226,8 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
     navigationView?.buttons = [
       settingsButton,
       drawToolButton,
-      crosshairButton
+      crosshairButton,
+      signalsButton
     ]
   }
 
@@ -233,6 +237,7 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
       UIBarButtonItem(customView: drawToolButton),
       UIBarButtonItem(customView: crosshairButton),
       UIBarButtonItem(customView: seriesButton),
+      UIBarButtonItem(customView: signalsButton),
       UIBarButtonItem(customView: studiesButton),
       UIBarButtonItem(customView: chartStyleButton)
     ]
@@ -249,6 +254,7 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
       UIBarButtonItem(customView: drawToolButton),
       UIBarButtonItem(customView: crosshairButton),
       UIBarButtonItem(customView: seriesButton),
+      UIBarButtonItem(customView: signalsButton),
       UIBarButtonItem(customView: studiesButton),
       UIBarButtonItem(customView: chartStyleButton)
     ]
@@ -350,8 +356,12 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
     chartRouter.route(to: .intervals, as: .present)
   }
 
-  @objc private func addSeriesButtonTapped() {
+  @objc private func seriesButtonTapped() {
     chartRouter.route(to: .series, as: .present)
+  }
+
+  @objc private func signalsButtonTapped() {
+    chartRouter.route(to: .signals, as: .present)
   }
 
   @objc private func crosshairButtonTapped() {
@@ -384,9 +394,8 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
   }
 
   private func updateNavigationButtons(isEnabled: Bool) {
-    [
-      symbolsButton, intervalsButton, seriesButton, drawToolButton, crosshairButton,
-      fullViewButton, moreButton, studiesButton, settingsButton, chartStyleButton
+    [symbolsButton, intervalsButton, seriesButton, signalsButton, drawToolButton, crosshairButton,
+     fullViewButton, moreButton, studiesButton, settingsButton, chartStyleButton
     ].forEach { button in
       button.isEnabled = isEnabled
     }
@@ -559,10 +568,6 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
     moreButton.setImage(UIImage.Chart.moreInactiveImage, for: .normal)
   }
 
-  private func updateNativeNavigationBar(isSeparatorHidden: Bool) {
-    navigationController?.navigationBar.shadowImage = isSeparatorHidden ? UIImage() : nil
-  }
-
   private func updateNavigationView() {
     let image = isNavigationViewVisible ? UIImage.Chart.moreActiveImage : UIImage.Chart.moreInactiveImage
     moreButton.setImage(image, for: .normal)
@@ -573,12 +578,12 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
     moreButton.isUserInteractionEnabled = false
     navigationViewContainer?.isHidden = false
     navigationViewTopConstraint.constant = isShow ? 0 : -Const.NavigationView.height
-    isShow ? navigationController?.navigationBar.shadowImage = UIImage() : ()
+    isShow ? updateNativeNavigationBar(isSeparatorHidden: true) : ()
     UIView.animate(withDuration: AnimationTime.quiteFast.rawValue, animations: {
       self.view.layoutIfNeeded()
     }, completion: { _ in
       !isShow ? self.navigationViewContainer?.isHidden = true : ()
-      !isShow ? self.navigationController?.navigationBar.shadowImage = nil : ()
+      !isShow ? self.updateNativeNavigationBar(isSeparatorHidden: false) : ()
       self.moreButton.isUserInteractionEnabled = true
     })
   }

@@ -63,13 +63,13 @@ class TextColorTableCell: UITableViewCell {
 
   internal func setupCell(withViewModel viewModel: TableCellViewModelProtocol) {
     titleLabel.text = viewModel.title.capitalizeFirst()
-    if let colorCellViewModel = viewModel as? ColorTableCellViewModel {
-      colorView.backgroundColor = colorCellViewModel.color
+    if let colorViewModel = viewModel as? ColorTableCellViewModel {
+      colorView.backgroundColor = colorViewModel.color
       textField.isHidden = true
-    } else if let textColorCellViewModel = viewModel as? TextColorTableCellViewModel {
-      colorView.backgroundColor = textColorCellViewModel.color
+    } else if let textColorViewModel = viewModel as? TextColorTableCellViewModel {
+      colorView.backgroundColor = textColorViewModel.color
       textField.isHidden = false
-      textField.text = String(textColorCellViewModel.number)
+      textField.text = String(textColorViewModel.number)
       textField.keyboardType = .numbersAndPunctuation
       textField.inputAccessoryView = UIView.doneAccessoryView(target: self, action: #selector(doneButtonTapped))
     }

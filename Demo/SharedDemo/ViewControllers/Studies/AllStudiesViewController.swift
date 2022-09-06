@@ -21,6 +21,7 @@ class AllStudiesViewController: BaseViewController {
 
   internal var allStudies: [ChartIQStudy] = []
   internal var didAddStudies: (([ChartIQStudy]) -> Void)?
+  internal var isMultipleSelectionAllowed: Bool = true
 
   // MARK: - Private Properties
 
@@ -76,11 +77,17 @@ class AllStudiesViewController: BaseViewController {
     tableView.delegate = self
     tableView.dataSource = self
 
+    tableView.tableHeaderView = UIView()
+    tableView.tableFooterView = UIView()
+
+    tableView.allowsMultipleSelection = isMultipleSelectionAllowed
+
     searchController.searchResultsUpdater = self
     searchController.hidesNavigationBarDuringPresentation = true
     definesPresentationContext = true
 
     updateSearchBar(isHidden: true)
+    validateAll()
   }
 
   // MARK: - Actions Methods
@@ -132,6 +139,10 @@ class AllStudiesViewController: BaseViewController {
     view.stopActivityIndicator()
     dismiss(animated: true, completion: nil)
   }
+
+  private func validateAll() {
+    doneBarButtonItem?.isEnabled = !selectedStudies.isEmpty
+  }
 }
 
 // MARK: - UITableViewDataSource
@@ -173,6 +184,7 @@ extension AllStudiesViewController: UITableViewDelegate {
     let studies = isFiltering ? filteredStudies : allStudies
     let selectedStudy = studies[indexPath.row]
     selectedStudies.append(selectedStudy)
+    validateAll()
   }
 
   func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -180,6 +192,7 @@ extension AllStudiesViewController: UITableViewDelegate {
     let studies = isFiltering ? filteredStudies : allStudies
     let deSelectedStudy = studies[indexPath.row]
     selectedStudies.removeAll { $0 == deSelectedStudy }
+    validateAll()
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

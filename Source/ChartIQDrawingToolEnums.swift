@@ -1,5 +1,5 @@
 //
-//  ChartIQDrawingTool.swift
+//  ChartIQDrawingToolEnums.swift
 //  ChartIQ
 //
 //  Copyright 2012-2020 by ChartIQ, Inc.
@@ -121,6 +121,9 @@ import Foundation
   /// The vertical option.
   case vertical
 
+  /// The volumeProfile option.
+  case volumeProfile
+
   /// The measure option.
   case measure
 
@@ -199,6 +202,8 @@ import Foundation
       return "trendline"
     case .vertical:
       return "vertical"
+    case .volumeProfile:
+      return "volumeprofile"
     case .measure:
       return "measure"
     }
@@ -279,6 +284,8 @@ import Foundation
       return "Trend Line"
     case .vertical:
       return "Vertical"
+    case .volumeProfile:
+      return "Volume Profile"
     case .measure:
       return "Measure"
     }
@@ -359,6 +366,8 @@ import Foundation
       return .text
     case .vertical:
       return .lines
+    case .volumeProfile:
+      return .statistics
     case .measure:
       return .text
     }
@@ -406,6 +415,7 @@ import Foundation
       "tirone": .tironeLevels,
       "trendline": .trend,
       "vertical": .vertical,
+      "volumeprofile": .volumeProfile,
       "measure": .measure
     ]
     if let value = dictionary[stringValue] {
@@ -416,7 +426,7 @@ import Foundation
   }
 }
 
-// MARK: - ChartIQDrawingToolType
+// MARK: - ChartIQDrawingToolType Enum
 
 /// Chart drawing tool type.
 @objc public enum ChartIQDrawingToolType: Int {
@@ -454,6 +464,153 @@ import Foundation
       return "Markings"
     case .lines:
       return "Lines"
+    }
+  }
+}
+
+// MARK: - ChartIQDrawingParameterType Enum
+
+/// Chart drawing parameter type.
+@objc public enum ChartIQDrawingParameterType: Int {
+
+  /// The fillColor option.
+  case fillColor
+
+  /// The lineColor option.
+  case lineColor
+
+  /// The pattern option.
+  case pattern
+
+  /// The lineWidth option.
+  case lineWidth
+
+  /// The family option.
+  case family
+
+  /// The size option.
+  case size
+
+  /// The style option.
+  case style
+
+  /// The weight option.
+  case weight
+
+  /// The fibs option.
+  case fibs
+
+  /// The showLines option.
+  case showLines
+
+  /// The waveTemplate option.
+  case waveTemplate
+
+  /// The impulse option.
+  case impulse
+
+  /// The corrective option.
+  case corrective
+
+  /// The decoration option.
+  case decoration
+
+  /// The active1 option.
+  case active1
+
+  /// The active2 option.
+  case active2
+
+  /// The active3 option.
+  case active3
+
+  /// The color1 option.
+  case color1
+
+  /// The color2 option.
+  case color2
+
+  /// The color3 option.
+  case color3
+
+  /// The lineWidth1 option.
+  case lineWidth1
+
+  /// The lineWidth2 option.
+  case lineWidth2
+
+  /// The lineWidth3 option.
+  case lineWidth3
+
+  /// The pattern1 option.
+  case pattern1
+
+  /// The pattern2 option.
+  case pattern2
+
+  /// The pattern3 option.
+  case pattern3
+
+  /// The priceBuckets option.
+  case priceBuckets
+
+  /// Chart drawing parameter type string value.
+  public var stringValue: String {
+    switch self {
+    case .fillColor:
+      return "fillColor"
+    case .lineColor:
+      return "color"
+    case .pattern:
+      return "pattern"
+    case .lineWidth:
+      return "lineWidth"
+    case .family:
+      return "family"
+    case .size:
+      return "size"
+    case .style:
+      return "style"
+    case .weight:
+      return "weight"
+    case .fibs:
+      return "fibs"
+    case .showLines:
+      return "showLines"
+    case .waveTemplate:
+      return "waveTemplate"
+    case .impulse:
+      return "impulse"
+    case .corrective:
+      return "corrective"
+    case .decoration:
+      return "decoration"
+    case .active1:
+      return "active1"
+    case .active2:
+      return "active2"
+    case .active3:
+      return "active3"
+    case .color1:
+      return "color1"
+    case .color2:
+      return "color2"
+    case .color3:
+      return "color3"
+    case .lineWidth1:
+      return "lineWidth1"
+    case .lineWidth2:
+      return "lineWidth2"
+    case .lineWidth3:
+      return "lineWidth3"
+    case .pattern1:
+      return "pattern1"
+    case .pattern2:
+      return "pattern2"
+    case .pattern3:
+      return "pattern3"
+    case .priceBuckets:
+      return "priceBuckets"
     }
   }
 }

@@ -554,28 +554,43 @@ public class ChartIQView: UIView {
 
   // MARK: - Public Studies
 
-  /// Returns an array of all the studies with a shortName derived from the key.
+  /// Returns an array of all studies.
   ///
   /// - Returns: Array of ChartIQStudy models.
   public func getAllStudies() -> [ChartIQStudy] {
     return allStudies
   }
 
-  /// Lists studies added on the Chart.
+  /// Adds a specific study to the chart.
   ///
-  /// - Returns: The array of ChartIQStudy models.
-  public func getActiveStudies() -> [ChartIQStudy] {
-    var addedStudy: [ChartIQStudy] = []
-    let script = scriptManager.getScriptForActiveStudies()
-    if let listString = webView.evaluateJavaScriptWithReturn(script), !listString.isEmpty {
-      let list = listString.components(separatedBy: Const.General.doubleVerticalLinesSymbol)
-      list.forEach({ study in
-        if let studyObject = ChartIQStudy(jsStudyString: study) {
-          addedStudy.append(studyObject)
-        }
-      })
+  /// - Parameters:
+  ///   - study: The ChartIQStudy model.
+  ///   - forClone: The Bool value indicating whether a study will be added for cloning or for adding.
+  ///   - inputs: Inputs for the study instance. If nil, it will use the paramters defined in CIQ.Studies.DialogHelper.
+  ///   - outputs: Outputs for the study instance. If nil, it will use the paramters defined in CIQ.Studies.DialogHelper.
+  /// - Throws: ChartIQStudyError.
+  public func addStudy(_ study: ChartIQStudy,
+                       forClone: Bool = false,
+                       inputs: [String: Any]? = nil,
+                       outputs: [String: Any]? = nil) throws {
+    let studyName = forClone ? study.originalName : study.shortName
+    var studyInputs = Const.Study.nullParam
+    var studyOutputs = Const.Study.nullParam
+    if let inputs = inputs,
+       let jsonData = try? JSONSerialization.data(withJSONObject: inputs, options: .prettyPrinted),
+       let jsonString = String(data: jsonData, encoding: .utf8) {
+      studyInputs = jsonString
     }
-    return addedStudy
+    if let outputs = outputs,
+       let jsonData = try? JSONSerialization.data(withJSONObject: outputs, options: .prettyPrinted),
+       let jsonString = String(data: jsonData, encoding: .utf8) {
+      studyOutputs = jsonString
+    }
+    if !allStudies.contains(where: { $0.shortName == studyName }) {
+      throw ChartIQStudyError.studyNotFound
+    }
+    let script = scriptManager.getScriptForAddStudy(studyName, studyInputs: studyInputs, studyOutputs: studyOutputs)
+    webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
   /// Will return the default parameters of a study if it is not active, or actual parameters for an active study.
@@ -621,41 +636,33 @@ public class ChartIQView: UIView {
   /// - Parameters:
   ///   - study: The ChartIQStudy model.
   ///   - parameter: The parameter name that must be defined in CIQ.Studies.DialogHelper.
-  public func setStudyParameters(_ study: ChartIQStudy, parameters: [String: String]) {
+  /// - Returns: The new ChartIQStudy model with updated parameters.
+  public func setStudyParameters(_ study: ChartIQStudy, parameters: [String: String]) -> ChartIQStudy? {
     let script = scriptManager.getScriptForSetStudyParameters(study, parameters: parameters)
-    webView.evaluateJavaScript(script, completionHandler: nil)
+    if let updatedStudyRawString = webView.evaluateJavaScriptWithReturn(script),
+       !updatedStudyRawString.isEmpty, let data = updatedStudyRawString.data(using: .utf8),
+       let updatedStudyDictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any],
+       let updatedStudy = ChartIQStudy(dictionary: updatedStudyDictionary) {
+      return updatedStudy
+    }
+    return nil
   }
 
-  /// Adds a specific study to the chart.
+  /// Returns an array of active studies added on the Chart.
   ///
-  /// - Parameters:
-  ///   - study: The ChartIQStudy model.
-  ///   - forClone: The Bool value indicating whether a study will be added for cloning or for adding.
-  ///   - inputs: Inputs for the study instance. If nil, it will use the paramters defined in CIQ.Studies.DialogHelper.
-  ///   - outputs: Outputs for the study instance. If nil, it will use the paramters defined in CIQ.Studies.DialogHelper.
-  /// - Throws: ChartIQStudyError.
-  public func addStudy(_ study: ChartIQStudy,
-                       forClone: Bool = false,
-                       inputs: [String: Any]? = nil,
-                       outputs: [String: Any]? = nil) throws {
-    let studyName = forClone ? study.originalName : study.shortName
-    var studyInputs = Const.Study.nullParam
-    var studyOutputs = Const.Study.nullParam
-    if let inputs = inputs,
-       let jsonData = try? JSONSerialization.data(withJSONObject: inputs, options: .prettyPrinted),
-       let jsonString = String(data: jsonData, encoding: .utf8) {
-      studyInputs = jsonString
+  /// - Returns: The array of ChartIQStudy models.
+  public func getActiveStudies() -> [ChartIQStudy] {
+    var activeStudies: [ChartIQStudy] = []
+    let script = scriptManager.getScriptForActiveStudies()
+    if let activeStudiesRawString = webView.evaluateJavaScriptWithReturn(script), !activeStudiesRawString.isEmpty {
+      let activeStudiesString = activeStudiesRawString.components(separatedBy: Const.General.doubleVerticalLinesSymbol)
+      activeStudiesString.forEach({ studyString in
+        if let activeStudy = ChartIQStudy(jsStudyString: studyString) {
+          activeStudies.append(activeStudy)
+        }
+      })
     }
-    if let outputs = outputs,
-       let jsonData = try? JSONSerialization.data(withJSONObject: outputs, options: .prettyPrinted),
-       let jsonString = String(data: jsonData, encoding: .utf8) {
-      studyOutputs = jsonString
-    }
-    if !allStudies.contains(where: { $0.shortName == studyName }) {
-      throw ChartIQStudyError.studyNotFound
-    }
-    let script = scriptManager.getScriptForAddStudy(studyName, studyInputs: studyInputs, studyOutputs: studyOutputs)
-    webView.evaluateJavaScript(script, completionHandler: nil)
+    return activeStudies
   }
 
   /// Removes an active study in the chart engine's layout from the chart.
@@ -670,6 +677,71 @@ public class ChartIQView: UIView {
   /// Convenience function to remove all studies on the chart at once.
   public func removeAllStudies() {
     let script = scriptManager.getScriptForRemoveAllStudies()
+    webView.evaluateJavaScript(script, completionHandler: nil)
+  }
+
+  // MARK: - Public Signals
+
+  /// Creates a default study and converts it into an signal study.
+  /// Add an active study as a signal in the chart engine's layout.
+  ///
+  /// - Parameters:
+  ///   - study: The ChartIQStudy model.
+  /// - Returns: The full ChartIQStudy model with all parameters.
+  public func addSignalStudy(_ study: ChartIQStudy) -> ChartIQStudy? {
+    let script = scriptManager.getScriptForAddSignalStudy(study)
+    if let activeStudyRawString = webView.evaluateJavaScriptWithReturn(script),
+       !activeStudyRawString.isEmpty, let data = activeStudyRawString.data(using: .utf8),
+       let activeStudyDictionary = (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any],
+       let activeStudy = ChartIQStudy(dictionary: activeStudyDictionary) {
+      return activeStudy
+    }
+    return nil
+  }
+
+  /// Save a signal in the chart engine's layout.
+  ///
+  /// - Parameters:
+  ///   - signal: The ChartIQSignal model.
+  ///   - isEdit: The Bool value indicates whether we save or edit signal.
+  public func saveSignal(_ signal: ChartIQSignal, isEdit: Bool) {
+    let script = scriptManager.getScriptForSaveSignal(signal, isEdit: isEdit)
+    webView.evaluateJavaScript(script)
+  }
+
+  /// Returns an array of active signals added on the chart.
+  ///
+  /// - Returns: The array of ChartIQSignal models.
+  public func getActiveSignals() -> [ChartIQSignal] {
+    var activeSignals: [ChartIQSignal] = []
+    let script = scriptManager.getScriptForActiveSignals()
+    if let activeSignalsJsonString = webView.evaluateJavaScriptWithReturn(script), !activeSignalsJsonString.isEmpty,
+       let data = activeSignalsJsonString.data(using: .utf8),
+       let activeSignalsDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
+      activeSignalsDict.forEach({ signalDictionary in
+        if let activeSignal = ChartIQSignal(dictionary: signalDictionary) {
+          activeSignals.append(activeSignal)
+        }
+      })
+    }
+    return activeSignals
+  }
+
+  /// Toggle an active signal study in the chart engine's layout.
+  ///
+  /// - Parameters:
+  ///   - signal: The ChartIQSignal model.
+  public func toggleSignal(_ signal: ChartIQSignal) {
+    let script = scriptManager.getScriptForToggleSignal(signal)
+    webView.evaluateJavaScript(script, completionHandler: nil)
+  }
+
+  /// Removes an active signal in the chart engine's layout from the chart.
+  ///
+  /// - Parameters:
+  ///   - signal: The ChartIQSignal model.
+  public func removeSignal(_ signal: ChartIQSignal) {
+    let script = scriptManager.getScriptForRemoveSignal(signal)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 

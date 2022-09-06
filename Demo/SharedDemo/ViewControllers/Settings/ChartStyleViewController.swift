@@ -54,6 +54,9 @@ class ChartStyleViewController: BaseViewController {
     navigationItem.title = locManager.localize(Const.ChartStyle.screenTitle)
     tableView.backgroundColor = .ghostWhiteСhineseBlackColor
 
+    tableView.tableHeaderView = UIView()
+    tableView.tableFooterView = UIView()
+
     if isPresented {
       cancelBarButtonItem = UIBarButtonItem(title: locManager.localize(Const.General.cancelTitle),
                                             style: .plain,

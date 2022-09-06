@@ -99,7 +99,7 @@ class SeriesViewController: BaseViewController {
     presentSearchSymbolsViewController()
   }
 
-  @IBAction private func emptyStateAddSeriesButtonAction(_ sender: Any) {
+  @IBAction private func emptyStateAddSeriesButtonTapped(_ sender: Any) {
     presentSearchSymbolsViewController()
   }
 

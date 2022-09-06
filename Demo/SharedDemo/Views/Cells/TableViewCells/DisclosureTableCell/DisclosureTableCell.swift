@@ -30,9 +30,9 @@ class DisclosureTableCell: UITableViewCell {
   // MARK: - Internal Methods
 
   internal func setupCell(withViewModel viewModel: TableCellViewModelProtocol) {
-    guard let disclosureCellViewModel = viewModel as? DisclosureTableCellViewModel else { return }
-    textLabel?.text = disclosureCellViewModel.title
-    detailTextLabel?.text = disclosureCellViewModel.detailTitle
+    guard let disclosureViewModel = viewModel as? DisclosureTableCellViewModel else { return }
+    textLabel?.text = disclosureViewModel.title
+    detailTextLabel?.text = disclosureViewModel.detailTitle
     accessoryType = .disclosureIndicator
   }
 }

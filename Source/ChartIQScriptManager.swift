@@ -512,6 +512,58 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
     return script
   }
 
+  // MARK: - Signals
+
+  /// Returns a script that adds a study as a signal.
+  ///
+  /// - Parameters:
+  ///   - study: The ChartIQStudy model.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  internal func getScriptForAddSignalStudy(_ study: ChartIQStudy) -> String {
+    let script = mobileBridgeNameSpace + ".addStudyAsSignal('\(study.shortName)');"
+    return script
+  }
+
+  /// Returns a script that save a signal.
+  ///
+  /// - Parameters:
+  ///   - signal: The ChartIQSignal model.
+  ///   - isEdit: The Bool value.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  internal func getScriptForSaveSignal(_ signal: ChartIQSignal, isEdit: Bool) -> String {
+    let signalJsonString = signal.toJSONString()
+    let script = mobileBridgeNameSpace + ".saveSignal('\(signal.study.fullName)','\(signalJsonString)','\(isEdit)');"
+    return script
+  }
+
+  /// Returns a script that gets active signals.
+  ///
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  internal func getScriptForActiveSignals() -> String {
+    let script = mobileBridgeNameSpace + ".getActiveSignals();"
+    return script
+  }
+
+  /// Returns a script that toggle signal study.
+  ///
+  /// - Parameters:
+  ///   - signal: The ChartIQSignal model.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  internal func getScriptForToggleSignal(_ signal: ChartIQSignal) -> String {
+    let script = mobileBridgeNameSpace + ".toggleSignalStudy('\(signal.study.fullName)');"
+    return script
+  }
+
+  /// Returns a script that removes a signal.
+  ///
+  /// - Parameters:
+  ///   - signal: The ChartIQSignal model.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  internal func getScriptForRemoveSignal(_ signal: ChartIQSignal) -> String {
+    let script = mobileBridgeNameSpace + ".removeSignal('\(signal.study.fullName)');"
+    return script
+  }
+
   // MARK: - Drawings
 
   /// Returns a script that gets a current drawing tool.
@@ -645,7 +697,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
   ///
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   internal func getScriptForStudyObjects() -> String {
-    let script = "JSON.stringify(CIQ.Studies.studyLibrary);"
+    let script = mobileBridgeNameSpace + ".getStudyList();"
     return script
   }
 

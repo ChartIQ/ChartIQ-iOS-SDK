@@ -21,12 +21,11 @@ internal extension WKWebView {
     var jsValue: String?
 
     evaluateJavaScript(javaScriptString) { result, error in
-      if error == nil {
-        if result != nil {
-          jsValue = result as? String
-        }
-      } else {
+      if let error = error {
+        debugPrint(error)
         jsValue = nil
+      } else if let result = result as? String {
+        jsValue = result
       }
       finished = true
     }

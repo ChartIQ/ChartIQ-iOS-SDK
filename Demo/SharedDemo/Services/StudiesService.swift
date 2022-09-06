@@ -36,34 +36,34 @@ class StudiesService {
     self.isDarkTheme = isDarkTheme
     switch optionType {
     case .text:
-      let title = parameters[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
-      let text = parameters[ChartIQConst.StudyParameter.valueKey] as? String ?? ""
+      let title = parameters[ChartIQConst.Study.nameKey] as? String ?? ""
+      let text = parameters[ChartIQConst.Study.valueKey] as? String ?? ""
       viewModel = TextTableCellViewModel(title: title, text: text)
     case .number:
-      let title = parameters[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
-      let number = parameters[ChartIQConst.StudyParameter.valueKey] as? Double ?? 0
+      let title = parameters[ChartIQConst.Study.nameKey] as? String ?? ""
+      let number = parameters[ChartIQConst.Study.valueKey] as? Double ?? 0
       viewModel = NumberTableCellViewModel(title: title, number: number)
     case .color:
-      let title = parameters[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
+      let title = parameters[ChartIQConst.Study.nameKey] as? String ?? ""
       let color = UIColor.getDynamicColor(from: parameters,
-                                          colorKey: ChartIQConst.StudyParameter.colorKey,
+                                          colorKey: ChartIQConst.Study.colorKey,
                                           isDarkTheme: isDarkTheme)
       viewModel = ColorTableCellViewModel(title: title, color: color)
     case .textColor:
-      let title = parameters[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
-      let number = parameters[ChartIQConst.StudyParameter.valueKey] as? Int ?? 0
+      let title = parameters[ChartIQConst.Study.nameKey] as? String ?? ""
+      let number = parameters[ChartIQConst.Study.valueKey] as? Int ?? 0
       let color = UIColor.getDynamicColor(from: parameters,
-                                          colorKey: ChartIQConst.StudyParameter.colorKey,
+                                          colorKey: ChartIQConst.Study.colorKey,
                                           isDarkTheme: isDarkTheme)
       viewModel = TextColorTableCellViewModel(title: title, number: number, color: color)
     case .toggle:
-      let title = parameters[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
-      let isToggleOn = parameters[ChartIQConst.StudyParameter.valueKey] as? Bool ?? false
+      let title = parameters[ChartIQConst.Study.nameKey] as? String ?? ""
+      let isToggleOn = parameters[ChartIQConst.Study.valueKey] as? Bool ?? false
       viewModel = ToggleTableCellViewModel(title: title, isToggleOn: isToggleOn)
     case .select:
-      let title = parameters[ChartIQConst.StudyParameter.nameKey] as? String ?? ""
+      let title = parameters[ChartIQConst.Study.nameKey] as? String ?? ""
       var detailTitle = ""
-      if let value = parameters[ChartIQConst.StudyParameter.valueKey] {
+      if let value = parameters[ChartIQConst.Study.valueKey] {
         detailTitle = String(describing: value)
       }
       viewModel = SelectTableCellViewModel(title: title, detailTitle: detailTitle)
@@ -74,14 +74,14 @@ class StudiesService {
   // MARK: - Private Methods
 
   private func getStudyDetailType(from parameters: [String: Any]) -> StudyDetailType? {
-    var type = ChartIQConst.StudyParameter.colorKey
-    if let typeParameter = parameters[ChartIQConst.StudyParameter.typeKey] as? String {
+    var type = ChartIQConst.Study.colorKey
+    if let typeParameter = parameters[ChartIQConst.Study.typeKey] as? String {
       type = typeParameter
     }
-    if parameters[ChartIQConst.StudyParameter.colorKey] != nil,
-       parameters[ChartIQConst.StudyParameter.typeKey] != nil,
-       parameters[ChartIQConst.StudyParameter.typeKey] as? String == ChartIQConst.StudyParameter.textKey {
-      type = ChartIQConst.StudyParameter.colorTextKey
+    if parameters[ChartIQConst.Study.colorKey] != nil,
+       parameters[ChartIQConst.Study.typeKey] != nil,
+       parameters[ChartIQConst.Study.typeKey] as? String == ChartIQConst.Study.textKey {
+      type = ChartIQConst.Study.colorTextKey
     }
     let optionType = StudyDetailType(rawValue: type)
     return optionType

@@ -137,11 +137,10 @@ class SettingsViewController: BaseViewController {
     tableView.reloadRows(at: [visibleIndexPath], with: .fade)
   }
 
-  private func updateToggleCell(isToggleOn: Bool, atIndex index: Int) {
-    let indexPath = IndexPath(item: index, section: TableSection.second.rawValue)
-    guard let tableSection = TableSection(rawValue: indexPath.section),
-      let toggleCellViewModel = settings[tableSection]?[indexPath.row] as? ToggleTableCellViewModel else { return }
-    toggleCellViewModel.isToggleOn = isToggleOn
+  private func updateSelectedToggle(with toggleViewModel: ToggleTableCellViewModel,
+                                    isToggleOn: Bool,
+                                    at indexPath: IndexPath) {
+    toggleViewModel.isToggleOn = isToggleOn
     if indexPath.row == 0 {
       chartIQView.setScale(isToggleOn ? .log : .linear)
     } else if indexPath.row == 1 {
@@ -205,22 +204,22 @@ class SettingsViewController: BaseViewController {
 
   private func getTableCell(from settingViewModel: TableCellViewModelProtocol,
                             at indexPath: IndexPath) -> UITableViewCell {
-    if let disclosureCellViewModel = settingViewModel as? DisclosureTableCellViewModel {
+    if let disclosureViewModel = settingViewModel as? DisclosureTableCellViewModel {
       guard let disclosureCell = tableView.dequeueReusableCell(withIdentifier: Const.DisclosureTableCell.cellId,
                                                                for: indexPath) as? DisclosureTableCell else {
-                                                                return UITableViewCell()
+        return UITableViewCell()
       }
-      disclosureCell.setupCell(withViewModel: disclosureCellViewModel)
+      disclosureCell.setupCell(withViewModel: disclosureViewModel)
       return disclosureCell
     }
-    if let toggleCellViewModel = settingViewModel as? ToggleTableCellViewModel {
+    if let toggleViewModel = settingViewModel as? ToggleTableCellViewModel {
       guard let toggleCell = tableView.dequeueReusableCell(withIdentifier: Const.ToggleTableCell.cellId,
                                                            for: indexPath) as? ToggleTableCell else {
-                                                            return UITableViewCell()
+        return UITableViewCell()
       }
-      toggleCell.setupCell(withViewModel: toggleCellViewModel)
-      toggleCell.toggleDidChange = { [weak self] isToogleOn in
-        self?.updateToggleCell(isToggleOn: isToogleOn, atIndex: indexPath.row)
+      toggleCell.setupCell(withViewModel: toggleViewModel)
+      toggleCell.didChangeToggle = { [weak self] isToogleOn in
+        self?.updateSelectedToggle(with: toggleViewModel, isToggleOn: isToogleOn, at: indexPath)
       }
       return toggleCell
     }

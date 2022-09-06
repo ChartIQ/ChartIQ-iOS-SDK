@@ -28,6 +28,9 @@ public class ChartIQStudy: NSObject {
   /// The ChartIQStudy originalName parameter.
   public var originalName: String = ""
 
+  /// The ChartIQStudy uniqueId parameter.
+  public var uniqueId: String?
+
   /// The ChartIQStudy inputs parameter.
   public var inputs: [String: Any]?
 
@@ -37,6 +40,8 @@ public class ChartIQStudy: NSObject {
   /// The ChartIQStudy parameters parameter.
   public var parameters: [String: Any]?
 
+  public var signalIQExclude: Bool = false
+
   // MARK: - Initializers
 
   /// Init Study model with all parameters.
@@ -45,21 +50,26 @@ public class ChartIQStudy: NSObject {
   ///   - shortName: The String Object.
   ///   - fullName: The String Object.
   ///   - originalName: The String Object.
-  ///   - inputs: The Dictionary Object.
-  ///   - outputs: The Dictionary Object.
-  ///   - parameters: The Dictionary Object.
+  ///   - uniqueId: The String Object.
+  ///   - inputs: The Dictionary Object. Can be nil.
+  ///   - outputs: The Dictionary Object. Can be nil.
+  ///   - parameters: The Dictionary Object. Can be nil.
   public init(shortName: String,
               fullName: String,
               originalName: String,
-              inputs: [String: Any]?,
-              outputs: [String: Any]?,
-              parameters: [String: Any]?) {
+              uniqueId: String,
+              inputs: [String: Any]? = nil,
+              outputs: [String: Any]? = nil,
+              parameters: [String: Any]? = nil,
+              signalIQExclude: Bool) {
     self.shortName = shortName
     self.fullName = fullName
     self.originalName = originalName
+    self.uniqueId = uniqueId
     self.inputs = inputs
     self.outputs = outputs
     self.parameters = parameters
+    self.signalIQExclude = signalIQExclude
   }
 
   /// Init Study model with js study string parameter.
@@ -112,5 +122,28 @@ public class ChartIQStudy: NSObject {
     if let parameters = dictionary[Const.Study.parametersParam] as? [String: Any]? {
       self.parameters = parameters
     }
+    if let signalIQExclude = dictionary[Const.Study.signalIQExclude] as? Bool {
+      self.signalIQExclude = signalIQExclude
+    }
+  }
+
+  /// Init Study model with dictionary.
+  ///
+  /// - Parameters:
+  ///   - dictionary: The dictionary with data for init Study model.
+  public init?(dictionary: [String: Any]) {
+    guard let name = dictionary[Const.Study.typeParam] as? String,
+          let fullName = dictionary[Const.Study.studyNameParam] as? String,
+          let outputs = dictionary[Const.Study.outputsParam] as? [String: Any]?,
+          let uniqueId = dictionary[Const.Study.uniqueIdParam] as? String else { return nil }
+    self.originalName = name
+    self.fullName = fullName
+    self.uniqueId = uniqueId
+    let fullNameComponents = self.fullName.components(separatedBy: Const.General.zwnjSymbol)
+    if fullNameComponents.count > 2 {
+      self.name = fullNameComponents[1]
+      self.nameParams = fullNameComponents[2]
+    }
+    self.outputs = outputs
   }
 }

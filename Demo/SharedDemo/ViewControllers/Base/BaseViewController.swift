@@ -45,9 +45,26 @@ class BaseViewController: UIViewController {
 
   @objc func languageDidChange() {}
 
+  // MARK: - Internal Methods
+
+  internal func updateNativeNavigationBar(isSeparatorHidden: Bool) {
+    guard let navigationBar = navigationController?.navigationBar else { return }
+    if #available(iOS 15.0, *) {
+      let navigationBarAppearance = UINavigationBarAppearance()
+      navigationBarAppearance.backgroundColor = .ghostWhiteСhineseBlackColor
+      if isSeparatorHidden {
+        navigationBarAppearance.shadowColor = .clear
+      }
+      navigationBar.scrollEdgeAppearance = navigationBarAppearance
+    } else {
+      navigationBar.shadowImage = isSeparatorHidden ? UIImage() : nil
+    }
+  }
+
   // MARK: Deinit
 
   deinit {
-    debugPrint(String(describing: self))
+//    Uncomment if needed.
+//    debugPrint(String(describing: self))
   }
 }

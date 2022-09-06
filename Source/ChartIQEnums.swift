@@ -8,9 +8,9 @@
 
 import Foundation
 
-// MARK: - ChartIQEnums Enums
 // MARK: - Public Enums
-// MARK: - ChartIQDataMethod
+
+// MARK: - ChartIQDataMethod Enum
 
 /// Chart data method.
 @objc public enum ChartIQDataMethod: Int {
@@ -22,7 +22,7 @@ import Foundation
   case pull
 }
 
-// MARK: - ChartIQScale
+// MARK: - ChartIQScale Enum
 
 /// Chart scale.
 @objc public enum ChartIQScale: Int {
@@ -60,7 +60,7 @@ import Foundation
   }
 }
 
-// MARK: - ChartIQStudyError
+// MARK: - ChartIQStudyError Enum
 
 /// Chart study error.
 public enum ChartIQStudyError: Error {
@@ -75,7 +75,7 @@ public enum ChartIQStudyError: Error {
   case studyNotFound
 }
 
-// MARK: - ChartIQFontFamily
+// MARK: - ChartIQFontFamily Enum
 
 /// Chart font family type.
 @objc public enum ChartIQFontFamily: Int, CaseIterable {
@@ -117,7 +117,7 @@ public enum ChartIQStudyError: Error {
   }
 }
 
-// MARK: - ChartIQFontSize
+// MARK: - ChartIQFontSize Enum
 
 /// Chart font size type.
 @objc public enum ChartIQFontSize: Int, CaseIterable {
@@ -184,7 +184,7 @@ public enum ChartIQStudyError: Error {
   }
 }
 
-// MARK: - ChartIQFontStyle
+// MARK: - ChartIQFontStyle Enum
 
 /// Chart font style type.
 @objc public enum ChartIQFontStyle: Int {
@@ -211,7 +211,7 @@ public enum ChartIQStudyError: Error {
   }
 }
 
-// MARK: - ChartIQLineType
+// MARK: - ChartIQLineType Enum
 
 /// Chart line type.
 @objc public enum ChartIQLineType: Int {
@@ -255,7 +255,7 @@ public enum ChartIQStudyError: Error {
   }
 }
 
-// MARK: - ChartIQTheme
+// MARK: - ChartIQTheme Enum
 
 /// Chart theme.
 @objc public enum ChartIQTheme: Int {
@@ -282,7 +282,7 @@ public enum ChartIQStudyError: Error {
   }
 }
 
-// MARK: - ChartIQLayer
+// MARK: - ChartIQLayer Enum
 
 /// Chart layer.
 @objc public enum ChartIQLayer: Int {
@@ -314,7 +314,7 @@ public enum ChartIQStudyError: Error {
   }
 }
 
-// MARK: - ChartIQQuoteField
+// MARK: - ChartIQQuoteField Enum
 
 /// Chart quote field.
 @objc public enum ChartIQQuoteField: Int {
@@ -354,36 +354,30 @@ public enum ChartIQStudyError: Error {
       return "Volume"
     }
   }
-}
 
-// MARK: - ChartIQStudyParametersType
-
-/// Chart study parameters type.
-@objc public enum ChartIQStudyParametersType: Int {
-
-  /// The inputs option.
-  case inputs
-
-  /// The outputs option.
-  case outputs
-
-  /// The parameters option.
-  case parameters
-
-  /// Chart study parameters string value.
-  public var stringValue: String {
+  /// Chart quote field display name.
+  public var displayName: String {
     switch self {
-    case .inputs:
-      return "inputs"
-    case .outputs:
-      return "outputs"
-    case .parameters:
-      return "parameters"
+    case .date:
+      return "Date"
+    case .close:
+      return "Close"
+    case .open:
+      return "Open"
+    case .high:
+      return "High"
+    case .low:
+      return "Low"
+    case .volume:
+      return "Volume"
     }
   }
+
+  /// Chart condition all cases.
+  public static let conditionCases: [ChartIQQuoteField] = [.open, .high, .low, .close]
 }
 
-// MARK: - ChartIQTimeUnit
+// MARK: - ChartIQTimeUnit Enum
 
 /// Chart time unit.
 @objc public enum ChartIQTimeUnit: Int {
@@ -451,97 +445,9 @@ public enum ChartIQStudyError: Error {
   }
 }
 
-// MARK: - ChartIQDrawingParameterType
-
-@objc public enum ChartIQDrawingParameterType: Int {
-  case fillColor
-  case lineColor
-  case pattern
-  case lineWidth
-  case family
-  case size
-  case style
-  case weight
-  case fibs
-  case showLines
-  case waveTemplate
-  case impulse
-  case corrective
-  case decoration
-  case active1
-  case active2
-  case active3
-  case color1
-  case color2
-  case color3
-  case lineWidth1
-  case lineWidth2
-  case lineWidth3
-  case pattern1
-  case pattern2
-  case pattern3
-
-  /// Chart time unit string value.
-  public var stringValue: String {
-    switch self {
-    case .fillColor:
-      return "fillColor"
-    case .lineColor:
-      return "color"
-    case .pattern:
-      return "pattern"
-    case .lineWidth:
-      return "lineWidth"
-    case .family:
-      return "family"
-    case .size:
-      return "size"
-    case .style:
-      return "style"
-    case .weight:
-      return "weight"
-    case .fibs:
-      return "fibs"
-    case .showLines:
-      return "showLines"
-    case .waveTemplate:
-      return "waveTemplate"
-    case .impulse:
-      return "impulse"
-    case .corrective:
-      return "corrective"
-    case .decoration:
-      return "decoration"
-    case .active1:
-      return "active1"
-    case .active2:
-      return "active2"
-    case .active3:
-      return "active3"
-    case .color1:
-      return "color1"
-    case .color2:
-      return "color2"
-    case .color3:
-      return "color3"
-    case .lineWidth1:
-      return "lineWidth1"
-    case .lineWidth2:
-      return "lineWidth2"
-    case .lineWidth3:
-      return "lineWidth3"
-    case .pattern1:
-      return "pattern1"
-    case .pattern2:
-      return "pattern2"
-    case .pattern3:
-      return "pattern3"
-    }
-  }
-}
-
 // MARK: - Internal Enums
-// MARK: - ChartIQCallbackMessage
+
+// MARK: - ChartIQCallbackMessage Enum
 
 /// Chart callback message.
 internal enum ChartIQCallbackMessage: Int {
@@ -644,7 +550,7 @@ internal enum ChartIQCallbackMessage: Int {
   }
 }
 
-// MARK: - ChartIQSpecialCharacter
+// MARK: - ChartIQSpecialCharacter Enum
 
 /// Special character for safe script method.
 @objc internal enum ChartIQSpecialCharacter: Int {

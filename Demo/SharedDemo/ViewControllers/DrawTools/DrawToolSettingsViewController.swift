@@ -76,6 +76,7 @@ class DrawToolSettingsViewController: BaseViewController {
     tableView.register(nibName: Const.ToggleTableCell.cellNibName, cellId: Const.ToggleTableCell.cellId)
     tableView.register(nibName: Const.SelectTableCell.cellNibName, cellId: Const.SelectTableCell.cellId)
     tableView.register(nibName: Const.LineTableCell.cellNibName, cellId: Const.LineTableCell.cellId)
+    tableView.register(nibName: Const.TextTableCell.cellNibName, cellId: Const.TextTableCell.cellId)
 
     tableView.delegate = self
     tableView.dataSource = self
@@ -171,6 +172,15 @@ class DrawToolSettingsViewController: BaseViewController {
     }
   }
 
+  private func updateSelectedText(with viewModel: TableCellViewModelProtocol,
+                                  from textField: UITextField) {
+    if let numberViewModel = viewModel as? NumberTableCellViewModel {
+      let value = Int(textField.text ?? "0") ?? 0
+      numberViewModel.number = Double(value)
+      chartIQView?.setDrawingParameter(.priceBuckets, value: value)
+    }
+  }
+
   // MARK: - Private Update Drawing Parameter Methods
 
   private func updateSelectedToggle(with toggleViewModel: ToggleTableCellViewModel, isToggleOn: Bool) {
@@ -197,12 +207,12 @@ class DrawToolSettingsViewController: BaseViewController {
   }
 
   private func updateSelectedBoldParameter(isBoldSelected: Bool) {
-    let value = isBoldSelected ? ChartIQConst.DrawingParameter.boldKey : ChartIQConst.DrawingParameter.boldOffKey
+    let value = isBoldSelected ? ChartIQConst.DrawingTool.boldKey : ChartIQConst.DrawingTool.boldOffKey
     chartIQView?.setDrawingParameter(.weight, value: value)
   }
 
   private func updateSelectedItalicParameter(isItalicSelected: Bool) {
-    let value = isItalicSelected ? ChartIQConst.DrawingParameter.italicKey : ChartIQConst.DrawingParameter.normalKey
+    let value = isItalicSelected ? ChartIQConst.DrawingTool.italicKey : ChartIQConst.DrawingTool.normalKey
     chartIQView?.setDrawingParameter(.style, value: value)
   }
 
@@ -359,7 +369,7 @@ class DrawToolSettingsViewController: BaseViewController {
        let toggleCell = tableView.dequeueReusableCell(withIdentifier: Const.ToggleTableCell.cellId,
                                                       for: indexPath) as? ToggleTableCell {
       toggleCell.setupCell(withViewModel: toggleViewModel)
-      toggleCell.toggleDidChange = { [weak self] isToggleOn in
+      toggleCell.didChangeToggle = { [weak self] isToggleOn in
         self?.updateSelectedToggle(with: toggleViewModel, isToggleOn: isToggleOn)
       }
       return toggleCell
@@ -374,6 +384,15 @@ class DrawToolSettingsViewController: BaseViewController {
         self?.updateSelectedOption(with: viewModel, at: indexPath)
       }
       return selectCell
+    }
+    if (viewModel is NumberTableCellViewModel),
+       let textCell = tableView.dequeueReusableCell(withIdentifier: Const.TextTableCell.cellId,
+                                                    for: indexPath) as? TextTableCell {
+      textCell.setupCell(withViewModel: viewModel)
+      textCell.didTextFieldEndEditing = { [weak self] textField in
+        self?.updateSelectedText(with: viewModel, from: textField)
+      }
+      return textCell
     }
     return UITableViewCell()
   }

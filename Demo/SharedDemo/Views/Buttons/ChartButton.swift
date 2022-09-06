@@ -14,6 +14,7 @@ enum ChartButtonType {
   case symbols
   case intervals
   case series
+  case signals
   case drawTool
   case crosshair
   case fullView
@@ -61,7 +62,7 @@ class ChartButton: UIButton {
       frame = CGRect(origin: .zero, size: Const.ChartButton.symbolsButtonSize)
     case .intervals:
       frame = CGRect(origin: .zero, size: Const.ChartButton.intervalsButtonSize)
-    case .series, .crosshair, .drawTool, .fullView, .more, .studies, .settings, .chartStyle:
+    case .series, .signals, .crosshair, .drawTool, .fullView, .more, .studies, .settings, .chartStyle:
       frame = CGRect(origin: .zero, size: Const.ChartButton.circleButtonSize)
     }
   }
@@ -70,6 +71,8 @@ class ChartButton: UIButton {
     switch buttonType {
     case .series:
       setImage(UIImage.Chart.seriesImage, for: .normal)
+    case .signals:
+      setImage(UIImage.Chart.signalsImage, for: .normal)
     case .crosshair:
       setImage(UIImage.Chart.crosshairInactiveImage, for: .normal)
     case .drawTool:
