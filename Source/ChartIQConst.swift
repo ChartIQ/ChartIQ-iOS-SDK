@@ -13,10 +13,10 @@ import Foundation
 /// Provides constants grouped by data structures used in the SDK and Demo App.
 public struct ChartIQConst {
 
-  // MARK: - DrawingParameter
+  // MARK: - DrawingTool
 
   /// Provides constants for ChartIQDrawingTool.
-  public struct DrawingParameter {
+  public struct DrawingTool {
     public static let fillColorKey = "fillColor"
     public static let lineColorKey = "color"
     public static let patternKey = "pattern"
@@ -62,12 +62,15 @@ public struct ChartIQConst {
     public static let pattern1Key = "pattern1"
     public static let pattern2Key = "pattern2"
     public static let pattern3Key = "pattern3"
+
+    public static let volumeProfileKey = "volumeProfile"
+    public static let priceBucketsKey = "priceBuckets"
   }
 
-  // MARK: - StudyParameter
+  // MARK: - Study
 
   /// Provides constants for ChartIQStudy.
-  public struct StudyParameter {
+  public struct Study {
     public static let typeKey = "type"
     public static let colorKey = "color"
     public static let textKey = "text"
@@ -96,6 +99,7 @@ internal struct Const {
 
   // MARK: - General
 
+  /// Provides general constants.
   internal struct General {
     static let zwnjSymbol = "\u{200c}"
     static let doubleVerticalLinesSymbol = "||"
@@ -107,6 +111,7 @@ internal struct Const {
 
   // MARK: - Core
 
+  /// Provides constants for Core.
   internal struct Core {
     static let baseChartType = ChartIQChartType.bar
     static let baseChartScale = ChartIQScale.linear
@@ -157,10 +162,45 @@ internal struct Const {
     static let idParam = "id"
     static let displayParam = "display"
     static let nameParam = "name"
+    static let studyNameParam = "studyName"
+    static let typeParam = "type"
+    static let uniqueIdParam = "uniqueId"
     static let inputsParam = "inputs"
     static let outputsParam = "outputs"
     static let parametersParam = "parameters"
+    static let signalIQExclude = "signalIQExclude"
     static let nullParam = "null"
+  }
+
+  // MARK: - ChartIQSeries
+
+  /// Provides constants for ChartIQSeries model.
+  internal struct Series {
+    static let colorParam = "color"
+  }
+
+  // MARK: - ChartIQMarkerOptions
+
+  /// Provides constants for ChartIQMarkerOptions model.
+  internal struct MarkerOptions {
+    static let typeParam = "type"
+    static let colorParam = "color"
+    static let shapeParam = "shape"
+    static let labelParam = "label"
+    static let sizeParam = "size"
+    static let positionParam = "position"
+  }
+
+  // MARK: - ChartIQSignal
+
+  /// Provides constants for ChartIQSignal model.
+  internal struct Signal {
+    static let conditionsParam = "conditions"
+    static let joinerParam = "joiner"
+    static let nameParam = "name"
+    static let signalNameParam = "signalName"
+    static let disabledParam = "disabled"
+    static let descriptionParam = "description"
   }
 
   // MARK: - CallbackMessage

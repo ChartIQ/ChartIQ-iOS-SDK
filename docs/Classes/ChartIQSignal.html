@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ChartIQSignal Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ChartIQSignal" class="dashAnchor"></a>
+    <a title="ChartIQSignal Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">ChartIQ 3.1.0 Docs</a> (89% documented)</p>
+        <div class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">ChartIQ Reference</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
+        ChartIQSignal Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQCondition.html">ChartIQCondition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQCrosshairHUD.html">ChartIQCrosshairHUD</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQData.html">ChartIQData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQDrawingManager.html">ChartIQDrawingManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQMarkerOptions.html">ChartIQMarkerOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQQuoteFeedParams.html">ChartIQQuoteFeedParams</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQSeries.html">ChartIQSeries</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQSignal.html">ChartIQSignal</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQStudy.html">ChartIQStudy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ChartIQView.html">ChartIQView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQChartAggregationType.html">ChartIQChartAggregationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQChartType.html">ChartIQChartType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQDataMethod.html">ChartIQDataMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQDrawingParameterType.html">ChartIQDrawingParameterType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQDrawingTool.html">ChartIQDrawingTool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQDrawingToolType.html">ChartIQDrawingToolType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQElliottWaveCorrective.html">ChartIQElliottWaveCorrective</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQElliottWaveDecoration.html">ChartIQElliottWaveDecoration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQElliottWaveImpulse.html">ChartIQElliottWaveImpulse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQElliottWaveTemplate.html">ChartIQElliottWaveTemplate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQFontFamily.html">ChartIQFontFamily</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQFontSize.html">ChartIQFontSize</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQFontStyle.html">ChartIQFontStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQLayer.html">ChartIQLayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQLineType.html">ChartIQLineType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQQuoteField.html">ChartIQQuoteField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQScale.html">ChartIQScale</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQSignalJoiner.html">ChartIQSignalJoiner</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQSignalMarkerType.html">ChartIQSignalMarkerType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQSignalOperator.html">ChartIQSignalOperator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQSignalPosition.html">ChartIQSignalPosition</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQSignalShape.html">ChartIQSignalShape</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQSignalSize.html">ChartIQSignalSize</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQStudyError.html">ChartIQStudyError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQStudyParametersType.html">ChartIQStudyParametersType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQTheme.html">ChartIQTheme</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ChartIQTimeUnit.html">ChartIQTimeUnit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIColor.html">UIColor</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ChartIQDataSource.html">ChartIQDataSource</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ChartIQDelegate.html">ChartIQDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/ChartIQConst.html">ChartIQConst</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChartIQConst/DrawingTool.html">– DrawingTool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ChartIQConst/Study.html">– Study</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ChartIQSignal</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ChartIQSignal</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>Encapsulates parameters with additional information for Signal.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20Properties"></a>
+                <a name="//apple_ref/swift/Section/Public Properties" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Public%20Properties"></a>
+                  <h3 class="section-name"><span>Public Properties</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A8IQSignalC5studyAA0A7IQStudyCvp"></a>
+                    <a name="//apple_ref/swift/Property/study" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A8IQSignalC5studyAA0A7IQStudyCvp">study</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQSignal study parameter.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">study</span><span class="p">:</span> <span class="kt"><a href="../Classes/ChartIQStudy.html">ChartIQStudy</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A8IQSignalC10conditionsSayAA0A11IQConditionCGvp"></a>
+                    <a name="//apple_ref/swift/Property/conditions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A8IQSignalC10conditionsSayAA0A11IQConditionCGvp">conditions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQSignal conditions parameter.
+Array of conditions. Each condition is itself an array of [leftIndicator, operator, rightIndicator, color, markerOptions]</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">conditions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ChartIQCondition.html">ChartIQCondition</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A8IQSignalC6joinerAA0aC6JoinerOvp"></a>
+                    <a name="//apple_ref/swift/Property/joiner" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A8IQSignalC6joinerAA0aC6JoinerOvp">joiner</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQSignal joiner parameter.
+&amp; or | to join conditions. If omitted, &ldquo;|&rdquo; assumed.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">joiner</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQSignalJoiner.html">ChartIQSignalJoiner</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A8IQSignalC4nameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/name" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A8IQSignalC4nameSSvp">name</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQSignal name parameter.
+Name of Signal. Signal will be saved with this name and this name will appear in any study legend and in the expanded signal&rsquo;s title.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A8IQSignalC17signalDescriptionSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/signalDescription" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A8IQSignalC17signalDescriptionSSSgvp">signalDescription</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQSignal description parameter.
+Description of signal. Can be nil.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">signalDescription</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A8IQSignalC9isEnabledSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isEnabled" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A8IQSignalC9isEnabledSbvp">isEnabled</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The ChartIQSignal isEnabled parameter.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isEnabled</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initializers"></a>
+                <a name="//apple_ref/swift/Section/Initializers" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Initializers"></a>
+                  <h3 class="section-name"><span>Initializers</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A8IQSignalC5study10conditions6joiner4name17signalDescription9isEnabledAcA0A7IQStudyC_SayAA0A11IQConditionCGAA0aC6JoinerOS2SSgSbtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(study:conditions:joiner:name:signalDescription:isEnabled:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A8IQSignalC5study10conditions6joiner4name17signalDescription9isEnabledAcA0A7IQStudyC_SayAA0A11IQConditionCGAA0aC6JoinerOS2SSgSbtcfc">init(study:<wbr>conditions:<wbr>joiner:<wbr>name:<wbr>signalDescription:<wbr>isEnabled:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Init Signal model with all parameters.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">study</span><span class="p">:</span> <span class="kt"><a href="../Classes/ChartIQStudy.html">ChartIQStudy</a></span><span class="p">,</span>
+            <span class="nv">conditions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/ChartIQCondition.html">ChartIQCondition</a></span><span class="p">],</span>
+            <span class="nv">joiner</span><span class="p">:</span> <span class="kt"><a href="../Enums/ChartIQSignalJoiner.html">ChartIQSignalJoiner</a></span><span class="p">,</span>
+            <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+            <span class="nv">signalDescription</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+            <span class="nv">isEnabled</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>study</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQStudy model.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>conditions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Array of ChartIQCondition models.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>joiner</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ChartIQSignalJoiner model.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>name</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The String Object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>signalDescription</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The String Object. Can be nil.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isEnabled</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Bool Object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A8IQSignalC10dictionaryACSgSDySSypG_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(dictionary:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A8IQSignalC10dictionaryACSgSDySSypG_tcfc">init(dictionary:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Init Signal model with dictionary.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">dictionary</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dictionary</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The dictionary with data for init Signal model.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Helpers"></a>
+                <a name="//apple_ref/swift/Section/Helpers" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Helpers"></a>
+                  <h3 class="section-name"><span>Helpers</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A8IQSignalC12toDictionarySDySSypGyF"></a>
+                    <a name="//apple_ref/swift/Method/toDictionary()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A8IQSignalC12toDictionarySDySSypGyF">toDictionary()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convert Signal model to dictionary.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">toDictionary</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The dictionary with Signal model parameters.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ChartIQ0A8IQSignalC12toJSONStringSSyF"></a>
+                    <a name="//apple_ref/swift/Method/toJSONString()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ChartIQ0A8IQSignalC12toJSONStringSSyF">toJSONString()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convert Signal model to JSON string.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">toJSONString</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The JSON string with Signal model parameters.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2022 <a class="link" href="https://github.com/ChartIQ/Charting-Library---iOS-SDK" target="_blank" rel="external noopener">jacob</a>. All rights reserved. (Last updated: 2022-07-09)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>

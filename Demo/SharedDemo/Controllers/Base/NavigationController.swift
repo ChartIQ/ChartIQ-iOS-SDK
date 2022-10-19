@@ -44,6 +44,10 @@ class NavigationController: UINavigationController {
   /// for both its standard and edge states.
   private func setupScrollEdgeAppearance() {
     if #available(iOS 15.0, *) {
+      let appearance = UINavigationBarAppearance()
+      appearance.configureWithOpaqueBackground()
+      appearance.backgroundColor = .ghostWhiteСhineseBlackColor
+      navigationBar.standardAppearance = appearance
       navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
     }
   }

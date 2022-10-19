@@ -87,14 +87,14 @@ class FibSettingsViewController: BaseViewController {
 
   private func prepareFibSettings() {
     guard selectedDrawTool?.drawingTool == .fibArc else { return }
-    fibSettings = fibSettings.filter({ ($0[ChartIQConst.DrawingParameter.levelKey] as? Double ?? -1) >= 0 })
+    fibSettings = fibSettings.filter({ ($0[ChartIQConst.DrawingTool.levelKey] as? Double ?? -1) >= 0 })
     isAllowNegative = false
   }
 
   private func updateFibSettingsViewModels() {
     var baseViewModels: [TableCellViewModelProtocol] = []
     for fibSetting in fibSettings {
-      if let levelDouble = fibSetting[ChartIQConst.DrawingParameter.levelKey] as? Double {
+      if let levelDouble = fibSetting[ChartIQConst.DrawingTool.levelKey] as? Double {
         let levelTitle = String(levelDouble) + "\(Const.General.perCentSymbol)"
         let baseViewModel = BaseTableCellViewModel(title: levelTitle)
         baseViewModels.append(baseViewModel)
@@ -115,14 +115,14 @@ class FibSettingsViewController: BaseViewController {
 
   private func updateParameter(display: Bool, at indexPath: IndexPath) {
     var fibSetting = fibSettings[indexPath.row]
-    fibSetting[ChartIQConst.DrawingParameter.displayKey] = display
+    fibSetting[ChartIQConst.DrawingTool.displayKey] = display
     fibSettings.replace(object: fibSetting, atIndex: indexPath.row)
   }
 
   private func addNewParameter(level: String) {
     var fibSetting: [String: Any] = [:]
-    fibSetting[ChartIQConst.DrawingParameter.levelKey] = Double(level)
-    fibSetting[ChartIQConst.DrawingParameter.displayKey] = true
+    fibSetting[ChartIQConst.DrawingTool.levelKey] = Double(level)
+    fibSetting[ChartIQConst.DrawingTool.displayKey] = true
     fibSettings.append(fibSetting)
   }
 
@@ -137,7 +137,7 @@ class FibSettingsViewController: BaseViewController {
   private func getFibParamterSelectedStatus(at indexPath: IndexPath) -> Bool {
     let fibSetting = fibSettings[indexPath.row]
     var isFibSelected = false
-    if let isSelected = fibSetting[ChartIQConst.DrawingParameter.displayKey] as? Bool {
+    if let isSelected = fibSetting[ChartIQConst.DrawingTool.displayKey] as? Bool {
       isFibSelected = isSelected
     }
     return isFibSelected

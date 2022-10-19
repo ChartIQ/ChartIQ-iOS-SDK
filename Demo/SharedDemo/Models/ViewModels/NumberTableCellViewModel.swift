@@ -16,11 +16,15 @@ class NumberTableCellViewModel: TableCellViewModelProtocol {
 
   internal var title: String
   internal var number: Double
+  internal var shouldDisplayAsInt: Bool
+  internal var shouldAllowNegative: Bool
 
   // MARK: - Init
 
-  init(title: String, number: Double) {
+  init(title: String, number: Double, shouldDisplayAsInt: Bool = false, shouldAllowNegative: Bool = false) {
     self.title = title
     self.number = number
+    self.shouldDisplayAsInt = shouldDisplayAsInt
+    self.shouldAllowNegative = shouldAllowNegative
   }
 }

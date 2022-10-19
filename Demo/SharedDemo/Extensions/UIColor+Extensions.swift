@@ -32,9 +32,12 @@ extension UIColor {
   internal static let chineseBlackColor = UIColor(hexString: "091924")
   internal static let yankeesBlueColor = UIColor(hexString: "153246")
   internal static let coralRedColor = UIColor(hexString: "ff3b30")
+  internal static let mistyRoseColor = UIColor(hexString: "ffe9e7")
   internal static let brillianteAzureColor = UIColor(hexString: "3a8eff")
   internal static let lightGrayColor = UIColor(hexString: "D4D4D4")
   internal static let outerSpaceColor = UIColor(hexString: "3E4A53")
+  internal static let arsenicColor = UIColor(hexString: "3C3C43")
+  internal static let brightGrayMediumColor = UIColor(hexString: "EBEBF5")
 }
 
 // MARK: - UIColor Dynamic Color Extensions
@@ -63,6 +66,10 @@ extension UIColor {
     return colorAsset(name: "brightGreyYankeesBlue", baseColor: UIColor.brightGreyColor)
   }
 
+  internal class var brightGreyDarkGunmetalColor: UIColor {
+    return colorAsset(name: "brightGreyDarkGunmetal", baseColor: UIColor.brightGreyColor)
+  }
+
   internal class var darkElectricBlueWhiteColor: UIColor {
     return colorAsset(name: "darkElectricBlueWhite", baseColor: UIColor.darkElectricBlueColor)
   }
@@ -85,6 +92,10 @@ extension UIColor {
 
   internal class var lightGrayOuterSpaceColor: UIColor {
     return colorAsset(name: "lightGrayOuterSpace", baseColor: UIColor.lightGrayColor)
+  }
+
+  internal class var arsenicBrightGrayMediumColor: UIColor {
+    return colorAsset(name: "arsenicBrightGrayMedium", baseColor: UIColor.arsenicColor)
   }
 }
 
@@ -159,7 +170,7 @@ extension UIColor {
   }
 }
 
-// MARK: - UIColor Dynamic ChartIQ Color Extensions
+// MARK: - UIColor Dynamic Color Extensions
 
 extension UIColor {
 
@@ -168,12 +179,24 @@ extension UIColor {
                                        isDarkTheme: Bool) -> UIColor {
     var color = UIColor.blackColor
     if let rawColorString = parameters[colorKey] as? String {
-      if rawColorString == ChartIQConst.StudyParameter.autoColorKey {
+      if rawColorString == ChartIQConst.Study.autoColorKey {
         color = isDarkTheme ? UIColor.whiteColor : .blackColor
       } else {
         color = UIColor(hexString: rawColorString.replacingOccurrences(of: Const.General.hashSymbol, with: ""))
       }
     }
     return color
+  }
+}
+
+// MARK: - UIColor Contrast Color Extensions
+
+extension UIColor {
+
+  internal func getContrastColor() -> UIColor {
+    var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+    getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+    let luminance = red * 0.212_6 + green * 0.715_2 + blue * 0.072_2
+    return luminance < 0.4 ? UIColor.whiteColor : UIColor.blackColor
   }
 }

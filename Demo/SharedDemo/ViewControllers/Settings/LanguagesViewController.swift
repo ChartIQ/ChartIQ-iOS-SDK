@@ -50,6 +50,9 @@ class LanguagesViewController: BaseViewController {
   override func setupUI() {
     navigationItem.title = locManager.localize(Const.Language.screenTitle)
     tableView.backgroundColor = .ghostWhiteСhineseBlackColor
+
+    tableView.tableHeaderView = UIView()
+    tableView.tableFooterView = UIView()
   }
 
   override func setupSettings() {

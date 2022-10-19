@@ -33,7 +33,7 @@ class DrawToolsService {
 
     if chartIQDrawingManager.isSupportingFillColor(tool) {
       let fillColor = UIColor.getDynamicColor(from: parameters,
-                                              colorKey: ChartIQConst.DrawingParameter.fillColorKey,
+                                              colorKey: ChartIQConst.DrawingTool.fillColorKey,
                                               isDarkTheme: isDarkTheme)
       let fillColorViewModel = DrawToolColorViewModel(type: .fillColor,
                                                       image: UIImage.DrawToolControlView.fillColorImage,
@@ -43,7 +43,7 @@ class DrawToolsService {
 
     if chartIQDrawingManager.isSupportingLineColor(tool) {
       let lineColor = UIColor.getDynamicColor(from: parameters,
-                                              colorKey: ChartIQConst.DrawingParameter.lineColorKey,
+                                              colorKey: ChartIQConst.DrawingTool.lineColorKey,
                                               isDarkTheme: isDarkTheme)
       let lineColorViewModel = DrawToolColorViewModel(type: .lineColor,
                                                       image: UIImage.DrawToolControlView.lineColorImage,
@@ -52,8 +52,8 @@ class DrawToolsService {
     }
 
     if chartIQDrawingManager.isSupportingLineType(tool),
-       let lineTypeName = parameters[ChartIQConst.DrawingParameter.patternKey] as? String,
-       let lineWidth = parameters[ChartIQConst.DrawingParameter.lineWidthKey] as? Int,
+       let lineTypeName = parameters[ChartIQConst.DrawingTool.patternKey] as? String,
+       let lineWidth = parameters[ChartIQConst.DrawingTool.lineWidthKey] as? Int,
        let lineType = ChartIQLineType(stringValue: lineTypeName) {
       let selectedLineModel = LineModel(lineType: lineType, lineWidth: lineWidth)
       let lineViewModel = DrawToolBaseViewModel(type: .lineType,
@@ -104,6 +104,9 @@ class DrawToolsService {
     let elliottWaveViewModels = getElliottWaveViewModels(tool: tool, parameters: parameters)
     drawToolViewModels.append(contentsOf: elliottWaveViewModels)
 
+    let volumeProfileViewModels = getVolumeProfileViewModels(tool: tool, parameters: parameters)
+    drawToolViewModels.append(contentsOf: volumeProfileViewModels)
+
     return drawToolViewModels
   }
 
@@ -114,7 +117,7 @@ class DrawToolsService {
     var drawToolViewModels: [TableCellViewModelProtocol] = []
     if chartIQDrawingManager.isSupportingFillColor(tool) {
       let fillColor = UIColor.getDynamicColor(from: parameters,
-                                              colorKey: ChartIQConst.DrawingParameter.fillColorKey,
+                                              colorKey: ChartIQConst.DrawingTool.fillColorKey,
                                               isDarkTheme: isDarkTheme)
       let fillColorViewModel = ColorTableCellViewModel(title: Const.DrawToolsService.fillColorTitle,
                                                        color: fillColor)
@@ -128,7 +131,7 @@ class DrawToolsService {
     var drawToolViewModels: [TableCellViewModelProtocol] = []
     if chartIQDrawingManager.isSupportingLineColor(tool) {
       let lineColor = UIColor.getDynamicColor(from: parameters,
-                                              colorKey: ChartIQConst.DrawingParameter.lineColorKey,
+                                              colorKey: ChartIQConst.DrawingTool.lineColorKey,
                                               isDarkTheme: isDarkTheme)
       let lineColorViewModel = ColorTableCellViewModel(title: Const.DrawToolsService.lineColorTitle,
                                                        color: lineColor)
@@ -141,8 +144,8 @@ class DrawToolsService {
                                      parameters: [String: Any]) -> [TableCellViewModelProtocol] {
     var drawToolViewModels: [TableCellViewModelProtocol] = []
     if chartIQDrawingManager.isSupportingLineType(tool),
-       let lineTypeName = parameters[ChartIQConst.DrawingParameter.patternKey] as? String,
-       let lineWidth = parameters[ChartIQConst.DrawingParameter.lineWidthKey] as? Int,
+       let lineTypeName = parameters[ChartIQConst.DrawingTool.patternKey] as? String,
+       let lineWidth = parameters[ChartIQConst.DrawingTool.lineWidthKey] as? Int,
        let lineType = ChartIQLineType(stringValue: lineTypeName) {
       let selectedLineModel = LineModel(lineType: lineType, lineWidth: lineWidth)
       let lineViewModel = LineTableCellViewModel(title: Const.DrawToolsService.lineTypeTitle,
@@ -156,27 +159,27 @@ class DrawToolsService {
                                  parameters: [String: Any]) -> [TableCellViewModelProtocol] {
     var drawToolViewModels: [TableCellViewModelProtocol] = []
     if chartIQDrawingManager.isSupportingFont(tool),
-       let fontDictionary = parameters[ChartIQConst.DrawingParameter.fontKey] as? [String: Any] {
+       let fontDictionary = parameters[ChartIQConst.DrawingTool.fontKey] as? [String: Any] {
 
-      if let fontFamily = fontDictionary[ChartIQConst.DrawingParameter.familyKey] as? String {
+      if let fontFamily = fontDictionary[ChartIQConst.DrawingTool.familyKey] as? String {
         let fontFamilyViewModel = SelectTableCellViewModel(title: Const.DrawToolsService.fontFamilyTitle,
                                                            detailTitle: fontFamily)
         drawToolViewModels.append(fontFamilyViewModel)
       }
 
-      if let fontSize = fontDictionary[ChartIQConst.DrawingParameter.sizeKey] as? String {
+      if let fontSize = fontDictionary[ChartIQConst.DrawingTool.sizeKey] as? String {
         let fontSizeViewModel = SelectTableCellViewModel(title: Const.DrawToolsService.fontSizeTitle,
                                                          detailTitle: fontSize)
         drawToolViewModels.append(fontSizeViewModel)
       }
 
-      if let fontStyle = fontDictionary[ChartIQConst.DrawingParameter.styleKey] as? String,
-         let fontWeight = fontDictionary[ChartIQConst.DrawingParameter.weightKey] as? String {
+      if let fontStyle = fontDictionary[ChartIQConst.DrawingTool.styleKey] as? String,
+         let fontWeight = fontDictionary[ChartIQConst.DrawingTool.weightKey] as? String {
         var isBoldSelected = false, isItalicSelected = false
-        if fontStyle == ChartIQConst.DrawingParameter.italicKey {
+        if fontStyle == ChartIQConst.DrawingTool.italicKey {
           isItalicSelected = true
         }
-        if fontWeight == ChartIQConst.DrawingParameter.boldKey {
+        if fontWeight == ChartIQConst.DrawingTool.boldKey {
           isBoldSelected = true
         }
         let fontStyleViewModel = FontTableCellViewModel(title: Const.DrawToolsService.fontStyleTitle,
@@ -192,7 +195,7 @@ class DrawToolsService {
                                       parameters: [String: Any]) -> [TableCellViewModelProtocol] {
     var drawToolViewModels: [TableCellViewModelProtocol] = []
     if chartIQDrawingManager.isSupportingAxisLabel(tool),
-       let isShowAxisLabel = parameters[ChartIQConst.DrawingParameter.axisLabelKey] as? Bool {
+       let isShowAxisLabel = parameters[ChartIQConst.DrawingTool.axisLabelKey] as? Bool {
       let showAxisLabelViewModel = ToggleTableCellViewModel(title: Const.DrawToolsService.axisLabelTitle,
                                                             isToggleOn: isShowAxisLabel)
       drawToolViewModels.append(showAxisLabelViewModel)
@@ -225,7 +228,7 @@ class DrawToolsService {
                                       parameters: [String: Any]) -> [TableCellViewModelProtocol] {
     var drawToolViewModels: [TableCellViewModelProtocol] = []
     if chartIQDrawingManager.isSupportingFibonacci(tool),
-       let fibSettingsArray = parameters[ChartIQConst.DrawingParameter.fibsKey] as? [[String: Any]] {
+       let fibSettingsArray = parameters[ChartIQConst.DrawingTool.fibsKey] as? [[String: Any]] {
       let fibSettingsViewModel = FibSettingsTableCellViewModel(title: Const.DrawToolsService.fibonacciSettingsTitle,
                                                                parameters: fibSettingsArray)
       drawToolViewModels.append(fibSettingsViewModel)
@@ -237,7 +240,7 @@ class DrawToolsService {
                                         parameters: [String: Any]) -> [TableCellViewModelProtocol] {
     var drawToolViewModels: [TableCellViewModelProtocol] = []
     if chartIQDrawingManager.isSupportingElliottWave(tool),
-       let waveParamsDictionary = parameters[ChartIQConst.DrawingParameter.waveParametersKey] as? [String: Any] {
+       let waveParamsDictionary = parameters[ChartIQConst.DrawingTool.waveParametersKey] as? [String: Any] {
 
       // WaveTemplate - Not comes from JS
       if let waveTemplate = waveParamsDictionary[Const.DrawToolsService.waveTemplateTitle] as? String {
@@ -246,29 +249,43 @@ class DrawToolsService {
         drawToolViewModels.append(waveTemplateViewModel)
       }
 
-      if let impulse = waveParamsDictionary[ChartIQConst.DrawingParameter.impulseKey] as? String {
+      if let impulse = waveParamsDictionary[ChartIQConst.DrawingTool.impulseKey] as? String {
         let impulseViewModel = SelectTableCellViewModel(title: Const.DrawToolsService.impulseTitle,
                                                         detailTitle: impulse)
         drawToolViewModels.append(impulseViewModel)
       }
 
-      if let corrective = waveParamsDictionary[ChartIQConst.DrawingParameter.correctiveKey] as? String {
+      if let corrective = waveParamsDictionary[ChartIQConst.DrawingTool.correctiveKey] as? String {
         let correctiveViewModel = SelectTableCellViewModel(title: Const.DrawToolsService.correctiveTitle,
                                                            detailTitle: corrective)
         drawToolViewModels.append(correctiveViewModel)
       }
 
-      if let decoration = waveParamsDictionary[ChartIQConst.DrawingParameter.decorationKey] as? String {
+      if let decoration = waveParamsDictionary[ChartIQConst.DrawingTool.decorationKey] as? String {
         let decorationViewModel = SelectTableCellViewModel(title: Const.DrawToolsService.decorationTitle,
                                                            detailTitle: decoration.capitalizeFirst())
         drawToolViewModels.append(decorationViewModel)
       }
 
-      if let isShowLines = waveParamsDictionary[ChartIQConst.DrawingParameter.showLinesKey] as? Bool {
+      if let isShowLines = waveParamsDictionary[ChartIQConst.DrawingTool.showLinesKey] as? Bool {
         let showLinesViewModel = ToggleTableCellViewModel(title: Const.DrawToolsService.showLinesTitle,
                                                           isToggleOn: isShowLines)
         drawToolViewModels.append(showLinesViewModel)
       }
+    }
+    return drawToolViewModels
+  }
+
+  private func getVolumeProfileViewModels(tool: ChartIQDrawingTool,
+                                          parameters: [String: Any]) -> [TableCellViewModelProtocol] {
+    var drawToolViewModels: [TableCellViewModelProtocol] = []
+    if chartIQDrawingManager.isSupportingVolumeProfile(tool),
+       let volumeProfileDict = parameters[ChartIQConst.DrawingTool.volumeProfileKey] as? [String: Any],
+       let priceBucketsValue = volumeProfileDict[ChartIQConst.DrawingTool.priceBucketsKey] as? Double {
+      let numberViewModel = NumberTableCellViewModel(title: Const.DrawToolsService.priceBucketsTitle,
+                                                     number: priceBucketsValue,
+                                                     shouldDisplayAsInt: true)
+      drawToolViewModels.append(numberViewModel)
     }
     return drawToolViewModels
   }

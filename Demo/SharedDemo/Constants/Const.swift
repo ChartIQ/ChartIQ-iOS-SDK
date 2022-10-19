@@ -39,7 +39,7 @@ public struct Const {
   // MARK: - General
 
   struct General {
-    static let chartIQURL = "https://mobile.demo.chartiq.com/ios/3.1.0/sample-template-native-sdk.html"
+    static let chartIQURL = "https://mobile.demo.chartiq.com/ios/3.2.0/sample-template-native-sdk.html"
 
     static let cancelTitle = "Cancel"
     static let clearTitle = "Clear"
@@ -59,9 +59,11 @@ public struct Const {
     static let dotSymbol = "."
     static let colonSymbol = ":"
     static let perCentSymbol = "%"
+    static let filledStarSymbol = "★"
+    static let unfilledStarSymbol = "☆"
+    static let newLineSymbol = "\n"
 
-    static let filledStar = "★"
-    static let unfilledStar = "☆"
+    static let reuseIdPostfix = "ReuseIdentifier"
   }
 
   // MARK: - UserDefaults
@@ -179,6 +181,8 @@ public struct Const {
     static let line1TypeTitle = "Line 1 Type"
     static let line2TypeTitle = "Line 2 Type"
     static let line3TypeTitle = "Line 3 Type"
+
+    static let priceBucketsTitle = "Price Buckets"
   }
 
   // MARK: - Models
@@ -279,113 +283,131 @@ public struct Const {
   // MARK: - Collection View Cells
 
   struct ColorPickerCollectionCell {
-    static let cellId = "ColorPickerCollectionCellReuseIdentifier"
     static let cellNibName = "ColorPickerCollectionCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
   }
 
   struct LinePickerCollectionCell {
-    static let cellId = "LinePickerCollectionCellReuseIdentifier"
     static let cellNibName = "LinePickerCollectionCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
   }
 
   struct DrawToolBaseCell {
-    static let cellId = "DrawToolBaseCellReuseIdentifier"
     static let cellNibName = "DrawToolBaseCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
   }
 
   struct DrawToolColorCell {
-    static let cellId = "DrawToolColorCellReuseIdentifier"
     static let cellNibName = "DrawToolColorCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
   }
 
   struct FilterCollectionCell {
-    static let cellId = "FilterCollectionCellReuseIdentifier"
     static let cellNibName = "FilterCollectionCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
 
     static let cellTitleFont = UIFont.systemFont(ofSize: 14, weight: .medium)
   }
 
-  // MARK: - Table View Cells
+  // MARK: - Table View General Cells
 
   struct BaseTableCell {
-    static let cellId = "BaseTableCellReuseIdentifier"
     static let cellNibName = "BaseTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
 
     static let cellHeight: CGFloat = 45.0
+    static let headerHeight: CGFloat = 35.0
   }
 
+  struct ButtonTableCell {
+    static let cellNibName = "ButtonTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
+  }
+
+  struct DisclosureTableCell {
+    static let cellNibName = "DisclosureTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
+  }
+
+  struct TextTableCell {
+    static let cellNibName = "TextTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
+  }
+
+  struct TextColorTableCell {
+    static let cellNibName = "TextColorTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
+  }
+
+  struct TextViewTableCell {
+    static let cellNibName = "TextViewTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
+
+    static let cellHeight: CGFloat = 110.0
+  }
+
+  struct ToggleTableCell {
+    static let cellNibName = "ToggleTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
+  }
+
+  struct SelectTableCell {
+    static let cellNibName = "SelectTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
+  }
+
+  struct FontTableCell {
+    static let cellNibName = "FontTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
+  }
+
+  struct LineTableCell {
+    static let cellNibName = "LineTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
+  }
+
+  // MARK: - Table View Specific Cells
+
   struct SymbolTableCell {
-    static let cellId = "SymbolTableCellReuseIdentifier"
     static let cellNibName = "SymbolTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
 
     static let cellHeight: CGFloat = 66.0
   }
 
   struct StudyTableCell {
-    static let cellId = "StudyTableCellReuseIdentifier"
     static let cellNibName = "StudyTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
 
     static let cellHeight: CGFloat = 66.0
   }
 
-  struct ButtonTableCell {
-    static let cellId = "ButtonTableCellReuseIdentifier"
-    static let cellNibName = "ButtonTableCell"
-  }
+  struct ConditionTableCell {
+    static let cellNibName = "ConditionTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
 
-  struct DisclosureTableCell {
-    static let cellId = "DisclosureTableCellReuseIdentifier"
-    static let cellNibName = "DisclosureTableCell"
-  }
-
-  struct TextTableCell {
-    static let cellId = "TextTableCellReuseIdentifier"
-    static let cellNibName = "TextTableCell"
-  }
-
-  struct TextColorTableCell {
-    static let cellId = "TextColorTableCellReuseIdentifier"
-    static let cellNibName = "TextColorTableCell"
-  }
-
-  struct ToggleTableCell {
-    static let cellId = "ToggleTableCellReuseIdentifier"
-    static let cellNibName = "ToggleTableCell"
-  }
-
-  struct SelectTableCell {
-    static let cellId = "SelectTableCellReuseIdentifier"
-    static let cellNibName = "SelectTableCell"
-  }
-
-  struct FontTableCell {
-    static let cellId = "FontTableCellReuseIdentifier"
-    static let cellNibName = "FontTableCell"
-  }
-
-  struct LineTableCell {
-    static let cellId = "LineTableCellReuseIdentifier"
-    static let cellNibName = "LineTableCell"
+    static let cellHeight: CGFloat = 58.0
+    static let extendedCellHeight: CGFloat = 116.0
   }
 
   struct DrawToolTableCell {
-    static let cellId = "DrawToolTableCellReuseIdentifier"
     static let cellNibName = "DrawToolTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
   }
 
   struct FibInputTableCell {
-    static let cellId = "FibInputTableCellReuseIdentifier"
     static let cellNibName = "FibInputTableCell"
+    static let cellId = cellNibName + General.reuseIdPostfix
   }
 
   // MARK: - View Controllers
 
   struct Chart {
     static let maxLeftBarButtonItems = 2
-    static let maxRightBarButtonItems = 7
+    static let maxRightBarButtonItems = 8
 
     static let maxTabBarLeftBarButtonItems = 2
-    static let maxTabBarRightBarButtonItems = 4
+    static let maxTabBarRightBarButtonItems = 5
 
     static let manageLayersTitle = "Manage Layers"
 
@@ -425,6 +447,51 @@ public struct Const {
     static let emptyStateViewButtonTitle = "Add Symbol"
 
     static let colorKey = "color"
+  }
+
+  struct Signals {
+    static let screenTitle = "SignalIQ"
+
+    static let emptyStateViewTitle = "No Signals to display yet"
+    static let emptyStateViewButtonTitle = "Add Signal"
+  }
+
+  struct SignalDetail {
+    static let createSignalScreenTitle = "New Signal"
+    static let editSignalScreenTitle = "Edit Signal"
+
+    static let descriptionPlaceholder = "Description will appear in an infobox when the signal is clicked."
+    static let namePlaceholder = "Enter a Name"
+
+    static let changeStudyTitle = "Change Study"
+    static let conditionTitle = "Condition"
+    static let addConditionTitle = "Add Condition"
+    static let selectStudyTitle = "Select Study"
+    static let descriptionTitle = "Description"
+    static let nameTitle = "Name"
+  }
+
+  struct SignalCondition {
+    static let screenTitle = "Condition"
+
+    static let conditionSettingsHeaderTitle = "Condition Settings"
+    static let appearanceSettingsHeaderTitle = "Appearance Settings"
+
+    static let valueField = "Value"
+
+    static let firstIndicatorTitle = "Indicator 1"
+    static let conditionTitle = "Condition"
+    static let selectActionTitle = "Select Action"
+    static let secondIndicatorTitle = "Indicator 2"
+
+    static let markerTypeTitle = "Marker Type"
+    static let colorTitle = "Color"
+    static let shapeTitle = "Shape"
+    static let tagMarkTitle = "Tag Mark"
+    static let sizeTitle = "Size"
+    static let positionTitle = "Position"
+
+    static let warningTitle = "Paintbar doesn’t work with this chart type."
   }
 
   struct DrawTools {

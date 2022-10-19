@@ -42,13 +42,21 @@ class TextTableCell: UITableViewCell {
 
   internal func setupCell(withViewModel viewModel: TableCellViewModelProtocol) {
     titleLabel.text = viewModel.title.capitalizeFirst()
-    if let textCellViewModel = viewModel as? TextTableCellViewModel {
-      textField.text = textCellViewModel.text
+    if let textViewModel = viewModel as? TextTableCellViewModel {
+      textField.text = textViewModel.text
       textField.keyboardType = .default
       textField.inputAccessoryView = nil
-    } else if let textColorCellViewModel = viewModel as? NumberTableCellViewModel {
-      textField.text = String(textColorCellViewModel.number)
-      textField.keyboardType = .decimalPad
+      if let placeholder = textViewModel.placeholder {
+        textField.placeholder = placeholder
+      }
+    } else if let numberViewModel = viewModel as? NumberTableCellViewModel {
+      if numberViewModel.shouldDisplayAsInt {
+        textField.text = String(Int(numberViewModel.number))
+        textField.keyboardType = .numberPad
+      } else {
+        textField.text = String(numberViewModel.number)
+        textField.keyboardType = numberViewModel.shouldAllowNegative ? .numbersAndPunctuation : .decimalPad
+      }
       textField.inputAccessoryView = UIView.doneAccessoryView(target: self, action: #selector(doneButtonTapped))
     }
   }
@@ -60,7 +68,10 @@ class TextTableCell: UITableViewCell {
   }
 
   private func updateTextFieldText(_ textField: UITextField) {
-    if textField.keyboardType == .decimalPad {
+    if textField.keyboardType == .numberPad {
+      guard let textFieldText = textField.text else { return }
+      textField.text = "\(Int(textFieldText) ?? 0)"
+    } else if textField.keyboardType == .decimalPad || textField.keyboardType == .numbersAndPunctuation {
       guard let textFieldText = textField.text else { return }
       let text = textFieldText.replace(Const.General.commaSymbol, with: Const.General.dotSymbol)
       textField.text = "\(Double(text) ?? 0.0)"
@@ -84,9 +95,15 @@ extension TextTableCell: UITextFieldDelegate {
   func textField(_ textField: UITextField,
                  shouldChangeCharactersIn range: NSRange,
                  replacementString string: String) -> Bool {
-    guard textField.keyboardType == .decimalPad else { return true }
-    let cs = NSCharacterSet(charactersIn: Const.StudyDetail.doubleDigits).inverted
-    let filtered = string.components(separatedBy: cs).joined()
-    return (string == filtered)
+    if textField.keyboardType == .decimalPad {
+      let cs = NSCharacterSet(charactersIn: Const.StudyDetail.doubleDigits).inverted
+      let filtered = string.components(separatedBy: cs).joined()
+      return (string == filtered)
+    } else if textField.keyboardType == .numbersAndPunctuation {
+      let cs = NSCharacterSet(charactersIn: Const.StudyDetail.negativeDoubleDigits).inverted
+      let filtered = string.components(separatedBy: cs).joined()
+      return (string == filtered)
+    }
+    return true
   }
 }

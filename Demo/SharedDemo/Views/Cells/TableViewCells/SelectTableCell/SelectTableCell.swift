@@ -44,14 +44,14 @@ class SelectTableCell: UITableViewCell {
 
   internal func setupCell(withViewModel viewModel: TableCellViewModelProtocol) {
     accessoryType = .disclosureIndicator
-    if let selectCellViewModel = viewModel as? SelectTableCellViewModel {
-      textLabel?.text = selectCellViewModel.title
-      detailTextLabel?.text = (selectCellViewModel.detailTitle ?? "")
-    } else if let fibSettingsCellViewModel = viewModel as? FibSettingsTableCellViewModel {
-      textLabel?.text = fibSettingsCellViewModel.title
+    if let selectViewModel = viewModel as? SelectTableCellViewModel {
+      textLabel?.text = selectViewModel.title
+      detailTextLabel?.text = (selectViewModel.detailTitle ?? "")
+    } else if let fibSettingsViewModel = viewModel as? FibSettingsTableCellViewModel {
+      textLabel?.text = fibSettingsViewModel.title
       detailTextLabel?.text = nil
-    } else if let deviationsCellViewModel = viewModel as? DeviationsTableCellViewModel {
-      textLabel?.text = deviationsCellViewModel.title
+    } else if let deviationsViewModel = viewModel as? DeviationsTableCellViewModel {
+      textLabel?.text = deviationsViewModel.title
       detailTextLabel?.text = nil
     }
   }

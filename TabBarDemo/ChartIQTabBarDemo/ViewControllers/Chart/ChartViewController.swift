@@ -41,7 +41,9 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
 
   private let symbolsButton = ChartButton(type: .system)
   private let intervalsButton = ChartButton(type: .system)
+
   private let seriesButton = ChartButton(type: .custom)
+  private let signalsButton = ChartButton(type: .custom)
   private let crosshairButton = ChartButton(type: .custom)
   private let drawToolButton = ChartButton(type: .custom)
   private let fullViewButton = ChartButton(type: .custom)
@@ -141,7 +143,7 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
     setupLeftNavigationButtons()
     setupRightNavigationButtons()
 
-    [symbolsButton, intervalsButton, seriesButton, drawToolButton, crosshairButton].forEach { button in
+    [symbolsButton, intervalsButton, seriesButton, signalsButton, drawToolButton, crosshairButton].forEach { button in
       button.isEnabled = false
     }
   }
@@ -157,7 +159,8 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
   }
 
   private func setupRightNavigationButtons() {
-    seriesButton.applyStyle(for: .series, target: self, action: #selector(addSeriesButtonTapped))
+    seriesButton.applyStyle(for: .series, target: self, action: #selector(seriesButtonTapped))
+    signalsButton.applyStyle(for: .signals, target: self, action: #selector(signalsButtonTapped))
     drawToolButton.applyStyle(for: .drawTool, target: self, action: #selector(drawToolButtonTapped))
     crosshairButton.applyStyle(for: .crosshair, target: self, action: #selector(crosshairButtonTapped))
     fullViewButton.applyStyle(for: .fullView, target: self, action: #selector(fullViewButtonTapped))
@@ -165,7 +168,8 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
     navigationItem.rightBarButtonItems = [
       UIBarButtonItem(customView: crosshairButton),
       UIBarButtonItem(customView: drawToolButton),
-      UIBarButtonItem(customView: seriesButton)
+      UIBarButtonItem(customView: seriesButton),
+      UIBarButtonItem(customView: signalsButton)
     ]
   }
 
@@ -246,8 +250,12 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
     chartRouter.route(to: .intervals, as: .present)
   }
 
-  @objc private func addSeriesButtonTapped() {
+  @objc private func seriesButtonTapped() {
     chartRouter.route(to: .series, as: .present)
+  }
+
+  @objc private func signalsButtonTapped() {
+    chartRouter.route(to: .signals, as: .present)
   }
 
   @objc private func crosshairButtonTapped() {
@@ -266,7 +274,7 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
   // MARK: - Private Methods
 
   private func chartIQLoadedInitialData() {
-    [symbolsButton, intervalsButton, seriesButton, drawToolButton, crosshairButton].forEach { button in
+    [symbolsButton, intervalsButton, seriesButton, signalsButton, drawToolButton, crosshairButton].forEach { button in
       button.isEnabled = true
     }
 

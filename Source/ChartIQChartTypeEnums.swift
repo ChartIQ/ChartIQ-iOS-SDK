@@ -1,5 +1,5 @@
 //
-//  ChartIQChartType.swift
+//  ChartIQChartTypeEnums.swift
 //  ChartIQ
 //
 //  Copyright 2012-2020 by ChartIQ, Inc.

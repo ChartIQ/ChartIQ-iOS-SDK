@@ -53,6 +53,7 @@ class ChartIQStudyTests: XCTestCase {
     let study = ChartIQStudy(shortName: shortName,
                              fullName: fullName,
                              originalName: "",
+                             uniqueId: "",
                              inputs: inputs,
                              outputs: outputs,
                              parameters: parameters)
@@ -118,6 +119,46 @@ class ChartIQStudyTests: XCTestCase {
     XCTAssertEqual((dictionary[Const.Study.inputsParam] as? [String: Any])?.count, study.inputs?.count)
     XCTAssertEqual((dictionary[Const.Study.outputsParam] as? [String: Any])?.count, study.outputs?.count)
     XCTAssertEqual((dictionary[Const.Study.parametersParam] as? [String: Any])?.count, study.parameters?.count)
+  }
+
+  func testInitWithDictionary() {
+    // Given
+    let dictionary: [String: Any] = [
+      "type": "Alligator",
+      "studyName": "‌Alligator‌ (y,20,8,8,5,5,5,y)",
+      "uniqueId": "L5O66FE7173",
+      "outputs": [
+        "Jaw ‌Alligator‌ (y,20,8,8,5,5,5,y)": "Jaw",
+        "Teeth ‌Alligator‌ (y,20,8,8,5,5,5,y)": "Teeth",
+        "Lips ‌Alligator‌ (y,20,8,8,5,5,5,y)": "Lips"
+      ]
+    ]
+    let name = "Alligator"
+    let nameParams = " (y,20,8,8,5,5,5,y)"
+
+    // When
+    let study = ChartIQStudy(dictionary: dictionary)
+
+    // Then
+    XCTAssertEqual(dictionary[Const.Study.typeParam] as? String, study?.originalName)
+    XCTAssertEqual(dictionary[Const.Study.studyNameParam] as? String, study?.fullName)
+    XCTAssertEqual(dictionary[Const.Study.uniqueIdParam] as? String, study?.uniqueId)
+    XCTAssertEqual(name, study?.name)
+    XCTAssertEqual(nameParams, study?.nameParams)
+    XCTAssertEqual((dictionary[Const.Study.outputsParam] as? [String: Any])?.count, study?.outputs?.count)
+  }
+
+  func testInitWithDictionaryNil() {
+    // Given
+    let dictionary: [String: Any] = [
+      "type": "Alligator"
+    ]
+
+    // When
+    let study = ChartIQStudy(dictionary: dictionary)
+
+    // Then
+    XCTAssertNil(study)
   }
 
   func testInitWithJSStudyStringNil() {

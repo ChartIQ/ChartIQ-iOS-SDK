@@ -83,25 +83,19 @@ class ChartIQDataTests: XCTestCase {
 
   func testInitWithEmptyDictionary() {
     // Given
-    let open: Double = 0.0
-    let high: Double = 0.0
-    let low: Double = 0.0
-    let close: Double = 0.0
     let volume: Double = 0.0
-    let adjClose: Double = 0.0
-
     let dictionary: [String: Any] = [:]
 
     // When
     let chartIQData = ChartIQData(dictionary: dictionary)
 
     // Then
-    XCTAssertEqual(open, chartIQData.open)
-    XCTAssertEqual(high, chartIQData.high)
-    XCTAssertEqual(low, chartIQData.low)
-    XCTAssertEqual(close, chartIQData.close)
+    XCTAssertNil(chartIQData.open)
+    XCTAssertNil(chartIQData.high)
+    XCTAssertNil(chartIQData.low)
+    XCTAssertNil(chartIQData.close)
     XCTAssertEqual(volume, chartIQData.volume)
-    XCTAssertEqual(adjClose, chartIQData.adjClose)
+    XCTAssertNil(chartIQData.adjClose)
     XCTAssertEqual(chartIQData.close, chartIQData.adjClose)
   }
 

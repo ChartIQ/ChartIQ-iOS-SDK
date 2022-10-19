@@ -141,4 +141,18 @@ public class ChartIQDrawingManager: ChartIQDrawingManagerProtocol {
       return false
     }
   }
+
+  /// Check if the drawing supports VolumeProfile settings.
+  ///
+  /// - Parameters:
+  ///   - tool: The ChartIQDrawingTool.
+  /// - Returns: The Bool Value. True if supports VolumeProfile tool, false if not.
+  public func isSupportingVolumeProfile(_ tool: ChartIQDrawingTool) -> Bool {
+    switch tool {
+    case .volumeProfile:
+      return true
+    default:
+      return false
+    }
+  }
 }

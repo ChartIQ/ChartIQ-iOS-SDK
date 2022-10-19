@@ -84,10 +84,10 @@ class FontTableCell: UITableViewCell {
   // MARK: - Internal Methods
 
   internal func setupCell(withViewModel viewModel: TableCellViewModelProtocol) {
-    guard let fontCellViewModel = viewModel as? FontTableCellViewModel else { return }
-    titleLabel?.text = fontCellViewModel.title.capitalizeFirst()
-    isBoldSelected = fontCellViewModel.isBoldSelected
-    isItalicSelected = fontCellViewModel.isItalicSelected
+    guard let fontViewModel = viewModel as? FontTableCellViewModel else { return }
+    titleLabel?.text = fontViewModel.title.capitalizeFirst()
+    isBoldSelected = fontViewModel.isBoldSelected
+    isItalicSelected = fontViewModel.isItalicSelected
     updateButtons()
   }
 }

@@ -42,39 +42,39 @@ struct DeviationModel {
     var lineSelected = false
     switch lineLevel {
     case .first:
-      lineSelected = parameters[ChartIQConst.DrawingParameter.active1Key] as? Bool ?? false
-      if let color = parameters[ChartIQConst.DrawingParameter.color1Key] as? String,
+      lineSelected = parameters[ChartIQConst.DrawingTool.active1Key] as? Bool ?? false
+      if let color = parameters[ChartIQConst.DrawingTool.color1Key] as? String,
          color.hasPrefix(Const.General.hashSymbol) {
         lineColor = UIColor(hexString: color.replacingOccurrences(of: Const.General.hashSymbol, with: ""))
       }
-      if let lineWidth = parameters[ChartIQConst.DrawingParameter.lineWidth1Key] as? Int,
-         let pattern = parameters[ChartIQConst.DrawingParameter.pattern1Key] as? String,
+      if let lineWidth = parameters[ChartIQConst.DrawingTool.lineWidth1Key] as? Int,
+         let pattern = parameters[ChartIQConst.DrawingTool.pattern1Key] as? String,
          let lineType = ChartIQLineType(stringValue: pattern) {
         self.lineModel = LineModel(lineType: lineType, lineWidth: lineWidth)
       } else {
         return nil
       }
     case .second:
-      lineSelected = parameters[ChartIQConst.DrawingParameter.active2Key] as? Bool ?? false
-      if let color = parameters[ChartIQConst.DrawingParameter.color2Key] as? String,
+      lineSelected = parameters[ChartIQConst.DrawingTool.active2Key] as? Bool ?? false
+      if let color = parameters[ChartIQConst.DrawingTool.color2Key] as? String,
          color.hasPrefix(Const.General.hashSymbol) {
         lineColor = UIColor(hexString: color.replacingOccurrences(of: Const.General.hashSymbol, with: ""))
       }
-      if let lineWidth = parameters[ChartIQConst.DrawingParameter.lineWidth2Key] as? Int,
-         let pattern = parameters[ChartIQConst.DrawingParameter.pattern2Key] as? String,
+      if let lineWidth = parameters[ChartIQConst.DrawingTool.lineWidth2Key] as? Int,
+         let pattern = parameters[ChartIQConst.DrawingTool.pattern2Key] as? String,
          let lineType = ChartIQLineType(stringValue: pattern) {
         self.lineModel = LineModel(lineType: lineType, lineWidth: lineWidth)
       } else {
         return nil
       }
     case .third:
-      lineSelected = parameters[ChartIQConst.DrawingParameter.active3Key] as? Bool ?? false
-      if let color = parameters[ChartIQConst.DrawingParameter.color3Key] as? String,
+      lineSelected = parameters[ChartIQConst.DrawingTool.active3Key] as? Bool ?? false
+      if let color = parameters[ChartIQConst.DrawingTool.color3Key] as? String,
          color.hasPrefix(Const.General.hashSymbol) {
         lineColor = UIColor(hexString: color.replacingOccurrences(of: Const.General.hashSymbol, with: ""))
       }
-      if let lineWidth = parameters[ChartIQConst.DrawingParameter.lineWidth3Key] as? Int,
-         let pattern = parameters[ChartIQConst.DrawingParameter.pattern3Key] as? String,
+      if let lineWidth = parameters[ChartIQConst.DrawingTool.lineWidth3Key] as? Int,
+         let pattern = parameters[ChartIQConst.DrawingTool.pattern3Key] as? String,
          let lineType = ChartIQLineType(stringValue: pattern) {
         self.lineModel = LineModel(lineType: lineType, lineWidth: lineWidth)
       } else {

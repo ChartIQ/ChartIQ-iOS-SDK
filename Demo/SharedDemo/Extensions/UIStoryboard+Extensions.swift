@@ -17,6 +17,7 @@ enum Storyboard: String {
   case symbols = "Symbols"
   case intervals = "Intervals"
   case series = "Series"
+  case signals = "Signals"
   case studies = "Studies"
   case settings = "Settings"
   case common = "Common"
@@ -83,6 +84,26 @@ extension UIStoryboard {
   internal static func seriesViewController() -> SeriesViewController? {
     let controller = UIStoryboard.viewController(SeriesViewController.self, from: .series)
     guard let viewController = controller as? SeriesViewController else { return nil }
+    return viewController
+  }
+
+  // MARK: - Internal Signals Methods
+
+  internal static func signalsViewController() -> SignalsViewController? {
+    let controller = UIStoryboard.viewController(SignalsViewController.self, from: .signals)
+    guard let viewController = controller as? SignalsViewController else { return nil }
+    return viewController
+  }
+
+  internal static func signalDetailViewController() -> SignalDetailViewController? {
+    let controller = UIStoryboard.viewController(SignalDetailViewController.self, from: .signals)
+    guard let viewController = controller as? SignalDetailViewController else { return nil }
+    return viewController
+  }
+
+  internal static func signalConditionViewController() -> SignalConditionViewController? {
+    let controller = UIStoryboard.viewController(SignalConditionViewController.self, from: .signals)
+    guard let viewController = controller as? SignalConditionViewController else { return nil }
     return viewController
   }
 
