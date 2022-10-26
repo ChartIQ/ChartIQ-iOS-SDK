@@ -114,6 +114,16 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
     let script = mobileBridgeNameSpace + ".setChartType(\"\(chartType.stringValue)\");"
     return script
   }
+  
+  /// Returns a script that sets the chart refresh interval.
+  ///
+  /// - Parameters:
+  ///   - refreshInterval: The refresh interval in seconds.
+  /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
+  internal func getScriptForSetRefreshInterval(_ refreshInterval: Int) -> String {
+    let script = mobileBridgeNameSpace + ".setRefreshInterval(\(refreshInterval));"
+    return script
+  }
 
   /// Returns a script that sets an aggregation type.
   ///

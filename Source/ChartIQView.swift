@@ -203,9 +203,11 @@ public class ChartIQView: UIView {
   /// Sets ChartIQ refresh Interval.
   ///
   /// - Parameters:
-  ///   - refreshInterval: The ChartIQ refresh Interval.
+  ///   - refreshInterval: The ChartIQ refresh Interval in seconds.
   public func setRefreshInterval(_ refreshInterval: Int) {
     ChartIQView.refreshInterval = refreshInterval
+    let script = scriptManager.getScriptForSetRefreshInterval(refreshInterval)
+    webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
   /// Sets ChartIQ voiceover fields.
