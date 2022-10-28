@@ -36,6 +36,9 @@ The app is also available on the Apple Store.
 
 The iOS app has been totally reengineered for improved usability and functionality. As a result, there is no upgrade path from the [legacy app](https://github.com/ChartIQ/Charting-Library---iOS-Sample-App-Legacy) (which is compatible with ChartIQ versions 7.0.5&ndash;7.5.0) to the new app/SDK. To take advantage of the major improvements offered by the new mobile app, upgrade to Version 8.2.0 or later of the library and reimplement any custom functionality from your legacy app in the new app.
 
+**End of ChartIQ feature upgrades**
+As of ChartIQ version 8.8.0, only the `ChartIQDemo` app will be updated with the latest ChartIQ features. `ChartIQTabBarDemo` will still be supported but not have the [latest](https://documentation.chartiq.com/tutorial-Changelog_Notices.html) released features integrated into the demo.
+
 ## Getting started
 
 See the [Getting Started on Mobile: iOS](https://documentation.chartiq.com/tutorial-Starting%20on%20iOS.html) tutorial for instructions on installing the app and using the SDK.
