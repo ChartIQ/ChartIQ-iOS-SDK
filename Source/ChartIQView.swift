@@ -576,7 +576,12 @@ public class ChartIQView: UIView {
     let studyName = forClone ? study.originalName : study.shortName
     var studyInputs = Const.Study.nullParam
     var studyOutputs = Const.Study.nullParam
-    if let inputs = inputs,
+
+    var test = inputs
+    var _ = forClone ? test?.updateValue("id", forKey: "") : ""
+    if var inputs = inputs,
+       // change the id so the study can be cloned and not just updated
+       var _ = forClone ? inputs.updateValue("id", forKey: "") : "",
        let jsonData = try? JSONSerialization.data(withJSONObject: inputs, options: .prettyPrinted),
        let jsonString = String(data: jsonData, encoding: .utf8) {
       studyInputs = jsonString
