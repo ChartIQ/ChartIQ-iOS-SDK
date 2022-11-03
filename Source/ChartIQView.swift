@@ -565,36 +565,36 @@ public class ChartIQView: UIView {
   ///
   /// - Parameters:
   ///   - study: The ChartIQStudy model.
-  ///   - forClone: The Bool value indicating whether a study will be added for cloning or for adding.
-  ///   - inputs: Inputs for the study instance. If nil, it will use the paramters defined in CIQ.Studies.DialogHelper.
-  ///   - outputs: Outputs for the study instance. If nil, it will use the paramters defined in CIQ.Studies.DialogHelper.
+  ///   - forClone: The Bool value indicating whether a study will be added or cloned.
   /// - Throws: ChartIQStudyError.
   public func addStudy(_ study: ChartIQStudy,
-                       forClone: Bool = false,
-                       inputs: [String: Any]? = nil,
-                       outputs: [String: Any]? = nil) throws {
+                       forClone: Bool = false) throws {
     let studyName = forClone ? study.originalName : study.shortName
     var studyInputs = Const.Study.nullParam
     var studyOutputs = Const.Study.nullParam
+    var studyParameters = Const.Study.nullParam
 
-    var test = inputs
-    var _ = forClone ? test?.updateValue("id", forKey: "") : ""
-    if var inputs = inputs,
+    if var inputs = study.inputs,
        // change the id so the study can be cloned and not just updated
-       var _ = forClone ? inputs.updateValue("id", forKey: "") : "",
+       var _ = forClone ? inputs.updateValue("", forKey: "id") : "",
        let jsonData = try? JSONSerialization.data(withJSONObject: inputs, options: .prettyPrinted),
        let jsonString = String(data: jsonData, encoding: .utf8) {
       studyInputs = jsonString
     }
-    if let outputs = outputs,
+    if let outputs = study.outputs,
        let jsonData = try? JSONSerialization.data(withJSONObject: outputs, options: .prettyPrinted),
        let jsonString = String(data: jsonData, encoding: .utf8) {
       studyOutputs = jsonString
     }
+    if let parameters = study.parameters,
+       let jsonData = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted),
+       let jsonString = String(data: jsonData, encoding: .utf8) {
+      studyParameters = jsonString
+    }
     if !allStudies.contains(where: { $0.shortName == studyName }) {
       throw ChartIQStudyError.studyNotFound
     }
-    let script = scriptManager.getScriptForAddStudy(studyName, studyInputs: studyInputs, studyOutputs: studyOutputs)
+    let script = scriptManager.getScriptForAddStudy(studyName, studyInputs: studyInputs, studyOutputs: studyOutputs, studyParameters: studyParameters)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
