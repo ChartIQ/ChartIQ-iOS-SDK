@@ -200,7 +200,7 @@ public class ChartIQView: UIView {
     }
   }
 
-  /// Sets ChartIQ refresh Interval.
+  /// Sets ChartIQ quotefeed refresh interval.
   ///
   /// - Parameters:
   ///   - refreshInterval: The ChartIQ refresh Interval in seconds.
