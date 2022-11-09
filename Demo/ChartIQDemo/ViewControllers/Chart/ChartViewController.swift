@@ -190,12 +190,14 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
   private func setupPortraitRightNavigationButtons() {
     navigationItem.rightBarButtonItems = nil
 
-    if DeviceManager.shared().device == .iPhoneSE {
-      setupIPhoneSEPortraitRightNavigationButtons()
-    } else if DeviceManager.shared().device == .iPad {
-      setupiPadPortraitRightNavigationButtons()
-    } else {
-      setupBasePortraitRightNavigationButtons()
+    DispatchQueue.main.async {
+      if DeviceManager.shared().device == .iPhoneSE {
+        self.setupIPhoneSEPortraitRightNavigationButtons()
+      } else if DeviceManager.shared().device == .iPad {
+        self.setupiPadPortraitRightNavigationButtons()
+      } else {
+        self.setupBasePortraitRightNavigationButtons()
+      }
     }
   }
 
