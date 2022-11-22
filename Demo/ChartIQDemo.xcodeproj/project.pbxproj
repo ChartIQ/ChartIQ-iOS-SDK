@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -164,6 +164,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		119A4CFF29255FA500B869F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4818D2AA260E008600D2D018 /* ChartIQ.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 119A4CDE29255B1300B869F2;
+			remoteInfo = ChartIQTestsRunner;
+		};
 		4818D2AF260E008600D2D018 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4818D2AA260E008600D2D018 /* ChartIQ.xcodeproj */;
@@ -437,6 +444,7 @@
 			children = (
 				4818D2B0260E008600D2D018 /* ChartIQ.framework */,
 				4818D2B2260E008600D2D018 /* ChartIQTests.xctest */,
+				119A4D0029255FA500B869F2 /* ChartIQTestsRunner.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1207,6 +1215,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		119A4D0029255FA500B869F2 /* ChartIQTestsRunner.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ChartIQTestsRunner.app;
+			remoteRef = 119A4CFF29255FA500B869F2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		4818D2B0260E008600D2D018 /* ChartIQ.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1273,6 +1288,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		4814B7C4246293E5008E0BD8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);

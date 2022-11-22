@@ -20,10 +20,10 @@ class CustomSearchBar: UISearchBar {
 
 class CustomSearchController: UISearchController, UISearchBarDelegate {
 
-  lazy var customSearchBar: CustomSearchBar = { [weak self] in
+  lazy var customSearchBar: CustomSearchBar = {
     let customSearchBar = CustomSearchBar(frame: CGRect.zero)
     return customSearchBar
-    }()
+  }()
 
   override var searchBar: UISearchBar {
     return customSearchBar

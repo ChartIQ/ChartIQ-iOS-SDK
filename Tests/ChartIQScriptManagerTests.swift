@@ -277,7 +277,7 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetScriptForSetChartProperty() {
     // Given
-    let correctScript = "stxx.chartmaxTicks = 200;"
+    let correctScript = "stxx.chart.maxTicks = 200;"
 
     // When
     let script = chartIQScriptManager.getScriptForSetChartProperty("maxTicks", value: 200)
@@ -332,7 +332,7 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetScriptForEngineProperty() {
     // Given
-    let correctScript = mobileNameSpace + "getEngineProperty(\"allowZoom\");"
+    let correctScript = "stxx.getEngineProperty(\"allowZoom\");"
 
     // When
     let script = chartIQScriptManager.getScriptForEngineProperty("allowZoom")
@@ -464,16 +464,16 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetScriptForPush() {
     // Given
-    let correctScript = mobileNameSpace + "loadChart(\"\", [  {    \"Open\" : 100.2,    \"Volume\" : 66188138,    " +
+    let correctScript = mobileNameSpace + "loadChart(\"\", '[  {    \"Open\" : 100.2,    \"Volume\" : 66188138,    " +
       "\"Adj_Close\" : 100.42,    \"DT\" : \"2020-09-08T10:00:00.000Z\",    \"High\" : 100.75,    " +
-    "\"Low\" : 99.599999999999994,    \"Close\" : 100.42  }]); "
+    "\"Low\" : 99.599999999999994,    \"Close\" : 100.42  }]'); "
 
     let jsonString = "[  {    \"Open\" : 100.2,    \"Volume\" : 66188138,    \"Adj_Close\" : 100.42,    " +
       "\"DT\" : \"2020-09-08T10:00:00.000Z\",    \"High\" : 100.75,    \"Low\" : 99.599999999999994,    " +
     "\"Close\" : 100.42  }]"
 
     // When
-    let script = chartIQScriptManager.getScriptForPush(jsonString)
+    let script = chartIQScriptManager.getScriptForPush("", data: jsonString)
 
     // Then
     XCTAssertEqual(correctScript, script)
@@ -483,14 +483,14 @@ class ChartIQScriptManagerTests: XCTestCase {
     // Given
     let correctScript = mobileNameSpace + "parseData(\'[  {    \"Open\" : 100.2,    \"Volume\" : 66188138,    " +
       "\"Adj_Close\" : 100.42,    \"DT\" : \"2020-09-08T10:00:00.000Z\",    \"High\" : 100.75,    \"Low\" : " +
-    "99.599999999999994,    \"Close\" : 100.42  }]\');"
+    "99.599999999999994,    \"Close\" : 100.42  }]\', null, null, null, true);"
 
     let jsonString = "[  {    \"Open\" : 100.2,    \"Volume\" : 66188138,    \"Adj_Close\" : 100.42,    " +
       "\"DT\" : \"2020-09-08T10:00:00.000Z\",    \"High\" : 100.75,    \"Low\" : 99.599999999999994,    " +
     "\"Close\" : 100.42  }]"
 
     // When
-    let script = chartIQScriptManager.getScriptForPushUpdate(jsonString)
+    let script = chartIQScriptManager.getScriptForPushUpdate(jsonString, useAsLastSale: true)
 
     // Then
     XCTAssertEqual(correctScript, script)
@@ -546,7 +546,7 @@ class ChartIQScriptManagerTests: XCTestCase {
     "else if(\"Lips\".includes(\"Enabled\")) {        newParameters[\"Lips\"] = true;    } else {        " +
     "newParameters[\"Lips\"] = parseFloat(\"#00DD00\");    } } isFound = false; " +
     "helper.updateStudy({inputs:newInputParameters, outputs:newOutputParameters," +
-    " parameters:newParameters}); console.log(JSON.stringify(newParameters));CIQ.MobileBridge.getSlimSd(helper.sd.name);"
+    " parameters:newParameters});CIQ.MobileBridge.getSlimSd(helper.sd.name);"
 
     let parameters: [String: String] = [
       "Lips": "#00DD00"
@@ -775,7 +775,7 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetScriptForStudyObjects() {
     // Given
-    let correctScript = "JSON.stringify(CIQ.Studies.studyLibrary);"
+    let correctScript = "CIQ.MobileBridge.getStudyList();"
 
     // When
     let script = chartIQScriptManager.getScriptForStudyObjects()
@@ -788,14 +788,17 @@ class ChartIQScriptManagerTests: XCTestCase {
     // Given
     let correctScript = mobileNameSpace + "parseData(\'[  {    \"Open\" : 100.2,    \"Volume\" : 66188138,    " +
       "\"Adj_Close\" : 100.42,    \"DT\" : \"2020-09-08T10:00:00.000Z\",    \"High\" : 100.75,    " +
-    "\"Low\" : 99.599999999999994,    \"Close\" : 100.42  }]\', \"KETSMXAUPW\", true);"
+    "\"Low\" : 99.599999999999994,    \"Close\" : 100.42  }]\', \"\", true, true);"
 
     let jsonString = "[  {    \"Open\" : 100.2,    \"Volume\" : 66188138,    \"Adj_Close\" : 100.42,    " +
       "\"DT\" : \"2020-09-08T10:00:00.000Z\",    \"High\" : 100.75,    \"Low\" : 99.599999999999994,    " +
     "\"Close\" : 100.42  }]"
 
     // When
-    let script = chartIQScriptManager.getScriptForFormatJSQuoteData(jsonString, moreAvailable: true, cb: "KETSMXAUPW")
+    let script = chartIQScriptManager.getScriptForFormatJSQuoteData(jsonString,
+                                                                    callbackId: "",
+                                                                    moreAvailable: true,
+                                                                    upToDate: true)
 
     // Then
     XCTAssertEqual(correctScript, script)
