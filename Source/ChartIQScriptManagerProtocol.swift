@@ -303,11 +303,12 @@ internal protocol ChartIQScriptManagerProtocol {
   /// Returns a script that adds a study.
   ///
   /// - Parameters:
-  ///   - studyName: The String Object.
-  ///   - studyInputs: The String Object.
-  ///   - studyOutputs: The String Object.
+  ///   - studyName: The String Object of the study name.
+  ///   - studyInputs: The JSON String Object of the study inputs
+  ///   - studyOutputs: The JSON String Object of the study outputs.
+  ///   - studyParameters: The JSON String Object of the study parameters.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
-  func getScriptForAddStudy(_ studyName: String, studyInputs: String, studyOutputs: String) -> String
+  func getScriptForAddStudy(_ studyName: String, studyInputs: String, studyOutputs: String, studyParameters: String) -> String
 
   /// Returns a script that removes a study.
   ///
