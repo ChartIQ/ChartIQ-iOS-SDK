@@ -66,6 +66,7 @@ opt_in_rules:
 disabled_rules:
   - function_body_length
   - reduce_into
+  - void_function_in_ternary
 
 identifier_name:
   min_length: 1

@@ -539,6 +539,16 @@ public class ChartIQView: UIView {
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
+  /// Sets the chart data by push.
+  ///
+  /// - Parameters:
+  ///   - symbol: The string symbol you want to display on the chart.
+  ///   - jsonString: A string with objects to load into the chart.
+  public func push(_ symbol: String, jsonString: String) {
+    let script = scriptManager.getScriptForPush(symbol, data: jsonString)
+    webView.evaluateJavaScript(script, completionHandler: nil)
+  }
+
   /// Uses this method to stream OHLC data into a chart.
   ///
   /// - Parameters:
@@ -550,6 +560,16 @@ public class ChartIQView: UIView {
           let jsonString = String(data: jsonData,
                                   encoding: .utf8)?.replacingOccurrences(of: Const.General.newlineSymbol,
                                                                          with: "") else { return }
+    let script = scriptManager.getScriptForPushUpdate(jsonString, useAsLastSale: useAsLastSale)
+    webView.evaluateJavaScript(script, completionHandler: nil)
+  }
+
+  /// Uses this method to stream OHLC data into a chart.
+  ///
+  /// - Parameters:
+  ///   - jsonString: A string with objects to load into the chart.
+  ///   - useAsLastSale: A boolean value that forces the data sent to be used as the last sale price.
+  public func pushUpdate(_ jsonString: String, useAsLastSale: Bool) {
     let script = scriptManager.getScriptForPushUpdate(jsonString, useAsLastSale: useAsLastSale)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }

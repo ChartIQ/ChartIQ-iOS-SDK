@@ -6,7 +6,7 @@
 //  All rights reserved
 //
 
-import Foundation
+import UIKit
 
 // MARK: - ChartIQScriptManager Protocol
 

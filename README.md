@@ -14,7 +14,7 @@ Contact us at <support@chartiq.com> to request sample code and guidance on how t
 
   Go to our <a href="https://cosaic.io/chartiq-sdk-library-download/" target="_blank">download site</a> to obtain a free 30-day trial version of the library, or send us an email at <info@cosaic.io>, and we'll send you an evaluation version.
 
-- iOS 10.3 or later
+- iOS 10.3 or later (iOS 11.0 or later if you are installing with Swift Package Manager)
 
 ## App
 
@@ -39,6 +39,26 @@ The iOS app has been totally reengineered for improved usability and functionali
 ## Getting started
 
 See the [Getting Started on Mobile: iOS](https://documentation.chartiq.com/tutorial-Starting%20on%20iOS.html) tutorial for instructions on installing the app and using the SDK.
+
+## Swift Package Manager
+
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler.
+
+### Adding to your package
+
+Once you have your Swift package set up, adding ChartIQ as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/ChartIQ/ChartIQ-iOS-SDK.git", branch: "master")
+]
+```
+
+### Adding to your project
+
+To add ChartIQ to your Xcode project, select: File > Add Packages and enter this repository URL.
+
+You can also navigate to your target’s General panel, and in the “Frameworks, Libraries, and Embedded Content” section, click the + button, select Add Other, and choose Add Package Dependency.
 
 ## Customization
 
