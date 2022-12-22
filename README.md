@@ -8,7 +8,7 @@ Contact us at <support@chartiq.com> to request sample code and guidance on how t
 
 ## Requirements
 
-- Version 8.2.0 or later of the ChartIQ library
+- Version 8.8.0 or later of the ChartIQ library
 
   For previous version support, please refer to the [Releases](https://github.com/ChartIQ/ChartIQ-iOS-SDK/releases) section.
 
