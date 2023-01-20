@@ -200,12 +200,14 @@ public class ChartIQView: UIView {
     }
   }
 
-  /// Sets ChartIQ refresh Interval.
+  /// Sets ChartIQ quotefeed refresh interval.
   ///
   /// - Parameters:
-  ///   - refreshInterval: The ChartIQ refresh Interval.
+  ///   - refreshInterval: The ChartIQ refresh Interval in seconds.
   public func setRefreshInterval(_ refreshInterval: Int) {
     ChartIQView.refreshInterval = refreshInterval
+    let script = scriptManager.getScriptForSetRefreshInterval(refreshInterval)
+    webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
   /// Sets ChartIQ voiceover fields.
@@ -537,6 +539,16 @@ public class ChartIQView: UIView {
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 
+  /// Sets the chart data by push.
+  ///
+  /// - Parameters:
+  ///   - symbol: The string symbol you want to display on the chart.
+  ///   - jsonString: A string with objects to load into the chart.
+  public func push(_ symbol: String, jsonString: String) {
+    let script = scriptManager.getScriptForPush(symbol, data: jsonString)
+    webView.evaluateJavaScript(script, completionHandler: nil)
+  }
+
   /// Uses this method to stream OHLC data into a chart.
   ///
   /// - Parameters:
@@ -548,6 +560,16 @@ public class ChartIQView: UIView {
           let jsonString = String(data: jsonData,
                                   encoding: .utf8)?.replacingOccurrences(of: Const.General.newlineSymbol,
                                                                          with: "") else { return }
+    let script = scriptManager.getScriptForPushUpdate(jsonString, useAsLastSale: useAsLastSale)
+    webView.evaluateJavaScript(script, completionHandler: nil)
+  }
+
+  /// Uses this method to stream OHLC data into a chart.
+  ///
+  /// - Parameters:
+  ///   - jsonString: A string with objects to load into the chart.
+  ///   - useAsLastSale: A boolean value that forces the data sent to be used as the last sale price.
+  public func pushUpdate(_ jsonString: String, useAsLastSale: Bool) {
     let script = scriptManager.getScriptForPushUpdate(jsonString, useAsLastSale: useAsLastSale)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
@@ -565,31 +587,36 @@ public class ChartIQView: UIView {
   ///
   /// - Parameters:
   ///   - study: The ChartIQStudy model.
-  ///   - forClone: The Bool value indicating whether a study will be added for cloning or for adding.
-  ///   - inputs: Inputs for the study instance. If nil, it will use the paramters defined in CIQ.Studies.DialogHelper.
-  ///   - outputs: Outputs for the study instance. If nil, it will use the paramters defined in CIQ.Studies.DialogHelper.
+  ///   - forClone: The Bool value indicating whether a study will be added or cloned.
   /// - Throws: ChartIQStudyError.
   public func addStudy(_ study: ChartIQStudy,
-                       forClone: Bool = false,
-                       inputs: [String: Any]? = nil,
-                       outputs: [String: Any]? = nil) throws {
+                       forClone: Bool = false) throws {
     let studyName = forClone ? study.originalName : study.shortName
     var studyInputs = Const.Study.nullParam
     var studyOutputs = Const.Study.nullParam
-    if let inputs = inputs,
+    var studyParameters = Const.Study.nullParam
+
+    if var inputs = study.inputs,
+       // change the id so the study can be cloned and not just updated
+       var _ = forClone ? inputs.updateValue("", forKey: "id") : "",
        let jsonData = try? JSONSerialization.data(withJSONObject: inputs, options: .prettyPrinted),
        let jsonString = String(data: jsonData, encoding: .utf8) {
       studyInputs = jsonString
     }
-    if let outputs = outputs,
+    if let outputs = study.outputs,
        let jsonData = try? JSONSerialization.data(withJSONObject: outputs, options: .prettyPrinted),
        let jsonString = String(data: jsonData, encoding: .utf8) {
       studyOutputs = jsonString
     }
+    if let parameters = study.parameters,
+       let jsonData = try? JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted),
+       let jsonString = String(data: jsonData, encoding: .utf8) {
+      studyParameters = jsonString
+    }
     if !allStudies.contains(where: { $0.shortName == studyName }) {
       throw ChartIQStudyError.studyNotFound
     }
-    let script = scriptManager.getScriptForAddStudy(studyName, studyInputs: studyInputs, studyOutputs: studyOutputs)
+    let script = scriptManager.getScriptForAddStudy(studyName, studyInputs: studyInputs, studyOutputs: studyOutputs, studyParameters: studyParameters)
     webView.evaluateJavaScript(script, completionHandler: nil)
   }
 

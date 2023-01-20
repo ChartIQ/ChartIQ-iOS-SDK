@@ -61,7 +61,7 @@ public class ChartIQStudy: NSObject {
               inputs: [String: Any]? = nil,
               outputs: [String: Any]? = nil,
               parameters: [String: Any]? = nil,
-              signalIQExclude: Bool) {
+              signalIQExclude: Bool = false) {
     self.shortName = shortName
     self.fullName = fullName
     self.originalName = originalName

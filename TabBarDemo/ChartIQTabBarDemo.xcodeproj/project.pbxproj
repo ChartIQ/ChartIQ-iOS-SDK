@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		119A4CFA29255CF800B869F2 /* ConditionMarkerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119A4CF429255CF800B869F2 /* ConditionMarkerService.swift */; };
 		4818D2D3260E070B00D2D018 /* ChartIQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4818D2B9260E009F00D2D018 /* ChartIQ.framework */; };
 		4818D2D4260E070B00D2D018 /* ChartIQ.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4818D2B9260E009F00D2D018 /* ChartIQ.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		485EC4862870856100F8ECBF /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485EC3722870855E00F8ECBF /* DeviceManager.swift */; };
@@ -163,6 +164,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		119A4CF829255CF800B869F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4818D2B3260E009F00D2D018 /* ChartIQ.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 119A4CDE29255B1300B869F2;
+			remoteInfo = ChartIQTestsRunner;
+		};
 		4818D2B8260E009F00D2D018 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4818D2B3260E009F00D2D018 /* ChartIQ.xcodeproj */;
@@ -194,6 +202,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		119A4CF429255CF800B869F2 /* ConditionMarkerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionMarkerService.swift; sourceTree = "<group>"; };
 		4818D2B3260E009F00D2D018 /* ChartIQ.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChartIQ.xcodeproj; path = ../ChartIQ.xcodeproj; sourceTree = "<group>"; };
 		481EE77C2492871400DA134D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		481EE77D2492871400DA134D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -375,6 +384,7 @@
 			children = (
 				4818D2B9260E009F00D2D018 /* ChartIQ.framework */,
 				4818D2BB260E009F00D2D018 /* ChartIQTests.xctest */,
+				119A4CF929255CF800B869F2 /* ChartIQTestsRunner.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1000,6 +1010,7 @@
 		485EC1F52870855D00F8ECBF /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				119A4CF429255CF800B869F2 /* ConditionMarkerService.swift */,
 				485EC1F62870855D00F8ECBF /* StudiesService.swift */,
 				485EC1F72870855D00F8ECBF /* SearchSymbolsService.swift */,
 				485EC1F82870855D00F8ECBF /* DrawToolsService.swift */,
@@ -1205,6 +1216,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		119A4CF929255CF800B869F2 /* ChartIQTestsRunner.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ChartIQTestsRunner.app;
+			remoteRef = 119A4CF829255CF800B869F2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		4818D2B9260E009F00D2D018 /* ChartIQ.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1271,6 +1289,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		4814B7C4246293E5008E0BD8 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1356,6 +1375,7 @@
 				485EC6612870856200F8ECBF /* FullScreenPickerViewController.swift in Sources */,
 				485EC61A2870856200F8ECBF /* DeviationsTableCellViewModel.swift in Sources */,
 				485EC6CE2870856300F8ECBF /* TextViewTableCell.swift in Sources */,
+				119A4CFA29255CF800B869F2 /* ConditionMarkerService.swift in Sources */,
 				485EC6432870856200F8ECBF /* UIViewController+Extensions.swift in Sources */,
 				485EC65A2870856200F8ECBF /* StudyDetailViewController.swift in Sources */,
 				485EC64C2870856200F8ECBF /* UISearchController+Extensions.swift in Sources */,
