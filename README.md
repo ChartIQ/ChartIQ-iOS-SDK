@@ -12,7 +12,7 @@ Contact us at <support@chartiq.com> to request sample code and guidance on how t
 
   For previous version support, please refer to the [Releases](https://github.com/ChartIQ/ChartIQ-iOS-SDK/releases) section.
 
-  To obtain an evaluation version of the ChartIQ library, visit to our <a href="https://pages.marketintelligence.spglobal.com/ChartIQ-Follow-up-Request.html" target="_blank">Request Follow Up site</a> to get in contact with us!
+  To obtain an evaluation version of the ChartIQ library, visit our <a href="https://pages.marketintelligence.spglobal.com/ChartIQ-Follow-up-Request.html" target="_blank">Request Follow Up site</a> to get in contact with us!
 
 - iOS 12.0 or later.
 
