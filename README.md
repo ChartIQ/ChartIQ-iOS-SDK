@@ -8,13 +8,13 @@ Contact us at <support@chartiq.com> to request sample code and guidance on how t
 
 ## Requirements
 
-- Version 8.8.0 or later of the ChartIQ library
+- Version 9.0.1 or later of the ChartIQ library
 
   For previous version support, please refer to the [Releases](https://github.com/ChartIQ/ChartIQ-iOS-SDK/releases) section.
 
-  Go to our <a href="https://cosaic.io/chartiq-sdk-library-download/" target="_blank">download site</a> to obtain a free 30-day trial version of the library, or send us an email at <info@cosaic.io>, and we'll send you an evaluation version.
+  To obtain an evaluation version of the ChartIQ library, contact your account manager or visit our <a href="https://pages.marketintelligence.spglobal.com/ChartIQ-Follow-up-Request.html" target="_blank">Request Follow Up site</a> to get in contact with us!
 
-- iOS 10.3 or later (iOS 11.0 or later if you are installing with Swift Package Manager)
+- iOS 12.0 or later.
 
 ## App
 
@@ -69,7 +69,7 @@ For information on changing the appearance of the app, see our [customization](h
 
 ## API documentation
 
-- [App/SDK](https://documentation.chartiq.com/ios-sdk)
+- [App/SDK](https://documentation.chartiq.com/ios-sdk/)
 
 - [ChartIQ JavaScript library](https://documentation.chartiq.com)
 
