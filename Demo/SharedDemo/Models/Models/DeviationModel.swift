@@ -37,7 +37,7 @@ struct DeviationModel {
     self.isLineSelected = isLineSelected
   }
 
-  init?(lineLevel: DeviationLevel, parameters: [String: Any]) {
+  init?(lineLevel: DeviationLevel, parameters: [String: Any], isDarkTheme: Bool = false) {
     var lineColor = UIColor.blackColor
     var lineSelected = false
     switch lineLevel {

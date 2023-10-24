@@ -69,7 +69,7 @@ internal protocol ChartIQScriptManagerProtocol {
   ///   - chartType: The ChartIQChartType Object.
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.
   func getScriptForSetChartType(_ chartType: ChartIQChartType) -> String
-  
+
   /// Returns a script that sets the chart refresh interval
   ///
   /// - Returns: The String Object that contains a JS script for evaluate in the WebView.

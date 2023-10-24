@@ -82,6 +82,9 @@ import Foundation
   /// The line option.
   case line
 
+  /// The measurementLine option.
+  case measurementLine
+
   /// The pitchfork option.
   case pitchfork
 
@@ -96,9 +99,6 @@ import Foundation
 
   /// The regression option.
   case regression
-
-  /// The segment option.
-  case segment
 
   /// The speedResistanceArc option.
   case speedResistanceArc
@@ -116,7 +116,7 @@ import Foundation
   case tironeLevels
 
   /// The trend option.
-  case trend
+  case trendLine
 
   /// The vertical option.
   case vertical
@@ -176,6 +176,8 @@ import Foundation
       return "horizontal"
     case .line:
       return "line"
+    case .measurementLine:
+        return "measurementline"
     case .pitchfork:
       return "pitchfork"
     case .quadrantLines:
@@ -186,8 +188,6 @@ import Foundation
       return "rectangle"
     case .regression:
       return "regression"
-    case .segment:
-      return "segment"
     case .speedResistanceArc:
       return "speedarc"
     case .speedResistanceLine:
@@ -198,7 +198,7 @@ import Foundation
       return "timecycle"
     case .tironeLevels:
       return "tirone"
-    case .trend:
+    case .trendLine:
       return "trendline"
     case .vertical:
       return "vertical"
@@ -258,6 +258,8 @@ import Foundation
       return "Horizontal"
     case .line:
       return "Line"
+    case .measurementLine:
+      return "Measurement Line"
     case .pitchfork:
       return "Pitchfork"
     case .quadrantLines:
@@ -268,8 +270,6 @@ import Foundation
       return "Rectangle"
     case .regression:
       return "Regression Line"
-    case .segment:
-      return "Segment"
     case .speedResistanceArc:
       return "Speed Resistance Arc"
     case .speedResistanceLine:
@@ -280,7 +280,7 @@ import Foundation
       return "Time Cycle"
     case .tironeLevels:
       return "Tirone Levels"
-    case .trend:
+    case .trendLine:
       return "Trend Line"
     case .vertical:
       return "Vertical"
@@ -340,6 +340,8 @@ import Foundation
       return .lines
     case .line:
       return .lines
+    case .measurementLine:
+      return .statistics
     case .pitchfork:
       return .technicals
     case .quadrantLines:
@@ -350,8 +352,6 @@ import Foundation
       return .markings
     case .regression:
       return .statistics
-    case .segment:
-      return .lines
     case .speedResistanceArc:
       return .technicals
     case .speedResistanceLine:
@@ -362,8 +362,8 @@ import Foundation
       return .technicals
     case .tironeLevels:
       return .statistics
-    case .trend:
-      return .text
+    case .trendLine:
+      return .lines
     case .vertical:
       return .lines
     case .volumeProfile:
@@ -402,18 +402,18 @@ import Foundation
       "heart": .heart,
       "horizontal": .horizontal,
       "line": .line,
+      "measurementline": .measurementLine,
       "pitchfork": .pitchfork,
       "quadrant": .quadrantLines,
       "ray": .ray,
       "rectangle": .rectangle,
       "regression": .regression,
-      "segment": .segment,
       "speedarc": .speedResistanceArc,
       "speedline": .speedResistanceLine,
       "star": .star,
       "timecycle": .timeCycle,
       "tirone": .tironeLevels,
-      "trendline": .trend,
+      "trendline": .trendLine,
       "vertical": .vertical,
       "volumeprofile": .volumeProfile,
       "measure": .measure
@@ -500,8 +500,14 @@ import Foundation
   /// The fibs option.
   case fibs
 
+  /// The axisLabel option.
+  case axisLabel
+
   /// The showLines option.
   case showLines
+
+  /// The showCallout option.
+  case showCallout
 
   /// The waveTemplate option.
   case waveTemplate
@@ -575,8 +581,12 @@ import Foundation
       return "weight"
     case .fibs:
       return "fibs"
+    case .axisLabel:
+      return "axisLabel"
     case .showLines:
       return "showLines"
+    case .showCallout:
+      return "showCallout"
     case .waveTemplate:
       return "waveTemplate"
     case .impulse:

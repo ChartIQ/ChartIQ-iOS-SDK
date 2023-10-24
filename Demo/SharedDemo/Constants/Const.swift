@@ -158,6 +158,7 @@ public struct Const {
     static let fontSizeTitle = "Font Size"
     static let fontStyleTitle = "Font Style"
 
+    static let showCalloutTitle = "Show Callout"
     static let axisLabelTitle = "Axis Label"
 
     static let fibonacciSettingsTitle = "Fibonacci Settings"

@@ -570,10 +570,13 @@ class ChartIQScriptManagerTests: XCTestCase {
 
   func testsGetScriptForAddStudy() {
     // Given
-    let correctScript = mobileNameSpace + "addStudy(\'Alligator\', null, null);"
+    let correctScript = mobileNameSpace + "addStudy(\'Alligator\', null, null, null);"
 
     // When
-    let script = chartIQScriptManager.getScriptForAddStudy("Alligator", studyInputs: "null", studyOutputs: "null")
+    let script = chartIQScriptManager.getScriptForAddStudy("Alligator",
+                                                           studyInputs: "null",
+                                                           studyOutputs: "null",
+                                                           studyParameters: "null")
 
     // Then
     XCTAssertEqual(correctScript, script)
@@ -646,7 +649,7 @@ class ChartIQScriptManagerTests: XCTestCase {
     let correctScript = mobileNameSpace + "restoreDefaultDrawingConfig(\"trendline\", false);"
 
     // When
-    let script = chartIQScriptManager.getScriptForRestoreDefaultDrawingConfig(.trend, all: false)
+    let script = chartIQScriptManager.getScriptForRestoreDefaultDrawingConfig(.trendLine, all: false)
 
     // Then
     XCTAssertEqual(correctScript, script)

@@ -85,7 +85,6 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
 
     setupChartIQView()
     setupCrosshairInfoView()
-    setupUndoRedoView()
     setupMeasureInfoView()
     setupHorizontalPickerView()
     setupDrawToolControlView()
@@ -125,9 +124,7 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
     super.traitCollectionDidChange(previousTraitCollection)
 
     if #available(iOS 13.0, *), traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
-      DispatchQueue.main.async {
-        self.updateTheme()
-      }
+      DispatchQueue.main.async { self.updateTheme() }
     }
   }
 
@@ -147,11 +144,11 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
     chartIQViewContainer.startActivityIndicator()
 
     homeIndicatorView.backgroundColor = .ghostWhiteСhineseBlackColor
+    undoRedoViewContainer.isHidden = true
   }
 
   override func setupSettings() {
     chartRouter = ChartRouter(rootViewController: self)
-
     setupNavigationButtons()
     setupFloatingButton()
   }
@@ -271,7 +268,6 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
   private func setupChartIQView() {
     chartIQView.adjustFrame(inView: chartIQViewContainer)
     chartIQView.pinEdges(toView: chartIQViewContainer)
-
     chartIQView.dataSource = self
     chartIQView.delegate = self
   }
@@ -288,10 +284,6 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
     navigationView?.adjustFrame(inView: navigationViewContainer)
     navigationViewContainer?.isHidden = true
     navigationViewTopConstraint.constant = -Const.NavigationView.height
-  }
-
-  private func setupUndoRedoView() {
-    undoRedoViewContainer.isHidden = true
   }
 
   private func setupMeasureInfoView() {
@@ -410,9 +402,7 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
 
   internal func updateInterval() {
     guard let periodicity = chartIQView.periodicity, let interval = chartIQView.interval else { return }
-    let intervalModel = IntervalModel(periodicity: periodicity,
-                                      interval: interval,
-                                      chartIQTimeUnit: chartIQView.timeUnit)
+    let intervalModel = IntervalModel(periodicity: periodicity, interval: interval, chartIQTimeUnit: chartIQView.timeUnit)
     selectedInterval = intervalModel
     intervalsButton.setTitle(intervalModel.getShortDisplayName(), for: .normal)
   }
@@ -503,8 +493,7 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
     if let selectedDrawingTool = selectedDrawTool?.drawingTool {
       chartIQView.enableDrawing(selectedDrawingTool)
     }
-    let viewModels = drawToolsService.getDrawToolCollectionViewModels(from: chartIQView,
-                                                                      isDarkTheme: isUserInterfaceStyleDark)
+    let viewModels = drawToolsService.getDrawToolCollectionViewModels(from: chartIQView, isDarkTheme: isUserInterfaceStyleDark)
     guard !viewModels.isEmpty else { return }
     drawToolViewModels = viewModels
     drawToolButton.setImage(UIImage.Chart.drawToolActiveImage, for: .normal)
@@ -527,8 +516,7 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
   }
 
   private func reloadDrawToolControlView() {
-    let viewModels = drawToolsService.getDrawToolCollectionViewModels(from: chartIQView,
-                                                                      isDarkTheme: isUserInterfaceStyleDark)
+    let viewModels = drawToolsService.getDrawToolCollectionViewModels(from: chartIQView, isDarkTheme: isUserInterfaceStyleDark)
     guard isDrawToolEnable, !viewModels.isEmpty else { return }
     drawToolViewModels = viewModels
     drawToolControlView?.updateView(with: drawToolViewModels)
@@ -649,8 +637,7 @@ class ChartViewController: BaseViewController, ChartRouterInputProtocol {
 
 extension ChartViewController: ChartIQDataSource {
 
-  public func pullInitialData(by params: ChartIQQuoteFeedParams,
-                              completionHandler: @escaping ([ChartIQData]) -> Void) {
+  public func pullInitialData(by params: ChartIQQuoteFeedParams, completionHandler: @escaping ([ChartIQData]) -> Void) {
     updateTheme()
     dataSimulatorService.loadChartData(withParameters: params, controller: self) { chartIQDataArray in
       completionHandler(chartIQDataArray)
@@ -660,13 +647,11 @@ extension ChartViewController: ChartIQDataSource {
     }
   }
 
-  public func pullUpdateData(by params: ChartIQQuoteFeedParams,
-                             completionHandler: @escaping ([ChartIQData]) -> Void) {
+  public func pullUpdateData(by params: ChartIQQuoteFeedParams, completionHandler: @escaping ([ChartIQData]) -> Void) {
     dataSimulatorService.loadChartData(withParameters: params, controller: self, completionHandler: completionHandler)
   }
 
-  public func pullPaginationData(by params: ChartIQQuoteFeedParams,
-                                 completionHandler: @escaping ([ChartIQData]) -> Void) {
+  public func pullPaginationData(by params: ChartIQQuoteFeedParams, completionHandler: @escaping ([ChartIQData]) -> Void) {
     dataSimulatorService.loadChartData(withParameters: params, controller: self, completionHandler: completionHandler)
   }
 }
@@ -711,8 +696,7 @@ extension ChartViewController: HorizontalPickerViewDelegate {
   }
 
   private func didSelectColor(item: PickerViewItem, type: ChartIQDrawingParameterType) {
-    guard let indexPath = selectedDrawToolIndexPath,
-          let color = item.selectedColor,
+    guard let indexPath = selectedDrawToolIndexPath, let color = item.selectedColor,
           let viewModel = drawToolViewModels[indexPath.row] as? DrawToolColorViewModel else { return }
     viewModel.color = color
     drawToolViewModels.replace(object: viewModel, atIndex: indexPath.row)
@@ -720,8 +704,7 @@ extension ChartViewController: HorizontalPickerViewDelegate {
   }
 
   private func didSelectLine(item: PickerViewItem) {
-    guard let indexPath = selectedDrawToolIndexPath,
-          let line = item.selectedLine,
+    guard let indexPath = selectedDrawToolIndexPath, let line = item.selectedLine,
           let viewModel = drawToolViewModels[indexPath.row] as? DrawToolBaseViewModel else { return }
     viewModel.line = line
     viewModel.image = line.lineImage

@@ -16,11 +16,4 @@ struct PickerViewItem {
 
   internal let selectedColor: UIColor?
   internal let selectedLine: LineModel?
-
-  // MARK: - Init
-
-  init(selectedColor: UIColor?, selectedLine: LineModel?) {
-    self.selectedColor = selectedColor
-    self.selectedLine = selectedLine
-  }
 }

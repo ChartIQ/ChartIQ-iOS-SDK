@@ -34,9 +34,11 @@ public struct ChartIQConst {
     public static let boldOffKey = "300"
 
     public static let axisLabelKey = "axisLabel"
+    public static let showLinesKey = "showLines"
+    public static let showCalloutKey = "showCallout"
+
     public static let parametersKey = "parameters"
     public static let fibsKey = "fibs"
-    public static let showLinesKey = "showLines"
 
     public static let waveParametersKey = "waveParameters"
     public static let waveTemplateKey = "waveTemplate"

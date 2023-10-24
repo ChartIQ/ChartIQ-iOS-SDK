@@ -47,12 +47,12 @@ class ChartIQDrawingToolTests: XCTestCase {
     let heart = "heart"
     let horizontal = "horizontal"
     let line = "line"
+    let measurementLine = "measurementline"
     let pitchfork = "pitchfork"
     let quadrantLines = "quadrant"
     let ray = "ray"
     let rectangle = "rectangle"
     let regression = "regression"
-    let segment = "segment"
     let speedResistanceArc = "speedarc"
     let speedResistanceLine = "speedline"
     let star = "star"
@@ -87,18 +87,18 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(heart, ChartIQDrawingTool.heart.stringValue)
     XCTAssertEqual(horizontal, ChartIQDrawingTool.horizontal.stringValue)
     XCTAssertEqual(line, ChartIQDrawingTool.line.stringValue)
+    XCTAssertEqual(measurementLine, ChartIQDrawingTool.measurementLine.stringValue)
     XCTAssertEqual(pitchfork, ChartIQDrawingTool.pitchfork.stringValue)
     XCTAssertEqual(quadrantLines, ChartIQDrawingTool.quadrantLines.stringValue)
     XCTAssertEqual(ray, ChartIQDrawingTool.ray.stringValue)
     XCTAssertEqual(rectangle, ChartIQDrawingTool.rectangle.stringValue)
     XCTAssertEqual(regression, ChartIQDrawingTool.regression.stringValue)
-    XCTAssertEqual(segment, ChartIQDrawingTool.segment.stringValue)
     XCTAssertEqual(speedResistanceArc, ChartIQDrawingTool.speedResistanceArc.stringValue)
     XCTAssertEqual(speedResistanceLine, ChartIQDrawingTool.speedResistanceLine.stringValue)
     XCTAssertEqual(star, ChartIQDrawingTool.star.stringValue)
     XCTAssertEqual(timeCycle, ChartIQDrawingTool.timeCycle.stringValue)
     XCTAssertEqual(tironeLevels, ChartIQDrawingTool.tironeLevels.stringValue)
-    XCTAssertEqual(trend, ChartIQDrawingTool.trend.stringValue)
+    XCTAssertEqual(trend, ChartIQDrawingTool.trendLine.stringValue)
     XCTAssertEqual(vertical, ChartIQDrawingTool.vertical.stringValue)
     XCTAssertEqual(volumeProfile, ChartIQDrawingTool.volumeProfile.stringValue)
     XCTAssertEqual(measure, ChartIQDrawingTool.measure.stringValue)
@@ -129,12 +129,12 @@ class ChartIQDrawingToolTests: XCTestCase {
     let heart = "Heart"
     let horizontal = "Horizontal"
     let line = "Line"
+    let measurementLine = "Measurement Line"
     let pitchfork = "Pitchfork"
     let quadrantLines = "Quadrant Lines"
     let ray = "Ray"
     let rectangle = "Rectangle"
     let regression = "Regression Line"
-    let segment = "Segment"
     let speedResistanceArc = "Speed Resistance Arc"
     let speedResistanceLine = "Speed Resistance Line"
     let star = "Star"
@@ -169,18 +169,18 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(heart, ChartIQDrawingTool.heart.displayName)
     XCTAssertEqual(horizontal, ChartIQDrawingTool.horizontal.displayName)
     XCTAssertEqual(line, ChartIQDrawingTool.line.displayName)
+    XCTAssertEqual(measurementLine, ChartIQDrawingTool.measurementLine.displayName)
     XCTAssertEqual(pitchfork, ChartIQDrawingTool.pitchfork.displayName)
     XCTAssertEqual(quadrantLines, ChartIQDrawingTool.quadrantLines.displayName)
     XCTAssertEqual(ray, ChartIQDrawingTool.ray.displayName)
     XCTAssertEqual(rectangle, ChartIQDrawingTool.rectangle.displayName)
     XCTAssertEqual(regression, ChartIQDrawingTool.regression.displayName)
-    XCTAssertEqual(segment, ChartIQDrawingTool.segment.displayName)
     XCTAssertEqual(speedResistanceArc, ChartIQDrawingTool.speedResistanceArc.displayName)
     XCTAssertEqual(speedResistanceLine, ChartIQDrawingTool.speedResistanceLine.displayName)
     XCTAssertEqual(star, ChartIQDrawingTool.star.displayName)
     XCTAssertEqual(timeCycle, ChartIQDrawingTool.timeCycle.displayName)
     XCTAssertEqual(tironeLevels, ChartIQDrawingTool.tironeLevels.displayName)
-    XCTAssertEqual(trend, ChartIQDrawingTool.trend.displayName)
+    XCTAssertEqual(trend, ChartIQDrawingTool.trendLine.displayName)
     XCTAssertEqual(vertical, ChartIQDrawingTool.vertical.displayName)
     XCTAssertEqual(volumeProfile, ChartIQDrawingTool.volumeProfile.displayName)
     XCTAssertEqual(measure, ChartIQDrawingTool.measure.displayName)
@@ -211,18 +211,18 @@ class ChartIQDrawingToolTests: XCTestCase {
     let heart: ChartIQDrawingToolType = .markings
     let horizontal: ChartIQDrawingToolType = .lines
     let line: ChartIQDrawingToolType = .lines
+    let measurementLine: ChartIQDrawingToolType = .statistics
     let pitchfork: ChartIQDrawingToolType = .technicals
     let quadrantLines: ChartIQDrawingToolType = .statistics
     let ray: ChartIQDrawingToolType = .lines
     let rectangle: ChartIQDrawingToolType = .markings
     let regression: ChartIQDrawingToolType = .statistics
-    let segment: ChartIQDrawingToolType = .lines
     let speedResistanceArc: ChartIQDrawingToolType = .technicals
     let speedResistanceLine: ChartIQDrawingToolType = .technicals
     let star: ChartIQDrawingToolType = .markings
     let timeCycle: ChartIQDrawingToolType = .technicals
     let tironeLevels: ChartIQDrawingToolType = .statistics
-    let trend: ChartIQDrawingToolType = .text
+    let trend: ChartIQDrawingToolType = .lines
     let vertical: ChartIQDrawingToolType = .lines
     let volumeProfile: ChartIQDrawingToolType = .statistics
     let measure: ChartIQDrawingToolType = .text
@@ -251,18 +251,18 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(heart, ChartIQDrawingTool.heart.type)
     XCTAssertEqual(horizontal, ChartIQDrawingTool.horizontal.type)
     XCTAssertEqual(line, ChartIQDrawingTool.line.type)
+    XCTAssertEqual(measurementLine, ChartIQDrawingTool.measurementLine.type)
     XCTAssertEqual(pitchfork, ChartIQDrawingTool.pitchfork.type)
     XCTAssertEqual(quadrantLines, ChartIQDrawingTool.quadrantLines.type)
     XCTAssertEqual(ray, ChartIQDrawingTool.ray.type)
     XCTAssertEqual(rectangle, ChartIQDrawingTool.rectangle.type)
     XCTAssertEqual(regression, ChartIQDrawingTool.regression.type)
-    XCTAssertEqual(segment, ChartIQDrawingTool.segment.type)
     XCTAssertEqual(speedResistanceArc, ChartIQDrawingTool.speedResistanceArc.type)
     XCTAssertEqual(speedResistanceLine, ChartIQDrawingTool.speedResistanceLine.type)
     XCTAssertEqual(star, ChartIQDrawingTool.star.type)
     XCTAssertEqual(timeCycle, ChartIQDrawingTool.timeCycle.type)
     XCTAssertEqual(tironeLevels, ChartIQDrawingTool.tironeLevels.type)
-    XCTAssertEqual(trend, ChartIQDrawingTool.trend.type)
+    XCTAssertEqual(trend, ChartIQDrawingTool.trendLine.type)
     XCTAssertEqual(vertical, ChartIQDrawingTool.vertical.type)
     XCTAssertEqual(volumeProfile, ChartIQDrawingTool.volumeProfile.type)
     XCTAssertEqual(measure, ChartIQDrawingTool.measure.type)
@@ -293,12 +293,12 @@ class ChartIQDrawingToolTests: XCTestCase {
     let heart = "heart"
     let horizontal = "horizontal"
     let line = "line"
+    let measurementLine = "measurementline"
     let pitchfork = "pitchfork"
     let quadrantLines = "quadrant"
     let ray = "ray"
     let rectangle = "rectangle"
     let regression = "regression"
-    let segment = "segment"
     let speedResistanceArc = "speedarc"
     let speedResistanceLine = "speedline"
     let star = "star"
@@ -334,18 +334,18 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(ChartIQDrawingTool.heart, ChartIQDrawingTool(stringValue: heart))
     XCTAssertEqual(ChartIQDrawingTool.horizontal, ChartIQDrawingTool(stringValue: horizontal))
     XCTAssertEqual(ChartIQDrawingTool.line, ChartIQDrawingTool(stringValue: line))
+    XCTAssertEqual(ChartIQDrawingTool.measurementLine, ChartIQDrawingTool(stringValue: measurementLine))
     XCTAssertEqual(ChartIQDrawingTool.pitchfork, ChartIQDrawingTool(stringValue: pitchfork))
     XCTAssertEqual(ChartIQDrawingTool.quadrantLines, ChartIQDrawingTool(stringValue: quadrantLines))
     XCTAssertEqual(ChartIQDrawingTool.ray, ChartIQDrawingTool(stringValue: ray))
     XCTAssertEqual(ChartIQDrawingTool.rectangle, ChartIQDrawingTool(stringValue: rectangle))
     XCTAssertEqual(ChartIQDrawingTool.regression, ChartIQDrawingTool(stringValue: regression))
-    XCTAssertEqual(ChartIQDrawingTool.segment, ChartIQDrawingTool(stringValue: segment))
     XCTAssertEqual(ChartIQDrawingTool.speedResistanceArc, ChartIQDrawingTool(stringValue: speedResistanceArc))
     XCTAssertEqual(ChartIQDrawingTool.speedResistanceLine, ChartIQDrawingTool(stringValue: speedResistanceLine))
     XCTAssertEqual(ChartIQDrawingTool.star, ChartIQDrawingTool(stringValue: star))
     XCTAssertEqual(ChartIQDrawingTool.timeCycle, ChartIQDrawingTool(stringValue: timeCycle))
     XCTAssertEqual(ChartIQDrawingTool.tironeLevels, ChartIQDrawingTool(stringValue: tironeLevels))
-    XCTAssertEqual(ChartIQDrawingTool.trend, ChartIQDrawingTool(stringValue: trend))
+    XCTAssertEqual(ChartIQDrawingTool.trendLine, ChartIQDrawingTool(stringValue: trend))
     XCTAssertEqual(ChartIQDrawingTool.vertical, ChartIQDrawingTool(stringValue: vertical))
     XCTAssertEqual(ChartIQDrawingTool.measure, ChartIQDrawingTool(stringValue: measure))
 
@@ -385,7 +385,9 @@ class ChartIQDrawingToolTests: XCTestCase {
     let style = "style"
     let weight = "weight"
     let fibs = "fibs"
+    let axisLabel = "axisLabel"
     let showLines = "showLines"
+    let showCallout = "showCallout"
     let waveTemplate = "waveTemplate"
     let impulse = "impulse"
     let corrective = "corrective"
@@ -414,7 +416,9 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(style, ChartIQDrawingParameterType.style.stringValue)
     XCTAssertEqual(weight, ChartIQDrawingParameterType.weight.stringValue)
     XCTAssertEqual(fibs, ChartIQDrawingParameterType.fibs.stringValue)
+    XCTAssertEqual(axisLabel, ChartIQDrawingParameterType.axisLabel.stringValue)
     XCTAssertEqual(showLines, ChartIQDrawingParameterType.showLines.stringValue)
+    XCTAssertEqual(showCallout, ChartIQDrawingParameterType.showCallout.stringValue)
     XCTAssertEqual(waveTemplate, ChartIQDrawingParameterType.waveTemplate.stringValue)
     XCTAssertEqual(impulse, ChartIQDrawingParameterType.impulse.stringValue)
     XCTAssertEqual(corrective, ChartIQDrawingParameterType.corrective.stringValue)

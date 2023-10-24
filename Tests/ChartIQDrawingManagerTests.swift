@@ -29,40 +29,23 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let annotation = false
     let arrow = true
     let average = false
-    let callout = true
-    let channel = true
+    let callout = true, channel = true
     let check = true
     let continuous = false
     let cross = true
-    let crossline = false
-    let doodle = false
-    let elliottWave = false
-    let ellipse = true
-    let fibArc = true
-    let fibFan = true
-    let fibProjection = true
-    let fibRetracement = true
-    let fibTimeZone = true
-    let focus = true
-    let gannFan = true
-    let gartley = true
-    let heart = true
-    let horizontal = false
-    let line = false
+    let crossline = false, doodle = false, elliottWave = false
+    let ellipse = true, fibArc = true, fibFan = true, fibProjection = true, fibRetracement = true, fibTimeZone = true
+    let focus = true, gannFan = true, gartley = true, heart = true
+    let horizontal = false, line = false
+    let measurementLine = true
     let pitchfork = false
     let quadrantLines = true
     let ray = false
     let rectangle = true
     let regression = false
-    let segment = false
-    let speedResistanceArc = true
-    let speedResistanceLine = true
-    let star = true
-    let timeCycle = true
-    let tironeLevels = true
-    let trend = true
-    let vertical = false, volumeProfile = false
-    let measure = false
+    let speedResistanceArc = true, speedResistanceLine = true
+    let star = true, timeCycle = true, tironeLevels = true, trendLine = true
+    let vertical = false, volumeProfile = false, measure = false
 
     // When // Then
     XCTAssertEqual(annotation, chartIQDrawingManager.isSupportingFillColor(.annotation))
@@ -88,18 +71,18 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(heart, chartIQDrawingManager.isSupportingFillColor(.heart))
     XCTAssertEqual(horizontal, chartIQDrawingManager.isSupportingFillColor(.horizontal))
     XCTAssertEqual(line, chartIQDrawingManager.isSupportingFillColor(.line))
+    XCTAssertEqual(measurementLine, chartIQDrawingManager.isSupportingFillColor(.measurementLine))
     XCTAssertEqual(pitchfork, chartIQDrawingManager.isSupportingFillColor(.pitchfork))
     XCTAssertEqual(quadrantLines, chartIQDrawingManager.isSupportingFillColor(.quadrantLines))
     XCTAssertEqual(ray, chartIQDrawingManager.isSupportingFillColor(.ray))
     XCTAssertEqual(rectangle, chartIQDrawingManager.isSupportingFillColor(.rectangle))
     XCTAssertEqual(regression, chartIQDrawingManager.isSupportingFillColor(.regression))
-    XCTAssertEqual(segment, chartIQDrawingManager.isSupportingFillColor(.segment))
     XCTAssertEqual(speedResistanceArc, chartIQDrawingManager.isSupportingFillColor(.speedResistanceArc))
     XCTAssertEqual(speedResistanceLine, chartIQDrawingManager.isSupportingFillColor(.speedResistanceLine))
     XCTAssertEqual(star, chartIQDrawingManager.isSupportingFillColor(.star))
     XCTAssertEqual(timeCycle, chartIQDrawingManager.isSupportingFillColor(.timeCycle))
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingFillColor(.tironeLevels))
-    XCTAssertEqual(trend, chartIQDrawingManager.isSupportingFillColor(.trend))
+    XCTAssertEqual(trendLine, chartIQDrawingManager.isSupportingFillColor(.trendLine))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingFillColor(.vertical))
     XCTAssertEqual(volumeProfile, chartIQDrawingManager.isSupportingFillColor(.volumeProfile))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingFillColor(.measure))
@@ -110,9 +93,9 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let annotation = true, arrow = true, average = true, callout = true, channel = true, check = true
     let continuous = true, cross = true, crossline = true, doodle = true, elliottWave = true, ellipse = true
     let fibArc = true, fibFan = true, fibProjection = true, fibRetracement = true, fibTimeZone = true, focus = true
-    let gannFan = true, gartley = true, heart = true, horizontal = true, line = true, pitchfork = true
-    let quadrantLines = true, ray = true, rectangle = true, regression = true, segment = true, speedResistanceArc = true
-    let speedResistanceLine = true, star = true, timeCycle = true, tironeLevels = true, trend = true, vertical = true
+    let gannFan = true, gartley = true, heart = true, horizontal = true, line = true, measurementLine = true, pitchfork = true
+    let quadrantLines = true, ray = true, rectangle = true, regression = true, speedResistanceArc = true
+    let speedResistanceLine = true, star = true, timeCycle = true, tironeLevels = true, trendLine = true, vertical = true
     let volumeProfile = true, measure = true
 
     // When // Then
@@ -139,18 +122,18 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(heart, chartIQDrawingManager.isSupportingLineColor(.heart))
     XCTAssertEqual(horizontal, chartIQDrawingManager.isSupportingLineColor(.horizontal))
     XCTAssertEqual(line, chartIQDrawingManager.isSupportingLineColor(.line))
+    XCTAssertEqual(measurementLine, chartIQDrawingManager.isSupportingLineColor(.measurementLine))
     XCTAssertEqual(pitchfork, chartIQDrawingManager.isSupportingLineColor(.pitchfork))
     XCTAssertEqual(quadrantLines, chartIQDrawingManager.isSupportingLineColor(.quadrantLines))
     XCTAssertEqual(ray, chartIQDrawingManager.isSupportingLineColor(.ray))
     XCTAssertEqual(rectangle, chartIQDrawingManager.isSupportingLineColor(.rectangle))
     XCTAssertEqual(regression, chartIQDrawingManager.isSupportingLineColor(.regression))
-    XCTAssertEqual(segment, chartIQDrawingManager.isSupportingLineColor(.segment))
     XCTAssertEqual(speedResistanceArc, chartIQDrawingManager.isSupportingLineColor(.speedResistanceArc))
     XCTAssertEqual(speedResistanceLine, chartIQDrawingManager.isSupportingLineColor(.speedResistanceLine))
     XCTAssertEqual(star, chartIQDrawingManager.isSupportingLineColor(.star))
     XCTAssertEqual(timeCycle, chartIQDrawingManager.isSupportingLineColor(.timeCycle))
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingLineColor(.tironeLevels))
-    XCTAssertEqual(trend, chartIQDrawingManager.isSupportingLineColor(.trend))
+    XCTAssertEqual(trendLine, chartIQDrawingManager.isSupportingLineColor(.trendLine))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingLineColor(.vertical))
     XCTAssertEqual(volumeProfile, chartIQDrawingManager.isSupportingLineColor(.volumeProfile))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingLineColor(.measure))
@@ -159,41 +142,12 @@ class ChartIQDrawingManagerTests: XCTestCase {
   func testsChartIQDrawingManagerIsToolSupportingLineType() {
     // Given
     let annotation = false
-    let arrow = true
-    let average = true
-    let callout = true
-    let channel = true
-    let check = true
-    let continuous = true
-    let cross = true
-    let crossline = true
-    let doodle = true
-    let elliottWave = true
-    let ellipse = true
-    let fibArc = true
-    let fibFan = true
-    let fibProjection = true
-    let fibRetracement = true
-    let fibTimeZone = true
-    let focus = true
-    let gannFan = true
-    let gartley = true
-    let heart = true
-    let horizontal = true
-    let line = true
-    let pitchfork = true
-    let quadrantLines = true
-    let ray = true
-    let rectangle = true
-    let regression = true
-    let segment = true
-    let speedResistanceArc = true
-    let speedResistanceLine = true
-    let star = true
-    let timeCycle = true
-    let tironeLevels = true
-    let trend = true
-    let vertical = true, volumeProfile = true
+    let arrow = true, average = true, callout = true, channel = true, check = true, continuous = true, cross = true
+    let crossline = true, doodle = true, elliottWave = true, ellipse = true, fibArc = true, fibFan = true
+    let fibProjection = true, fibRetracement = true, fibTimeZone = true, focus = true, gannFan = true, gartley = true
+    let heart = true, horizontal = true, line = true, measurementLine = true, pitchfork = true, quadrantLines = true
+    let ray = true, rectangle = true, regression = true, speedResistanceArc = true, speedResistanceLine = true
+    let star = true, timeCycle = true, tironeLevels = true, trendLine = true, vertical = true, volumeProfile = true
     let measure = true
 
     // When // Then
@@ -220,18 +174,18 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(heart, chartIQDrawingManager.isSupportingLineType(.heart))
     XCTAssertEqual(horizontal, chartIQDrawingManager.isSupportingLineType(.horizontal))
     XCTAssertEqual(line, chartIQDrawingManager.isSupportingLineType(.line))
+    XCTAssertEqual(measurementLine, chartIQDrawingManager.isSupportingLineType(.measurementLine))
     XCTAssertEqual(pitchfork, chartIQDrawingManager.isSupportingLineType(.pitchfork))
     XCTAssertEqual(quadrantLines, chartIQDrawingManager.isSupportingLineType(.quadrantLines))
     XCTAssertEqual(ray, chartIQDrawingManager.isSupportingLineType(.ray))
     XCTAssertEqual(rectangle, chartIQDrawingManager.isSupportingLineType(.rectangle))
     XCTAssertEqual(regression, chartIQDrawingManager.isSupportingLineType(.regression))
-    XCTAssertEqual(segment, chartIQDrawingManager.isSupportingLineType(.segment))
     XCTAssertEqual(speedResistanceArc, chartIQDrawingManager.isSupportingLineType(.speedResistanceArc))
     XCTAssertEqual(speedResistanceLine, chartIQDrawingManager.isSupportingLineType(.speedResistanceLine))
     XCTAssertEqual(star, chartIQDrawingManager.isSupportingLineType(.star))
     XCTAssertEqual(timeCycle, chartIQDrawingManager.isSupportingLineType(.timeCycle))
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingLineType(.tironeLevels))
-    XCTAssertEqual(trend, chartIQDrawingManager.isSupportingLineType(.trend))
+    XCTAssertEqual(trendLine, chartIQDrawingManager.isSupportingLineType(.trendLine))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingLineType(.vertical))
     XCTAssertEqual(volumeProfile, chartIQDrawingManager.isSupportingLineType(.volumeProfile))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingLineType(.measure))
@@ -239,42 +193,12 @@ class ChartIQDrawingManagerTests: XCTestCase {
 
   func testsChartIQDrawingManagerIsToolSupportingSettings() {
     // Given
-    let annotation = true
-    let arrow = true
-    let average = true
-    let callout = true
-    let channel = true
-    let check = true
-    let continuous = true
-    let cross = true
-    let crossline = true
-    let doodle = true
-    let elliottWave = true
-    let ellipse = true
-    let fibArc = true
-    let fibFan = true
-    let fibProjection = true
-    let fibRetracement = true
-    let fibTimeZone = true
-    let focus = true
-    let gannFan = true
-    let gartley = true
-    let heart = true
-    let horizontal = true
-    let line = true
-    let pitchfork = true
-    let quadrantLines = true
-    let ray = true
-    let rectangle = true
-    let regression = true
-    let segment = true
-    let speedResistanceArc = true
-    let speedResistanceLine = true
-    let star = true
-    let timeCycle = true
-    let tironeLevels = true
-    let trend = true
-    let vertical = true, volumeProfile = true
+    let annotation = true, arrow = true, average = true, callout = true, channel = true, check = true, continuous = true
+    let cross = true, crossline = true, doodle = true, elliottWave = true, ellipse = true, fibArc = true, fibFan = true
+    let fibProjection = true, fibRetracement = true, fibTimeZone = true, focus = true, gannFan = true, gartley = true
+    let heart = true, horizontal = true, line = true, measurementLine = true, pitchfork = true, quadrantLines = true
+    let ray = true, rectangle = true, regression = true, speedResistanceArc = true, speedResistanceLine = true
+    let star = true, timeCycle = true, tironeLevels = true, trendLine = true, vertical = true, volumeProfile = true
     let measure = false
 
     // When // Then
@@ -301,18 +225,18 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(heart, chartIQDrawingManager.isSupportingSettings(.heart))
     XCTAssertEqual(horizontal, chartIQDrawingManager.isSupportingSettings(.horizontal))
     XCTAssertEqual(line, chartIQDrawingManager.isSupportingSettings(.line))
+    XCTAssertEqual(measurementLine, chartIQDrawingManager.isSupportingSettings(.measurementLine))
     XCTAssertEqual(pitchfork, chartIQDrawingManager.isSupportingSettings(.pitchfork))
     XCTAssertEqual(quadrantLines, chartIQDrawingManager.isSupportingSettings(.quadrantLines))
     XCTAssertEqual(ray, chartIQDrawingManager.isSupportingSettings(.ray))
     XCTAssertEqual(rectangle, chartIQDrawingManager.isSupportingSettings(.rectangle))
     XCTAssertEqual(regression, chartIQDrawingManager.isSupportingSettings(.regression))
-    XCTAssertEqual(segment, chartIQDrawingManager.isSupportingSettings(.segment))
     XCTAssertEqual(speedResistanceArc, chartIQDrawingManager.isSupportingSettings(.speedResistanceArc))
     XCTAssertEqual(speedResistanceLine, chartIQDrawingManager.isSupportingSettings(.speedResistanceLine))
     XCTAssertEqual(star, chartIQDrawingManager.isSupportingSettings(.star))
     XCTAssertEqual(timeCycle, chartIQDrawingManager.isSupportingSettings(.timeCycle))
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingSettings(.tironeLevels))
-    XCTAssertEqual(trend, chartIQDrawingManager.isSupportingSettings(.trend))
+    XCTAssertEqual(trendLine, chartIQDrawingManager.isSupportingSettings(.trendLine))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingSettings(.vertical))
     XCTAssertEqual(volumeProfile, chartIQDrawingManager.isSupportingSettings(.volumeProfile))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingSettings(.measure))
@@ -327,9 +251,11 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let elliottWave = true
     let ellipse = false, fibArc = false, fibFan = false, fibProjection = false, fibRetracement = false
     let fibTimeZone = false, focus = false, gannFan = false, gartley = false, heart = false, horizontal = false
-    let line = false, pitchfork = false, quadrantLines = false, ray = false, rectangle = false, regression = false
-    let segment = false, speedResistanceArc = false, speedResistanceLine = false, star = false, timeCycle = false
-    let tironeLevels = false, trend = true, vertical = false, volumeProfile = false, measure = false
+    let line = false, measurementLine = false, pitchfork = false, quadrantLines = false, ray = false, rectangle = false
+    let regression = false, speedResistanceArc = false, speedResistanceLine = false, star = false, timeCycle = false
+    let tironeLevels = false
+    let trendLine = true
+    let vertical = false, volumeProfile = false, measure = false
 
     // When // Then
     XCTAssertEqual(annotation, chartIQDrawingManager.isSupportingFont(.annotation))
@@ -355,18 +281,18 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(heart, chartIQDrawingManager.isSupportingFont(.heart))
     XCTAssertEqual(horizontal, chartIQDrawingManager.isSupportingFont(.horizontal))
     XCTAssertEqual(line, chartIQDrawingManager.isSupportingFont(.line))
+    XCTAssertEqual(measurementLine, chartIQDrawingManager.isSupportingFont(.measurementLine))
     XCTAssertEqual(pitchfork, chartIQDrawingManager.isSupportingFont(.pitchfork))
     XCTAssertEqual(quadrantLines, chartIQDrawingManager.isSupportingFont(.quadrantLines))
     XCTAssertEqual(ray, chartIQDrawingManager.isSupportingFont(.ray))
     XCTAssertEqual(rectangle, chartIQDrawingManager.isSupportingFont(.rectangle))
     XCTAssertEqual(regression, chartIQDrawingManager.isSupportingFont(.regression))
-    XCTAssertEqual(segment, chartIQDrawingManager.isSupportingFont(.segment))
     XCTAssertEqual(speedResistanceArc, chartIQDrawingManager.isSupportingFont(.speedResistanceArc))
     XCTAssertEqual(speedResistanceLine, chartIQDrawingManager.isSupportingFont(.speedResistanceLine))
     XCTAssertEqual(star, chartIQDrawingManager.isSupportingFont(.star))
     XCTAssertEqual(timeCycle, chartIQDrawingManager.isSupportingFont(.timeCycle))
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingFont(.tironeLevels))
-    XCTAssertEqual(trend, chartIQDrawingManager.isSupportingFont(.trend))
+    XCTAssertEqual(trendLine, chartIQDrawingManager.isSupportingFont(.trendLine))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingFont(.vertical))
     XCTAssertEqual(volumeProfile, chartIQDrawingManager.isSupportingFont(.volumeProfile))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingFont(.measure))
@@ -381,11 +307,13 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let doodle = false, elliottWave = false, ellipse = false, fibArc = false, fibFan = false, fibProjection = false
     let fibRetracement = false, fibTimeZone = false, focus = false, gannFan = false, gartley = false, heart = false
     let horizontal = true
-    let line = false, pitchfork = false, quadrantLines = false
-    let ray = false, rectangle = false, regression = false, segment = false, speedResistanceArc = false
-    let speedResistanceLine = false, star = false, timeCycle = false, tironeLevels = false, trend = false
-    let vertical = true, volumeProfile = false
-    let measure = false
+    let line = false
+    let measurementLine = true
+    let pitchfork = false, quadrantLines = false
+    let ray = false, rectangle = false, regression = false, speedResistanceArc = false
+    let speedResistanceLine = false, star = false, timeCycle = false, tironeLevels = false, trendLine = false
+    let vertical = true
+    let volumeProfile = false, measure = false
 
     // When // Then
     XCTAssertEqual(annotation, chartIQDrawingManager.isSupportingAxisLabel(.annotation))
@@ -411,18 +339,18 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(heart, chartIQDrawingManager.isSupportingAxisLabel(.heart))
     XCTAssertEqual(horizontal, chartIQDrawingManager.isSupportingAxisLabel(.horizontal))
     XCTAssertEqual(line, chartIQDrawingManager.isSupportingAxisLabel(.line))
+    XCTAssertEqual(measurementLine, chartIQDrawingManager.isSupportingAxisLabel(.measurementLine))
     XCTAssertEqual(pitchfork, chartIQDrawingManager.isSupportingAxisLabel(.pitchfork))
     XCTAssertEqual(quadrantLines, chartIQDrawingManager.isSupportingAxisLabel(.quadrantLines))
     XCTAssertEqual(ray, chartIQDrawingManager.isSupportingAxisLabel(.ray))
     XCTAssertEqual(rectangle, chartIQDrawingManager.isSupportingAxisLabel(.rectangle))
     XCTAssertEqual(regression, chartIQDrawingManager.isSupportingAxisLabel(.regression))
-    XCTAssertEqual(segment, chartIQDrawingManager.isSupportingAxisLabel(.segment))
     XCTAssertEqual(speedResistanceArc, chartIQDrawingManager.isSupportingAxisLabel(.speedResistanceArc))
     XCTAssertEqual(speedResistanceLine, chartIQDrawingManager.isSupportingAxisLabel(.speedResistanceLine))
     XCTAssertEqual(star, chartIQDrawingManager.isSupportingAxisLabel(.star))
     XCTAssertEqual(timeCycle, chartIQDrawingManager.isSupportingAxisLabel(.timeCycle))
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingAxisLabel(.tironeLevels))
-    XCTAssertEqual(trend, chartIQDrawingManager.isSupportingAxisLabel(.trend))
+    XCTAssertEqual(trendLine, chartIQDrawingManager.isSupportingAxisLabel(.trendLine))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingAxisLabel(.vertical))
     XCTAssertEqual(volumeProfile, chartIQDrawingManager.isSupportingAxisLabel(.volumeProfile))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingAxisLabel(.measure))
@@ -436,11 +364,10 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let check = false, continuous = false, cross = false, crossline = false, doodle = false
     let elliottWave = false, ellipse = false, fibArc = false, fibFan = false, fibProjection = false
     let fibRetracement = false, fibTimeZone = false, focus = false, gannFan = false, gartley = false, heart = false
-    let horizontal = false, line = false, pitchfork = false, quadrantLines = false, ray = false, rectangle = false
+    let horizontal = false, line = false, measurementLine = false, pitchfork = false, quadrantLines = false, ray = false
     let regression = true
-    let segment = false, speedResistanceArc = false, speedResistanceLine = false
-    let star = false, timeCycle = false, tironeLevels = false, trend = false, vertical = false, volumeProfile = false
-    let measure = false
+    let rectangle = false, speedResistanceArc = false, speedResistanceLine = false, star = false, timeCycle = false
+    let tironeLevels = false, trendLine = false, vertical = false, volumeProfile = false, measure = false
 
     // When // Then
     XCTAssertEqual(annotation, chartIQDrawingManager.isSupportingDeviations(.annotation))
@@ -466,18 +393,18 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(heart, chartIQDrawingManager.isSupportingDeviations(.heart))
     XCTAssertEqual(horizontal, chartIQDrawingManager.isSupportingDeviations(.horizontal))
     XCTAssertEqual(line, chartIQDrawingManager.isSupportingDeviations(.line))
+    XCTAssertEqual(measurementLine, chartIQDrawingManager.isSupportingDeviations(.measurementLine))
     XCTAssertEqual(pitchfork, chartIQDrawingManager.isSupportingDeviations(.pitchfork))
     XCTAssertEqual(quadrantLines, chartIQDrawingManager.isSupportingDeviations(.quadrantLines))
     XCTAssertEqual(ray, chartIQDrawingManager.isSupportingDeviations(.ray))
     XCTAssertEqual(rectangle, chartIQDrawingManager.isSupportingDeviations(.rectangle))
     XCTAssertEqual(regression, chartIQDrawingManager.isSupportingDeviations(.regression))
-    XCTAssertEqual(segment, chartIQDrawingManager.isSupportingDeviations(.segment))
     XCTAssertEqual(speedResistanceArc, chartIQDrawingManager.isSupportingDeviations(.speedResistanceArc))
     XCTAssertEqual(speedResistanceLine, chartIQDrawingManager.isSupportingDeviations(.speedResistanceLine))
     XCTAssertEqual(star, chartIQDrawingManager.isSupportingDeviations(.star))
     XCTAssertEqual(timeCycle, chartIQDrawingManager.isSupportingDeviations(.timeCycle))
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingDeviations(.tironeLevels))
-    XCTAssertEqual(trend, chartIQDrawingManager.isSupportingDeviations(.trend))
+    XCTAssertEqual(trendLine, chartIQDrawingManager.isSupportingDeviations(.trendLine))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingDeviations(.vertical))
     XCTAssertEqual(volumeProfile, chartIQDrawingManager.isSupportingDeviations(.volumeProfile))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingDeviations(.measure))
@@ -485,14 +412,13 @@ class ChartIQDrawingManagerTests: XCTestCase {
 
   func testsChartIQDrawingManagerIsToolSupportingFibonacci() {
     // Given
-    let annotation = false, arrow = false
-    let average = false, callout = false, channel = false, check = false, continuous = false
+    let annotation = false, arrow = false, average = false, callout = false, channel = false, check = false, continuous = false
     let cross = false, crossline = false, doodle = false, elliottWave = false, ellipse = false
     let fibArc = true, fibFan = true, fibProjection = true, fibRetracement = true
     let fibTimeZone = false, focus = false, gannFan = false, gartley = false, heart = false, horizontal = false
-    let line = false, pitchfork = false, quadrantLines = false, ray = false, rectangle = false
-    let regression = false, segment = false, speedResistanceArc = false, speedResistanceLine = false
-    let star = false, timeCycle = false, tironeLevels = false, trend = false, vertical = false, volumeProfile = false
+    let line = false, measurementLine = false, pitchfork = false, quadrantLines = false, ray = false, rectangle = false
+    let regression = false, speedResistanceArc = false, speedResistanceLine = false
+    let star = false, timeCycle = false, tironeLevels = false, trendLine = false, vertical = false, volumeProfile = false
     let measure = false
 
     // When // Then
@@ -519,18 +445,18 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(heart, chartIQDrawingManager.isSupportingFibonacci(.heart))
     XCTAssertEqual(horizontal, chartIQDrawingManager.isSupportingFibonacci(.horizontal))
     XCTAssertEqual(line, chartIQDrawingManager.isSupportingFibonacci(.line))
+    XCTAssertEqual(measurementLine, chartIQDrawingManager.isSupportingFibonacci(.measurementLine))
     XCTAssertEqual(pitchfork, chartIQDrawingManager.isSupportingFibonacci(.pitchfork))
     XCTAssertEqual(quadrantLines, chartIQDrawingManager.isSupportingFibonacci(.quadrantLines))
     XCTAssertEqual(ray, chartIQDrawingManager.isSupportingFibonacci(.ray))
     XCTAssertEqual(rectangle, chartIQDrawingManager.isSupportingFibonacci(.rectangle))
     XCTAssertEqual(regression, chartIQDrawingManager.isSupportingFibonacci(.regression))
-    XCTAssertEqual(segment, chartIQDrawingManager.isSupportingFibonacci(.segment))
     XCTAssertEqual(speedResistanceArc, chartIQDrawingManager.isSupportingFibonacci(.speedResistanceArc))
     XCTAssertEqual(speedResistanceLine, chartIQDrawingManager.isSupportingFibonacci(.speedResistanceLine))
     XCTAssertEqual(star, chartIQDrawingManager.isSupportingFibonacci(.star))
     XCTAssertEqual(timeCycle, chartIQDrawingManager.isSupportingFibonacci(.timeCycle))
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingFibonacci(.tironeLevels))
-    XCTAssertEqual(trend, chartIQDrawingManager.isSupportingFibonacci(.trend))
+    XCTAssertEqual(trendLine, chartIQDrawingManager.isSupportingFibonacci(.trendLine))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingFibonacci(.vertical))
     XCTAssertEqual(volumeProfile, chartIQDrawingManager.isSupportingFibonacci(.volumeProfile))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingFibonacci(.measure))
@@ -541,13 +467,11 @@ class ChartIQDrawingManagerTests: XCTestCase {
     let annotation = false, arrow = false, average = false, callout = false, channel = false
     let check = false, continuous = false, cross = false, crossline = false, doodle = false
     let elliottWave = true
-    let ellipse = false, fibArc = false
-    let fibFan = false, fibProjection = false, fibRetracement = false, fibTimeZone = false
+    let ellipse = false, fibArc = false, fibFan = false, fibProjection = false, fibRetracement = false, fibTimeZone = false
     let focus = false, gannFan = false, gartley = false, heart = false, horizontal = false
-    let line = false, pitchfork = false, quadrantLines = false, ray = false, rectangle = false
-    let regression = false, segment = false, speedResistanceArc = false, speedResistanceLine = false
-    let star = false, timeCycle = false, tironeLevels = false, trend = false, vertical = false, volumeProfile = false
-    let measure = false
+    let line = false, measurementLine = false, pitchfork = false, quadrantLines = false, ray = false, rectangle = false
+    let regression = false, speedResistanceArc = false, speedResistanceLine = false, star = false, timeCycle = false
+    let tironeLevels = false, trendLine = false, vertical = false, volumeProfile = false, measure = false
 
     // When // Then
     XCTAssertEqual(annotation, chartIQDrawingManager.isSupportingElliottWave(.annotation))
@@ -573,18 +497,18 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(heart, chartIQDrawingManager.isSupportingElliottWave(.heart))
     XCTAssertEqual(horizontal, chartIQDrawingManager.isSupportingElliottWave(.horizontal))
     XCTAssertEqual(line, chartIQDrawingManager.isSupportingElliottWave(.line))
+    XCTAssertEqual(measurementLine, chartIQDrawingManager.isSupportingElliottWave(.measurementLine))
     XCTAssertEqual(pitchfork, chartIQDrawingManager.isSupportingElliottWave(.pitchfork))
     XCTAssertEqual(quadrantLines, chartIQDrawingManager.isSupportingElliottWave(.quadrantLines))
     XCTAssertEqual(ray, chartIQDrawingManager.isSupportingElliottWave(.ray))
     XCTAssertEqual(rectangle, chartIQDrawingManager.isSupportingElliottWave(.rectangle))
     XCTAssertEqual(regression, chartIQDrawingManager.isSupportingElliottWave(.regression))
-    XCTAssertEqual(segment, chartIQDrawingManager.isSupportingElliottWave(.segment))
     XCTAssertEqual(speedResistanceArc, chartIQDrawingManager.isSupportingElliottWave(.speedResistanceArc))
     XCTAssertEqual(speedResistanceLine, chartIQDrawingManager.isSupportingElliottWave(.speedResistanceLine))
     XCTAssertEqual(star, chartIQDrawingManager.isSupportingElliottWave(.star))
     XCTAssertEqual(timeCycle, chartIQDrawingManager.isSupportingElliottWave(.timeCycle))
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingElliottWave(.tironeLevels))
-    XCTAssertEqual(trend, chartIQDrawingManager.isSupportingElliottWave(.trend))
+    XCTAssertEqual(trendLine, chartIQDrawingManager.isSupportingElliottWave(.trendLine))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingElliottWave(.vertical))
     XCTAssertEqual(volumeProfile, chartIQDrawingManager.isSupportingElliottWave(.volumeProfile))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingElliottWave(.measure))
@@ -592,15 +516,13 @@ class ChartIQDrawingManagerTests: XCTestCase {
 
   func testsChartIQDrawingManagerIsToolSupportingVolumeProfile() {
     // Given
-    let annotation = false, arrow = false, average = false, callout = false, channel = false
-    let check = false, continuous = false, cross = false, crossline = false, doodle = false
-    let elliottWave = false
-    let ellipse = false, fibArc = false
-    let fibFan = false, fibProjection = false, fibRetracement = false, fibTimeZone = false
-    let focus = false, gannFan = false, gartley = false, heart = false, horizontal = false
-    let line = false, pitchfork = false, quadrantLines = false, ray = false, rectangle = false
-    let regression = false, segment = false, speedResistanceArc = false, speedResistanceLine = false
-    let star = false, timeCycle = false, tironeLevels = false, trend = false, vertical = false, volumeProfile = true
+    let annotation = false, arrow = false, average = false, callout = false, channel = false, check = false, continuous = false
+    let cross = false, crossline = false, doodle = false, elliottWave = false, ellipse = false, fibArc = false, fibFan = false
+    let fibProjection = false, fibRetracement = false, fibTimeZone = false, focus = false, gannFan = false, gartley = false
+    let heart = false, horizontal = false, line = false, measurementLine = false, pitchfork = false, quadrantLines = false
+    let ray = false, rectangle = false, regression = false, speedResistanceArc = false, speedResistanceLine = false
+    let star = false, timeCycle = false, tironeLevels = false, trendLine = false, vertical = false
+    let volumeProfile = true
     let measure = false
 
     // When // Then
@@ -627,20 +549,72 @@ class ChartIQDrawingManagerTests: XCTestCase {
     XCTAssertEqual(heart, chartIQDrawingManager.isSupportingVolumeProfile(.heart))
     XCTAssertEqual(horizontal, chartIQDrawingManager.isSupportingVolumeProfile(.horizontal))
     XCTAssertEqual(line, chartIQDrawingManager.isSupportingVolumeProfile(.line))
+    XCTAssertEqual(measurementLine, chartIQDrawingManager.isSupportingVolumeProfile(.measurementLine))
     XCTAssertEqual(pitchfork, chartIQDrawingManager.isSupportingVolumeProfile(.pitchfork))
     XCTAssertEqual(quadrantLines, chartIQDrawingManager.isSupportingVolumeProfile(.quadrantLines))
     XCTAssertEqual(ray, chartIQDrawingManager.isSupportingVolumeProfile(.ray))
     XCTAssertEqual(rectangle, chartIQDrawingManager.isSupportingVolumeProfile(.rectangle))
     XCTAssertEqual(regression, chartIQDrawingManager.isSupportingVolumeProfile(.regression))
-    XCTAssertEqual(segment, chartIQDrawingManager.isSupportingVolumeProfile(.segment))
     XCTAssertEqual(speedResistanceArc, chartIQDrawingManager.isSupportingVolumeProfile(.speedResistanceArc))
     XCTAssertEqual(speedResistanceLine, chartIQDrawingManager.isSupportingVolumeProfile(.speedResistanceLine))
     XCTAssertEqual(star, chartIQDrawingManager.isSupportingVolumeProfile(.star))
     XCTAssertEqual(timeCycle, chartIQDrawingManager.isSupportingVolumeProfile(.timeCycle))
     XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingVolumeProfile(.tironeLevels))
-    XCTAssertEqual(trend, chartIQDrawingManager.isSupportingVolumeProfile(.trend))
+    XCTAssertEqual(trendLine, chartIQDrawingManager.isSupportingVolumeProfile(.trendLine))
     XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingVolumeProfile(.vertical))
     XCTAssertEqual(volumeProfile, chartIQDrawingManager.isSupportingVolumeProfile(.volumeProfile))
     XCTAssertEqual(measure, chartIQDrawingManager.isSupportingVolumeProfile(.measure))
+  }
+
+  func testsChartIQDrawingManagerIsToolSupportingShowCallout() {
+    // Given
+    let annotation = false, arrow = false, average = false, callout = false, channel = false, check = false, continuous = false
+    let cross = false, crossline = false, doodle = false, elliottWave = false, ellipse = false, fibArc = false, fibFan = false
+    let fibProjection = false, fibRetracement = false, fibTimeZone = false, focus = false, gannFan = false, gartley = false
+    let heart = false, horizontal = false, line = false, measurementLine = false, pitchfork = false, quadrantLines = false
+    let ray = false, rectangle = false, regression = false, speedResistanceArc = false, speedResistanceLine = false
+    let star = false, timeCycle = false, tironeLevels = false
+    let trendLine = true
+    let vertical = false, volumeProfile = false, measure = false
+
+    // When // Then
+    XCTAssertEqual(annotation, chartIQDrawingManager.isSupportingShowCallout(.annotation))
+    XCTAssertEqual(arrow, chartIQDrawingManager.isSupportingShowCallout(.arrow))
+    XCTAssertEqual(average, chartIQDrawingManager.isSupportingShowCallout(.average))
+    XCTAssertEqual(callout, chartIQDrawingManager.isSupportingShowCallout(.callout))
+    XCTAssertEqual(channel, chartIQDrawingManager.isSupportingShowCallout(.channel))
+    XCTAssertEqual(check, chartIQDrawingManager.isSupportingShowCallout(.check))
+    XCTAssertEqual(continuous, chartIQDrawingManager.isSupportingShowCallout(.continuous))
+    XCTAssertEqual(cross, chartIQDrawingManager.isSupportingShowCallout(.cross))
+    XCTAssertEqual(crossline, chartIQDrawingManager.isSupportingShowCallout(.crossline))
+    XCTAssertEqual(doodle, chartIQDrawingManager.isSupportingShowCallout(.doodle))
+    XCTAssertEqual(elliottWave, chartIQDrawingManager.isSupportingShowCallout(.elliottWave))
+    XCTAssertEqual(ellipse, chartIQDrawingManager.isSupportingShowCallout(.ellipse))
+    XCTAssertEqual(fibArc, chartIQDrawingManager.isSupportingShowCallout(.fibArc))
+    XCTAssertEqual(fibFan, chartIQDrawingManager.isSupportingShowCallout(.fibFan))
+    XCTAssertEqual(fibProjection, chartIQDrawingManager.isSupportingShowCallout(.fibProjection))
+    XCTAssertEqual(fibRetracement, chartIQDrawingManager.isSupportingShowCallout(.fibRetracement))
+    XCTAssertEqual(fibTimeZone, chartIQDrawingManager.isSupportingShowCallout(.fibTimeZone))
+    XCTAssertEqual(focus, chartIQDrawingManager.isSupportingShowCallout(.focus))
+    XCTAssertEqual(gannFan, chartIQDrawingManager.isSupportingShowCallout(.gannFan))
+    XCTAssertEqual(gartley, chartIQDrawingManager.isSupportingShowCallout(.gartley))
+    XCTAssertEqual(heart, chartIQDrawingManager.isSupportingShowCallout(.heart))
+    XCTAssertEqual(horizontal, chartIQDrawingManager.isSupportingShowCallout(.horizontal))
+    XCTAssertEqual(line, chartIQDrawingManager.isSupportingShowCallout(.line))
+    XCTAssertEqual(measurementLine, chartIQDrawingManager.isSupportingShowCallout(.measurementLine))
+    XCTAssertEqual(pitchfork, chartIQDrawingManager.isSupportingShowCallout(.pitchfork))
+    XCTAssertEqual(quadrantLines, chartIQDrawingManager.isSupportingShowCallout(.quadrantLines))
+    XCTAssertEqual(ray, chartIQDrawingManager.isSupportingShowCallout(.ray))
+    XCTAssertEqual(rectangle, chartIQDrawingManager.isSupportingShowCallout(.rectangle))
+    XCTAssertEqual(regression, chartIQDrawingManager.isSupportingShowCallout(.regression))
+    XCTAssertEqual(speedResistanceArc, chartIQDrawingManager.isSupportingShowCallout(.speedResistanceArc))
+    XCTAssertEqual(speedResistanceLine, chartIQDrawingManager.isSupportingShowCallout(.speedResistanceLine))
+    XCTAssertEqual(star, chartIQDrawingManager.isSupportingShowCallout(.star))
+    XCTAssertEqual(timeCycle, chartIQDrawingManager.isSupportingShowCallout(.timeCycle))
+    XCTAssertEqual(tironeLevels, chartIQDrawingManager.isSupportingShowCallout(.tironeLevels))
+    XCTAssertEqual(trendLine, chartIQDrawingManager.isSupportingShowCallout(.trendLine))
+    XCTAssertEqual(vertical, chartIQDrawingManager.isSupportingShowCallout(.vertical))
+    XCTAssertEqual(volumeProfile, chartIQDrawingManager.isSupportingShowCallout(.volumeProfile))
+    XCTAssertEqual(measure, chartIQDrawingManager.isSupportingShowCallout(.measure))
   }
 }

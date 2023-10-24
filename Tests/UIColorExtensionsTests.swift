@@ -5,6 +5,7 @@
 //  Copyright 2012-2021 by ChartIQ, Inc.
 //  All rights reserved
 //
+// swiftlint:disable xct_specific_matcher
 
 @testable import ChartIQ
 import Foundation
@@ -43,7 +44,7 @@ class UIColorExtensionsTests: XCTestCase {
     let redColor = UIColor(hexString: "ff0000")
 
     // When // Then
-    XCTAssertTrue(UIColor.red == redColor)
+    XCTAssertEqual(UIColor.red, redColor)
   }
 
   func testConvertingHexToUIColorForGreenColor() {
@@ -51,7 +52,7 @@ class UIColorExtensionsTests: XCTestCase {
     let greenColor = UIColor(hexString: "00ff00")
 
     // When // Then
-    XCTAssertTrue(UIColor.green == greenColor)
+    XCTAssertEqual(UIColor.green, greenColor)
   }
 
   func testConvertingHexToUIColorForBlueColor() {
@@ -59,7 +60,7 @@ class UIColorExtensionsTests: XCTestCase {
     let blueColor = UIColor(hexString: "0000ff")
 
     // When // Then
-    XCTAssertTrue(UIColor.blue == blueColor)
+    XCTAssertEqual(UIColor.blue, blueColor)
   }
 
   // MARK: - Tests Converting UIColor to 24 bit Hex
@@ -70,7 +71,7 @@ class UIColorExtensionsTests: XCTestCase {
     let blackHexString = "#000000"
 
     // When // Then
-    XCTAssertTrue(blackColor.toHexString() == blackHexString)
+    XCTAssertEqual(blackColor.toHexString(), blackHexString)
   }
 
   func testConvertingUIColorToHexForWhiteColor() {
@@ -79,7 +80,7 @@ class UIColorExtensionsTests: XCTestCase {
     let whiteHexString = "#ffffff"
 
     // When // Then
-    XCTAssertTrue(whiteColor.toHexString() == whiteHexString)
+    XCTAssertEqual(whiteColor.toHexString(), whiteHexString)
   }
 
   func testConvertingUIColorToHexForRedColor() {
@@ -88,7 +89,7 @@ class UIColorExtensionsTests: XCTestCase {
     let redHexString = "#ff0000"
 
     // When // Then
-    XCTAssertTrue(redColor.toHexString() == redHexString)
+    XCTAssertEqual(redColor.toHexString(), redHexString)
   }
 
   func testConvertingUIColorToHexForGreenColor() {
@@ -97,7 +98,7 @@ class UIColorExtensionsTests: XCTestCase {
     let greenHexString = "#00ff00"
 
     // When // Then
-    XCTAssertTrue(greenColor.toHexString() == greenHexString)
+    XCTAssertEqual(greenColor.toHexString(), greenHexString)
   }
 
   func testConvertingUIColorToHexForBlueColor() {
@@ -106,7 +107,7 @@ class UIColorExtensionsTests: XCTestCase {
     let blueHexString = "#0000ff"
 
     // When // Then
-    XCTAssertTrue(blueColor.toHexString() == blueHexString)
+    XCTAssertEqual(blueColor.toHexString(), blueHexString)
   }
 
   // MARK: - Tests Converting 32 bit Hex to UIColor
@@ -141,9 +142,9 @@ class UIColorExtensionsTests: XCTestCase {
     XCTAssertTrue(UIColor.white == whiteColor32bit)
     XCTAssertTrue(UIColor.white == whiteColor24bit)
     XCTAssertTrue(UIColor.white == whiteColor12bit)
-    XCTAssertTrue(whiteColor32bit == whiteColor24bit)
-    XCTAssertTrue(whiteColor32bit == whiteColor12bit)
-    XCTAssertTrue(whiteColor24bit == whiteColor12bit)
+    XCTAssertEqual(whiteColor32bit, whiteColor24bit)
+    XCTAssertEqual(whiteColor32bit, whiteColor12bit)
+    XCTAssertEqual(whiteColor24bit, whiteColor12bit)
   }
 
   // MARK: - Tests Converting Invalid Hex to UIColor
@@ -154,7 +155,7 @@ class UIColorExtensionsTests: XCTestCase {
     let blackColorHexString = UIColor(hexString: "000000")
 
     // When // Then
-    XCTAssertTrue(invalidColorHexString == blackColorHexString)
+    XCTAssertEqual(invalidColorHexString, blackColorHexString)
     XCTAssertTrue(invalidColorHexString == UIColor.black)
   }
 
@@ -225,3 +226,5 @@ extension UIColor {
     return r1 == r2 && g1 == g2 && b1 == b2 && a1 == a2
   }
 }
+
+// swiftlint:enable xct_specific_matcher
