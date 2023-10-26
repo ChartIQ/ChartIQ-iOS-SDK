@@ -239,7 +239,7 @@
 		485EC15C2870855C00F8ECBF /* FontTableCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTableCellViewModel.swift; sourceTree = "<group>"; };
 		485EC15D2870855C00F8ECBF /* DrawToolColorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawToolColorViewModel.swift; sourceTree = "<group>"; };
 		485EC15F2870855C00F8ECBF /* IntervalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntervalModel.swift; sourceTree = "<group>"; };
-		485EC1602870855C00F8ECBF /* DeviationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviationModel.swift; sourceTree = "<group>"; };
+		485EC1602870855C00F8ECBF /* DeviationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = DeviationModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		485EC1612870855C00F8ECBF /* LanguageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		485EC1622870855C00F8ECBF /* PickerViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewItem.swift; sourceTree = "<group>"; };
 		485EC1632870855C00F8ECBF /* LineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineModel.swift; sourceTree = "<group>"; };
