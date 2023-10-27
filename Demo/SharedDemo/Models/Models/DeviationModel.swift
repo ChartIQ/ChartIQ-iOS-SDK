@@ -15,6 +15,50 @@ enum DeviationLevel {
   case first
   case second
   case third
+
+  var colorKey: String {
+    switch self {
+    case .first:
+      return ChartIQConst.DrawingTool.color1Key
+    case .second:
+      return ChartIQConst.DrawingTool.color2Key
+    case .third:
+      return ChartIQConst.DrawingTool.color3Key
+    }
+  }
+
+  var activeKey: String {
+    switch self {
+    case .first:
+      return ChartIQConst.DrawingTool.active1Key
+    case .second:
+      return ChartIQConst.DrawingTool.active2Key
+    case .third:
+      return ChartIQConst.DrawingTool.active3Key
+    }
+  }
+
+  var widthKey: String {
+    switch self {
+    case .first:
+      return ChartIQConst.DrawingTool.lineWidth1Key
+    case .second:
+      return ChartIQConst.DrawingTool.lineWidth2Key
+    case .third:
+      return ChartIQConst.DrawingTool.lineWidth3Key
+    }
+  }
+
+  var patternKey: String {
+    switch self {
+    case .first:
+      return ChartIQConst.DrawingTool.pattern1Key
+    case .second:
+      return ChartIQConst.DrawingTool.pattern2Key
+    case .third:
+      return ChartIQConst.DrawingTool.pattern3Key
+    }
+  }
 }
 
 // MARK: - Deviation Model
@@ -38,51 +82,12 @@ struct DeviationModel {
   }
 
   init?(lineLevel: DeviationLevel, parameters: [String: Any], isDarkTheme: Bool = false) {
-    var lineColor = UIColor.blackColor
-    var lineSelected = false
-    switch lineLevel {
-    case .first:
-      lineSelected = parameters[ChartIQConst.DrawingTool.active1Key] as? Bool ?? false
-      if let color = parameters[ChartIQConst.DrawingTool.color1Key] as? String,
-         color.hasPrefix(Const.General.hashSymbol) {
-        lineColor = UIColor(hexString: color.replacingOccurrences(of: Const.General.hashSymbol, with: ""))
-      }
-      if let lineWidth = parameters[ChartIQConst.DrawingTool.lineWidth1Key] as? Int,
-         let pattern = parameters[ChartIQConst.DrawingTool.pattern1Key] as? String,
-         let lineType = ChartIQLineType(stringValue: pattern) {
-        self.lineModel = LineModel(lineType: lineType, lineWidth: lineWidth)
-      } else {
-        return nil
-      }
-    case .second:
-      lineSelected = parameters[ChartIQConst.DrawingTool.active2Key] as? Bool ?? false
-      if let color = parameters[ChartIQConst.DrawingTool.color2Key] as? String,
-         color.hasPrefix(Const.General.hashSymbol) {
-        lineColor = UIColor(hexString: color.replacingOccurrences(of: Const.General.hashSymbol, with: ""))
-      }
-      if let lineWidth = parameters[ChartIQConst.DrawingTool.lineWidth2Key] as? Int,
-         let pattern = parameters[ChartIQConst.DrawingTool.pattern2Key] as? String,
-         let lineType = ChartIQLineType(stringValue: pattern) {
-        self.lineModel = LineModel(lineType: lineType, lineWidth: lineWidth)
-      } else {
-        return nil
-      }
-    case .third:
-      lineSelected = parameters[ChartIQConst.DrawingTool.active3Key] as? Bool ?? false
-      if let color = parameters[ChartIQConst.DrawingTool.color3Key] as? String,
-         color.hasPrefix(Const.General.hashSymbol) {
-        lineColor = UIColor(hexString: color.replacingOccurrences(of: Const.General.hashSymbol, with: ""))
-      }
-      if let lineWidth = parameters[ChartIQConst.DrawingTool.lineWidth3Key] as? Int,
-         let pattern = parameters[ChartIQConst.DrawingTool.pattern3Key] as? String,
-         let lineType = ChartIQLineType(stringValue: pattern) {
-        self.lineModel = LineModel(lineType: lineType, lineWidth: lineWidth)
-      } else {
-        return nil
-      }
-    }
+    guard let lineWidth = parameters[lineLevel.widthKey] as? Int,
+          let pattern = parameters[lineLevel.patternKey] as? String,
+          let lineType = ChartIQLineType(stringValue: pattern) else { return nil }
     self.lineLevel = lineLevel
-    self.lineColor = lineColor
-    self.isLineSelected = lineSelected
+    self.lineModel = LineModel(lineType: lineType, lineWidth: lineWidth)
+    self.lineColor = .getDynamicColor(from: parameters, colorKey: lineLevel.colorKey, isDarkTheme: isDarkTheme)
+    self.isLineSelected = parameters[lineLevel.activeKey] as? Bool ?? false
   }
 }
