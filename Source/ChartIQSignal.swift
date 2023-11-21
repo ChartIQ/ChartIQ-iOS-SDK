@@ -95,9 +95,11 @@ public class ChartIQSignal: NSObject {
     self.conditions.forEach { condition in
       conditions.append(condition.toArray())
     }
+    let name = name.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? name
+    let signalDescription = signalDescription?.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? ""
     return [
       Const.Signal.nameParam: name,
-      Const.Signal.descriptionParam: signalDescription ?? "",
+      Const.Signal.descriptionParam: signalDescription,
       Const.Signal.joinerParam: joiner.stringValue,
       Const.Signal.conditionsParam: conditions
     ]
