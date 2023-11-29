@@ -8,11 +8,10 @@ Contact us at <support@chartiq.com> to request sample code and guidance on how t
 
 ## Requirements
 
-- Version 9.0.1 or later of the ChartIQ library
+- A copy of the ChartIQ JavaScript library (works best with version 9.1.2).
+  - If you do not have a copy of the library or need a different version, please contact your account manager or visit our <a href="https://pages.marketintelligence.spglobal.com/ChartIQ-Follow-up-Request.html" target="_blank">Request Follow-Up Site</a>.
 
-  For previous version support, please refer to the [Releases](https://github.com/ChartIQ/ChartIQ-iOS-SDK/releases) section.
-
-  To obtain an evaluation version of the ChartIQ library, contact your account manager or visit our <a href="https://pages.marketintelligence.spglobal.com/ChartIQ-Follow-up-Request.html" target="_blank">Request Follow Up site</a> to get in contact with us!
+  - For previous JavaScript version support, please refer to the [Releases](https://github.com/ChartIQ/ChartIQ-iOS-SDK/releases) section.
 
 - iOS 12.0 or later.
 
