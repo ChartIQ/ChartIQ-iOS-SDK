@@ -185,7 +185,13 @@ class DrawToolSettingsViewController: BaseViewController {
 
   private func updateSelectedToggle(with toggleViewModel: ToggleTableCellViewModel, isToggleOn: Bool) {
     toggleViewModel.isToggleOn = isToggleOn
-    chartIQView?.setDrawingParameter(.showLines, value: isToggleOn)
+    if toggleViewModel.title == Const.DrawToolsService.axisLabelTitle {
+      chartIQView?.setDrawingParameter(.axisLabel, value: isToggleOn)
+    } else if toggleViewModel.title == Const.DrawToolsService.showLinesTitle {
+      chartIQView?.setDrawingParameter(.showLines, value: isToggleOn)
+    } else if toggleViewModel.title == Const.DrawToolsService.showCalloutTitle {
+      chartIQView?.setDrawingParameter(.showCallout, value: isToggleOn)
+    }
   }
 
   private func updateSelectedColorParameters(selectedColor: UIColor, colorViewModel: ColorTableCellViewModel) {

@@ -95,6 +95,9 @@ class DrawToolsService {
     let axisLabelViewModels = getAxisLabelViewModels(tool: tool, parameters: parameters)
     drawToolViewModels.append(contentsOf: axisLabelViewModels)
 
+    let showCalloutViewModels = getShowCalloutViewModels(tool: tool, parameters: parameters)
+    drawToolViewModels.append(contentsOf: showCalloutViewModels)
+
     let deviationViewModels = getDeviationViewModels(tool: tool, parameters: parameters)
     drawToolViewModels.append(contentsOf: deviationViewModels)
 
@@ -203,18 +206,30 @@ class DrawToolsService {
     return drawToolViewModels
   }
 
+  private func getShowCalloutViewModels(tool: ChartIQDrawingTool,
+                                        parameters: [String: Any]) -> [TableCellViewModelProtocol] {
+    var drawToolViewModels: [TableCellViewModelProtocol] = []
+    if chartIQDrawingManager.isSupportingShowCallout(tool),
+       let isShowCallout = parameters[ChartIQConst.DrawingTool.showCalloutKey] as? Bool {
+      let showCalloutViewModel = ToggleTableCellViewModel(title: Const.DrawToolsService.showCalloutTitle,
+                                                          isToggleOn: isShowCallout)
+      drawToolViewModels.append(showCalloutViewModel)
+    }
+    return drawToolViewModels
+  }
+
   private func getDeviationViewModels(tool: ChartIQDrawingTool,
                                       parameters: [String: Any]) -> [TableCellViewModelProtocol] {
     var drawToolViewModels: [TableCellViewModelProtocol] = []
     if chartIQDrawingManager.isSupportingDeviations(tool) {
       var deviationModels: [DeviationModel] = []
-      if let firstDeviationModel = DeviationModel(lineLevel: .first, parameters: parameters) {
+      if let firstDeviationModel = DeviationModel(lineLevel: .first, parameters: parameters, isDarkTheme: isDarkTheme) {
         deviationModels.append(firstDeviationModel)
       }
-      if let secondDeviationModel = DeviationModel(lineLevel: .second, parameters: parameters) {
+      if let secondDeviationModel = DeviationModel(lineLevel: .second, parameters: parameters, isDarkTheme: isDarkTheme) {
         deviationModels.append(secondDeviationModel)
       }
-      if let thirdDeviationModel = DeviationModel(lineLevel: .third, parameters: parameters) {
+      if let thirdDeviationModel = DeviationModel(lineLevel: .third, parameters: parameters, isDarkTheme: isDarkTheme) {
         deviationModels.append(thirdDeviationModel)
       }
       let deviationsViewModel = DeviationsTableCellViewModel(title: Const.DrawToolsService.deviationsSettingsTitle,

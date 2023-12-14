@@ -196,7 +196,7 @@ extension UIColor {
   internal func getContrastColor() -> UIColor {
     var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
     getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-    let luminance = red * 0.212_6 + green * 0.715_2 + blue * 0.072_2
+    let luminance = red * 0.2126 + green * 0.7152 + blue * 0.0722
     return luminance < 0.4 ? UIColor.whiteColor : UIColor.blackColor
   }
 }

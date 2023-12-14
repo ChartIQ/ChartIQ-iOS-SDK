@@ -30,11 +30,14 @@ class SeriesViewController: BaseViewController {
   private var addBarButtonItem: UIBarButtonItem?
   private var series: [ChartIQSeries] = []
   private let locManager = LocalizationManager.shared()
+  private var currentColorIndex: Int = .zero
 
   // MARK: - ViewController Lifecycle Methods
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    setupColorIndex()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -111,6 +114,7 @@ class SeriesViewController: BaseViewController {
     let isEmpty = series.isEmpty
     if isEmpty {
       updateBarButtonItems(isHidden: true)
+      currentColorIndex = .zero
     } else {
       updateBarButtonItems(isHidden: false)
     }
@@ -146,10 +150,20 @@ class SeriesViewController: BaseViewController {
     updateSeries()
   }
 
-  private func getSeriesCycleColor() -> UIColor {
-    let allSeriesColors = UIColor.allSeriesColors()
-    let colorDifferenceIndex = series.count % allSeriesColors.count
-    return allSeriesColors[colorDifferenceIndex]
+  private func setupColorIndex() {
+    guard let color = chartIQView.getActiveSeries().last?.color,
+          let index = UIColor.allSeriesColors().firstIndex(of: color) else { return }
+    currentColorIndex = index + 1
+  }
+
+  private func nextColor() -> UIColor {
+    let colors = UIColor.allSeriesColors()
+    if currentColorIndex > colors.count - 1 {
+      currentColorIndex = .zero
+    }
+    let nextColor = colors[currentColorIndex]
+    currentColorIndex += 1
+    return nextColor
   }
 
   // MARK: - Present Controllers Private Methods
@@ -158,8 +172,7 @@ class SeriesViewController: BaseViewController {
     guard let controller = UIStoryboard.searchSymbolsViewController() else { return }
     controller.didSelectSymbol = { [weak self] symbol in
       guard let self = self else { return }
-      let seriesColor = self.getSeriesCycleColor()
-      let series = ChartIQSeries(symbolName: symbol.name, color: seriesColor)
+      let series = ChartIQSeries(symbolName: symbol.name, color: self.nextColor())
       self.chartIQView.addSeries(series, isComparison: true)
       self.updateSeries()
     }

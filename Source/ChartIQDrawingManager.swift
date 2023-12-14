@@ -27,8 +27,8 @@ public class ChartIQDrawingManager: ChartIQDrawingManagerProtocol {
   public func isSupportingFillColor(_ tool: ChartIQDrawingTool) -> Bool {
     switch tool {
     case .arrow, .channel, .callout, .check, .cross, .ellipse, .fibArc, .fibFan, .fibProjection, .fibRetracement,
-         .fibTimeZone, .focus, .gannFan, .gartley, .heart, .quadrantLines, .rectangle, .speedResistanceArc,
-         .speedResistanceLine, .star, .timeCycle, .tironeLevels, .trend:
+        .fibTimeZone, .focus, .gannFan, .gartley, .heart, .measurementLine, .quadrantLines, .rectangle, .speedResistanceArc,
+        .speedResistanceLine, .star, .timeCycle, .tironeLevels, .trendLine:
       return true
     default:
       return false
@@ -79,7 +79,7 @@ public class ChartIQDrawingManager: ChartIQDrawingManagerProtocol {
   /// - Returns: The Bool Value. True if supports font, false if not.
   public func isSupportingFont(_ tool: ChartIQDrawingTool) -> Bool {
     switch tool {
-    case .annotation, .callout, .elliottWave, .trend:
+    case .annotation, .callout, .elliottWave, .trendLine:
       return true
     default:
       return false
@@ -93,7 +93,21 @@ public class ChartIQDrawingManager: ChartIQDrawingManagerProtocol {
   /// - Returns: The Bool Value. True if supports axis label, false if not.
   public func isSupportingAxisLabel(_ tool: ChartIQDrawingTool) -> Bool {
     switch tool {
-    case .average, .crossline, .horizontal, .vertical:
+    case .average, .crossline, .horizontal, .measurementLine, .vertical:
+      return true
+    default:
+      return false
+    }
+  }
+
+  /// Check if the drawing supports show callout.
+  ///
+  /// - Parameters:
+  ///   - tool: The ChartIQDrawingTool.
+  /// - Returns: The Bool Value. True if show callout, false if not.
+  public func isSupportingShowCallout(_ tool: ChartIQDrawingTool) -> Bool {
+    switch tool {
+    case .trendLine:
       return true
     default:
       return false

@@ -106,7 +106,8 @@ class ChartIQStudyTests: XCTestCase {
         "Volume % of Avg": 400,
         "Volume Spike": 0
       ],
-      "customRemoval": 1
+      "customRemoval": 1,
+      "signalIQExclude": false
     ]
     let key = "Darvas Box"
 
@@ -119,13 +120,17 @@ class ChartIQStudyTests: XCTestCase {
     XCTAssertEqual((dictionary[Const.Study.inputsParam] as? [String: Any])?.count, study.inputs?.count)
     XCTAssertEqual((dictionary[Const.Study.outputsParam] as? [String: Any])?.count, study.outputs?.count)
     XCTAssertEqual((dictionary[Const.Study.parametersParam] as? [String: Any])?.count, study.parameters?.count)
+    XCTAssertEqual(dictionary[Const.Study.signalIQExclude] as? Bool, study.signalIQExclude)
   }
 
   func testInitWithDictionary() {
     // Given
+    let testStudyName = "|Alligator| (y,20,8,8,5,5,5,y)"
+    let jsStyleStudyName = testStudyName.replacingOccurrences(of: "|", with: "\(Const.General.zwnjSymbol)")
+
     let dictionary: [String: Any] = [
       "type": "Alligator",
-      "studyName": "‌Alligator‌ (y,20,8,8,5,5,5,y)",
+      "studyName": jsStyleStudyName,
       "uniqueId": "L5O66FE7173",
       "outputs": [
         "Jaw ‌Alligator‌ (y,20,8,8,5,5,5,y)": "Jaw",
@@ -175,8 +180,9 @@ class ChartIQStudyTests: XCTestCase {
 
   func testInitWithJSStudyString() {
     // Given
-    let jsStudyString = "‌W Acc Dist‌ (n)___W Acc Dist___{\"Use Volume\":false,\"id\":\"‌W Acc Dist‌ (n)\",\"display\":" +
+    let jsStudyString = "|W Acc Dist| (n)___W Acc Dist___{\"Use Volume\":false,\"id\":\"‌W Acc Dist‌ (n)\",\"display\":" +
     "\"‌W Acc Dist‌ (n)\"}___{\"Result\":\"auto\"}___{\"chartName\":\"chart\",\"panelName\":\"‌W Acc Dist‌ (n)\"}"
+    let jsStyleStudyString = jsStudyString.replacingOccurrences(of: "|", with: "\(Const.General.zwnjSymbol)")
     let fullName = "‌W Acc Dist‌ (n)"
     let inputs: [String: Any] = [
       "Use Volume": true,
@@ -192,7 +198,7 @@ class ChartIQStudyTests: XCTestCase {
     ]
 
     // When
-    let study = ChartIQStudy(jsStudyString: jsStudyString)
+    let study = ChartIQStudy(jsStudyString: jsStyleStudyString)
 
     // Then
     XCTAssertNotNil(study)

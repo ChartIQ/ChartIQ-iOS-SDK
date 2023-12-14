@@ -63,6 +63,8 @@ extension ChartIQDrawingTool {
       return UIImage.ChartIQDrawingTool.horizontalImage
     case .line:
       return UIImage.ChartIQDrawingTool.lineImage
+    case .measurementLine:
+      return UIImage.ChartIQDrawingTool.measurementLineImage
     case .pitchfork:
       return UIImage.ChartIQDrawingTool.pitchforkImage
     case .quadrantLines:
@@ -73,8 +75,6 @@ extension ChartIQDrawingTool {
       return UIImage.ChartIQDrawingTool.rectangleImage
     case .regression:
       return UIImage.ChartIQDrawingTool.regressionImage
-    case .segment:
-      return UIImage.ChartIQDrawingTool.segmentImage
     case .speedResistanceArc:
       return UIImage.ChartIQDrawingTool.speedResistanceArcImage
     case .speedResistanceLine:
@@ -85,7 +85,7 @@ extension ChartIQDrawingTool {
       return UIImage.ChartIQDrawingTool.timeCycleImage
     case .tironeLevels:
       return UIImage.ChartIQDrawingTool.tironeLevelsImage
-    case .trend:
+    case .trendLine:
       return UIImage.ChartIQDrawingTool.trendImage
     case .vertical:
       return UIImage.ChartIQDrawingTool.verticalImage

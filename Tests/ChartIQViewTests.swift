@@ -269,7 +269,6 @@ class ChartIQViewTests: XCTestCase {
     XCTAssertFalse(chartIQDrawingManager.isSupportingFillColor(ChartIQDrawingTool.pitchfork))
     XCTAssertFalse(chartIQDrawingManager.isSupportingFillColor(ChartIQDrawingTool.ray))
     XCTAssertTrue(chartIQDrawingManager.isSupportingFillColor(ChartIQDrawingTool.rectangle))
-    XCTAssertFalse(chartIQDrawingManager.isSupportingFillColor(ChartIQDrawingTool.segment))
     XCTAssertFalse(chartIQDrawingManager.isSupportingFillColor(ChartIQDrawingTool.vertical))
   }
 
@@ -293,7 +292,6 @@ class ChartIQViewTests: XCTestCase {
     XCTAssertTrue(chartIQDrawingManager.isSupportingLineType(ChartIQDrawingTool.pitchfork))
     XCTAssertTrue(chartIQDrawingManager.isSupportingLineType(ChartIQDrawingTool.ray))
     XCTAssertTrue(chartIQDrawingManager.isSupportingLineType(ChartIQDrawingTool.rectangle))
-    XCTAssertTrue(chartIQDrawingManager.isSupportingLineType(ChartIQDrawingTool.segment))
     XCTAssertTrue(chartIQDrawingManager.isSupportingLineType(ChartIQDrawingTool.vertical))
   }
 

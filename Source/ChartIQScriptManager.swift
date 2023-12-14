@@ -114,7 +114,7 @@ internal class ChartIQScriptManager: ChartIQScriptManagerProtocol {
     let script = mobileBridgeNameSpace + ".setChartType(\"\(chartType.stringValue)\");"
     return script
   }
-  
+
   /// Returns a script that sets the chart refresh interval.
   ///
   /// - Parameters:

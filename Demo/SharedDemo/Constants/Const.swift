@@ -39,7 +39,7 @@ public struct Const {
   // MARK: - General
 
   struct General {
-    static let chartIQURL = "https://mobile.demo.chartiq.com/ios/3.4.0/sample-template-native-sdk.html"
+    static let chartIQURL = "https://mobile.demo.chartiq.com/ios/3.5.0/sample-template-advanced.html"
 
     static let cancelTitle = "Cancel"
     static let clearTitle = "Clear"
@@ -158,6 +158,7 @@ public struct Const {
     static let fontSizeTitle = "Font Size"
     static let fontStyleTitle = "Font Style"
 
+    static let showCalloutTitle = "Show Callout"
     static let axisLabelTitle = "Axis Label"
 
     static let fibonacciSettingsTitle = "Fibonacci Settings"
