@@ -159,6 +159,10 @@ class ChartIQSignalTests: XCTestCase {
 
   func testToDictionary() {
     // Given
+    let name: String = "New Signal"
+    let description: String = "New Signal Unit Test"
+    let nameInDict = name.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? name
+    let descriptionInDict = description.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? description
     let initialDictionary: [String: Any] = [
       "conditions": [[
         "Jaw Alligator",
@@ -183,8 +187,8 @@ class ChartIQSignalTests: XCTestCase {
         "Lips ‌Alligator‌ (y,20,8,8,5,5,5,y)": "Lips"
       ],
       "joiner": "&",
-      "signalName": "New Signal Test",
-      "description": "New Signal Unit Test",
+      "signalName": name,
+      "description": description,
       "disabled": false
     ]
     let signal = ChartIQSignal(dictionary: initialDictionary)
@@ -197,9 +201,54 @@ class ChartIQSignalTests: XCTestCase {
     XCTAssertNotNil(signal?.study)
     XCTAssertEqual((dictionary?[Const.Signal.conditionsParam] as? [Any])?.count, signal?.conditions.count)
     XCTAssertEqual(dictionary?[Const.Signal.joinerParam] as? String, signal?.joiner.stringValue)
-    XCTAssertEqual(dictionary?[Const.Signal.nameParam] as? String, signal?.name)
-    XCTAssertEqual(dictionary?[Const.Signal.descriptionParam] as? String, signal?.signalDescription)
+    XCTAssertEqual(dictionary?[Const.Signal.nameParam] as? String, nameInDict)
+    XCTAssertEqual(dictionary?[Const.Signal.descriptionParam] as? String, descriptionInDict)
     XCTAssertNil(dictionary?[Const.Signal.disabledParam] as? Bool)
+  }
+
+  func testToDictionaryWithNameEncodingIssue() {
+    // Given
+    let name: String = String(bytes: [0xD8, 0x00] as [UInt8], encoding: .utf16BigEndian)! // should return nil when encoding
+    let description: String = "New Signal Unit Test"
+    let nameInDict = name.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? name
+    let initialDictionary: [String: Any] = [
+      "conditions": [[
+        "Jaw Alligator",
+        ">",
+        "Lips Alligator",
+        "",
+        [
+          "type": "marker",
+          "color": "#0000ff",
+          "shape": "circle",
+          "label": "X",
+          "size": "M",
+          "position": "above_candle"
+        ]
+      ]],
+      "type": "Alligator",
+      "studyName": "‌Alligator‌ (y,20,8,8,5,5,5,y)",
+      "uniqueId": "L5O66FE7173",
+      "outputs": [
+        "Jaw ‌Alligator‌ (y,20,8,8,5,5,5,y)": "Jaw",
+        "Teeth ‌Alligator‌ (y,20,8,8,5,5,5,y)": "Teeth",
+        "Lips ‌Alligator‌ (y,20,8,8,5,5,5,y)": "Lips"
+      ],
+      "joiner": "&",
+      "signalName": name,
+      "description": description,
+      "disabled": false
+    ]
+    let signal = ChartIQSignal(dictionary: initialDictionary)
+
+    // When
+    let dictionary = signal?.toDictionary()
+
+    // Then
+    XCTAssertTrue(!name.isEmpty)
+    XCTAssertEqual(name, nameInDict)
+    XCTAssertNotNil(dictionary?[Const.Signal.nameParam] as? String)
+    XCTAssertEqual(dictionary?[Const.Signal.nameParam] as? String, nameInDict)
   }
 
   func testCreateJSONString() {
@@ -257,21 +306,23 @@ class ChartIQSignalTests: XCTestCase {
     }
     let joiner: ChartIQSignalJoiner = .and
     let name: String = "New Signal"
-    let signalDescription: String = "New Signal Unit Test"
+    let description: String = "New Signal Unit Test"
+    let nameInString = name.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? name
+    let descriptionInString = description.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? description
     let isEnabled: Bool = true
     let signal = ChartIQSignal(study: study,
                                conditions: conditions,
                                joiner: joiner,
                                name: name,
-                               signalDescription: signalDescription,
+                               signalDescription: description,
                                isEnabled: isEnabled)
 
     // When
     let string = signal.toJSONString()
 
     // Then
-    XCTAssertTrue(string.contains(name))
-    XCTAssertTrue(string.contains(signalDescription))
+    XCTAssertTrue(string.contains(nameInString))
+    XCTAssertTrue(string.contains(descriptionInString))
     XCTAssertTrue(string.contains(joiner.stringValue))
     XCTAssertFalse(string.contains(String(isEnabled)))
     XCTAssertFalse(string.contains(String(shortName)))
@@ -332,7 +383,9 @@ class ChartIQSignalTests: XCTestCase {
     }
     let joiner: ChartIQSignalJoiner = .and
     let name: String = "New Signal"
-    let signalDescription: String = "description"
+    let description: String = "New Signal Unit Test"
+    let nameInString = name.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? name
+    let descriptionInString = description.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? description
     let isEnabled: Bool = true
     let signal = ChartIQSignal(study: study,
                                conditions: conditions,
@@ -345,8 +398,8 @@ class ChartIQSignalTests: XCTestCase {
     let string = signal.toJSONString()
 
     // Then
-    XCTAssertTrue(string.contains(name))
-    XCTAssertTrue(string.contains(signalDescription))
+    XCTAssertTrue(string.contains(nameInString))
+    XCTAssertFalse(string.contains(descriptionInString))
     XCTAssertTrue(string.contains(joiner.stringValue))
     XCTAssertFalse(string.contains(String(isEnabled)))
     XCTAssertFalse(string.contains(String(shortName)))

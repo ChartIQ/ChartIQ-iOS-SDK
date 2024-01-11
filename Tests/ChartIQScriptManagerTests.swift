@@ -916,12 +916,14 @@ class ChartIQScriptManagerTests: XCTestCase {
                                            parameters: [:])
     let joiner: ChartIQSignalJoiner = .and
     let name: String = "New Signal"
-    let signalDescription: String = "New Signal Unit Test"
+    let description: String = "New Signal Unit Test"
+    let nameInScript = name.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? name
+    let descriptionInScript = description.addingPercentEncoding(withAllowedCharacters: .alphanumerics) ?? description
     let signal = ChartIQSignal(study: study,
                                conditions: [],
                                joiner: joiner,
                                name: name,
-                               signalDescription: signalDescription,
+                               signalDescription: description,
                                isEnabled: true)
     let isEdit = false
 
@@ -932,8 +934,8 @@ class ChartIQScriptManagerTests: XCTestCase {
     XCTAssertTrue(script.contains(correctScriptPart))
     XCTAssertTrue(script.contains(studyName))
     XCTAssertTrue(script.contains(joiner.stringValue))
-    XCTAssertTrue(script.contains(name))
-    XCTAssertTrue(script.contains(signalDescription))
+    XCTAssertTrue(script.contains(nameInScript))
+    XCTAssertTrue(script.contains(descriptionInScript))
     XCTAssertTrue(script.contains(String(isEdit)))
   }
 

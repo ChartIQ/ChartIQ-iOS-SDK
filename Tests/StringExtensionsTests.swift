@@ -41,7 +41,7 @@ class StringExtensionsTests: XCTestCase {
 
   func testReplaceStringSymbolWithZwnj() {
     // Given
-    var originalString = "|‌AVWAP‌ (,n,n,n)"
+    let originalString = "|‌AVWAP‌ (,n,n,n)"
     let correctString = "‌AVWAP‌ (,n,n,n)"
 
     // When
