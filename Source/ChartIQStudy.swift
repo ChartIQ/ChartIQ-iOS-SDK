@@ -79,14 +79,14 @@ public class ChartIQStudy: NSObject {
   public init?(jsStudyString study: String) {
     let studyComponents = study.components(separatedBy: "___")
     guard studyComponents.count > 4 else { return nil }
-    var fullName = studyComponents[0]
-    var originalName = studyComponents[1]
+    let fullName = studyComponents[0]
+    let originalName = studyComponents[1]
     let inputString = studyComponents[2]
     let outputString = studyComponents[3]
     let parametersString = studyComponents[4]
     self.fullName = fullName.replaceSymbolWithZwnj(symbol: "|")
     self.originalName = originalName.replaceSymbolWithZwnj(symbol: "|")
-    let fullNameComponents = self.fullName.components(separatedBy: Const.General.zwnjSymbol)
+    let fullNameComponents = fullName.components(separatedBy: Const.General.zwnjSymbol)
     if fullNameComponents.count > 2 {
       self.name = fullNameComponents[1]
       self.nameParams = fullNameComponents[2]

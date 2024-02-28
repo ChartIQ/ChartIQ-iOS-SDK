@@ -106,7 +106,7 @@
 		7AA3C65A1E24975500DD69AE /* ChartIQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChartIQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1CE7B4240E81110076EC5D /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		CE1CE7B6240E81110076EC5D /* WKWebView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WKWebView+Extensions.swift"; sourceTree = "<group>"; };
-		CE1CE7BB240E81210076EC5D /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		CE1CE7BB240E81210076EC5D /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		CE1CE7BE240E81460076EC5D /* ChartIQDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartIQDelegate.swift; sourceTree = "<group>"; };
 		CE1CE7BF240E81460076EC5D /* ChartIQDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartIQDataSource.swift; sourceTree = "<group>"; };
 		CE1CE7C3240E816E0076EC5D /* ChartIQCrosshairHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartIQCrosshairHUD.swift; sourceTree = "<group>"; };
