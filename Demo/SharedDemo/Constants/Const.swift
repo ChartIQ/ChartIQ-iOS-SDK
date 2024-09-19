@@ -128,7 +128,7 @@ public struct Const {
   // MARK: - Services
 
   struct DataSimulatorService {
-    static let simulatorUrlFormatString = "https://mobile-simulator.chartiq.com/datafeed" +
+    static let simulatorUrlFormatString = "https://simulator.chartiq.com/datafeed" +
       "?identifier=%@" + "&startdate=%@" + "%@" + "&interval=%@" + "&period=%i" + "&extended=1" + "&session=%@"
     static let simulatorEndDateFormatString = "&enddate=%@"
 
