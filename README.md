@@ -15,6 +15,8 @@ Contact us at <support@chartiq.com> to request sample code and guidance on how t
 
 - iOS 12.0 or later.
 
+**Important:** This SDK requires additional configuration to be able to work with the remote npm registry introduced in version 9.5.1.
+
 ## App
 
 The [Demo](https://github.com/ChartIQ/ChartIQ-iOS-SDK/tree/master/Demo) folder of this repository contains an app that was built using the SDK. Customize the app to quickly create your own iOS charting application.
