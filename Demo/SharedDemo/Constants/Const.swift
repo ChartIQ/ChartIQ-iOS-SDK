@@ -119,7 +119,7 @@ public struct Const {
     static let japaneseLanguageCode = "ja-JP"
 
     static let arabicLanguageName = "Arabic"
-    static let arabicLanguageCode = "ar-EG"
+    static let arabicLanguageCode = "ar-EG-u-nu-latn" // "ar-EG"
 
     static let languageChangedNotification = NSNotification.Name(rawValue: languageChangedNotificationName)
     static let baseLanguageModel = LanguageModel(name: englishLanguageName, languageCode: englishLanguageCode)
