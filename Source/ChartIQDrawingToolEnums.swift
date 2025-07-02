@@ -133,7 +133,7 @@ import Foundation
     case .annotation:
       return "annotation"
     case .arrow:
-      return "arrow"
+      return "arrowline"
     case .average:
       return "average"
     case .callout:
@@ -380,7 +380,7 @@ import Foundation
   public init?(stringValue: String) {
     let dictionary: [String: ChartIQDrawingTool] = [
       "annotation": .annotation,
-      "arrow": .arrow,
+      "arrowline": .arrow,
       "average": .average,
       "callout": .callout,
       "channel": .channel,
