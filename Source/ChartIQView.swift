@@ -991,7 +991,12 @@ public class ChartIQView: UIView {
                                   encoding: .utf8)?.replacingOccurrences(of: Const.General.newlineSymbol,
                                                                          with: "") else { return }
     let script = scriptManager.getScriptForFormatJSQuoteData(jsonString, callbackId: callbackId, moreAvailable: moreAvailable, upToDate: upToDate)
-    webView.evaluateJavaScript(script, completionHandler: nil)
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+       // Excecute after 3 seconds
+      self.webView.evaluateJavaScript(script, completionHandler: nil)
+    }
+    
   }
 
   /// Uses this method to format object to printed JSON format.
