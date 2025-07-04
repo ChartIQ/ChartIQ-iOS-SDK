@@ -110,7 +110,7 @@ import UIKit
     case .coloredHLCBar:
       return "Colored HLC Bar"
     case .scatterplot:
-      return "Scatterplot"
+      return "Data Points"
     case .histogram:
       return "Histogram"
     }
