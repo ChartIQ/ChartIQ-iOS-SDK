@@ -600,7 +600,7 @@ public struct Const {
     static let chartPreferencesHeaderTitle = "Chart Preferences"
     static let languagePreferencesHeaderTitle = "Language Preferences"
 
-    static let chartStyleTitle = "Chart Style"
+    static let chartStyleTitle = "Chart Types"
     static let logScaleTitle = "Log Scale"
     static let invertYAxisTitle = "Invert Y-Axis"
     static let extendHoursTitle = "Extend Hours"
@@ -608,7 +608,7 @@ public struct Const {
   }
 
   struct ChartStyle {
-    static let screenTitle = "Chart Style"
+    static let screenTitle = "Chart Types"
   }
 
   struct Language {
