@@ -28,14 +28,8 @@ import Foundation
   /// The channel option.
   case channel
 
-  /// The check option.
-  case check
-
   /// The continuous option.
   case continuous
-
-  /// The cross option.
-  case cross
 
   /// The crossline option.
   case crossline
@@ -64,17 +58,11 @@ import Foundation
   /// The fibTimeZone option.
   case fibTimeZone
 
-  /// The focus option.
-  case focus
-
   /// The gannFan option.
   case gannFan
 
   /// The gartley option.
   case gartley
-
-  /// The heart option.
-  case heart
 
   /// The horizontal option.
   case horizontal
@@ -105,9 +93,6 @@ import Foundation
 
   /// The speedResistanceLine option.
   case speedResistanceLine
-
-  /// The star option.
-  case star
 
   /// The timeCycle option.
   case timeCycle
@@ -140,12 +125,8 @@ import Foundation
       return "callout"
     case .channel:
       return "channel"
-    case .check:
-      return "check"
     case .continuous:
       return "continuous"
-    case .cross:
-      return "xcross"
     case .crossline:
       return "crossline"
     case .doodle:
@@ -161,17 +142,13 @@ import Foundation
     case .fibProjection:
       return "fibprojection"
     case .fibRetracement:
-      return "fibonacci"
+      return "retracement"
     case .fibTimeZone:
       return "fibtimezone"
-    case .focus:
-      return "focusarrow"
     case .gannFan:
       return "gannfan"
     case .gartley:
       return "gartley"
-    case .heart:
-      return "heart"
     case .horizontal:
       return "horizontal"
     case .line:
@@ -192,8 +169,6 @@ import Foundation
       return "speedarc"
     case .speedResistanceLine:
       return "speedline"
-    case .star:
-      return "star"
     case .timeCycle:
       return "timecycle"
     case .tironeLevels:
@@ -222,12 +197,8 @@ import Foundation
       return "Callout"
     case .channel:
       return "Channel"
-    case .check:
-      return "Check"
     case .continuous:
       return "Continuous"
-    case .cross:
-      return "Cross"
     case .crossline:
       return "Crossline"
     case .doodle:
@@ -246,14 +217,10 @@ import Foundation
       return "Fib Retracement"
     case .fibTimeZone:
       return "Fib Time Zone"
-    case .focus:
-      return "Focus"
     case .gannFan:
       return "Gann Fan"
     case .gartley:
       return "Gartley"
-    case .heart:
-      return "Heart"
     case .horizontal:
       return "Horizontal"
     case .line:
@@ -274,8 +241,6 @@ import Foundation
       return "Speed Resistance Arc"
     case .speedResistanceLine:
       return "Speed Resistance Line"
-    case .star:
-      return "Star"
     case .timeCycle:
       return "Time Cycle"
     case .tironeLevels:
@@ -304,12 +269,8 @@ import Foundation
       return .text
     case .channel:
       return .lines
-    case .check:
-      return .markings
     case .continuous:
       return .lines
-    case .cross:
-      return .markings
     case .crossline:
       return .lines
     case .doodle:
@@ -328,14 +289,10 @@ import Foundation
       return .fibonacci
     case .fibTimeZone:
       return .fibonacci
-    case .focus:
-      return .markings
     case .gannFan:
       return .technicals
     case .gartley:
       return .technicals
-    case .heart:
-      return .markings
     case .horizontal:
       return .lines
     case .line:
@@ -356,8 +313,6 @@ import Foundation
       return .technicals
     case .speedResistanceLine:
       return .technicals
-    case .star:
-      return .markings
     case .timeCycle:
       return .technicals
     case .tironeLevels:
@@ -384,9 +339,7 @@ import Foundation
       "average": .average,
       "callout": .callout,
       "channel": .channel,
-      "check": .check,
       "continuous": .continuous,
-      "xcross": .cross,
       "crossline": .crossline,
       "freeform": .doodle,
       "elliottwave": .elliottWave,
@@ -394,12 +347,10 @@ import Foundation
       "fibarc": .fibArc,
       "fibfan": .fibFan,
       "fibprojection": .fibProjection,
-      "fibonacci": .fibRetracement,
+      "retracement": .fibRetracement,
       "fibtimezone": .fibTimeZone,
-      "focusarrow": .focus,
       "gannfan": .gannFan,
       "gartley": .gartley,
-      "heart": .heart,
       "horizontal": .horizontal,
       "line": .line,
       "measurementline": .measurementLine,
@@ -410,7 +361,6 @@ import Foundation
       "regression": .regression,
       "speedarc": .speedResistanceArc,
       "speedline": .speedResistanceLine,
-      "star": .star,
       "timecycle": .timeCycle,
       "tirone": .tironeLevels,
       "trendline": .trendLine,

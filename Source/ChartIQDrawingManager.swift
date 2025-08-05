@@ -26,9 +26,9 @@ public class ChartIQDrawingManager: ChartIQDrawingManagerProtocol {
   /// - Returns: The Bool Value. True if supports fill color, false if not.
   public func isSupportingFillColor(_ tool: ChartIQDrawingTool) -> Bool {
     switch tool {
-    case .arrow, .channel, .callout, .check, .cross, .ellipse, .fibArc, .fibFan, .fibProjection, .fibRetracement,
-        .fibTimeZone, .focus, .gannFan, .gartley, .heart, .measurementLine, .quadrantLines, .rectangle, .speedResistanceArc,
-        .speedResistanceLine, .star, .timeCycle, .tironeLevels, .trendLine:
+    case .arrow, .channel, .callout, .ellipse, .fibArc, .fibFan, .fibProjection, .fibRetracement,
+        .fibTimeZone, .gannFan, .gartley, .measurementLine, .quadrantLines, .rectangle, .speedResistanceArc,
+        .speedResistanceLine, .timeCycle, .tironeLevels, .trendLine:
       return true
     default:
       return false

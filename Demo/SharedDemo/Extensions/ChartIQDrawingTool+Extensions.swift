@@ -27,12 +27,8 @@ extension ChartIQDrawingTool {
       return UIImage.ChartIQDrawingTool.calloutImage
     case .channel:
       return UIImage.ChartIQDrawingTool.channelImage
-    case .check:
-      return UIImage.ChartIQDrawingTool.checkImage
     case .continuous:
       return UIImage.ChartIQDrawingTool.continuousImage
-    case .cross:
-      return UIImage.ChartIQDrawingTool.crossImage
     case .crossline:
       return UIImage.ChartIQDrawingTool.crosslineImage
     case .doodle:
@@ -51,14 +47,10 @@ extension ChartIQDrawingTool {
       return UIImage.ChartIQDrawingTool.fibRetracementImage
     case .fibTimeZone:
       return UIImage.ChartIQDrawingTool.fibTimeZoneImage
-    case .focus:
-      return UIImage.ChartIQDrawingTool.focusImage
     case .gannFan:
       return UIImage.ChartIQDrawingTool.gannFanImage
     case .gartley:
       return UIImage.ChartIQDrawingTool.gartleyImage
-    case .heart:
-      return UIImage.ChartIQDrawingTool.heartImage
     case .horizontal:
       return UIImage.ChartIQDrawingTool.horizontalImage
     case .line:
@@ -79,8 +71,6 @@ extension ChartIQDrawingTool {
       return UIImage.ChartIQDrawingTool.speedResistanceArcImage
     case .speedResistanceLine:
       return UIImage.ChartIQDrawingTool.speedResistanceLineImage
-    case .star:
-      return UIImage.ChartIQDrawingTool.starImage
     case .timeCycle:
       return UIImage.ChartIQDrawingTool.timeCycleImage
     case .tironeLevels:

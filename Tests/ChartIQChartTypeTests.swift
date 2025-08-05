@@ -67,7 +67,7 @@ class ChartIQChartTypeTests: XCTestCase {
     let hollowCandleString = "Hollow Candle"
     let volumeCandleString = "Volume Candle"
     let coloredHLCBarString = "Colored HLC Bar"
-    let scatterplotString = "Scatterplot"
+    let scatterplotString = "Data Points"
     let histogramString = "Histogram"
 
     // When // Then
