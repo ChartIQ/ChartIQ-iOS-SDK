@@ -25,13 +25,11 @@ class ChartIQDrawingToolTests: XCTestCase {
   func testsChartIQDrawingToolEnumGetStringValue() {
     // Given
     let annotation = "annotation"
-    let arrow = "arrow"
+    let arrow = "arrowline"
     let average = "average"
     let callout = "callout"
     let channel = "channel"
-    let check = "check"
     let continuous = "continuous"
-    let cross = "xcross"
     let crossline = "crossline"
     let doodle = "freeform"
     let elliottWave = "elliottwave"
@@ -39,12 +37,10 @@ class ChartIQDrawingToolTests: XCTestCase {
     let fibArc = "fibarc"
     let fibFan = "fibfan"
     let fibProjection = "fibprojection"
-    let fibRetracement = "fibonacci"
+    let fibRetracement = "retracement"
     let fibTimeZone = "fibtimezone"
-    let focus = "focusarrow"
     let gannFan = "gannfan"
     let gartley = "gartley"
-    let heart = "heart"
     let horizontal = "horizontal"
     let line = "line"
     let measurementLine = "measurementline"
@@ -55,7 +51,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     let regression = "regression"
     let speedResistanceArc = "speedarc"
     let speedResistanceLine = "speedline"
-    let star = "star"
     let timeCycle = "timecycle"
     let tironeLevels = "tirone"
     let trend = "trendline"
@@ -69,9 +64,7 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(average, ChartIQDrawingTool.average.stringValue)
     XCTAssertEqual(callout, ChartIQDrawingTool.callout.stringValue)
     XCTAssertEqual(channel, ChartIQDrawingTool.channel.stringValue)
-    XCTAssertEqual(check, ChartIQDrawingTool.check.stringValue)
     XCTAssertEqual(continuous, ChartIQDrawingTool.continuous.stringValue)
-    XCTAssertEqual(cross, ChartIQDrawingTool.cross.stringValue)
     XCTAssertEqual(crossline, ChartIQDrawingTool.crossline.stringValue)
     XCTAssertEqual(doodle, ChartIQDrawingTool.doodle.stringValue)
     XCTAssertEqual(elliottWave, ChartIQDrawingTool.elliottWave.stringValue)
@@ -81,10 +74,8 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(fibProjection, ChartIQDrawingTool.fibProjection.stringValue)
     XCTAssertEqual(fibRetracement, ChartIQDrawingTool.fibRetracement.stringValue)
     XCTAssertEqual(fibTimeZone, ChartIQDrawingTool.fibTimeZone.stringValue)
-    XCTAssertEqual(focus, ChartIQDrawingTool.focus.stringValue)
     XCTAssertEqual(gannFan, ChartIQDrawingTool.gannFan.stringValue)
     XCTAssertEqual(gartley, ChartIQDrawingTool.gartley.stringValue)
-    XCTAssertEqual(heart, ChartIQDrawingTool.heart.stringValue)
     XCTAssertEqual(horizontal, ChartIQDrawingTool.horizontal.stringValue)
     XCTAssertEqual(line, ChartIQDrawingTool.line.stringValue)
     XCTAssertEqual(measurementLine, ChartIQDrawingTool.measurementLine.stringValue)
@@ -95,7 +86,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(regression, ChartIQDrawingTool.regression.stringValue)
     XCTAssertEqual(speedResistanceArc, ChartIQDrawingTool.speedResistanceArc.stringValue)
     XCTAssertEqual(speedResistanceLine, ChartIQDrawingTool.speedResistanceLine.stringValue)
-    XCTAssertEqual(star, ChartIQDrawingTool.star.stringValue)
     XCTAssertEqual(timeCycle, ChartIQDrawingTool.timeCycle.stringValue)
     XCTAssertEqual(tironeLevels, ChartIQDrawingTool.tironeLevels.stringValue)
     XCTAssertEqual(trend, ChartIQDrawingTool.trendLine.stringValue)
@@ -111,9 +101,7 @@ class ChartIQDrawingToolTests: XCTestCase {
     let average = "Average Line"
     let callout = "Callout"
     let channel = "Channel"
-    let check = "Check"
     let continuous = "Continuous"
-    let cross = "Cross"
     let crossline = "Crossline"
     let doodle = "Doodle"
     let elliottWave = "Elliott Wave"
@@ -123,10 +111,8 @@ class ChartIQDrawingToolTests: XCTestCase {
     let fibProjection = "Fib Projection"
     let fibRetracement = "Fib Retracement"
     let fibTimeZone = "Fib Time Zone"
-    let focus = "Focus"
     let gannFan = "Gann Fan"
     let gartley = "Gartley"
-    let heart = "Heart"
     let horizontal = "Horizontal"
     let line = "Line"
     let measurementLine = "Measurement Line"
@@ -137,7 +123,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     let regression = "Regression Line"
     let speedResistanceArc = "Speed Resistance Arc"
     let speedResistanceLine = "Speed Resistance Line"
-    let star = "Star"
     let timeCycle = "Time Cycle"
     let tironeLevels = "Tirone Levels"
     let trend = "Trend Line"
@@ -151,9 +136,7 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(average, ChartIQDrawingTool.average.displayName)
     XCTAssertEqual(callout, ChartIQDrawingTool.callout.displayName)
     XCTAssertEqual(channel, ChartIQDrawingTool.channel.displayName)
-    XCTAssertEqual(check, ChartIQDrawingTool.check.displayName)
     XCTAssertEqual(continuous, ChartIQDrawingTool.continuous.displayName)
-    XCTAssertEqual(cross, ChartIQDrawingTool.cross.displayName)
     XCTAssertEqual(crossline, ChartIQDrawingTool.crossline.displayName)
     XCTAssertEqual(doodle, ChartIQDrawingTool.doodle.displayName)
     XCTAssertEqual(elliottWave, ChartIQDrawingTool.elliottWave.displayName)
@@ -163,10 +146,8 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(fibProjection, ChartIQDrawingTool.fibProjection.displayName)
     XCTAssertEqual(fibRetracement, ChartIQDrawingTool.fibRetracement.displayName)
     XCTAssertEqual(fibTimeZone, ChartIQDrawingTool.fibTimeZone.displayName)
-    XCTAssertEqual(focus, ChartIQDrawingTool.focus.displayName)
     XCTAssertEqual(gannFan, ChartIQDrawingTool.gannFan.displayName)
     XCTAssertEqual(gartley, ChartIQDrawingTool.gartley.displayName)
-    XCTAssertEqual(heart, ChartIQDrawingTool.heart.displayName)
     XCTAssertEqual(horizontal, ChartIQDrawingTool.horizontal.displayName)
     XCTAssertEqual(line, ChartIQDrawingTool.line.displayName)
     XCTAssertEqual(measurementLine, ChartIQDrawingTool.measurementLine.displayName)
@@ -177,7 +158,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(regression, ChartIQDrawingTool.regression.displayName)
     XCTAssertEqual(speedResistanceArc, ChartIQDrawingTool.speedResistanceArc.displayName)
     XCTAssertEqual(speedResistanceLine, ChartIQDrawingTool.speedResistanceLine.displayName)
-    XCTAssertEqual(star, ChartIQDrawingTool.star.displayName)
     XCTAssertEqual(timeCycle, ChartIQDrawingTool.timeCycle.displayName)
     XCTAssertEqual(tironeLevels, ChartIQDrawingTool.tironeLevels.displayName)
     XCTAssertEqual(trend, ChartIQDrawingTool.trendLine.displayName)
@@ -193,9 +173,7 @@ class ChartIQDrawingToolTests: XCTestCase {
     let average: ChartIQDrawingToolType = .statistics
     let callout: ChartIQDrawingToolType = .text
     let channel: ChartIQDrawingToolType = .lines
-    let check: ChartIQDrawingToolType = .markings
     let continuous: ChartIQDrawingToolType = .lines
-    let cross: ChartIQDrawingToolType = .markings
     let crossline: ChartIQDrawingToolType = .lines
     let doodle: ChartIQDrawingToolType = .lines
     let elliottWave: ChartIQDrawingToolType = .technicals
@@ -205,10 +183,8 @@ class ChartIQDrawingToolTests: XCTestCase {
     let fibProjection: ChartIQDrawingToolType = .fibonacci
     let fibRetracement: ChartIQDrawingToolType = .fibonacci
     let fibTimeZone: ChartIQDrawingToolType = .fibonacci
-    let focus: ChartIQDrawingToolType = .markings
     let gannFan: ChartIQDrawingToolType = .technicals
     let gartley: ChartIQDrawingToolType = .technicals
-    let heart: ChartIQDrawingToolType = .markings
     let horizontal: ChartIQDrawingToolType = .lines
     let line: ChartIQDrawingToolType = .lines
     let measurementLine: ChartIQDrawingToolType = .statistics
@@ -219,7 +195,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     let regression: ChartIQDrawingToolType = .statistics
     let speedResistanceArc: ChartIQDrawingToolType = .technicals
     let speedResistanceLine: ChartIQDrawingToolType = .technicals
-    let star: ChartIQDrawingToolType = .markings
     let timeCycle: ChartIQDrawingToolType = .technicals
     let tironeLevels: ChartIQDrawingToolType = .statistics
     let trend: ChartIQDrawingToolType = .lines
@@ -233,9 +208,7 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(average, ChartIQDrawingTool.average.type)
     XCTAssertEqual(callout, ChartIQDrawingTool.callout.type)
     XCTAssertEqual(channel, ChartIQDrawingTool.channel.type)
-    XCTAssertEqual(check, ChartIQDrawingTool.check.type)
     XCTAssertEqual(continuous, ChartIQDrawingTool.continuous.type)
-    XCTAssertEqual(cross, ChartIQDrawingTool.cross.type)
     XCTAssertEqual(crossline, ChartIQDrawingTool.crossline.type)
     XCTAssertEqual(doodle, ChartIQDrawingTool.doodle.type)
     XCTAssertEqual(elliottWave, ChartIQDrawingTool.elliottWave.type)
@@ -245,10 +218,8 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(fibProjection, ChartIQDrawingTool.fibProjection.type)
     XCTAssertEqual(fibRetracement, ChartIQDrawingTool.fibRetracement.type)
     XCTAssertEqual(fibTimeZone, ChartIQDrawingTool.fibTimeZone.type)
-    XCTAssertEqual(focus, ChartIQDrawingTool.focus.type)
     XCTAssertEqual(gannFan, ChartIQDrawingTool.gannFan.type)
     XCTAssertEqual(gartley, ChartIQDrawingTool.gartley.type)
-    XCTAssertEqual(heart, ChartIQDrawingTool.heart.type)
     XCTAssertEqual(horizontal, ChartIQDrawingTool.horizontal.type)
     XCTAssertEqual(line, ChartIQDrawingTool.line.type)
     XCTAssertEqual(measurementLine, ChartIQDrawingTool.measurementLine.type)
@@ -259,7 +230,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(regression, ChartIQDrawingTool.regression.type)
     XCTAssertEqual(speedResistanceArc, ChartIQDrawingTool.speedResistanceArc.type)
     XCTAssertEqual(speedResistanceLine, ChartIQDrawingTool.speedResistanceLine.type)
-    XCTAssertEqual(star, ChartIQDrawingTool.star.type)
     XCTAssertEqual(timeCycle, ChartIQDrawingTool.timeCycle.type)
     XCTAssertEqual(tironeLevels, ChartIQDrawingTool.tironeLevels.type)
     XCTAssertEqual(trend, ChartIQDrawingTool.trendLine.type)
@@ -271,13 +241,11 @@ class ChartIQDrawingToolTests: XCTestCase {
   func testsChartIQDrawingToolEnumInitWithStringValue() {
     // Given
     let annotation = "annotation"
-    let arrow = "arrow"
+    let arrow = "arrowline"
     let average = "average"
     let callout = "callout"
     let channel = "channel"
-    let check = "check"
     let continuous = "continuous"
-    let cross = "xcross"
     let crossline = "crossline"
     let doodle = "freeform"
     let elliottWave = "elliottwave"
@@ -285,12 +253,10 @@ class ChartIQDrawingToolTests: XCTestCase {
     let fibArc = "fibarc"
     let fibFan = "fibfan"
     let fibProjection = "fibprojection"
-    let fibRetracement = "fibonacci"
+    let fibRetracement = "retracement"
     let fibTimeZone = "fibtimezone"
-    let focus = "focusarrow"
     let gannFan = "gannfan"
     let gartley = "gartley"
-    let heart = "heart"
     let horizontal = "horizontal"
     let line = "line"
     let measurementLine = "measurementline"
@@ -301,7 +267,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     let regression = "regression"
     let speedResistanceArc = "speedarc"
     let speedResistanceLine = "speedline"
-    let star = "star"
     let timeCycle = "timecycle"
     let tironeLevels = "tirone"
     let trend = "trendline"
@@ -316,9 +281,7 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(ChartIQDrawingTool.average, ChartIQDrawingTool(stringValue: average))
     XCTAssertEqual(ChartIQDrawingTool.callout, ChartIQDrawingTool(stringValue: callout))
     XCTAssertEqual(ChartIQDrawingTool.channel, ChartIQDrawingTool(stringValue: channel))
-    XCTAssertEqual(ChartIQDrawingTool.check, ChartIQDrawingTool(stringValue: check))
     XCTAssertEqual(ChartIQDrawingTool.continuous, ChartIQDrawingTool(stringValue: continuous))
-    XCTAssertEqual(ChartIQDrawingTool.cross, ChartIQDrawingTool(stringValue: cross))
     XCTAssertEqual(ChartIQDrawingTool.crossline, ChartIQDrawingTool(stringValue: crossline))
     XCTAssertEqual(ChartIQDrawingTool.doodle, ChartIQDrawingTool(stringValue: doodle))
     XCTAssertEqual(ChartIQDrawingTool.elliottWave, ChartIQDrawingTool(stringValue: elliottWave))
@@ -328,10 +291,8 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(ChartIQDrawingTool.fibProjection, ChartIQDrawingTool(stringValue: fibProjection))
     XCTAssertEqual(ChartIQDrawingTool.fibRetracement, ChartIQDrawingTool(stringValue: fibRetracement))
     XCTAssertEqual(ChartIQDrawingTool.fibTimeZone, ChartIQDrawingTool(stringValue: fibTimeZone))
-    XCTAssertEqual(ChartIQDrawingTool.focus, ChartIQDrawingTool(stringValue: focus))
     XCTAssertEqual(ChartIQDrawingTool.gannFan, ChartIQDrawingTool(stringValue: gannFan))
     XCTAssertEqual(ChartIQDrawingTool.gartley, ChartIQDrawingTool(stringValue: gartley))
-    XCTAssertEqual(ChartIQDrawingTool.heart, ChartIQDrawingTool(stringValue: heart))
     XCTAssertEqual(ChartIQDrawingTool.horizontal, ChartIQDrawingTool(stringValue: horizontal))
     XCTAssertEqual(ChartIQDrawingTool.line, ChartIQDrawingTool(stringValue: line))
     XCTAssertEqual(ChartIQDrawingTool.measurementLine, ChartIQDrawingTool(stringValue: measurementLine))
@@ -342,7 +303,6 @@ class ChartIQDrawingToolTests: XCTestCase {
     XCTAssertEqual(ChartIQDrawingTool.regression, ChartIQDrawingTool(stringValue: regression))
     XCTAssertEqual(ChartIQDrawingTool.speedResistanceArc, ChartIQDrawingTool(stringValue: speedResistanceArc))
     XCTAssertEqual(ChartIQDrawingTool.speedResistanceLine, ChartIQDrawingTool(stringValue: speedResistanceLine))
-    XCTAssertEqual(ChartIQDrawingTool.star, ChartIQDrawingTool(stringValue: star))
     XCTAssertEqual(ChartIQDrawingTool.timeCycle, ChartIQDrawingTool(stringValue: timeCycle))
     XCTAssertEqual(ChartIQDrawingTool.tironeLevels, ChartIQDrawingTool(stringValue: tironeLevels))
     XCTAssertEqual(ChartIQDrawingTool.trendLine, ChartIQDrawingTool(stringValue: trend))
